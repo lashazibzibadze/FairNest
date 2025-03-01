@@ -7,9 +7,9 @@
     justify-content: space-between;
     align-items: center;
     padding: 15px 40px;
-    background-color: rgba(50, 50, 50, 0.8);
     color: white;
     z-index: 9999;
+    background-color: rgba(50, 50, 50, 0.8);
     backdrop-filter: blur(8px);
 }
 
@@ -17,7 +17,8 @@
 .nav-logo {
     font-size: 36px;
     font-weight: 600;
-    text-shadow: blue 0px 2px 4px;
+    text-shadow: #007bff 0px 2px 4px;
+    text-shadow: 0px 0px 3px #007bff, -1px -1px #007bff, 1px 1px #007bff;
 }
 
 
@@ -47,7 +48,7 @@
 }
 
 .nav-signin {
-    border-radius: 25px;
+    border-radius: 10px;
     padding: 10px 20px;
     background: #007bff;
     color: white;
@@ -81,17 +82,18 @@
     .nav {
         flex-direction: row;
         justify-content: space-between;
-        padding: 15px 20px;
+        padding: 15px 10px;
     }
 
     .nav-container {
-        flex-direction: column;
+        flex-direction: row;
         align-items: center;
-        width: 100%;
+        gap: 10px;
     }
 
     .hamburger {
-        display: block;
+        display: flex;
+        width: 65px;
     }
 
     .nav-menu {
@@ -99,8 +101,8 @@
         background-color: gray;
         width: 100%;
         position: absolute;
-        top: 70px;
-        left: 0;
+        top: 57px;
+        left: 46%;
         right: 0;
         display: none;
         text-align: center;
@@ -110,6 +112,8 @@
 
     .nav-menu.open {
         display: flex;
+        width: 50%;
+        justify-content: center;
     }
 
     .nav-buttons {
@@ -117,8 +121,8 @@
     }
 
     .nav-signin {
-        padding: 12px 20px;
-        font-size: 18px;
+        padding: 5px 15px;
+        font-size: 12px;
         text-align: center;
         margin: 0 auto;
     }

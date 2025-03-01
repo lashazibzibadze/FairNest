@@ -2,7 +2,8 @@ import { useEffect, useState } from "react"
 import Background from "./components/background/Background";
 import Navbar from "./components/navbar/Navbar";
 import Hero from "./components/hero/Hero";
-import Recommendation from "./components/recommendation/recommendation";
+import Recommendation from "./components/recommendation/Recommendation";
+import Footer from "./components/footer/footer";
 import './app.css';
 
 const heroData = [
@@ -12,17 +13,17 @@ const heroData = [
 ];
 
 const App = () => {
-  const [heroCount, setHeroCount] = useState(1);
+  const [heroCount, setHeroCount] = useState(0);
 
   useEffect(() => {
     const interval = setInterval(() => {
       setHeroCount((count) => (count + 1) % heroData.length);
-    }, 7500);
+    }, 15000);
     return () => clearInterval(interval);
   }, []);
 
   return (
-    <div>
+    <div className="body-container">
       <div className="hero-container">
         <Navbar/>
         <Background heroCount={heroCount}/>
@@ -32,8 +33,11 @@ const App = () => {
           setHeroCount={setHeroCount}
         />
       </div>
-      
-      <Recommendation/>
+
+      <div className="lower-container">
+        <Recommendation />
+        <Footer />
+      </div>
     </div>
   )
 }

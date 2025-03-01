@@ -5,15 +5,33 @@
     padding-top: 100px;
     z-index: 1;
 }
+.hero-container {
+    background-color: rgba(0, 0, 0, 0.1);
+}
+.hero-text-container{
+    position: relative;
+    min-height: 120px;
+}
 
 .hero-text {
-    text-align: left;
     color: whitesmoke;
-    font-size: 3.5vw;
+    font-size: 4vw;
     font-weight: 500;
     line-height: 1.2;
-    text-shadow: black 0px 5px 30px;
-    max-width: 600px;
+    text-shadow: 0px 0px 3px #000, -1px -1px #000, 1px 1px #000;
+    max-width: 1000px;
+    padding: 20px;
+    border-radius: 10px;
+    transition: opacity 1s ease-in-out;
+}
+
+.fade-in{
+    opacity: 1;
+}
+
+.fade-out{
+    opacity: 0;
+    transition: opacity 1.2s ease-in-out;
 }
 
 .arrow-image{
@@ -29,13 +47,16 @@
     width: fit-content;
     margin-top: 50px;
     padding: 10px 25px;
-    border-radius: 40px;
-    background-color: gray;
+    border-radius: 10px;
     cursor: pointer;
+    background-color: rgba(92, 98, 100, 0.8);
+    backdrop-filter: blur(8px);
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.5);    
 }
 
+
 .hero-explore:hover {
-    background-color: darkgray;
+    background-color: rgba(84, 97, 102, 0.8);
 }
 
 .hero-explore p{
@@ -62,10 +83,40 @@
     height: 12px;
     background: white;
     border-radius: 50%;
-    cursor: pointer;
 }
 
 .hero-dot.blue{
-    background-color: rgb(49, 160, 197);
+    background-color: lightblue;
     transform: scale(1.3);
+}
+
+
+@media (max-width: 768px) {
+    .hero {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .hero-text {
+        font-size: 10vw;
+        max-width: 90%;
+        color: whitesmoke;
+        max-width: 1000px;
+        padding: 20px;
+        border-radius: 10px;
+        transition: opacity 1s ease-in-out;
+    }
+
+    .hero-text p{
+        display: flex;
+        justify-content: center;
+    }
+
+    .hero-dot-show{
+        display: none;
+    }
+
 }

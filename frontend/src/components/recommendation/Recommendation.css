@@ -1,8 +1,10 @@
+
 .recommendation-container {
     display: flex;
     justify-content: center;
     gap: 30px;
-    padding: 100px;
+    padding: 280px;
+    flex-wrap: wrap;
   }
   
   .recommendation-button {
@@ -22,7 +24,7 @@
   
   .recommendation-button:hover {
     transform: scale(1.1);
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
+    box-shadow: 0px 4px 10px rgba(107, 213, 240, 0.5);
   }
   
   .recommendation-image {
@@ -30,6 +32,7 @@
     height: 80%;
     object-fit: cover;
     border-radius: 12px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
   }
   
   .recommendation-title {
@@ -37,24 +40,48 @@
     font-size: 18px;
     font-weight: bold;
     font-family: Lexend Deca;
-    color: gray;
-    text-shadow: black 0px 1px 1px;
+    color: white;
+    text-shadow: black 0px 3px 8px;
   }
 
   .recommendation-header {
     font-size: 40px;
     font-weight: 700;
     font-family: Lexend Deca;
-    color: gray;
-    text-shadow: black 0px 3px 2px;
+    color: whitesmoke;
+    text-shadow: black 0px 4px 8px;
 
   }
 
   .header-container {
     display: flex;
     justify-content: center;
-    margin-top: 50px;
   }
-  
 
-   
+  .recommendation-button:hover .recommendation-title {
+    color: lightblue;
+}
+
+@media (max-width: 768px) {
+  .recommendation-header {
+    font-size: 25px;
+    font-weight: 700;
+    font-family: Lexend Deca;
+    color: whitesmoke;
+    text-shadow: black 0px 4px 8px;
+  }
+
+  .recommendation-container {
+    flex-direction:row;
+    align-items: center;
+    height: 100vh;
+    overflow-y: auto;
+    padding: 20px 0;
+    gap: 20px;
+  }
+
+  .recommendation-button {
+    width: 90%;
+    max-width: 300px;
+  }
+}

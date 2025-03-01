@@ -1,3 +1,14 @@
+html, body, #root {
+    height: 100%;
+    overflow-y: scroll;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+html::-webkit-scrollbar, body::-webkit-scrollbar, #root::-webkit-scrollbar {
+    display: none;
+}
+
 .hero-container {
     position: relative;
     width: 100%;
@@ -10,6 +21,14 @@
 }
 
 .recommendation {
-    padding: 50px 0;
+    padding: 0px 0;
     min-height: 100vh;
+}
+
+.lower-container {
+    background-image: url("assets/Panel_Background.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
 }
