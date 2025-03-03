@@ -26,6 +26,7 @@
     display: flex;
     align-items: center;
     gap: 30px;
+    width: 97%;
 }
 
 .nav-menu {
@@ -77,6 +78,9 @@
     transform: scale(1.1);
 }
 
+.singin-hamburger {
+    display: none;
+}
 
 @media screen and (max-width: 768px) {
     .nav {
@@ -125,5 +129,12 @@
         font-size: 12px;
         text-align: center;
         margin: 0 auto;
+    }
+
+    .nav-signin{
+        display: none;
+    }
+    .singin-hamburger {
+        display: flex;
     }
 }

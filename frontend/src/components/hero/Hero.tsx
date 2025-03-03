@@ -17,13 +17,21 @@ const Hero: React.FC<HeroProps> = ({ heroData, setHeroCount, heroCount }) => {
         const textTimeout = setTimeout(() => {
             setPreviousText(heroData);
             setFade(false);
-        }, 900);
+        }, 800);
 
         return () => clearTimeout(textTimeout);
     }
     , [heroCount]);
 
-    const handleHeroCount = useCallback((count: number) => setHeroCount(count), [setHeroCount]);
+    const handleHeroCount = (count: number) => {
+        if (count !== heroCount) {
+            setFade(true);
+            setTimeout(() => {
+                setHeroCount(count);
+                setFade(false);
+            }, 800);
+        }
+    };
 
     return (
 
