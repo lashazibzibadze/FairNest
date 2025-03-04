@@ -23,9 +23,31 @@
 # Property is useful only if all non-* information is present
 # """
 
+
+
 from pathlib import Path
 import json
 from playwright.sync_api import sync_playwright
+import time
+import random
+
+def scroll_until_bottom(page):
+    """Scroll down the page until the bottom is reached."""
+    last_height = page.evaluate("document.body.scrollHeight")
+    
+    while True:
+        # Scroll down by a fixed distance
+        page.evaluate("window.scrollBy(0, window.innerHeight);")
+        time.sleep(random.uniform(1, 2))  # Wait for content to load
+        
+        # Calculate new scroll height and compare with last height
+        new_height = page.evaluate("document.body.scrollHeight")
+        
+        if new_height == last_height:
+            # If the new height is the same as the last height, we've reached the bottom
+            break
+        
+        last_height = new_height  # Update the last height
 
 def scrape_realtor(url, max_pages=5, timeout=60):
     with sync_playwright() as p:
@@ -40,6 +62,10 @@ def scrape_realtor(url, max_pages=5, timeout=60):
         while current_page <= max_pages:
             print(f"Scraping page {current_page}...")
 
+            # Scroll down to load all listings
+            scroll_until_bottom(page)
+
+            # Extract listings
             listings = page.locator("[data-testid='rdc-property-card']").all()
 
             for listing in listings:
@@ -49,7 +75,7 @@ def scrape_realtor(url, max_pages=5, timeout=60):
                     if listing.locator("[data-testid='card-address-2']").count() > 0:
                         address += ", " + listing.locator("[data-testid='card-address-2']").inner_text()
                         
-                    bedrooms = listing.locator("[data-testid='property-meta-beds']").inner_text()  if listing.locator("[data-testid='property-meta-beds']").count() > 0 else "N/A"
+                    bedrooms = listing.locator("[data-testid='property-meta-beds']").inner_text() if listing.locator("[data-testid='property-meta-beds']").count() > 0 else "N/A"
                     bathrooms = listing.locator("[data-testid='property-meta-baths']").inner_text() if listing.locator("[data-testid='property-meta-baths']").count() > 0 else "N/A"
                     sqft = listing.locator("[data-testid='property-meta-sqft']").locator("[data-testid='screen-reader-value']").inner_text() if listing.locator("[data-testid='property-meta-sqft']").count() > 0 else "N/A"
                     acre_lot = listing.locator("[data-testid='property-meta-lot-size']").locator("[data-testid='screen-reader-value']").inner_text() if listing.locator("[data-testid='property-meta-lot-size']").count() > 0 else "N/A"
@@ -79,7 +105,7 @@ def scrape_realtor(url, max_pages=5, timeout=60):
                 except Exception as e:
                     print(f"Error parsing listing: {e}")
 
-            # Find and click the "Next" button
+            # Check for the "Next" button if needed
             next_button = page.locator("[aria-label='Go to next page']").first
             if next_button.is_visible():
                 next_button.click()
@@ -98,13 +124,13 @@ def scrape_realtor(url, max_pages=5, timeout=60):
         with open(dump_path, 'w') as json_file:
             json.dump(data, json_file, indent=4)
         
-        print("JSON successfully dumped with " + str(len(data)) +" entries!")
+        print("JSON successfully dumped with " + str(len(data)) + " entries!")
         
         return data
 
+
 # URL to scrape
-url = "https://www.realtor.com/realestateandhomes-search/13337"
-# url = "https://www.realtor.com/realestateandhomes-search/Manhattan_NY"
+url = "https://www.realtor.com/realestateandhomes-search/Manhattan_NY"
 
 # Scrape data
 scraped_data = scrape_realtor(url)
