@@ -13,46 +13,6 @@ class Settings(BaseSettings):
     app_name: str = "FairNest API"
     model_config = SettingsConfigDict(env_file=".env")
 
-# class AddressBase(BaseModel):
-#     country: str
-#     administrative_area: str
-#     sub_administrative_area: Optional[str] = None
-#     locality: str
-#     postal_code: str
-#     street: str
-#     premise: Optional[str] = None
-#     sub_premise: Optional[str] = None
-    
-# class AddressCreate(AddressBase):
-#     pass
-
-# class AddressResponse(AddressBase):
-#     id: int
-
-#     class Config:
-#         from_attributes = True
-    
-# class ListingBase(BaseModel):
-#     price: int = Field(..., gt=0)
-#     bedrooms: int
-#     bathrooms: float
-#     square_feet: int
-#     sale_status: str
-#     acre_lot: Optional[float] = None
-#     tour_available: bool
-#     image_source: Optional[str] = None
-    
-# class ListingCreate(ListingBase):
-#     address: AddressCreate
-
-# class ListingResponse(ListingBase):
-#     id: int
-#     date_posted: datetime
-#     address: AddressResponse
-
-#     class Config:
-#         from_attributes = True
-
 def get_or_create_address(db: Session, address_data: schemas.AddressCreate):
     existing_address = db.query(models.Address).filter(
         models.Address.street == address_data.street,

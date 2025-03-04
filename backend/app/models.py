@@ -10,7 +10,7 @@ class Listing(Base):
     price = Column(BigInteger, nullable=False)
     bedrooms = Column(Integer, nullable=False)
     bathrooms = Column(DECIMAL(3,1), nullable=False)
-    square_feet = Column(Integer, nullable=False)
+    square_feet = Column(Integer, nullable=True)
     sale_status = Column(String(255), nullable=False)
     acre_lot = Column(DECIMAL(6,4), nullable=True)
     tour_available = Column(Boolean, default=False)

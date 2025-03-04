@@ -7,7 +7,7 @@ class ListingBase(BaseModel):
     price: int = Field(..., gt=0)
     bedrooms: int
     bathrooms: float
-    square_feet: int
+    square_feet: Optional[int] = None
     sale_status: str
     acre_lot: Optional[float] = None
     tour_available: bool
