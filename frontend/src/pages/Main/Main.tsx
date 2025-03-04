@@ -12,7 +12,7 @@ const heroData = [
   { text1: "Honest Housing", text2: "For Good People" },
 ];
 
-const App = () => {
+const Main = () => {
   const [heroCount, setHeroCount] = useState(0);
 
   useEffect(() => {
@@ -45,4 +45,4 @@ const App = () => {
 
 
 
-export default App
+export default Main

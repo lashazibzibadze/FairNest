@@ -1,12 +1,13 @@
 import Navbar from "../../components/navbar/Navbar"
 import "./Listings.css"
 
-function About() {
+const Listings = () => {
   return (
-    <Navbar/>
-
+    <div>
+      <Navbar />
+    </div>
   )
 }
 
-export default About
+export default Listings
 

@@ -1,12 +1,14 @@
 import Navbar from "../../components/navbar/Navbar" 
 import "./About.css"
 
-function About() {
+const About = () => {
   return (
-    <Navbar/>
-
+    <div>
+      <Navbar />
+    </div>
   )
 }
 
 export default About
+
 

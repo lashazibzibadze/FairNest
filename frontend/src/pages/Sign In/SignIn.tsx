@@ -1,14 +1,16 @@
 import "./SignIn.css";
+import Navbar from "../../components/navbar/Navbar";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 
 const SignIn = () => {
 
   return (
-    <div className="signin-container">
-      <h2 className="signin-title">Sign In</h2>
+    <div>
+      <Navbar />
     </div>
   );
 };
 
 export default SignIn;
+
