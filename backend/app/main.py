@@ -1,17 +1,20 @@
-from fastapi import FastAPI, HTTPException, Depends
-from typing import List, Annotated
-from pydantic_settings import BaseSettings, SettingsConfigDict
-from database import SessionLocal, engine
-from sqlalchemy.orm import Session
+from fastapi import FastAPI
+from database import engine
 from routers import listings
 import models
-import schemas
 
-class Settings(BaseSettings):
-    app_name: str = "FairNest API"
-    model_config = SettingsConfigDict(env_file=".env")
+# class Settings(BaseSettings):
+#     app_name: str = "FairNest API"
+#     model_config = SettingsConfigDict(env_file=".env")
 
-app = FastAPI()
+# settings = Settings()
+
+app = FastAPI(
+    title="FairNest API",
+    summary="API for FairNest, where everyone has a fair chance to find their dream home.",
+    version="0.0.1"
+)
+
 models.Base.metadata.create_all(bind=engine)
 
 app.include_router(listings.router)
