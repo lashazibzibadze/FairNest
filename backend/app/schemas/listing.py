@@ -5,8 +5,8 @@ from .address import AddressCreate, AddressResponse
 
 class ListingBase(BaseModel):
     price: int = Field(..., gt=0)
-    bedrooms: int
-    bathrooms: float
+    bedrooms: Optional[int] = None
+    bathrooms: Optional[float] = None
     square_feet: Optional[int] = None
     sale_status: str
     acre_lot: Optional[float] = None
@@ -18,7 +18,7 @@ class ListingCreate(ListingBase):
 
 class ListingResponse(ListingBase):
     id: int
-    date_posted: datetime
+    date_posted: Optional[datetime] = None
     address: AddressResponse 
 
     class Config:

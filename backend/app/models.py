@@ -8,8 +8,8 @@ class Listing(Base):
 
     id = Column(Integer, primary_key=True, index=True)
     price = Column(BigInteger, nullable=False)
-    bedrooms = Column(Integer, nullable=False)
-    bathrooms = Column(DECIMAL(3,1), nullable=False)
+    bedrooms = Column(Integer, nullable=True)
+    bathrooms = Column(DECIMAL(3,1), nullable=True)
     square_feet = Column(Integer, nullable=True)
     sale_status = Column(String(255), nullable=False)
     acre_lot = Column(DECIMAL(6,4), nullable=True)
