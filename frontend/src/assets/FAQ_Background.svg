@@ -1,0 +1,447 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 27.5.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 1000 700" style="enable-background:new 0 0 1000 700;" xml:space="preserve">
+<g id="Bg">
+	
+		<linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="-10478" y1="-12074" x2="-10478" y2="-11374" gradientTransform="matrix(-1 0 0 -1 -9978 -11374)">
+		<stop  offset="0" style="stop-color:#E7CEA1"/>
+		<stop  offset="0.0064" style="stop-color:#E6C69C"/>
+		<stop  offset="0.0271" style="stop-color:#E3AF8F"/>
+		<stop  offset="0.0468" style="stop-color:#E1A288"/>
+		<stop  offset="0.0644" style="stop-color:#E09D85"/>
+		<stop  offset="0.1944" style="stop-color:#DFA28C"/>
+		<stop  offset="0.2582" style="stop-color:#DEAD9C"/>
+		<stop  offset="0.3834" style="stop-color:#DCC0B7"/>
+		<stop  offset="0.495" style="stop-color:#DACBC7"/>
+		<stop  offset="0.581" style="stop-color:#DACFCD"/>
+		<stop  offset="0.7067" style="stop-color:#D5CCCC"/>
+		<stop  offset="1" style="stop-color:#99A7BB"/>
+	</linearGradient>
+	<polygon style="fill:url(#SVGID_1_);" points="0,0 1000,0 1000,700 0,700 	"/>
+</g>
+<g id="Object">
+	<g>
+		<defs>
+			<rect id="SVGID_00000134215276550423369490000002167135783912807579_" width="1000" height="700"/>
+		</defs>
+		<clipPath id="SVGID_00000025416322017235256290000006510095566618235794_">
+			<use xlink:href="#SVGID_00000134215276550423369490000002167135783912807579_"  style="overflow:visible;"/>
+		</clipPath>
+		
+			<linearGradient id="SVGID_00000142134809115672363320000000030211141193694133_" gradientUnits="userSpaceOnUse" x1="312.5" y1="773" x2="312.5" y2="312">
+			<stop  offset="0" style="stop-color:#403E40"/>
+			<stop  offset="0.1275" style="stop-color:#4E4D4E"/>
+			<stop  offset="0.3124" style="stop-color:#5A5A5A"/>
+			<stop  offset="0.5479" style="stop-color:#626262"/>
+			<stop  offset="1" style="stop-color:#646464"/>
+		</linearGradient>
+		
+			<polygon style="opacity:0.71;clip-path:url(#SVGID_00000025416322017235256290000006510095566618235794_);fill:url(#SVGID_00000142134809115672363320000000030211141193694133_);" points="
+			1022,425.45 991.713,408.827 991.713,362.163 909.885,362.163 909.885,312 804.677,312 804.677,439.158 780.235,439.158 
+			780.235,468.906 761.107,468.906 761.107,540.067 738.79,540.067 738.79,442.074 683.53,442.074 683.53,413.493 652.18,413.493 
+			652.18,459.281 622.956,475.322 622.956,567.482 553.881,567.482 553.881,365.08 479.492,365.08 479.492,402.994 421.043,402.994 
+			405.103,411.743 405.103,432.742 331.777,432.742 317.961,440.324 317.961,511.486 287.143,511.486 287.143,401.827 
+			229.757,401.827 229.757,421.076 138.896,421.076 138.896,467.448 122.425,476.489 122.425,522.037 95.03,522.037 95.03,409.629 
+			57.836,401.463 57.836,371.132 -42.058,371.132 -42.058,499.456 -57.999,499.456 -57.999,336.717 -79.253,337.301 
+			-141.952,354.799 -141.952,514.621 -168.52,514.621 -168.52,409.046 -184.46,388.047 -184.46,379.881 -221.654,379.881 
+			-221.654,388.047 -241.846,388.047 -257.786,406.713 -272.664,406.713 -272.664,328.551 -310.921,328.551 -310.921,356.841 
+			-365.651,356.841 -397,374.048 -397,773 29.278,773 95.03,773 281.106,773 281.106,772.678 1022,772.198 		"/>
+		
+			<linearGradient id="SVGID_00000052802078089870229340000012176424309724290746_" gradientUnits="userSpaceOnUse" x1="489.5" y1="780.2207" x2="489.5" y2="371">
+			<stop  offset="0.163" style="stop-color:#403E40"/>
+			<stop  offset="1" style="stop-color:#555455"/>
+		</linearGradient>
+		
+			<polygon style="clip-path:url(#SVGID_00000025416322017235256290000006510095566618235794_);fill:url(#SVGID_00000052802078089870229340000012176424309724290746_);" points="
+			965.752,442.725 950.693,459.276 950.693,510.036 934.631,510.036 934.631,371 862.854,371 862.854,694.866 841.27,671.141 
+			841.27,484.656 681.652,484.656 681.652,532.105 597.326,532.105 597.326,681.072 597.326,746.663 523.248,746.663 
+			523.248,552.943 501.821,552.943 501.821,477.575 457.895,477.575 457.895,602.404 437.539,602.404 437.539,625.956 
+			411.827,581.206 366.83,581.206 366.83,419.872 280.05,419.872 272.55,428.115 272.55,477.575 272.55,532.924 247.909,532.924 
+			247.909,385.72 173.985,385.72 173.985,410.451 159.522,426.349 159.522,677.183 142.916,677.183 142.916,475.809 
+			133.273,475.809 133.273,456.378 48.101,456.378 33.637,472.276 33.637,494.651 -46.714,494.651 -51,780.221 216.839,780.221 
+			216.839,779.632 488.964,779.632 488.964,780.221 597.326,780.221 753.59,780.221 1030,780.221 1030,442.725 		"/>
+		
+			<linearGradient id="SVGID_00000021838654798790400360000006442826888489944212_" gradientUnits="userSpaceOnUse" x1="507.5" y1="376.3042" x2="507.5" y2="893">
+			<stop  offset="0" style="stop-color:#403E40"/>
+			<stop  offset="1" style="stop-color:#161F21"/>
+		</linearGradient>
+		
+			<polygon style="clip-path:url(#SVGID_00000025416322017235256290000006510095566618235794_);fill:url(#SVGID_00000021838654798790400360000006442826888489944212_);" points="
+			1029.559,463.491 1029.559,664.716 1003.589,664.716 1003.589,584.635 966.797,553.431 966.797,432.287 920.267,432.287 
+			893.215,409.343 858.588,409.343 858.588,531.405 775.266,531.405 775.266,669.986 753.624,669.986 753.624,476.339 
+			693.027,502.954 693.027,618.591 676.796,618.591 676.796,440.547 656.236,440.547 656.236,388.235 651,388.235 651,376.304 
+			605,376.304 605,386.4 576.161,386.4 576.161,426.781 528.549,426.781 516.645,440.547 516.645,605.743 476.067,605.743 
+			476.067,572.245 450.638,550.677 450.638,471.751 361.906,471.751 361.906,536.911 329.443,536.911 329.443,591.977 
+			290.487,628.687 265.599,628.687 265.599,454.313 196.345,413.932 196.345,575.457 180.114,575.457 180.114,464.409 
+			97.874,464.409 97.874,502.954 60.001,502.954 60.001,687.423 43.77,687.423 43.77,607.578 -11.417,607.578 -11.417,582.799 
+			-21.156,570.868 -80.672,570.868 -85,893 942.076,893 1003.589,893 1029.559,893 1100,893 1100,463.491 		"/>
+		
+			<rect x="70.5" y="516" style="opacity:0.4;clip-path:url(#SVGID_00000025416322017235256290000006510095566618235794_);fill:#1A1A1A;" width="4" height="15"/>
+		
+			<rect x="82.688" y="516" style="opacity:0.4;clip-path:url(#SVGID_00000025416322017235256290000006510095566618235794_);fill:#8E8E8D;" width="4" height="15"/>
+		
+			<rect x="94.875" y="516" style="opacity:0.4;clip-path:url(#SVGID_00000025416322017235256290000006510095566618235794_);fill:#1A1A1A;" width="4" height="15"/>
+		
+			<rect x="107.063" y="516" style="opacity:0.4;clip-path:url(#SVGID_00000025416322017235256290000006510095566618235794_);fill:#1A1A1A;" width="4" height="15"/>
+		
+			<rect x="119.25" y="516" style="opacity:0.4;clip-path:url(#SVGID_00000025416322017235256290000006510095566618235794_);fill:#1A1A1A;" width="4" height="15"/>
+		
+			<rect x="131.438" y="516" style="opacity:0.4;clip-path:url(#SVGID_00000025416322017235256290000006510095566618235794_);fill:#8E8E8D;" width="4" height="15"/>
+		
+			<rect x="143.625" y="516" style="opacity:0.4;clip-path:url(#SVGID_00000025416322017235256290000006510095566618235794_);fill:#8E8E8D;" width="4" height="15"/>
+		
+			<rect x="155.813" y="516" style="opacity:0.4;clip-path:url(#SVGID_00000025416322017235256290000006510095566618235794_);fill:#1A1A1A;" width="4" height="15"/>
+		
+			<rect x="168" y="516" style="opacity:0.4;clip-path:url(#SVGID_00000025416322017235256290000006510095566618235794_);fill:#1A1A1A;" width="4" height="15"/>
+		
+			<rect x="207.434" y="464" style="opacity:0.4;clip-path:url(#SVGID_00000025416322017235256290000006510095566618235794_);fill:#1A1A1A;" width="6.054" height="11.344"/>
+		
+			<rect x="220.814" y="464" style="opacity:0.4;clip-path:url(#SVGID_00000025416322017235256290000006510095566618235794_);fill:#1A1A1A;" width="6.054" height="11.344"/>
+		
+			<rect x="234.194" y="464" style="opacity:0.4;clip-path:url(#SVGID_00000025416322017235256290000006510095566618235794_);fill:#8E8E8D;" width="6.054" height="11.344"/>
+		
+			<rect x="247.574" y="464" style="opacity:0.4;clip-path:url(#SVGID_00000025416322017235256290000006510095566618235794_);fill:#1A1A1A;" width="6.054" height="11.344"/>
+		
+			<rect x="207.434" y="487.943" style="opacity:0.4;clip-path:url(#SVGID_00000025416322017235256290000006510095566618235794_);fill:#1A1A1A;" width="6.054" height="11.344"/>
+		
+			<rect x="220.814" y="487.943" style="opacity:0.4;clip-path:url(#SVGID_00000025416322017235256290000006510095566618235794_);fill:#1A1A1A;" width="6.054" height="11.344"/>
+		
+			<rect x="234.194" y="487.943" style="opacity:0.4;clip-path:url(#SVGID_00000025416322017235256290000006510095566618235794_);fill:#1A1A1A;" width="6.054" height="11.344"/>
+		
+			<rect x="247.574" y="487.943" style="opacity:0.4;clip-path:url(#SVGID_00000025416322017235256290000006510095566618235794_);fill:#8E8E8D;" width="6.054" height="11.344"/>
+		
+			<rect x="207.434" y="511.885" style="opacity:0.4;clip-path:url(#SVGID_00000025416322017235256290000006510095566618235794_);fill:#8E8E8D;" width="6.054" height="11.344"/>
+		
+			<rect x="220.814" y="511.885" style="opacity:0.4;clip-path:url(#SVGID_00000025416322017235256290000006510095566618235794_);fill:#1A1A1A;" width="6.054" height="11.344"/>
+		
+			<rect x="234.194" y="511.885" style="opacity:0.4;clip-path:url(#SVGID_00000025416322017235256290000006510095566618235794_);fill:#1A1A1A;" width="6.054" height="11.344"/>
+		
+			<rect x="247.574" y="511.885" style="opacity:0.4;clip-path:url(#SVGID_00000025416322017235256290000006510095566618235794_);fill:#1A1A1A;" width="6.054" height="11.344"/>
+		
+			<rect x="207.434" y="534.828" style="opacity:0.4;clip-path:url(#SVGID_00000025416322017235256290000006510095566618235794_);fill:#1A1A1A;" width="6.054" height="11.344"/>
+		
+			<rect x="220.814" y="534.828" style="opacity:0.4;clip-path:url(#SVGID_00000025416322017235256290000006510095566618235794_);fill:#1A1A1A;" width="6.054" height="11.344"/>
+		
+			<rect x="234.194" y="534.828" style="opacity:0.4;clip-path:url(#SVGID_00000025416322017235256290000006510095566618235794_);fill:#8E8E8D;" width="6.054" height="11.344"/>
+		
+			<rect x="247.574" y="534.828" style="opacity:0.4;clip-path:url(#SVGID_00000025416322017235256290000006510095566618235794_);fill:#1A1A1A;" width="6.054" height="11.344"/>
+		
+			<rect x="207.434" y="557.771" style="opacity:0.4;clip-path:url(#SVGID_00000025416322017235256290000006510095566618235794_);fill:#1A1A1A;" width="6.054" height="11.344"/>
+		
+			<rect x="220.814" y="557.771" style="opacity:0.4;clip-path:url(#SVGID_00000025416322017235256290000006510095566618235794_);fill:#8E8E8D;" width="6.054" height="11.344"/>
+		
+			<rect x="234.194" y="557.771" style="opacity:0.4;clip-path:url(#SVGID_00000025416322017235256290000006510095566618235794_);fill:#8E8E8D;" width="6.054" height="11.344"/>
+		
+			<rect x="247.574" y="557.771" style="opacity:0.4;clip-path:url(#SVGID_00000025416322017235256290000006510095566618235794_);fill:#1A1A1A;" width="6.054" height="11.344"/>
+		
+			<rect x="234.194" y="580.713" style="opacity:0.4;clip-path:url(#SVGID_00000025416322017235256290000006510095566618235794_);fill:#1A1A1A;" width="6.054" height="11.344"/>
+		
+			<rect x="247.574" y="580.713" style="opacity:0.4;clip-path:url(#SVGID_00000025416322017235256290000006510095566618235794_);fill:#1A1A1A;" width="6.054" height="11.344"/>
+		
+			<rect x="247.574" y="601.656" style="opacity:0.4;clip-path:url(#SVGID_00000025416322017235256290000006510095566618235794_);fill:#8E8E8D;" width="6.054" height="11.344"/>
+		
+			<rect x="70.5" y="542" style="opacity:0.4;clip-path:url(#SVGID_00000025416322017235256290000006510095566618235794_);fill:#1A1A1A;" width="4" height="15"/>
+		
+			<rect x="82.688" y="542" style="opacity:0.4;clip-path:url(#SVGID_00000025416322017235256290000006510095566618235794_);fill:#1A1A1A;" width="4" height="15"/>
+		
+			<rect x="94.875" y="542" style="opacity:0.4;clip-path:url(#SVGID_00000025416322017235256290000006510095566618235794_);fill:#1A1A1A;" width="4" height="15"/>
+		
+			<rect x="107.063" y="542" style="opacity:0.4;clip-path:url(#SVGID_00000025416322017235256290000006510095566618235794_);fill:#8E8E8D;" width="4" height="15"/>
+		
+			<rect x="119.25" y="542" style="opacity:0.4;clip-path:url(#SVGID_00000025416322017235256290000006510095566618235794_);fill:#1A1A1A;" width="4" height="15"/>
+		
+			<rect x="131.438" y="542" style="opacity:0.4;clip-path:url(#SVGID_00000025416322017235256290000006510095566618235794_);fill:#1A1A1A;" width="4" height="15"/>
+		
+			<rect x="143.625" y="542" style="opacity:0.4;clip-path:url(#SVGID_00000025416322017235256290000006510095566618235794_);fill:#1A1A1A;" width="4" height="15"/>
+		
+			<rect x="155.813" y="542" style="opacity:0.4;clip-path:url(#SVGID_00000025416322017235256290000006510095566618235794_);fill:#1A1A1A;" width="4" height="15"/>
+		
+			<rect x="168" y="542" style="opacity:0.4;clip-path:url(#SVGID_00000025416322017235256290000006510095566618235794_);fill:#1A1A1A;" width="4" height="15"/>
+		
+			<rect x="70.5" y="568" style="opacity:0.4;clip-path:url(#SVGID_00000025416322017235256290000006510095566618235794_);fill:#1A1A1A;" width="4" height="15"/>
+		
+			<rect x="82.688" y="568" style="opacity:0.4;clip-path:url(#SVGID_00000025416322017235256290000006510095566618235794_);fill:#1A1A1A;" width="4" height="15"/>
+		
+			<rect x="94.875" y="568" style="opacity:0.4;clip-path:url(#SVGID_00000025416322017235256290000006510095566618235794_);fill:#1A1A1A;" width="4" height="15"/>
+		
+			<rect x="107.063" y="568" style="opacity:0.4;clip-path:url(#SVGID_00000025416322017235256290000006510095566618235794_);fill:#1A1A1A;" width="4" height="15"/>
+		
+			<rect x="119.25" y="568" style="opacity:0.4;clip-path:url(#SVGID_00000025416322017235256290000006510095566618235794_);fill:#8E8E8D;" width="4" height="15"/>
+		
+			<rect x="131.438" y="568" style="opacity:0.4;clip-path:url(#SVGID_00000025416322017235256290000006510095566618235794_);fill:#1A1A1A;" width="4" height="15"/>
+		
+			<rect x="143.625" y="568" style="opacity:0.4;clip-path:url(#SVGID_00000025416322017235256290000006510095566618235794_);fill:#1A1A1A;" width="4" height="15"/>
+		
+			<rect x="155.813" y="568" style="opacity:0.4;clip-path:url(#SVGID_00000025416322017235256290000006510095566618235794_);fill:#1A1A1A;" width="4" height="15"/>
+		
+			<rect x="168" y="568" style="opacity:0.4;clip-path:url(#SVGID_00000025416322017235256290000006510095566618235794_);fill:#1A1A1A;" width="4" height="15"/>
+		
+			<rect x="70.5" y="594" style="opacity:0.4;clip-path:url(#SVGID_00000025416322017235256290000006510095566618235794_);fill:#8E8E8D;" width="4" height="15"/>
+		
+			<rect x="82.688" y="594" style="opacity:0.4;clip-path:url(#SVGID_00000025416322017235256290000006510095566618235794_);fill:#1A1A1A;" width="4" height="15"/>
+		
+			<rect x="94.875" y="594" style="opacity:0.4;clip-path:url(#SVGID_00000025416322017235256290000006510095566618235794_);fill:#1A1A1A;" width="4" height="15"/>
+		
+			<rect x="107.063" y="594" style="opacity:0.4;clip-path:url(#SVGID_00000025416322017235256290000006510095566618235794_);fill:#1A1A1A;" width="4" height="15"/>
+		
+			<rect x="119.25" y="594" style="opacity:0.4;clip-path:url(#SVGID_00000025416322017235256290000006510095566618235794_);fill:#1A1A1A;" width="4" height="15"/>
+		
+			<rect x="131.438" y="594" style="opacity:0.4;clip-path:url(#SVGID_00000025416322017235256290000006510095566618235794_);fill:#1A1A1A;" width="4" height="15"/>
+		
+			<rect x="143.625" y="594" style="opacity:0.4;clip-path:url(#SVGID_00000025416322017235256290000006510095566618235794_);fill:#1A1A1A;" width="4" height="15"/>
+		
+			<rect x="155.813" y="594" style="opacity:0.4;clip-path:url(#SVGID_00000025416322017235256290000006510095566618235794_);fill:#8E8E8D;" width="4" height="15"/>
+		
+			<rect x="168" y="594" style="opacity:0.4;clip-path:url(#SVGID_00000025416322017235256290000006510095566618235794_);fill:#1A1A1A;" width="4" height="15"/>
+		
+			<rect x="70.5" y="620" style="opacity:0.4;clip-path:url(#SVGID_00000025416322017235256290000006510095566618235794_);fill:#1A1A1A;" width="4" height="15"/>
+		
+			<rect x="82.688" y="620" style="opacity:0.4;clip-path:url(#SVGID_00000025416322017235256290000006510095566618235794_);fill:#1A1A1A;" width="4" height="15"/>
+		
+			<rect x="94.875" y="620" style="opacity:0.4;clip-path:url(#SVGID_00000025416322017235256290000006510095566618235794_);fill:#8E8E8D;" width="4" height="15"/>
+		
+			<rect x="107.063" y="620" style="opacity:0.4;clip-path:url(#SVGID_00000025416322017235256290000006510095566618235794_);fill:#1A1A1A;" width="4" height="15"/>
+		
+			<rect x="119.25" y="620" style="opacity:0.4;clip-path:url(#SVGID_00000025416322017235256290000006510095566618235794_);fill:#1A1A1A;" width="4" height="15"/>
+		
+			<rect x="131.438" y="620" style="opacity:0.4;clip-path:url(#SVGID_00000025416322017235256290000006510095566618235794_);fill:#8E8E8D;" width="4" height="15"/>
+		
+			<rect x="143.625" y="620" style="opacity:0.4;clip-path:url(#SVGID_00000025416322017235256290000006510095566618235794_);fill:#1A1A1A;" width="4" height="15"/>
+		
+			<rect x="155.813" y="620" style="opacity:0.4;clip-path:url(#SVGID_00000025416322017235256290000006510095566618235794_);fill:#1A1A1A;" width="4" height="15"/>
+		
+			<rect x="168" y="620" style="opacity:0.4;clip-path:url(#SVGID_00000025416322017235256290000006510095566618235794_);fill:#1A1A1A;" width="4" height="15"/>
+		
+			<rect x="119.25" y="646" style="opacity:0.4;clip-path:url(#SVGID_00000025416322017235256290000006510095566618235794_);fill:#1A1A1A;" width="4" height="15"/>
+		
+			<rect x="131.438" y="646" style="opacity:0.4;clip-path:url(#SVGID_00000025416322017235256290000006510095566618235794_);fill:#1A1A1A;" width="4" height="15"/>
+		
+			<rect x="143.625" y="646" style="opacity:0.4;clip-path:url(#SVGID_00000025416322017235256290000006510095566618235794_);fill:#8E8E8D;" width="4" height="15"/>
+		
+			<rect x="155.813" y="646" style="opacity:0.4;clip-path:url(#SVGID_00000025416322017235256290000006510095566618235794_);fill:#1A1A1A;" width="4" height="15"/>
+		
+			<rect x="168" y="646" style="opacity:0.4;clip-path:url(#SVGID_00000025416322017235256290000006510095566618235794_);fill:#1A1A1A;" width="4" height="15"/>
+		
+			<rect x="6" y="435.186" style="opacity:0.4;clip-path:url(#SVGID_00000025416322017235256290000006510095566618235794_);fill:#5B5B5B;" width="4" height="11.423"/>
+		
+			<rect x="16.5" y="435.186" style="opacity:0.4;clip-path:url(#SVGID_00000025416322017235256290000006510095566618235794_);fill:#5B5B5B;" width="4" height="11.423"/>
+		
+			<rect x="27" y="435.186" style="opacity:0.4;clip-path:url(#SVGID_00000025416322017235256290000006510095566618235794_);fill:#5B5B5B;" width="4" height="11.423"/>
+		
+			<rect x="37.5" y="435.186" style="opacity:0.4;clip-path:url(#SVGID_00000025416322017235256290000006510095566618235794_);fill:#5B5B5B;" width="4" height="11.423"/>
+		
+			<rect x="6" y="452.186" style="opacity:0.4;clip-path:url(#SVGID_00000025416322017235256290000006510095566618235794_);fill:#5B5B5B;" width="4" height="11.423"/>
+		
+			<rect x="16.5" y="452.186" style="opacity:0.4;clip-path:url(#SVGID_00000025416322017235256290000006510095566618235794_);fill:#3A3A3A;" width="4" height="11.423"/>
+		
+			<rect x="27" y="452.186" style="opacity:0.4;clip-path:url(#SVGID_00000025416322017235256290000006510095566618235794_);fill:#5B5B5B;" width="4" height="11.423"/>
+		
+			<rect x="6" y="469.186" style="opacity:0.4;clip-path:url(#SVGID_00000025416322017235256290000006510095566618235794_);fill:#5B5B5B;" width="4" height="11.423"/>
+		
+			<rect x="16.5" y="469.186" style="opacity:0.4;clip-path:url(#SVGID_00000025416322017235256290000006510095566618235794_);fill:#5B5B5B;" width="4" height="11.423"/>
+		
+			<rect x="48" y="435.186" style="opacity:0.4;clip-path:url(#SVGID_00000025416322017235256290000006510095566618235794_);fill:#3A3A3A;" width="4" height="11.423"/>
+		
+			<rect x="60" y="435.186" style="opacity:0.4;clip-path:url(#SVGID_00000025416322017235256290000006510095566618235794_);fill:#5B5B5B;" width="4" height="11.423"/>
+		
+			<rect x="70.5" y="435.186" style="opacity:0.4;clip-path:url(#SVGID_00000025416322017235256290000006510095566618235794_);fill:#5B5B5B;" width="4" height="11.423"/>
+		
+			<rect x="81" y="435.186" style="opacity:0.4;clip-path:url(#SVGID_00000025416322017235256290000006510095566618235794_);fill:#5B5B5B;" width="4" height="11.423"/>
+		
+			<rect x="6" y="416.186" style="opacity:0.4;clip-path:url(#SVGID_00000025416322017235256290000006510095566618235794_);fill:#3A3A3A;" width="4" height="11.423"/>
+		
+			<rect x="16.5" y="416.186" style="opacity:0.4;clip-path:url(#SVGID_00000025416322017235256290000006510095566618235794_);fill:#5B5B5B;" width="4" height="11.423"/>
+		
+			<rect x="27" y="416.186" style="opacity:0.4;clip-path:url(#SVGID_00000025416322017235256290000006510095566618235794_);fill:#3A3A3A;" width="4" height="11.423"/>
+		
+			<rect x="37.5" y="416.186" style="opacity:0.4;clip-path:url(#SVGID_00000025416322017235256290000006510095566618235794_);fill:#5B5B5B;" width="4" height="11.423"/>
+		
+			<rect x="48" y="416.186" style="opacity:0.4;clip-path:url(#SVGID_00000025416322017235256290000006510095566618235794_);fill:#5B5B5B;" width="4" height="11.423"/>
+		
+			<rect x="60" y="416.186" style="opacity:0.4;clip-path:url(#SVGID_00000025416322017235256290000006510095566618235794_);fill:#5B5B5B;" width="4" height="11.423"/>
+		
+			<rect x="70.5" y="416.186" style="opacity:0.4;clip-path:url(#SVGID_00000025416322017235256290000006510095566618235794_);fill:#3A3A3A;" width="4" height="11.423"/>
+		
+			<rect x="81" y="416.186" style="opacity:0.4;clip-path:url(#SVGID_00000025416322017235256290000006510095566618235794_);fill:#5B5B5B;" width="4" height="11.423"/>
+		
+			<rect x="367" y="486" style="opacity:0.4;clip-path:url(#SVGID_00000025416322017235256290000006510095566618235794_);fill:#1A1A1A;" width="4.138" height="9.931"/>
+		
+			<rect x="367" y="506.724" style="opacity:0.4;clip-path:url(#SVGID_00000025416322017235256290000006510095566618235794_);fill:#8E8E8D;" width="4.138" height="9.931"/>
+		
+			<rect x="376.931" y="486" style="opacity:0.4;clip-path:url(#SVGID_00000025416322017235256290000006510095566618235794_);fill:#8E8E8D;" width="4.138" height="9.931"/>
+		
+			<rect x="376.931" y="506.724" style="opacity:0.4;clip-path:url(#SVGID_00000025416322017235256290000006510095566618235794_);fill:#1A1A1A;" width="4.138" height="9.931"/>
+		
+			<rect x="386.862" y="486" style="opacity:0.4;clip-path:url(#SVGID_00000025416322017235256290000006510095566618235794_);fill:#1A1A1A;" width="4.138" height="9.931"/>
+		
+			<rect x="531" y="451" style="opacity:0.4;clip-path:url(#SVGID_00000025416322017235256290000006510095566618235794_);fill:#1A1A1A;" width="4" height="14"/>
+		
+			<rect x="543.4" y="451" style="opacity:0.4;clip-path:url(#SVGID_00000025416322017235256290000006510095566618235794_);fill:#8E8E8D;" width="4" height="14"/>
+		
+			<rect x="555.8" y="451" style="opacity:0.4;clip-path:url(#SVGID_00000025416322017235256290000006510095566618235794_);fill:#1A1A1A;" width="4" height="14"/>
+		
+			<rect x="568.2" y="451" style="opacity:0.4;clip-path:url(#SVGID_00000025416322017235256290000006510095566618235794_);fill:#1A1A1A;" width="4" height="14"/>
+		
+			<rect x="580.6" y="451" style="opacity:0.4;clip-path:url(#SVGID_00000025416322017235256290000006510095566618235794_);fill:#8E8E8D;" width="4" height="14"/>
+		
+			<rect x="593" y="451" style="opacity:0.4;clip-path:url(#SVGID_00000025416322017235256290000006510095566618235794_);fill:#1A1A1A;" width="4" height="14"/>
+		
+			<rect x="605.4" y="451" style="opacity:0.4;clip-path:url(#SVGID_00000025416322017235256290000006510095566618235794_);fill:#1A1A1A;" width="4" height="14"/>
+		
+			<rect x="617.8" y="451" style="opacity:0.4;clip-path:url(#SVGID_00000025416322017235256290000006510095566618235794_);fill:#1A1A1A;" width="4" height="14"/>
+		
+			<rect x="630.2" y="451" style="opacity:0.4;clip-path:url(#SVGID_00000025416322017235256290000006510095566618235794_);fill:#1A1A1A;" width="4" height="14"/>
+		
+			<rect x="642.6" y="451" style="opacity:0.4;clip-path:url(#SVGID_00000025416322017235256290000006510095566618235794_);fill:#1A1A1A;" width="4" height="14"/>
+		
+			<rect x="664" y="451" style="opacity:0.4;clip-path:url(#SVGID_00000025416322017235256290000006510095566618235794_);fill:#1A1A1A;" width="4" height="14"/>
+		
+			<rect x="531" y="474" style="opacity:0.4;clip-path:url(#SVGID_00000025416322017235256290000006510095566618235794_);fill:#1A1A1A;" width="4" height="14"/>
+		
+			<rect x="543.4" y="474" style="opacity:0.4;clip-path:url(#SVGID_00000025416322017235256290000006510095566618235794_);fill:#1A1A1A;" width="4" height="14"/>
+		
+			<rect x="555.8" y="474" style="opacity:0.4;clip-path:url(#SVGID_00000025416322017235256290000006510095566618235794_);fill:#8E8E8D;" width="4" height="14"/>
+		
+			<rect x="568.2" y="474" style="opacity:0.4;clip-path:url(#SVGID_00000025416322017235256290000006510095566618235794_);fill:#1A1A1A;" width="4" height="14"/>
+		
+			<rect x="580.6" y="474" style="opacity:0.4;clip-path:url(#SVGID_00000025416322017235256290000006510095566618235794_);fill:#1A1A1A;" width="4" height="14"/>
+		
+			<rect x="593" y="474" style="opacity:0.4;clip-path:url(#SVGID_00000025416322017235256290000006510095566618235794_);fill:#1A1A1A;" width="4" height="14"/>
+		
+			<rect x="605.4" y="474" style="opacity:0.4;clip-path:url(#SVGID_00000025416322017235256290000006510095566618235794_);fill:#1A1A1A;" width="4" height="14"/>
+		
+			<rect x="617.8" y="474" style="opacity:0.4;clip-path:url(#SVGID_00000025416322017235256290000006510095566618235794_);fill:#8E8E8D;" width="4" height="14"/>
+		
+			<rect x="630.2" y="474" style="opacity:0.4;clip-path:url(#SVGID_00000025416322017235256290000006510095566618235794_);fill:#1A1A1A;" width="4" height="14"/>
+		
+			<rect x="642" y="474" style="opacity:0.4;clip-path:url(#SVGID_00000025416322017235256290000006510095566618235794_);fill:#1A1A1A;" width="4" height="14"/>
+		
+			<rect x="654" y="474" style="opacity:0.4;clip-path:url(#SVGID_00000025416322017235256290000006510095566618235794_);fill:#1A1A1A;" width="4" height="14"/>
+		
+			<rect x="664" y="474" style="opacity:0.4;clip-path:url(#SVGID_00000025416322017235256290000006510095566618235794_);fill:#1A1A1A;" width="4" height="14"/>
+		
+			<rect x="531" y="496" style="opacity:0.4;clip-path:url(#SVGID_00000025416322017235256290000006510095566618235794_);fill:#1A1A1A;" width="4" height="14"/>
+		
+			<rect x="543.4" y="496" style="opacity:0.4;clip-path:url(#SVGID_00000025416322017235256290000006510095566618235794_);fill:#1A1A1A;" width="4" height="14"/>
+		
+			<rect x="555.8" y="496" style="opacity:0.4;clip-path:url(#SVGID_00000025416322017235256290000006510095566618235794_);fill:#1A1A1A;" width="4" height="14"/>
+		
+			<rect x="568.2" y="496" style="opacity:0.4;clip-path:url(#SVGID_00000025416322017235256290000006510095566618235794_);fill:#1A1A1A;" width="4" height="14"/>
+		
+			<rect x="580.6" y="496" style="opacity:0.4;clip-path:url(#SVGID_00000025416322017235256290000006510095566618235794_);fill:#1A1A1A;" width="4" height="14"/>
+		
+			<rect x="593" y="496" style="opacity:0.4;clip-path:url(#SVGID_00000025416322017235256290000006510095566618235794_);fill:#1A1A1A;" width="4" height="14"/>
+		
+			<rect x="605.4" y="496" style="opacity:0.4;clip-path:url(#SVGID_00000025416322017235256290000006510095566618235794_);fill:#1A1A1A;" width="4" height="14"/>
+		
+			<rect x="617.8" y="496" style="opacity:0.4;clip-path:url(#SVGID_00000025416322017235256290000006510095566618235794_);fill:#1A1A1A;" width="4" height="14"/>
+		
+			<rect x="630.2" y="496" style="opacity:0.4;clip-path:url(#SVGID_00000025416322017235256290000006510095566618235794_);fill:#1A1A1A;" width="4" height="14"/>
+		
+			<rect x="642" y="496" style="opacity:0.4;clip-path:url(#SVGID_00000025416322017235256290000006510095566618235794_);fill:#8E8E8D;" width="4" height="14"/>
+		
+			<rect x="654" y="496" style="opacity:0.4;clip-path:url(#SVGID_00000025416322017235256290000006510095566618235794_);fill:#1A1A1A;" width="4" height="14"/>
+		
+			<rect x="664" y="496" style="opacity:0.4;clip-path:url(#SVGID_00000025416322017235256290000006510095566618235794_);fill:#1A1A1A;" width="4" height="14"/>
+		
+			<rect x="531" y="518" style="opacity:0.4;clip-path:url(#SVGID_00000025416322017235256290000006510095566618235794_);fill:#8E8E8D;" width="4" height="14"/>
+		
+			<rect x="543.4" y="518" style="opacity:0.4;clip-path:url(#SVGID_00000025416322017235256290000006510095566618235794_);fill:#1A1A1A;" width="4" height="14"/>
+		
+			<rect x="555.8" y="518" style="opacity:0.4;clip-path:url(#SVGID_00000025416322017235256290000006510095566618235794_);fill:#8E8E8D;" width="4" height="14"/>
+		
+			<rect x="568.2" y="518" style="opacity:0.4;clip-path:url(#SVGID_00000025416322017235256290000006510095566618235794_);fill:#1A1A1A;" width="4" height="14"/>
+		
+			<rect x="580.6" y="518" style="opacity:0.4;clip-path:url(#SVGID_00000025416322017235256290000006510095566618235794_);fill:#1A1A1A;" width="4" height="14"/>
+		
+			<rect x="593" y="518" style="opacity:0.4;clip-path:url(#SVGID_00000025416322017235256290000006510095566618235794_);fill:#8E8E8D;" width="4" height="14"/>
+		
+			<rect x="605.4" y="518" style="opacity:0.4;clip-path:url(#SVGID_00000025416322017235256290000006510095566618235794_);fill:#1A1A1A;" width="4" height="14"/>
+		
+			<rect x="617.8" y="518" style="opacity:0.4;clip-path:url(#SVGID_00000025416322017235256290000006510095566618235794_);fill:#1A1A1A;" width="4" height="14"/>
+		
+			<rect x="630.2" y="518" style="opacity:0.4;clip-path:url(#SVGID_00000025416322017235256290000006510095566618235794_);fill:#1A1A1A;" width="4" height="14"/>
+		
+			<rect x="642" y="518" style="opacity:0.4;clip-path:url(#SVGID_00000025416322017235256290000006510095566618235794_);fill:#1A1A1A;" width="4" height="14"/>
+		
+			<rect x="654" y="518" style="opacity:0.4;clip-path:url(#SVGID_00000025416322017235256290000006510095566618235794_);fill:#1A1A1A;" width="4" height="14"/>
+		
+			<rect x="664" y="518" style="opacity:0.4;clip-path:url(#SVGID_00000025416322017235256290000006510095566618235794_);fill:#1A1A1A;" width="4" height="14"/>
+		
+			<rect x="531" y="540" style="opacity:0.4;clip-path:url(#SVGID_00000025416322017235256290000006510095566618235794_);fill:#1A1A1A;" width="4" height="14"/>
+		
+			<rect x="543.4" y="540" style="opacity:0.4;clip-path:url(#SVGID_00000025416322017235256290000006510095566618235794_);fill:#8E8E8D;" width="4" height="14"/>
+		
+			<rect x="555.8" y="540" style="opacity:0.4;clip-path:url(#SVGID_00000025416322017235256290000006510095566618235794_);fill:#1A1A1A;" width="4" height="14"/>
+		
+			<rect x="568.2" y="540" style="opacity:0.4;clip-path:url(#SVGID_00000025416322017235256290000006510095566618235794_);fill:#1A1A1A;" width="4" height="14"/>
+		
+			<rect x="580.6" y="540" style="opacity:0.4;clip-path:url(#SVGID_00000025416322017235256290000006510095566618235794_);fill:#1A1A1A;" width="4" height="14"/>
+		
+			<rect x="593" y="540" style="opacity:0.4;clip-path:url(#SVGID_00000025416322017235256290000006510095566618235794_);fill:#1A1A1A;" width="4" height="14"/>
+		
+			<rect x="531" y="565" style="opacity:0.4;clip-path:url(#SVGID_00000025416322017235256290000006510095566618235794_);fill:#1A1A1A;" width="4" height="14"/>
+		
+			<rect x="543.4" y="565" style="opacity:0.4;clip-path:url(#SVGID_00000025416322017235256290000006510095566618235794_);fill:#1A1A1A;" width="4" height="14"/>
+		
+			<rect x="555.8" y="565" style="opacity:0.4;clip-path:url(#SVGID_00000025416322017235256290000006510095566618235794_);fill:#1A1A1A;" width="4" height="14"/>
+		
+			<rect x="568.2" y="565" style="opacity:0.4;clip-path:url(#SVGID_00000025416322017235256290000006510095566618235794_);fill:#1A1A1A;" width="4" height="14"/>
+		
+			<rect x="580.6" y="565" style="opacity:0.4;clip-path:url(#SVGID_00000025416322017235256290000006510095566618235794_);fill:#8E8E8D;" width="4" height="14"/>
+		
+			<rect x="593" y="565" style="opacity:0.4;clip-path:url(#SVGID_00000025416322017235256290000006510095566618235794_);fill:#1A1A1A;" width="4" height="14"/>
+		
+			<rect x="580.6" y="587" style="opacity:0.4;clip-path:url(#SVGID_00000025416322017235256290000006510095566618235794_);fill:#1A1A1A;" width="4" height="14"/>
+		
+			<rect x="593" y="587" style="opacity:0.4;clip-path:url(#SVGID_00000025416322017235256290000006510095566618235794_);fill:#1A1A1A;" width="4" height="14"/>
+		
+			<rect x="531" y="587" style="opacity:0.4;clip-path:url(#SVGID_00000025416322017235256290000006510095566618235794_);fill:#1A1A1A;" width="4" height="14"/>
+		
+			<rect x="543.4" y="587" style="opacity:0.4;clip-path:url(#SVGID_00000025416322017235256290000006510095566618235794_);fill:#8E8E8D;" width="4" height="14"/>
+		
+			<rect x="555.8" y="587" style="opacity:0.4;clip-path:url(#SVGID_00000025416322017235256290000006510095566618235794_);fill:#1A1A1A;" width="4" height="14"/>
+		
+			<rect x="568.2" y="587" style="opacity:0.4;clip-path:url(#SVGID_00000025416322017235256290000006510095566618235794_);fill:#1A1A1A;" width="4" height="14"/>
+		
+			<rect x="605.4" y="540" style="opacity:0.4;clip-path:url(#SVGID_00000025416322017235256290000006510095566618235794_);fill:#1A1A1A;" width="4" height="14"/>
+		
+			<rect x="617.8" y="540" style="opacity:0.4;clip-path:url(#SVGID_00000025416322017235256290000006510095566618235794_);fill:#8E8E8D;" width="4" height="14"/>
+		
+			<rect x="630.2" y="540" style="opacity:0.4;clip-path:url(#SVGID_00000025416322017235256290000006510095566618235794_);fill:#1A1A1A;" width="4" height="14"/>
+		
+			<rect x="605.4" y="565" style="opacity:0.4;clip-path:url(#SVGID_00000025416322017235256290000006510095566618235794_);fill:#1A1A1A;" width="4" height="14"/>
+		
+			<rect x="617.8" y="565" style="opacity:0.4;clip-path:url(#SVGID_00000025416322017235256290000006510095566618235794_);fill:#1A1A1A;" width="4" height="14"/>
+		
+			<rect x="630.2" y="565" style="opacity:0.4;clip-path:url(#SVGID_00000025416322017235256290000006510095566618235794_);fill:#8E8E8D;" width="4" height="14"/>
+		
+			<rect x="642" y="540" style="opacity:0.4;clip-path:url(#SVGID_00000025416322017235256290000006510095566618235794_);fill:#8E8E8D;" width="4" height="14"/>
+		
+			<rect x="654" y="540" style="opacity:0.4;clip-path:url(#SVGID_00000025416322017235256290000006510095566618235794_);fill:#1A1A1A;" width="4" height="14"/>
+		
+			<rect x="664" y="540" style="opacity:0.4;clip-path:url(#SVGID_00000025416322017235256290000006510095566618235794_);fill:#8E8E8D;" width="4" height="14"/>
+		
+			<rect x="819" y="328" style="opacity:0.4;clip-path:url(#SVGID_00000025416322017235256290000006510095566618235794_);fill:#3A3A3A;" width="7" height="14"/>
+		
+			<rect x="836" y="328" style="opacity:0.4;clip-path:url(#SVGID_00000025416322017235256290000006510095566618235794_);fill:#3A3A3A;" width="7" height="14"/>
+		
+			<rect x="853" y="328" style="opacity:0.4;clip-path:url(#SVGID_00000025416322017235256290000006510095566618235794_);fill:#5B5B5B;" width="7" height="14"/>
+		
+			<rect x="869.5" y="328" style="opacity:0.4;clip-path:url(#SVGID_00000025416322017235256290000006510095566618235794_);fill:#3A3A3A;" width="7" height="14"/>
+		
+			<rect x="819" y="350" style="opacity:0.4;clip-path:url(#SVGID_00000025416322017235256290000006510095566618235794_);fill:#3A3A3A;" width="7" height="14"/>
+		
+			<rect x="836" y="350" style="opacity:0.4;clip-path:url(#SVGID_00000025416322017235256290000006510095566618235794_);fill:#5B5B5B;" width="7" height="14"/>
+		
+			<rect x="819" y="372" style="opacity:0.4;clip-path:url(#SVGID_00000025416322017235256290000006510095566618235794_);fill:#5B5B5B;" width="7" height="14"/>
+		
+			<rect x="836" y="372" style="opacity:0.4;clip-path:url(#SVGID_00000025416322017235256290000006510095566618235794_);fill:#5B5B5B;" width="7" height="14"/>
+		
+			<rect x="853" y="350" style="opacity:0.4;clip-path:url(#SVGID_00000025416322017235256290000006510095566618235794_);fill:#3A3A3A;" width="7" height="14"/>
+		
+			<rect x="869.5" y="350" style="opacity:0.4;clip-path:url(#SVGID_00000025416322017235256290000006510095566618235794_);fill:#3A3A3A;" width="7" height="14"/>
+	</g>
+</g>
+</svg>
