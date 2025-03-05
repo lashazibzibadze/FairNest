@@ -1,0 +1,5002 @@
+[
+    {
+        "price": 150000000,
+        "address": {
+            "country": "US",
+            "administrative_area": "NY",
+            "sub_administrative_area": null,
+            "locality": "Manhattan",
+            "postal_code": "10019",
+            "street": "W 57th St",
+            "premise": "217",
+            "sub_premise": "127/128"
+        },
+        "bedrooms": 8,
+        "bathrooms": 10.0,
+        "square_feet": 11535.0,
+        "sale_status": "Condo for sale",
+        "acre_lot": null,
+        "tour_available": true,
+        "image_source": "https://ap.rdcpix.com/328ae7c6cda20ff8ec0424e0965a5a5fl-m1813169937rd-w960_h720.jpg"
+    },
+    {
+        "price": 649000,
+        "address": {
+            "country": "US",
+            "administrative_area": "NY",
+            "sub_administrative_area": null,
+            "locality": "New York",
+            "postal_code": "10031",
+            "street": "Saint Nicholas /C2 Ave",
+            "premise": "764",
+            "sub_premise": "C1"
+        },
+        "bedrooms": 3,
+        "bathrooms": 2.5,
+        "square_feet": 2431.0,
+        "sale_status": "Condo for sale",
+        "acre_lot": null,
+        "tour_available": true,
+        "image_source": "https://ap.rdcpix.com/8afa1794a5b162fd45d1c4e4daef3152l-m252732059rd-w960_h720.jpg"
+    },
+    {
+        "price": 199000,
+        "address": {
+            "country": "US",
+            "administrative_area": "NY",
+            "sub_administrative_area": null,
+            "locality": "New York",
+            "postal_code": "10028",
+            "street": "E 84th St",
+            "premise": "103",
+            "sub_premise": "Ph"
+        },
+        "bedrooms": 1,
+        "bathrooms": 1.0,
+        "square_feet": null,
+        "sale_status": "Pending",
+        "acre_lot": null,
+        "tour_available": true,
+        "image_source": "https://ap.rdcpix.com/9642083c446583a3480d151672f09e71l-m2539213241rd-w960_h720.jpg"
+    },
+    {
+        "price": 5800000,
+        "address": {
+            "country": "US",
+            "administrative_area": "NY",
+            "sub_administrative_area": null,
+            "locality": "Manhattan",
+            "postal_code": "10011",
+            "street": "W 22nd St",
+            "premise": "353",
+            "sub_premise": null
+        },
+        "bedrooms": 6,
+        "bathrooms": 4.0,
+        "square_feet": 3300.0,
+        "sale_status": "Townhouse for sale",
+        "acre_lot": null,
+        "tour_available": true,
+        "image_source": "https://ap.rdcpix.com/c97a8f1cc92a6c9eaa5c2d64a2e10308l-m4236313368rd-w960_h720.jpg"
+    },
+    {
+        "price": 701000,
+        "address": {
+            "country": "US",
+            "administrative_area": "NY",
+            "sub_administrative_area": null,
+            "locality": "Manhattan",
+            "postal_code": "10022",
+            "street": "E 57th St",
+            "premise": "303",
+            "sub_premise": "39A"
+        },
+        "bedrooms": 3,
+        "bathrooms": 3.0,
+        "square_feet": null,
+        "sale_status": "Pending",
+        "acre_lot": null,
+        "tour_available": true,
+        "image_source": "https://ap.rdcpix.com/f1634e74a95fa36124adadd9c675ed05l-m4239249611rd-w960_h720.jpg"
+    },
+    {
+        "price": 6250000,
+        "address": {
+            "country": "US",
+            "administrative_area": "NY",
+            "sub_administrative_area": null,
+            "locality": "New York",
+            "postal_code": "10028",
+            "street": "E 81st St",
+            "premise": "308",
+            "sub_premise": null
+        },
+        "bedrooms": 4,
+        "bathrooms": 5.5,
+        "square_feet": 5000.0,
+        "sale_status": "Townhouse for sale",
+        "acre_lot": null,
+        "tour_available": true,
+        "image_source": "https://ap.rdcpix.com/60150fc68f2614fec7296aa8b44a3fecl-m4261382694rd-w960_h720.jpg"
+    },
+    {
+        "price": 180000,
+        "address": {
+            "country": "US",
+            "administrative_area": "NY",
+            "sub_administrative_area": null,
+            "locality": "Manhattan",
+            "postal_code": "10013",
+            "street": "Hudson St",
+            "premise": "105",
+            "sub_premise": "307"
+        },
+        "bedrooms": null,
+        "bathrooms": null,
+        "square_feet": 167.0,
+        "sale_status": "Co-op for sale",
+        "acre_lot": null,
+        "tour_available": true,
+        "image_source": "https://ap.rdcpix.com/6fa88e5c14400b9277b03fd333830dacl-m3106957648rd-w960_h720.jpg"
+    },
+    {
+        "price": 12900000,
+        "address": {
+            "country": "US",
+            "administrative_area": "NY",
+            "sub_administrative_area": null,
+            "locality": "New York",
+            "postal_code": "10025",
+            "street": "W 95th St",
+            "premise": "26",
+            "sub_premise": null
+        },
+        "bedrooms": 5,
+        "bathrooms": 6.5,
+        "square_feet": null,
+        "sale_status": "Townhouse for sale",
+        "acre_lot": null,
+        "tour_available": true,
+        "image_source": "https://ap.rdcpix.com/9a174c3c6104b908fb69003e1886f60fl-m3039486536rd-w960_h720.jpg"
+    },
+    {
+        "price": 1435000,
+        "address": {
+            "country": "US",
+            "administrative_area": "NY",
+            "sub_administrative_area": null,
+            "locality": "Manhattan",
+            "postal_code": "10031",
+            "street": "W 150th St",
+            "premise": "525",
+            "sub_premise": null
+        },
+        "bedrooms": 8,
+        "bathrooms": 8.0,
+        "square_feet": 4341.0,
+        "sale_status": "Townhouse for sale",
+        "acre_lot": null,
+        "tour_available": true,
+        "image_source": "https://ap.rdcpix.com/9021b55c2ed203756a008cce33c48a33l-m3547614801rd-w960_h720.jpg"
+    },
+    {
+        "price": 599000,
+        "address": {
+            "country": "US",
+            "administrative_area": "NY",
+            "sub_administrative_area": null,
+            "locality": "Manhattan",
+            "postal_code": "10024",
+            "street": "W 83rd St",
+            "premise": "24",
+            "sub_premise": "1F"
+        },
+        "bedrooms": 1,
+        "bathrooms": 2.0,
+        "square_feet": null,
+        "sale_status": "Co-op for sale",
+        "acre_lot": null,
+        "tour_available": true,
+        "image_source": "https://ap.rdcpix.com/9a23f1008df12644e64c141eb07b8d75l-m1309374445rd-w960_h720.jpg"
+    },
+    {
+        "price": 1100000,
+        "address": {
+            "country": "US",
+            "administrative_area": "NY",
+            "sub_administrative_area": null,
+            "locality": "Manhattan",
+            "postal_code": "10003",
+            "street": "2nd Ave",
+            "premise": "120",
+            "sub_premise": "5A"
+        },
+        "bedrooms": 2,
+        "bathrooms": 2.0,
+        "square_feet": null,
+        "sale_status": "Co-op for sale",
+        "acre_lot": null,
+        "tour_available": true,
+        "image_source": "https://ap.rdcpix.com/0df50d969364675d2f49e8e4dc6ddcf9l-m405780269rd-w960_h720.jpg"
+    },
+    {
+        "price": 29750000,
+        "address": {
+            "country": "US",
+            "administrative_area": "NY",
+            "sub_administrative_area": null,
+            "locality": "Manhattan",
+            "postal_code": "10075",
+            "street": "Park /18a Ave",
+            "premise": "895",
+            "sub_premise": "16/17"
+        },
+        "bedrooms": 5,
+        "bathrooms": 6.5,
+        "square_feet": null,
+        "sale_status": "Co-op for sale",
+        "acre_lot": null,
+        "tour_available": true,
+        "image_source": "https://ap.rdcpix.com/a12226381a069943afe3ac23f7ded1acl-m2037299172rd-w960_h720.jpg"
+    },
+    {
+        "price": 2675000,
+        "address": {
+            "country": "US",
+            "administrative_area": "NY",
+            "sub_administrative_area": null,
+            "locality": "New York",
+            "postal_code": "10035",
+            "street": "Second Ave",
+            "premise": "2324",
+            "sub_premise": null
+        },
+        "bedrooms": 1,
+        "bathrooms": 1.5,
+        "square_feet": null,
+        "sale_status": "House for sale",
+        "acre_lot": null,
+        "tour_available": true,
+        "image_source": "https://ap.rdcpix.com/0a0b8034ef77bfec3c8fdc3a8d03d746l-m3981203755rd-w960_h720.jpg"
+    },
+    {
+        "price": 1899000,
+        "address": {
+            "country": "US",
+            "administrative_area": "NY",
+            "sub_administrative_area": null,
+            "locality": "New York",
+            "postal_code": "10024",
+            "street": "Riverside Dr",
+            "premise": "160",
+            "sub_premise": "5C"
+        },
+        "bedrooms": 3,
+        "bathrooms": 2.0,
+        "square_feet": 1700.0,
+        "sale_status": "Co-op for sale",
+        "acre_lot": null,
+        "tour_available": true,
+        "image_source": "https://ap.rdcpix.com/1a8328cf8c20f440dc4008f2bb3d8a6fl-m3062552234rd-w960_h720.jpg"
+    },
+    {
+        "price": 1295000,
+        "address": {
+            "country": "US",
+            "administrative_area": "NY",
+            "sub_administrative_area": null,
+            "locality": "New York",
+            "postal_code": "10003",
+            "street": "E 12th St",
+            "premise": "39",
+            "sub_premise": "507"
+        },
+        "bedrooms": 1,
+        "bathrooms": 1.0,
+        "square_feet": null,
+        "sale_status": "Co-op for sale",
+        "acre_lot": 0.29,
+        "tour_available": true,
+        "image_source": "https://ap.rdcpix.com/4c7e968b76d23212baed1d00aeec4eafl-m4139135260rd-w960_h720.jpg"
+    },
+    {
+        "price": 650000,
+        "address": {
+            "country": "US",
+            "administrative_area": "NY",
+            "sub_administrative_area": null,
+            "locality": "New York",
+            "postal_code": "10027",
+            "street": "W 123rd St",
+            "premise": "549",
+            "sub_premise": "15B"
+        },
+        "bedrooms": 2,
+        "bathrooms": 1.0,
+        "square_feet": null,
+        "sale_status": "Co-op for sale",
+        "acre_lot": null,
+        "tour_available": true,
+        "image_source": "https://ap.rdcpix.com/96ac51b53d68ab4802ea410cf0df85ael-m1672328978rd-w960_h720.jpg"
+    },
+    {
+        "price": 1495000,
+        "address": {
+            "country": "US",
+            "administrative_area": "NY",
+            "sub_administrative_area": null,
+            "locality": "New York",
+            "postal_code": "10024",
+            "street": "Riverside Dr  & 3B",
+            "premise": "140",
+            "sub_premise": "2B"
+        },
+        "bedrooms": 1,
+        "bathrooms": 1.5,
+        "square_feet": null,
+        "sale_status": "Co-op for sale",
+        "acre_lot": 0.58,
+        "tour_available": true,
+        "image_source": "https://ap.rdcpix.com/a37d8bbe5c6397fc8e07e6f0c9802f4bl-m1972953747rd-w960_h720.jpg"
+    },
+    {
+        "price": 899000,
+        "address": {
+            "country": "US",
+            "administrative_area": "NY",
+            "sub_administrative_area": null,
+            "locality": "New York",
+            "postal_code": "10012",
+            "street": "Thompson St",
+            "premise": "211",
+            "sub_premise": "4L"
+        },
+        "bedrooms": 1,
+        "bathrooms": 1.0,
+        "square_feet": null,
+        "sale_status": "Co-op for sale",
+        "acre_lot": 0.23,
+        "tour_available": true,
+        "image_source": "https://ap.rdcpix.com/9fa60842cb18ad7008a112c0b5dd01abl-m3306370412rd-w960_h720.jpg"
+    },
+    {
+        "price": 449000,
+        "address": {
+            "country": "US",
+            "administrative_area": "NY",
+            "sub_administrative_area": null,
+            "locality": "Manhattan",
+            "postal_code": "10032",
+            "street": "W 157th St",
+            "premise": "544",
+            "sub_premise": "1"
+        },
+        "bedrooms": 2,
+        "bathrooms": 1.0,
+        "square_feet": null,
+        "sale_status": "Co-op for sale",
+        "acre_lot": null,
+        "tour_available": true,
+        "image_source": "https://ap.rdcpix.com/44ca5faeb4c0da7a05572ee6d1bec5d5l-m1812520489rd-w960_h720.jpg"
+    },
+    {
+        "price": 599000,
+        "address": {
+            "country": "US",
+            "administrative_area": "NY",
+            "sub_administrative_area": null,
+            "locality": "Manhattan",
+            "postal_code": "10025",
+            "street": "W 103rd St",
+            "premise": "250",
+            "sub_premise": "9F"
+        },
+        "bedrooms": 1,
+        "bathrooms": 1.0,
+        "square_feet": null,
+        "sale_status": "Co-op for sale",
+        "acre_lot": null,
+        "tour_available": true,
+        "image_source": "https://ap.rdcpix.com/b3d7603b681e55541cc88273b33230c1l-m818987841rd-w960_h720.jpg"
+    },
+    {
+        "price": 2600000,
+        "address": {
+            "country": "US",
+            "administrative_area": "NY",
+            "sub_administrative_area": null,
+            "locality": "New York",
+            "postal_code": "10001",
+            "street": "Broadway",
+            "premise": "1200",
+            "sub_premise": "7B"
+        },
+        "bedrooms": 2,
+        "bathrooms": 2.0,
+        "square_feet": 2000.0,
+        "sale_status": "Co-op for sale",
+        "acre_lot": 9536.0,
+        "tour_available": true,
+        "image_source": "https://ap.rdcpix.com/6715fce124bfe99329109f87d4f2af86l-m2372798585rd-w960_h720.jpg"
+    },
+    {
+        "price": 349000,
+        "address": {
+            "country": "US",
+            "administrative_area": "NY",
+            "sub_administrative_area": null,
+            "locality": "Manhattan",
+            "postal_code": "10019",
+            "street": "W 54th St",
+            "premise": "431",
+            "sub_premise": "4D"
+        },
+        "bedrooms": null,
+        "bathrooms": 1.0,
+        "square_feet": null,
+        "sale_status": "Co-op for sale",
+        "acre_lot": null,
+        "tour_available": true,
+        "image_source": "https://ap.rdcpix.com/8562947a54213a59e1b5963098a4a762l-m1673651719rd-w960_h720.jpg"
+    },
+    {
+        "price": 1375000,
+        "address": {
+            "country": "US",
+            "administrative_area": "NY",
+            "sub_administrative_area": null,
+            "locality": "Manhattan",
+            "postal_code": "10025",
+            "street": "W 106th St Ph 17B",
+            "premise": "310",
+            "sub_premise": null
+        },
+        "bedrooms": 1,
+        "bathrooms": 1.0,
+        "square_feet": null,
+        "sale_status": "Co-op for sale",
+        "acre_lot": null,
+        "tour_available": true,
+        "image_source": "https://ap.rdcpix.com/5aeb7bfa10c1bd5d0c89c278e9360042l-m695673581rd-w960_h720.jpg"
+    },
+    {
+        "price": 1175000,
+        "address": {
+            "country": "US",
+            "administrative_area": "NY",
+            "sub_administrative_area": null,
+            "locality": "Manhattan",
+            "postal_code": "10022",
+            "street": "Sutton Pl S",
+            "premise": "45",
+            "sub_premise": "16B"
+        },
+        "bedrooms": 2,
+        "bathrooms": 2.5,
+        "square_feet": 1800.0,
+        "sale_status": "Co-op for sale",
+        "acre_lot": null,
+        "tour_available": true,
+        "image_source": "https://ap.rdcpix.com/1a1f260965b8e371f812d0d415673cdbl-m943181167rd-w960_h720.jpg"
+    },
+    {
+        "price": 2500000,
+        "address": {
+            "country": "US",
+            "administrative_area": "NY",
+            "sub_administrative_area": null,
+            "locality": "New York",
+            "postal_code": "10031",
+            "street": "W 146th St",
+            "premise": "412",
+            "sub_premise": null
+        },
+        "bedrooms": 7,
+        "bathrooms": 4.0,
+        "square_feet": 4760.0,
+        "sale_status": "Townhouse for sale",
+        "acre_lot": 4760.0,
+        "tour_available": true,
+        "image_source": "https://ap.rdcpix.com/36c33b8687b77b34c304f6298e7014c7l-m3928188278rd-w960_h720.jpg"
+    },
+    {
+        "price": 440000,
+        "address": {
+            "country": "US",
+            "administrative_area": "NY",
+            "sub_administrative_area": null,
+            "locality": "New York",
+            "postal_code": "10030",
+            "street": "W 141st St",
+            "premise": "100",
+            "sub_premise": "16"
+        },
+        "bedrooms": 3,
+        "bathrooms": 1.0,
+        "square_feet": 1082.0,
+        "sale_status": "Co-op for sale",
+        "acre_lot": 0.28,
+        "tour_available": true,
+        "image_source": "https://ap.rdcpix.com/0c5415e6e4797a94397bd62533114337l-m848183204rd-w960_h720.jpg"
+    },
+    {
+        "price": 639000,
+        "address": {
+            "country": "US",
+            "administrative_area": "NY",
+            "sub_administrative_area": null,
+            "locality": "Manhattan",
+            "postal_code": "10023",
+            "street": "W End Ave",
+            "premise": "140",
+            "sub_premise": "24D"
+        },
+        "bedrooms": 1,
+        "bathrooms": 1.0,
+        "square_feet": null,
+        "sale_status": "Co-op for sale",
+        "acre_lot": null,
+        "tour_available": true,
+        "image_source": "https://ap.rdcpix.com/75a392698a8dea9fa40a44ff64867f8bl-m633175707rd-w960_h720.jpg"
+    },
+    {
+        "price": 899000,
+        "address": {
+            "country": "US",
+            "administrative_area": "NY",
+            "sub_administrative_area": null,
+            "locality": "New York",
+            "postal_code": "10011",
+            "street": "W 15th St",
+            "premise": "10",
+            "sub_premise": "723"
+        },
+        "bedrooms": 1,
+        "bathrooms": 1.0,
+        "square_feet": null,
+        "sale_status": "Co-op for sale",
+        "acre_lot": 0.83,
+        "tour_available": true,
+        "image_source": "https://ap.rdcpix.com/8425b204f1e15080dd9c42fcd92a37abl-m3491638789rd-w960_h720.jpg"
+    },
+    {
+        "price": 5595000,
+        "address": {
+            "country": "US",
+            "administrative_area": "NY",
+            "sub_administrative_area": null,
+            "locality": "New York",
+            "postal_code": "10023",
+            "street": "W 71st St",
+            "premise": "332",
+            "sub_premise": null
+        },
+        "bedrooms": null,
+        "bathrooms": null,
+        "square_feet": 5280.0,
+        "sale_status": "Townhouse for sale",
+        "acre_lot": null,
+        "tour_available": true,
+        "image_source": "https://ap.rdcpix.com/d3ccb24e3fb61bb580069914cca787cel-m2391318940rd-w960_h720.jpg"
+    },
+    {
+        "price": 375000,
+        "address": {
+            "country": "US",
+            "administrative_area": "NY",
+            "sub_administrative_area": null,
+            "locality": "Manhattan",
+            "postal_code": "10022",
+            "street": "Sutton Pl S",
+            "premise": "36",
+            "sub_premise": "8E"
+        },
+        "bedrooms": null,
+        "bathrooms": 1.0,
+        "square_feet": null,
+        "sale_status": "Co-op for sale",
+        "acre_lot": null,
+        "tour_available": true,
+        "image_source": "https://ap.rdcpix.com/4cdeedc3f8400feef1059e20a6b42ab9l-m602205795rd-w960_h720.jpg"
+    },
+    {
+        "price": 1849000,
+        "address": {
+            "country": "US",
+            "administrative_area": "NY",
+            "sub_administrative_area": null,
+            "locality": "New York",
+            "postal_code": "10025",
+            "street": "W 111th St",
+            "premise": "600",
+            "sub_premise": "10D"
+        },
+        "bedrooms": 2,
+        "bathrooms": 2.0,
+        "square_feet": 1500.0,
+        "sale_status": "Co-op for sale",
+        "acre_lot": 0.41,
+        "tour_available": true,
+        "image_source": "https://ap.rdcpix.com/85c6a3556ec730cecdad8172e092be46l-m1836621677rd-w960_h720.jpg"
+    },
+    {
+        "price": 2000000,
+        "address": {
+            "country": "US",
+            "administrative_area": "NY",
+            "sub_administrative_area": null,
+            "locality": "New York",
+            "postal_code": "10023",
+            "street": "W End Ave",
+            "premise": "336",
+            "sub_premise": "11EF"
+        },
+        "bedrooms": 2,
+        "bathrooms": 2.0,
+        "square_feet": 1500.0,
+        "sale_status": "Co-op for sale",
+        "acre_lot": 7900.0,
+        "tour_available": true,
+        "image_source": "https://ap.rdcpix.com/9d3dcb22602c30a40dcf90873a8412f1l-m3722033344rd-w960_h720.jpg"
+    },
+    {
+        "price": 3300000,
+        "address": {
+            "country": "US",
+            "administrative_area": "NY",
+            "sub_administrative_area": null,
+            "locality": "New York",
+            "postal_code": "10025",
+            "street": "W 103rd St",
+            "premise": "218",
+            "sub_premise": "12C"
+        },
+        "bedrooms": 3,
+        "bathrooms": 3.0,
+        "square_feet": 1678.0,
+        "sale_status": "Condo for sale",
+        "acre_lot": null,
+        "tour_available": true,
+        "image_source": "https://nh.rdcpix.com/7a3dc5dde4b2a455dd99fd490e5e81c4l-f1898657282rd-w960_h720.jpg"
+    },
+    {
+        "price": 1498000,
+        "address": {
+            "country": "US",
+            "administrative_area": "NY",
+            "sub_administrative_area": null,
+            "locality": "Manhattan",
+            "postal_code": "10011",
+            "street": "W 17th St",
+            "premise": "450",
+            "sub_premise": "1911"
+        },
+        "bedrooms": 1,
+        "bathrooms": 1.0,
+        "square_feet": null,
+        "sale_status": "Condo for sale",
+        "acre_lot": null,
+        "tour_available": true,
+        "image_source": "https://ap.rdcpix.com/a5a0aee71a232125e3acef1cb0ff45cel-m3489926954rd-w960_h720.jpg"
+    },
+    {
+        "price": 2250000,
+        "address": {
+            "country": "US",
+            "administrative_area": "NY",
+            "sub_administrative_area": null,
+            "locality": "New York",
+            "postal_code": "10028",
+            "street": "Gracie Ter",
+            "premise": "1",
+            "sub_premise": "12D"
+        },
+        "bedrooms": 2,
+        "bathrooms": 2.0,
+        "square_feet": 1515.0,
+        "sale_status": "Co-op for sale",
+        "acre_lot": 0.37,
+        "tour_available": true,
+        "image_source": "https://ap.rdcpix.com/5eeb004e8a384f0bd827583c31f5f424l-m2944715420rd-w960_h720.jpg"
+    },
+    {
+        "price": 1400000,
+        "address": {
+            "country": "US",
+            "administrative_area": "NY",
+            "sub_administrative_area": null,
+            "locality": "Manhattan",
+            "postal_code": "10031",
+            "street": "W 147th St",
+            "premise": "523",
+            "sub_premise": null
+        },
+        "bedrooms": 5,
+        "bathrooms": 4.5,
+        "square_feet": 2448.0,
+        "sale_status": "Multi-family home for sale",
+        "acre_lot": null,
+        "tour_available": true,
+        "image_source": "https://ap.rdcpix.com/c957e066b3bd2be3b112976b47b9fc2bl-m976310574rd-w960_h720.jpg"
+    },
+    {
+        "price": 1500000,
+        "address": {
+            "country": "US",
+            "administrative_area": "NY",
+            "sub_administrative_area": null,
+            "locality": "Manhattan",
+            "postal_code": "10014",
+            "street": "Bedford St",
+            "premise": "81",
+            "sub_premise": "4B"
+        },
+        "bedrooms": 1,
+        "bathrooms": 1.0,
+        "square_feet": null,
+        "sale_status": "Co-op for sale",
+        "acre_lot": null,
+        "tour_available": true,
+        "image_source": "https://ap.rdcpix.com/92f1a9292e1c5b00cba558ade17a7926l-m1113408327rd-w960_h720.jpg"
+    },
+    {
+        "price": 2250000,
+        "address": {
+            "country": "US",
+            "administrative_area": "NY",
+            "sub_administrative_area": null,
+            "locality": "Manhattan",
+            "postal_code": "10014",
+            "street": "Charlton St",
+            "premise": "11",
+            "sub_premise": "1AB"
+        },
+        "bedrooms": 2,
+        "bathrooms": 2.0,
+        "square_feet": null,
+        "sale_status": "Co-op for sale",
+        "acre_lot": null,
+        "tour_available": true,
+        "image_source": "https://ap.rdcpix.com/79555e7007c1db887d8c98c775d691dfl-m3911198913rd-w960_h720.jpg"
+    },
+    {
+        "price": 1200000,
+        "address": {
+            "country": "US",
+            "administrative_area": "NY",
+            "sub_administrative_area": null,
+            "locality": "Manhattan",
+            "postal_code": "10022",
+            "street": "E 58th St",
+            "premise": "200",
+            "sub_premise": "16F"
+        },
+        "bedrooms": 1,
+        "bathrooms": 1.0,
+        "square_feet": 1100.0,
+        "sale_status": "Condo for sale",
+        "acre_lot": null,
+        "tour_available": true,
+        "image_source": "https://ap.rdcpix.com/ba7470656375519aa5b3ff849f118716l-m4250562879rd-w960_h720.jpg"
+    },
+    {
+        "price": 775000,
+        "address": {
+            "country": "US",
+            "administrative_area": "NY",
+            "sub_administrative_area": null,
+            "locality": "Manhattan",
+            "postal_code": "10128",
+            "street": "E 88th St",
+            "premise": "170",
+            "sub_premise": "6D"
+        },
+        "bedrooms": 1,
+        "bathrooms": 1.0,
+        "square_feet": 764.0,
+        "sale_status": "Co-op for sale",
+        "acre_lot": null,
+        "tour_available": true,
+        "image_source": "https://ap.rdcpix.com/f031afc08803da872f16a85a8ff6bc17l-m2904350317rd-w960_h720.jpg"
+    },
+    {
+        "price": 1795000,
+        "address": {
+            "country": "US",
+            "administrative_area": "NY",
+            "sub_administrative_area": null,
+            "locality": "New York",
+            "postal_code": "10128",
+            "street": "E 88th St",
+            "premise": "141",
+            "sub_premise": "10A"
+        },
+        "bedrooms": 2,
+        "bathrooms": 2.0,
+        "square_feet": 980.0,
+        "sale_status": "Condo for sale",
+        "acre_lot": 0.46,
+        "tour_available": true,
+        "image_source": "https://ap.rdcpix.com/bd31685be7dca2dd8cbf5b674bd720bal-m1960442011rd-w960_h720.jpg"
+    },
+    {
+        "price": 4200000,
+        "address": {
+            "country": "US",
+            "administrative_area": "NY",
+            "sub_administrative_area": null,
+            "locality": "New York",
+            "postal_code": "10021",
+            "street": "Park Ave",
+            "premise": "737",
+            "sub_premise": "5G"
+        },
+        "bedrooms": 2,
+        "bathrooms": 2.5,
+        "square_feet": 1828.0,
+        "sale_status": "Condo for sale",
+        "acre_lot": 0.33,
+        "tour_available": true,
+        "image_source": "https://ap.rdcpix.com/6c9181653474fd2f5d3763bce99abb1bl-m1567242725rd-w960_h720.jpg"
+    },
+    {
+        "price": 2075,
+        "address": {
+            "country": "US",
+            "administrative_area": "NY",
+            "sub_administrative_area": null,
+            "locality": "New York",
+            "postal_code": "10029",
+            "street": "2nd Ave",
+            "premise": "2028",
+            "sub_premise": "A"
+        },
+        "bedrooms": 2,
+        "bathrooms": 2.0,
+        "square_feet": null,
+        "sale_status": "For Rent - House",
+        "acre_lot": null,
+        "tour_available": true,
+        "image_source": "https://ap.rdcpix.com/a86b4fcfb2c11525d41e97d035ae1ceal-m4037439443rd-w960_h720.jpg"
+    },
+    {
+        "price": 15621620,
+        "address": {
+            "country": "US",
+            "administrative_area": "New",
+            "sub_administrative_area": null,
+            "locality": "215 E 124th St",
+            "postal_code": "York",
+            "street": "The Reserve",
+            "premise": null,
+            "sub_premise": null
+        },
+        "bedrooms": null,
+        "bathrooms": 12.0,
+        "square_feet": 200.0,
+        "sale_status": "For Rent - Apartment",
+        "acre_lot": null,
+        "tour_available": true,
+        "image_source": "https://ar.rdcpix.com/1ffb44f8b8e113c2460e967734ff5292c-f3401457067rd-w960_h720.jpg"
+    },
+    {
+        "price": 47097678,
+        "address": {
+            "country": "US",
+            "administrative_area": "New",
+            "sub_administrative_area": null,
+            "locality": "560 W 43rd St",
+            "postal_code": "York",
+            "street": "Riverbank",
+            "premise": null,
+            "sub_premise": null
+        },
+        "bedrooms": 3,
+        "bathrooms": 12.0,
+        "square_feet": 3861126.0,
+        "sale_status": "For Rent - Apartment",
+        "acre_lot": null,
+        "tour_available": true,
+        "image_source": "https://ar.rdcpix.com/9d49c4dead35e5fa2d7deb863585f791c-f691209815rd-w960_h720.jpg"
+    },
+    {
+        "price": 33245516,
+        "address": {
+            "country": "US",
+            "administrative_area": "New",
+            "sub_administrative_area": null,
+            "locality": "888 Main St",
+            "postal_code": "York",
+            "street": "The Octagon",
+            "premise": null,
+            "sub_premise": null
+        },
+        "bedrooms": 3,
+        "bathrooms": 12.0,
+        "square_feet": 5001316.0,
+        "sale_status": "For Rent - Apartment",
+        "acre_lot": null,
+        "tour_available": true,
+        "image_source": "https://static.rdc.moveaws.com/images/common/photos-coming-soon.svg"
+    },
+    {
+        "price": 39819054,
+        "address": {
+            "country": "US",
+            "administrative_area": "New",
+            "sub_administrative_area": null,
+            "locality": "189 W 89th St",
+            "postal_code": "York",
+            "street": "The Sagamore",
+            "premise": null,
+            "sub_premise": null
+        },
+        "bedrooms": 2,
+        "bathrooms": 12.0,
+        "square_feet": 4791078.0,
+        "sale_status": "For Rent - Apartment",
+        "acre_lot": null,
+        "tour_available": true,
+        "image_source": "https://static.rdc.moveaws.com/images/common/photos-coming-soon.svg"
+    },
+    {
+        "price": 41738207,
+        "address": {
+            "country": "US",
+            "administrative_area": "New",
+            "sub_administrative_area": null,
+            "locality": "19 Dutch St",
+            "postal_code": "York",
+            "street": "Dutch",
+            "premise": "19",
+            "sub_premise": null
+        },
+        "bedrooms": 2,
+        "bathrooms": 12.0,
+        "square_feet": 4431052.0,
+        "sale_status": "For Rent - Apartment",
+        "acre_lot": null,
+        "tour_available": true,
+        "image_source": "https://static.rdc.moveaws.com/images/common/photos-coming-soon.svg"
+    },
+    {
+        "price": 3000,
+        "address": {
+            "country": "US",
+            "administrative_area": "NY",
+            "sub_administrative_area": null,
+            "locality": "New York",
+            "postal_code": "10025",
+            "street": "Central Park W",
+            "premise": "485",
+            "sub_premise": "2G"
+        },
+        "bedrooms": 1,
+        "bathrooms": 1.0,
+        "square_feet": null,
+        "sale_status": "For Rent - Apartment",
+        "acre_lot": null,
+        "tour_available": true,
+        "image_source": "https://static.rdc.moveaws.com/images/common/photos-coming-soon.svg"
+    },
+    {
+        "price": 34806800,
+        "address": {
+            "country": "US",
+            "administrative_area": "New",
+            "sub_administrative_area": null,
+            "locality": "55 Broad St",
+            "postal_code": "York",
+            "street": "Broad Street",
+            "premise": "55",
+            "sub_premise": null
+        },
+        "bedrooms": 2,
+        "bathrooms": 12.0,
+        "square_feet": null,
+        "sale_status": "For Rent - Apartment",
+        "acre_lot": null,
+        "tour_available": true,
+        "image_source": "https://static.rdc.moveaws.com/images/common/photos-coming-soon.svg"
+    },
+    {
+        "price": 2850000,
+        "address": {
+            "country": "US",
+            "administrative_area": "NY",
+            "sub_administrative_area": null,
+            "locality": "Manhattan",
+            "postal_code": "10011",
+            "street": "W 17th St",
+            "premise": "55",
+            "sub_premise": "701"
+        },
+        "bedrooms": 2,
+        "bathrooms": 2.5,
+        "square_feet": 1652.0,
+        "sale_status": "Condo for sale",
+        "acre_lot": null,
+        "tour_available": true,
+        "image_source": "https://ap.rdcpix.com/59724c3164c26a8ab6aadcd736bb7090l-m3192413040rd-w960_h720.jpg"
+    },
+    {
+        "price": 1695000,
+        "address": {
+            "country": "US",
+            "administrative_area": "NY",
+            "sub_administrative_area": null,
+            "locality": "New York",
+            "postal_code": "10010",
+            "street": "E 23rd St Ph 1B",
+            "premise": "340",
+            "sub_premise": null
+        },
+        "bedrooms": 2,
+        "bathrooms": 2.0,
+        "square_feet": 1096.0,
+        "sale_status": "Condo for sale",
+        "acre_lot": 0.37,
+        "tour_available": true,
+        "image_source": "https://ap.rdcpix.com/a75ea8d0b12f3613809b9eff72163626l-m3910369546rd-w960_h720.jpg"
+    },
+    {
+        "price": 3250000,
+        "address": {
+            "country": "US",
+            "administrative_area": "NY",
+            "sub_administrative_area": null,
+            "locality": "Manhattan",
+            "postal_code": "10014",
+            "street": "Perry St",
+            "premise": "166",
+            "sub_premise": "3C"
+        },
+        "bedrooms": 2,
+        "bathrooms": 2.5,
+        "square_feet": 1521.0,
+        "sale_status": "Condo for sale",
+        "acre_lot": null,
+        "tour_available": true,
+        "image_source": "https://ap.rdcpix.com/eecdbf67f31fde4c37a5f2e0d733019cl-m4158297435rd-w960_h720.jpg"
+    },
+    {
+        "price": 895000,
+        "address": {
+            "country": "US",
+            "administrative_area": "NY",
+            "sub_administrative_area": null,
+            "locality": "Manhattan",
+            "postal_code": "10128",
+            "street": "Madison Ave",
+            "premise": "1361",
+            "sub_premise": "6G"
+        },
+        "bedrooms": 1,
+        "bathrooms": 1.0,
+        "square_feet": null,
+        "sale_status": "Co-op for sale",
+        "acre_lot": null,
+        "tour_available": true,
+        "image_source": "https://ap.rdcpix.com/09050a56479e0e3b14396b7adb953c7bl-m2560107695rd-w960_h720.jpg"
+    },
+    {
+        "price": 675000,
+        "address": {
+            "country": "US",
+            "administrative_area": "NY",
+            "sub_administrative_area": null,
+            "locality": "Manhattan",
+            "postal_code": "10028",
+            "street": "Second Ave",
+            "premise": "1628",
+            "sub_premise": "5C"
+        },
+        "bedrooms": 1,
+        "bathrooms": 1.0,
+        "square_feet": 567.0,
+        "sale_status": "Condo for sale",
+        "acre_lot": null,
+        "tour_available": true,
+        "image_source": "https://ap.rdcpix.com/ddba9e2a6fb2aa237ff6e31423b7ad31l-m1497004324rd-w960_h720.jpg"
+    },
+    {
+        "price": 2995000,
+        "address": {
+            "country": "US",
+            "administrative_area": "NY",
+            "sub_administrative_area": null,
+            "locality": "Manhattan",
+            "postal_code": "10013",
+            "street": "Mercer St",
+            "premise": "40",
+            "sub_premise": "9"
+        },
+        "bedrooms": 1,
+        "bathrooms": 1.5,
+        "square_feet": 1222.0,
+        "sale_status": "Condo for sale",
+        "acre_lot": null,
+        "tour_available": true,
+        "image_source": "https://ap.rdcpix.com/80639b9a684c179d903edaa6f70031e8l-m2798363942rd-w960_h720.jpg"
+    },
+    {
+        "price": 3495000,
+        "address": {
+            "country": "US",
+            "administrative_area": "NY",
+            "sub_administrative_area": null,
+            "locality": "Manhattan",
+            "postal_code": "10023",
+            "street": "W 63rd St",
+            "premise": "30",
+            "sub_premise": "26VW"
+        },
+        "bedrooms": 2,
+        "bathrooms": 2.0,
+        "square_feet": 1261.0,
+        "sale_status": "Condo for sale",
+        "acre_lot": null,
+        "tour_available": true,
+        "image_source": "https://ap.rdcpix.com/6511ad155c213a553f37260dc4a45c27l-m2342838780rd-w960_h720.jpg"
+    },
+    {
+        "price": 9995000,
+        "address": {
+            "country": "US",
+            "administrative_area": "NY",
+            "sub_administrative_area": null,
+            "locality": "Manhattan",
+            "postal_code": "10128",
+            "street": "Fifth Ave",
+            "premise": "1125",
+            "sub_premise": "8THFLR"
+        },
+        "bedrooms": 6,
+        "bathrooms": 5.5,
+        "square_feet": null,
+        "sale_status": "Co-op for sale",
+        "acre_lot": null,
+        "tour_available": true,
+        "image_source": "https://ap.rdcpix.com/b2192414e5dead64c9b3770dd2d8c837l-m1769451612rd-w960_h720.jpg"
+    },
+    {
+        "price": 1695000,
+        "address": {
+            "country": "US",
+            "administrative_area": "NY",
+            "sub_administrative_area": null,
+            "locality": "New York",
+            "postal_code": "10021",
+            "street": "E 75th St",
+            "premise": "120",
+            "sub_premise": "4A"
+        },
+        "bedrooms": 2,
+        "bathrooms": 2.0,
+        "square_feet": null,
+        "sale_status": "Co-op for sale",
+        "acre_lot": null,
+        "tour_available": true,
+        "image_source": "https://ap.rdcpix.com/806df4d23fb3b813f900a401c69ae800l-m3758109100rd-w960_h720.jpg"
+    },
+    {
+        "price": 2500000,
+        "address": {
+            "country": "US",
+            "administrative_area": "NY",
+            "sub_administrative_area": null,
+            "locality": "Manhattan",
+            "postal_code": "10011",
+            "street": "W 17th St",
+            "premise": "450",
+            "sub_premise": "2503"
+        },
+        "bedrooms": 2,
+        "bathrooms": 2.0,
+        "square_feet": 1038.0,
+        "sale_status": "Condo for sale",
+        "acre_lot": null,
+        "tour_available": true,
+        "image_source": "https://ap.rdcpix.com/9e55e45ddd9f2552f205ed5b0cd01941l-m1383394720rd-w960_h720.jpg"
+    },
+    {
+        "price": 720000,
+        "address": {
+            "country": "US",
+            "administrative_area": "NY",
+            "sub_administrative_area": null,
+            "locality": "Manhattan",
+            "postal_code": "10010",
+            "street": "E 22nd St",
+            "premise": "235",
+            "sub_premise": "1EF"
+        },
+        "bedrooms": 1,
+        "bathrooms": 2.0,
+        "square_feet": 800.0,
+        "sale_status": "Co-op for sale",
+        "acre_lot": 0.74,
+        "tour_available": true,
+        "image_source": "https://ap.rdcpix.com/50904079ce6d26b7a09b6264df0abcb2l-m2895731373rd-w960_h720.jpg"
+    },
+    {
+        "price": 950000,
+        "address": {
+            "country": "US",
+            "administrative_area": "NY",
+            "sub_administrative_area": null,
+            "locality": "Manhattan",
+            "postal_code": "10023",
+            "street": "W 66th St",
+            "premise": "165",
+            "sub_premise": "11K"
+        },
+        "bedrooms": 1,
+        "bathrooms": 1.0,
+        "square_feet": null,
+        "sale_status": "Co-op for sale",
+        "acre_lot": 0.74,
+        "tour_available": true,
+        "image_source": "https://ap.rdcpix.com/6937b895335c8af4bcfa2ed6b19d9b32l-m523313825rd-w960_h720.jpg"
+    },
+    {
+        "price": 375000,
+        "address": {
+            "country": "US",
+            "administrative_area": "NY",
+            "sub_administrative_area": null,
+            "locality": "Manhattan",
+            "postal_code": "10128",
+            "street": "Park Avenue Ave",
+            "premise": "1070",
+            "sub_premise": "1D"
+        },
+        "bedrooms": 2,
+        "bathrooms": 1.0,
+        "square_feet": 1000.0,
+        "sale_status": "Co-op for sale",
+        "acre_lot": 0.34,
+        "tour_available": true,
+        "image_source": "https://ap.rdcpix.com/3fd2c7b608e0e801e40e3f197900d895l-m3481406580rd-w960_h720.jpg"
+    },
+    {
+        "price": 1495000,
+        "address": {
+            "country": "US",
+            "administrative_area": "NY",
+            "sub_administrative_area": null,
+            "locality": "Manhattan",
+            "postal_code": "10022",
+            "street": "E 56th St",
+            "premise": "345",
+            "sub_premise": "15E"
+        },
+        "bedrooms": 3,
+        "bathrooms": 2.0,
+        "square_feet": 1350.0,
+        "sale_status": "Co-op for sale",
+        "acre_lot": null,
+        "tour_available": true,
+        "image_source": "https://ap.rdcpix.com/65d6bdbc2a6aa6e9ee24c5a64536d4a1l-m3021687833rd-w960_h720.jpg"
+    },
+    {
+        "price": 3250000,
+        "address": {
+            "country": "US",
+            "administrative_area": "NY",
+            "sub_administrative_area": null,
+            "locality": "Manhattan",
+            "postal_code": "10005",
+            "street": "Broad St",
+            "premise": "15",
+            "sub_premise": "3530"
+        },
+        "bedrooms": 3,
+        "bathrooms": 3.0,
+        "square_feet": 2196.0,
+        "sale_status": "Condo for sale",
+        "acre_lot": null,
+        "tour_available": true,
+        "image_source": "https://ap.rdcpix.com/ec57e0ad28a961eead7cdfdc50711204l-m1610732050rd-w960_h720.jpg"
+    },
+    {
+        "price": 1725000,
+        "address": {
+            "country": "US",
+            "administrative_area": "NY",
+            "sub_administrative_area": null,
+            "locality": "New York",
+            "postal_code": "10023",
+            "street": "W End Ave",
+            "premise": "180",
+            "sub_premise": "29M"
+        },
+        "bedrooms": 2,
+        "bathrooms": 2.0,
+        "square_feet": 1300.0,
+        "sale_status": "Co-op for sale",
+        "acre_lot": null,
+        "tour_available": true,
+        "image_source": "https://ap.rdcpix.com/9a713bac200624ad481d3cd223fa1996l-m2368938213rd-w960_h720.jpg"
+    },
+    {
+        "price": 1490000,
+        "address": {
+            "country": "US",
+            "administrative_area": "NY",
+            "sub_administrative_area": null,
+            "locality": "New York",
+            "postal_code": "10021",
+            "street": "E 74th St Ph 2B",
+            "premise": "343",
+            "sub_premise": null
+        },
+        "bedrooms": 2,
+        "bathrooms": 2.0,
+        "square_feet": 1000.0,
+        "sale_status": "Co-op for sale",
+        "acre_lot": null,
+        "tour_available": true,
+        "image_source": "https://ap.rdcpix.com/7a63edf093ee4c796731d3d13481229el-m1761167186rd-w960_h720.jpg"
+    },
+    {
+        "price": 2450000,
+        "address": {
+            "country": "US",
+            "administrative_area": "NY",
+            "sub_administrative_area": null,
+            "locality": "New York",
+            "postal_code": "10075",
+            "street": "E 77th St",
+            "premise": "300",
+            "sub_premise": "20C"
+        },
+        "bedrooms": 2,
+        "bathrooms": 2.5,
+        "square_feet": 1604.0,
+        "sale_status": "Condo for sale",
+        "acre_lot": null,
+        "tour_available": true,
+        "image_source": "https://ap.rdcpix.com/f3ab3d51eed78d68d55f6f4c191c1782l-m1118078133rd-w960_h720.jpg"
+    },
+    {
+        "price": 599999,
+        "address": {
+            "country": "US",
+            "administrative_area": "NY",
+            "sub_administrative_area": null,
+            "locality": "Manhattan",
+            "postal_code": "10037",
+            "street": "W 138th St",
+            "premise": "29",
+            "sub_premise": "1B"
+        },
+        "bedrooms": 1,
+        "bathrooms": 1.0,
+        "square_feet": 1205.0,
+        "sale_status": "Co-op for sale",
+        "acre_lot": null,
+        "tour_available": true,
+        "image_source": "https://ap.rdcpix.com/e04275370c4ce772d2f4f081ff8a59aal-m1117442289rd-w960_h720.jpg"
+    },
+    {
+        "price": 1795000,
+        "address": {
+            "country": "US",
+            "administrative_area": "NY",
+            "sub_administrative_area": null,
+            "locality": "Manhattan",
+            "postal_code": "10023",
+            "street": "W End Ave",
+            "premise": "1",
+            "sub_premise": "16B"
+        },
+        "bedrooms": 1,
+        "bathrooms": 1.5,
+        "square_feet": 895.0,
+        "sale_status": "Condo for sale",
+        "acre_lot": null,
+        "tour_available": true,
+        "image_source": "https://ap.rdcpix.com/e161ca9accdfe7986b81fe5fa75e2f5cl-m4276575350rd-w960_h720.jpg"
+    },
+    {
+        "price": 725000,
+        "address": {
+            "country": "US",
+            "administrative_area": "NY",
+            "sub_administrative_area": null,
+            "locality": "Manhattan",
+            "postal_code": "10036",
+            "street": "-513 W 43rd St",
+            "premise": "505",
+            "sub_premise": "3J"
+        },
+        "bedrooms": null,
+        "bathrooms": 1.0,
+        "square_feet": 503.0,
+        "sale_status": "Condo for sale",
+        "acre_lot": null,
+        "tour_available": true,
+        "image_source": "https://ap.rdcpix.com/6b3f1ccb37be0e7192336c4d25ab0a62l-m3462318073rd-w960_h720.jpg"
+    },
+    {
+        "price": 10995000,
+        "address": {
+            "country": "US",
+            "administrative_area": "NY",
+            "sub_administrative_area": null,
+            "locality": "Manhattan",
+            "postal_code": "10012",
+            "street": "Bond St",
+            "premise": "25",
+            "sub_premise": "3E"
+        },
+        "bedrooms": 3,
+        "bathrooms": 3.5,
+        "square_feet": 3722.0,
+        "sale_status": "Condo for sale",
+        "acre_lot": null,
+        "tour_available": true,
+        "image_source": "https://ap.rdcpix.com/789825dd559fc212ec158a8fc5154cc9l-m3654926106rd-w960_h720.jpg"
+    },
+    {
+        "price": 3315000,
+        "address": {
+            "country": "US",
+            "administrative_area": "NY",
+            "sub_administrative_area": null,
+            "locality": "Manhattan",
+            "postal_code": "10007",
+            "street": "W Broadway",
+            "premise": "85",
+            "sub_premise": "14S"
+        },
+        "bedrooms": 2,
+        "bathrooms": 2.0,
+        "square_feet": 1517.0,
+        "sale_status": "Condo for sale",
+        "acre_lot": null,
+        "tour_available": true,
+        "image_source": "https://ap.rdcpix.com/2f239759da192e0ecebbe6f13379eb04l-m2260299404rd-w960_h720.jpg"
+    },
+    {
+        "price": 900000,
+        "address": {
+            "country": "US",
+            "administrative_area": "NY",
+            "sub_administrative_area": null,
+            "locality": "Manhattan",
+            "postal_code": "10016",
+            "street": "Park Ave Fl 10",
+            "premise": "1",
+            "sub_premise": null
+        },
+        "bedrooms": null,
+        "bathrooms": 1.0,
+        "square_feet": 446.0,
+        "sale_status": "Condo for sale",
+        "acre_lot": null,
+        "tour_available": true,
+        "image_source": "https://ap.rdcpix.com/7007eeb91dee400ba9c53e6ec6a1077cl-m2289546433rd-w960_h720.jpg"
+    },
+    {
+        "price": 7700000,
+        "address": {
+            "country": "US",
+            "administrative_area": "NY",
+            "sub_administrative_area": null,
+            "locality": "Manhattan",
+            "postal_code": "10024",
+            "street": "Broadway",
+            "premise": "2373",
+            "sub_premise": "1706"
+        },
+        "bedrooms": 5,
+        "bathrooms": 4.5,
+        "square_feet": 4606.0,
+        "sale_status": "Condop for sale",
+        "acre_lot": null,
+        "tour_available": true,
+        "image_source": "https://ap.rdcpix.com/f0c440589971a314089c364f1323ca83l-m4142546109rd-w960_h720.jpg"
+    },
+    {
+        "price": 799000,
+        "address": {
+            "country": "US",
+            "administrative_area": "NY",
+            "sub_administrative_area": null,
+            "locality": "New York",
+            "postal_code": "10016",
+            "street": "Lexington Ave",
+            "premise": "165",
+            "sub_premise": "2B"
+        },
+        "bedrooms": null,
+        "bathrooms": 1.0,
+        "square_feet": 432.0,
+        "sale_status": "Condo for sale",
+        "acre_lot": 2192.0,
+        "tour_available": true,
+        "image_source": "https://ap.rdcpix.com/055daf7e525d02831fe2596878348ce3l-m787049257rd-w960_h720.jpg"
+    },
+    {
+        "price": 4995000,
+        "address": {
+            "country": "US",
+            "administrative_area": "NY",
+            "sub_administrative_area": null,
+            "locality": "New York",
+            "postal_code": "10012",
+            "street": "Thompson St",
+            "premise": "83",
+            "sub_premise": "3E"
+        },
+        "bedrooms": 2,
+        "bathrooms": 2.5,
+        "square_feet": 1736.0,
+        "sale_status": "Condo for sale",
+        "acre_lot": null,
+        "tour_available": true,
+        "image_source": "https://ap.rdcpix.com/c86be40809694ec50f43e809211c0d4al-m2401318151rd-w960_h720.jpg"
+    },
+    {
+        "price": 850000,
+        "address": {
+            "country": "US",
+            "administrative_area": "NY",
+            "sub_administrative_area": null,
+            "locality": "New York",
+            "postal_code": "10027",
+            "street": "Lenox Ave",
+            "premise": "370",
+            "sub_premise": "409"
+        },
+        "bedrooms": 2,
+        "bathrooms": 2.0,
+        "square_feet": 843.0,
+        "sale_status": "Condo for sale",
+        "acre_lot": null,
+        "tour_available": true,
+        "image_source": "https://ap.rdcpix.com/e2f743451c39da2afafc2bc77a564225l-m3538178360rd-w960_h720.jpg"
+    },
+    {
+        "price": 850000,
+        "address": {
+            "country": "US",
+            "administrative_area": "NY",
+            "sub_administrative_area": null,
+            "locality": "Manhattan",
+            "postal_code": "10025",
+            "street": "Central Park W",
+            "premise": "382",
+            "sub_premise": "8V"
+        },
+        "bedrooms": 1,
+        "bathrooms": 1.0,
+        "square_feet": 702.0,
+        "sale_status": "Condo for sale",
+        "acre_lot": null,
+        "tour_available": true,
+        "image_source": "https://ap.rdcpix.com/02633d966dd0c55d3dce1fc7af985270l-m2239388297rd-w960_h720.jpg"
+    },
+    {
+        "price": 2000000,
+        "address": {
+            "country": "US",
+            "administrative_area": "NY",
+            "sub_administrative_area": null,
+            "locality": "Manhattan",
+            "postal_code": "10027",
+            "street": "W 122nd St",
+            "premise": "543",
+            "sub_premise": "10A"
+        },
+        "bedrooms": 2,
+        "bathrooms": 2.5,
+        "square_feet": 1452.0,
+        "sale_status": "Condo for sale",
+        "acre_lot": null,
+        "tour_available": true,
+        "image_source": "https://ap.rdcpix.com/00f585a328d4b94aa9a681fe07c139b6l-m2951977144rd-w960_h720.jpg"
+    },
+    {
+        "price": 2300000,
+        "address": {
+            "country": "US",
+            "administrative_area": "NY",
+            "sub_administrative_area": null,
+            "locality": "Manhattan",
+            "postal_code": "10027",
+            "street": "W 122nd St",
+            "premise": "543",
+            "sub_premise": "16A"
+        },
+        "bedrooms": 2,
+        "bathrooms": 2.5,
+        "square_feet": 1452.0,
+        "sale_status": "Condo for sale",
+        "acre_lot": null,
+        "tour_available": true,
+        "image_source": "https://ap.rdcpix.com/97d339367a49d5f49f6189b57f557c29l-m2951977144rd-w960_h720.jpg"
+    },
+    {
+        "price": 95000000,
+        "address": {
+            "country": "US",
+            "administrative_area": "NY",
+            "sub_administrative_area": null,
+            "locality": "New York",
+            "postal_code": "10035",
+            "street": "3rd Ave",
+            "premise": "2211",
+            "sub_premise": "1"
+        },
+        "bedrooms": null,
+        "bathrooms": null,
+        "square_feet": null,
+        "sale_status": "House for sale",
+        "acre_lot": null,
+        "tour_available": true,
+        "image_source": "https://ap.rdcpix.com/8a7b9e597bb0408efea42f763c707387l-m3212457626rd-w960_h720.jpg"
+    },
+    {
+        "price": 1900000,
+        "address": {
+            "country": "US",
+            "administrative_area": "NY",
+            "sub_administrative_area": null,
+            "locality": "Manhattan",
+            "postal_code": "10027",
+            "street": "W 122nd St",
+            "premise": "543",
+            "sub_premise": "11C"
+        },
+        "bedrooms": 2,
+        "bathrooms": 2.0,
+        "square_feet": 1243.0,
+        "sale_status": "Condo for sale",
+        "acre_lot": null,
+        "tour_available": true,
+        "image_source": "https://ap.rdcpix.com/68977d3dc4a68dc11d56dad0557d2ed7l-m4137549909rd-w960_h720.jpg"
+    },
+    {
+        "price": 2795000,
+        "address": {
+            "country": "US",
+            "administrative_area": "NY",
+            "sub_administrative_area": null,
+            "locality": "Manhattan",
+            "postal_code": "10001",
+            "street": "W 28th St",
+            "premise": "215",
+            "sub_premise": "11D"
+        },
+        "bedrooms": 2,
+        "bathrooms": 2.5,
+        "square_feet": 1118.0,
+        "sale_status": "Condo for sale",
+        "acre_lot": 7370.0,
+        "tour_available": true,
+        "image_source": "https://ap.rdcpix.com/0eba39076ac2005f66f6b05f99599022l-m4136468381rd-w960_h720.jpg"
+    },
+    {
+        "price": 5150000,
+        "address": {
+            "country": "US",
+            "administrative_area": "NY",
+            "sub_administrative_area": null,
+            "locality": "Manhattan",
+            "postal_code": "10075",
+            "street": "E 77th St",
+            "premise": "255",
+            "sub_premise": "15C"
+        },
+        "bedrooms": 3,
+        "bathrooms": 3.5,
+        "square_feet": 2057.0,
+        "sale_status": "Pending",
+        "acre_lot": null,
+        "tour_available": true,
+        "image_source": "https://ap.rdcpix.com/6744038d2aa92e81ed3351ab55b0cc7el-m1608923016rd-w960_h720.jpg"
+    },
+    {
+        "price": 90000000,
+        "address": {
+            "country": "US",
+            "administrative_area": "NY",
+            "sub_administrative_area": null,
+            "locality": "New York",
+            "postal_code": "10022",
+            "street": "Park Ave",
+            "premise": "432",
+            "sub_premise": "Penthouse"
+        },
+        "bedrooms": 6,
+        "bathrooms": 7.5,
+        "square_feet": 8255.0,
+        "sale_status": "Condo for sale",
+        "acre_lot": null,
+        "tour_available": true,
+        "image_source": "https://ap.rdcpix.com/351068f7dcd7bac3bcd092b45ef6fb8dl-m4056427034rd-w960_h720.jpg"
+    },
+    {
+        "price": 500000,
+        "address": {
+            "country": "US",
+            "administrative_area": "NY",
+            "sub_administrative_area": null,
+            "locality": "New York",
+            "postal_code": "10022",
+            "street": "E 51st St",
+            "premise": "420",
+            "sub_premise": "5D"
+        },
+        "bedrooms": 2,
+        "bathrooms": 2.0,
+        "square_feet": 1250.0,
+        "sale_status": "Co-op for sale",
+        "acre_lot": 0.41,
+        "tour_available": true,
+        "image_source": "https://ap.rdcpix.com/ed278f08e5a8053227b28aed89814eaal-m2517677292rd-w960_h720.jpg"
+    },
+    {
+        "price": 14995000,
+        "address": {
+            "country": "US",
+            "administrative_area": "NY",
+            "sub_administrative_area": null,
+            "locality": "Manhattan",
+            "postal_code": "10065",
+            "street": "E 64th St",
+            "premise": "163",
+            "sub_premise": null
+        },
+        "bedrooms": 5,
+        "bathrooms": 5.5,
+        "square_feet": 8000.0,
+        "sale_status": "Townhouse for sale",
+        "acre_lot": null,
+        "tour_available": true,
+        "image_source": "https://ap.rdcpix.com/acb9c392219cf2d4ce4f1822bd12d3bdl-m1933864165rd-w960_h720.jpg"
+    },
+    {
+        "price": 299000,
+        "address": {
+            "country": "US",
+            "administrative_area": "NY",
+            "sub_administrative_area": null,
+            "locality": "New York",
+            "postal_code": "10019",
+            "street": "W 56th St",
+            "premise": "353",
+            "sub_premise": "3J"
+        },
+        "bedrooms": null,
+        "bathrooms": 1.0,
+        "square_feet": 582.0,
+        "sale_status": "Condo for sale",
+        "acre_lot": null,
+        "tour_available": true,
+        "image_source": "https://ap.rdcpix.com/79e9ff51c71c7b3614d12518aaa0c07al-m3839995189rd-w960_h720.jpg"
+    },
+    {
+        "price": 28000000,
+        "address": {
+            "country": "US",
+            "administrative_area": "NY",
+            "sub_administrative_area": null,
+            "locality": "Manhattan",
+            "postal_code": "10021",
+            "street": "E 75th St",
+            "premise": "178",
+            "sub_premise": null
+        },
+        "bedrooms": 5,
+        "bathrooms": 5.5,
+        "square_feet": 6600.0,
+        "sale_status": "Townhouse for sale",
+        "acre_lot": null,
+        "tour_available": true,
+        "image_source": "https://ap.rdcpix.com/ef8da5b51bf10e6dba753d5435888e29l-m906100013rd-w960_h720.jpg"
+    },
+    {
+        "price": 34000000,
+        "address": {
+            "country": "US",
+            "administrative_area": "NY",
+            "sub_administrative_area": null,
+            "locality": "Manhattan",
+            "postal_code": "10013",
+            "street": "Reade St",
+            "premise": "145",
+            "sub_premise": null
+        },
+        "bedrooms": 4,
+        "bathrooms": 7.5,
+        "square_feet": 10582.0,
+        "sale_status": "Townhouse for sale",
+        "acre_lot": null,
+        "tour_available": true,
+        "image_source": "https://ap.rdcpix.com/c645fe92109ca12e0f63f787c6c9b7a5l-m38223440rd-w960_h720.jpg"
+    },
+    {
+        "price": 1100000,
+        "address": {
+            "country": "US",
+            "administrative_area": "NY",
+            "sub_administrative_area": null,
+            "locality": "New York",
+            "postal_code": "10027",
+            "street": "W 123rd St",
+            "premise": "111",
+            "sub_premise": null
+        },
+        "bedrooms": 11,
+        "bathrooms": 8.5,
+        "square_feet": null,
+        "sale_status": "Multi-family home for sale",
+        "acre_lot": 4380.0,
+        "tour_available": true,
+        "image_source": "https://ap.rdcpix.com/f2606b38a3545fe5f7634197fcbba528l-m48540506rd-w960_h720.jpg"
+    },
+    {
+        "price": 2075,
+        "address": {
+            "country": "US",
+            "administrative_area": "NY",
+            "sub_administrative_area": null,
+            "locality": "New York",
+            "postal_code": "10029",
+            "street": "2nd Ave",
+            "premise": "2028",
+            "sub_premise": "A"
+        },
+        "bedrooms": 2,
+        "bathrooms": 2.0,
+        "square_feet": null,
+        "sale_status": "For Rent - House",
+        "acre_lot": null,
+        "tour_available": true,
+        "image_source": "https://ap.rdcpix.com/a86b4fcfb2c11525d41e97d035ae1ceal-m4037439443rd-w960_h720.jpg"
+    },
+    {
+        "price": 15621620,
+        "address": {
+            "country": "US",
+            "administrative_area": "New",
+            "sub_administrative_area": null,
+            "locality": "215 E 124th St",
+            "postal_code": "York",
+            "street": "The Reserve",
+            "premise": null,
+            "sub_premise": null
+        },
+        "bedrooms": null,
+        "bathrooms": 12.0,
+        "square_feet": 200.0,
+        "sale_status": "For Rent - Apartment",
+        "acre_lot": null,
+        "tour_available": true,
+        "image_source": "https://ar.rdcpix.com/1ffb44f8b8e113c2460e967734ff5292c-f3401457067rd-w960_h720.jpg"
+    },
+    {
+        "price": 47097678,
+        "address": {
+            "country": "US",
+            "administrative_area": "New",
+            "sub_administrative_area": null,
+            "locality": "560 W 43rd St",
+            "postal_code": "York",
+            "street": "Riverbank",
+            "premise": null,
+            "sub_premise": null
+        },
+        "bedrooms": 3,
+        "bathrooms": 12.0,
+        "square_feet": 3861126.0,
+        "sale_status": "For Rent - Apartment",
+        "acre_lot": null,
+        "tour_available": true,
+        "image_source": "https://ar.rdcpix.com/9d49c4dead35e5fa2d7deb863585f791c-f691209815rd-w960_h720.jpg"
+    },
+    {
+        "price": 33245516,
+        "address": {
+            "country": "US",
+            "administrative_area": "New",
+            "sub_administrative_area": null,
+            "locality": "888 Main St",
+            "postal_code": "York",
+            "street": "The Octagon",
+            "premise": null,
+            "sub_premise": null
+        },
+        "bedrooms": 3,
+        "bathrooms": 12.0,
+        "square_feet": 5001316.0,
+        "sale_status": "For Rent - Apartment",
+        "acre_lot": null,
+        "tour_available": true,
+        "image_source": "https://ar.rdcpix.com/07fb13fde07d85b922a878b454389be1c-f280387205rd-w960_h720.jpg"
+    },
+    {
+        "price": 39819054,
+        "address": {
+            "country": "US",
+            "administrative_area": "New",
+            "sub_administrative_area": null,
+            "locality": "189 W 89th St",
+            "postal_code": "York",
+            "street": "The Sagamore",
+            "premise": null,
+            "sub_premise": null
+        },
+        "bedrooms": 2,
+        "bathrooms": 12.0,
+        "square_feet": 4791078.0,
+        "sale_status": "For Rent - Apartment",
+        "acre_lot": null,
+        "tour_available": true,
+        "image_source": "https://ar.rdcpix.com/cc2a20ffcf3b1ecfd7193d3c6b392107c-f2597583314rd-w960_h720.jpg"
+    },
+    {
+        "price": 41738207,
+        "address": {
+            "country": "US",
+            "administrative_area": "New",
+            "sub_administrative_area": null,
+            "locality": "19 Dutch St",
+            "postal_code": "York",
+            "street": "Dutch",
+            "premise": "19",
+            "sub_premise": null
+        },
+        "bedrooms": 2,
+        "bathrooms": 12.0,
+        "square_feet": 4431052.0,
+        "sale_status": "For Rent - Apartment",
+        "acre_lot": null,
+        "tour_available": true,
+        "image_source": "https://static.rdc.moveaws.com/images/common/photos-coming-soon.svg"
+    },
+    {
+        "price": 3000,
+        "address": {
+            "country": "US",
+            "administrative_area": "NY",
+            "sub_administrative_area": null,
+            "locality": "New York",
+            "postal_code": "10025",
+            "street": "Central Park W",
+            "premise": "485",
+            "sub_premise": "2G"
+        },
+        "bedrooms": 1,
+        "bathrooms": 1.0,
+        "square_feet": null,
+        "sale_status": "For Rent - Apartment",
+        "acre_lot": null,
+        "tour_available": true,
+        "image_source": "https://static.rdc.moveaws.com/images/common/photos-coming-soon.svg"
+    },
+    {
+        "price": 34806800,
+        "address": {
+            "country": "US",
+            "administrative_area": "New",
+            "sub_administrative_area": null,
+            "locality": "55 Broad St",
+            "postal_code": "York",
+            "street": "Broad Street",
+            "premise": "55",
+            "sub_premise": null
+        },
+        "bedrooms": 2,
+        "bathrooms": 12.0,
+        "square_feet": null,
+        "sale_status": "For Rent - Apartment",
+        "acre_lot": null,
+        "tour_available": true,
+        "image_source": "https://static.rdc.moveaws.com/images/common/photos-coming-soon.svg"
+    },
+    {
+        "price": 1100000,
+        "address": {
+            "country": "US",
+            "administrative_area": "NY",
+            "sub_administrative_area": null,
+            "locality": "Manhattan",
+            "postal_code": "10026",
+            "street": "W 118th St",
+            "premise": "131",
+            "sub_premise": null
+        },
+        "bedrooms": 4,
+        "bathrooms": 4.5,
+        "square_feet": 4740.0,
+        "sale_status": "Townhouse for sale",
+        "acre_lot": null,
+        "tour_available": true,
+        "image_source": "https://ap.rdcpix.com/893680575efd2ccc7a88048b14c1d55cl-m2738784962rd-w960_h720.jpg"
+    },
+    {
+        "price": 305000,
+        "address": {
+            "country": "US",
+            "administrative_area": "NY",
+            "sub_administrative_area": null,
+            "locality": "Manhattan",
+            "postal_code": "10128",
+            "street": "E 93rd St",
+            "premise": "175",
+            "sub_premise": "1A"
+        },
+        "bedrooms": null,
+        "bathrooms": 1.0,
+        "square_feet": null,
+        "sale_status": "Co-op for sale",
+        "acre_lot": 2900.0,
+        "tour_available": true,
+        "image_source": "https://ap.rdcpix.com/bd281d11dc9dbfd284c5cfdbd8b134a6l-m1024534963rd-w960_h720.jpg"
+    },
+    {
+        "price": 650000,
+        "address": {
+            "country": "US",
+            "administrative_area": "NY",
+            "sub_administrative_area": null,
+            "locality": "New York",
+            "postal_code": "10011",
+            "street": "W 21st St",
+            "premise": "231",
+            "sub_premise": "2F"
+        },
+        "bedrooms": 2,
+        "bathrooms": 1.0,
+        "square_feet": null,
+        "sale_status": "Co-op for sale",
+        "acre_lot": null,
+        "tour_available": true,
+        "image_source": "https://ap.rdcpix.com/1883eda021a96a0c8169a7ecb6c98b32l-m3536901794rd-w960_h720.jpg"
+    },
+    {
+        "price": 59000000,
+        "address": {
+            "country": "US",
+            "administrative_area": "NY",
+            "sub_administrative_area": null,
+            "locality": "New York",
+            "postal_code": "10075",
+            "street": "E 80th St",
+            "premise": "4",
+            "sub_premise": null
+        },
+        "bedrooms": 9,
+        "bathrooms": 9.5,
+        "square_feet": 20000.0,
+        "sale_status": "Townhouse for sale",
+        "acre_lot": null,
+        "tour_available": true,
+        "image_source": "https://ap.rdcpix.com/3ae2744ec1c9a82716918bc75d7f6a85l-m2013616982rd-w960_h720.jpg"
+    },
+    {
+        "price": 649000,
+        "address": {
+            "country": "US",
+            "administrative_area": "NY",
+            "sub_administrative_area": null,
+            "locality": "Manhattan",
+            "postal_code": "10021",
+            "street": "E 72nd St",
+            "premise": "190",
+            "sub_premise": "35B"
+        },
+        "bedrooms": 2,
+        "bathrooms": 2.0,
+        "square_feet": 1204.0,
+        "sale_status": "Co-op for sale",
+        "acre_lot": null,
+        "tour_available": true,
+        "image_source": "https://ap.rdcpix.com/7e3223c37c4cc04255a1bbd41851d7f5l-m587664552rd-w960_h720.jpg"
+    },
+    {
+        "price": 499000,
+        "address": {
+            "country": "US",
+            "administrative_area": "NY",
+            "sub_administrative_area": null,
+            "locality": "New York",
+            "postal_code": "10023",
+            "street": "W 73rd St",
+            "premise": "167",
+            "sub_premise": "4"
+        },
+        "bedrooms": 1,
+        "bathrooms": 1.0,
+        "square_feet": null,
+        "sale_status": "Co-op for sale",
+        "acre_lot": 3366.0,
+        "tour_available": true,
+        "image_source": "https://ap.rdcpix.com/deeecffb4a4dd699e4aa90cc18740e4el-m3858276982rd-w960_h720.jpg"
+    },
+    {
+        "price": 14500000,
+        "address": {
+            "country": "US",
+            "administrative_area": "NY",
+            "sub_administrative_area": null,
+            "locality": "Manhattan",
+            "postal_code": "10014",
+            "street": "St Lukes Pl",
+            "premise": "15",
+            "sub_premise": null
+        },
+        "bedrooms": 6,
+        "bathrooms": 4.5,
+        "square_feet": 7391.0,
+        "sale_status": "Townhouse for sale",
+        "acre_lot": null,
+        "tour_available": true,
+        "image_source": "https://ap.rdcpix.com/b7c7436c2236f4e73029191f744573c7l-m1629849083rd-w960_h720.jpg"
+    },
+    {
+        "price": 109000,
+        "address": {
+            "country": "US",
+            "administrative_area": "NY",
+            "sub_administrative_area": null,
+            "locality": "New York",
+            "postal_code": "10019",
+            "street": "W 57th St",
+            "premise": "100",
+            "sub_premise": "19M"
+        },
+        "bedrooms": null,
+        "bathrooms": 1.0,
+        "square_feet": 450.0,
+        "sale_status": "Co-op for sale",
+        "acre_lot": null,
+        "tour_available": true,
+        "image_source": "https://ap.rdcpix.com/2092a51397148fabbc957e48974a0a41l-m2932785370rd-w960_h720.jpg"
+    },
+    {
+        "price": 54000000,
+        "address": {
+            "country": "US",
+            "administrative_area": "NY",
+            "sub_administrative_area": null,
+            "locality": "Manhattan",
+            "postal_code": "10065",
+            "street": "-14 64th St",
+            "premise": "12",
+            "sub_premise": null
+        },
+        "bedrooms": 9,
+        "bathrooms": 11.5,
+        "square_feet": 14400.0,
+        "sale_status": "Townhouse for sale",
+        "acre_lot": null,
+        "tour_available": true,
+        "image_source": "https://ap.rdcpix.com/faf4f8dc4cddeb329a456cb8866732fal-m604018066rd-w960_h720.jpg"
+    },
+    {
+        "price": 2599999,
+        "address": {
+            "country": "US",
+            "administrative_area": "NY",
+            "sub_administrative_area": null,
+            "locality": "New York",
+            "postal_code": "10026",
+            "street": "W 119th St",
+            "premise": "81",
+            "sub_premise": null
+        },
+        "bedrooms": 5,
+        "bathrooms": 3.0,
+        "square_feet": 1817.0,
+        "sale_status": "House for sale",
+        "acre_lot": 1817.0,
+        "tour_available": true,
+        "image_source": "https://ap.rdcpix.com/4f26ab4f1c1b373ff56f9b0e78866b9el-m1817822563rd-w960_h720.jpg"
+    },
+    {
+        "price": 198000,
+        "address": {
+            "country": "US",
+            "administrative_area": "NY",
+            "sub_administrative_area": null,
+            "locality": "Manhattan",
+            "postal_code": "10035",
+            "street": "E 127th St",
+            "premise": "78",
+            "sub_premise": "18"
+        },
+        "bedrooms": 2,
+        "bathrooms": 1.0,
+        "square_feet": null,
+        "sale_status": "Co-op for sale",
+        "acre_lot": 3997.0,
+        "tour_available": true,
+        "image_source": "https://ap.rdcpix.com/d394024c73fe40b78ce15a87589c99aal-m1074211195rd-w960_h720.jpg"
+    },
+    {
+        "price": 55000000,
+        "address": {
+            "country": "US",
+            "administrative_area": "NY",
+            "sub_administrative_area": null,
+            "locality": "New York",
+            "postal_code": "10023",
+            "street": "Riverside Dr",
+            "premise": "25",
+            "sub_premise": null
+        },
+        "bedrooms": 8,
+        "bathrooms": 8.5,
+        "square_feet": 12000.0,
+        "sale_status": "House for sale",
+        "acre_lot": null,
+        "tour_available": true,
+        "image_source": "https://ap.rdcpix.com/00a59fdfb9dc6b4194f4e551c9a30dc0l-m47206603rd-w960_h720.jpg"
+    },
+    {
+        "price": 375000,
+        "address": {
+            "country": "US",
+            "administrative_area": "NY",
+            "sub_administrative_area": null,
+            "locality": "Manhattan",
+            "postal_code": "10023",
+            "street": "Broadway",
+            "premise": "1991",
+            "sub_premise": "21C"
+        },
+        "bedrooms": null,
+        "bathrooms": 1.0,
+        "square_feet": 580.0,
+        "sale_status": "Condo for sale",
+        "acre_lot": null,
+        "tour_available": true,
+        "image_source": "https://ap.rdcpix.com/61bd6bf2f1ba729bcfa0927d30520d12l-m1349637280rd-w960_h720.jpg"
+    },
+    {
+        "price": 11000000,
+        "address": {
+            "country": "US",
+            "administrative_area": "NY",
+            "sub_administrative_area": null,
+            "locality": "New York",
+            "postal_code": "10013",
+            "street": "Mulberry St",
+            "premise": "66",
+            "sub_premise": null
+        },
+        "bedrooms": 35,
+        "bathrooms": 32.0,
+        "square_feet": null,
+        "sale_status": "House for sale",
+        "acre_lot": 5058.0,
+        "tour_available": true,
+        "image_source": "https://ap.rdcpix.com/b3b0bc53f64291c6315ae277c149281dl-m2944934970rd-w960_h720.jpg"
+    },
+    {
+        "price": 325000,
+        "address": {
+            "country": "US",
+            "administrative_area": "NY",
+            "sub_administrative_area": null,
+            "locality": "New York",
+            "postal_code": "10023",
+            "street": "W 70th St",
+            "premise": "201",
+            "sub_premise": "5D"
+        },
+        "bedrooms": 1,
+        "bathrooms": 1.0,
+        "square_feet": 702.0,
+        "sale_status": "Co-op for sale",
+        "acre_lot": null,
+        "tour_available": true,
+        "image_source": "https://ap.rdcpix.com/a33b0c7524b23dd98e4138b6f16a3345l-m3640174691rd-w960_h720.jpg"
+    },
+    {
+        "price": 8500000,
+        "address": {
+            "country": "US",
+            "administrative_area": "NY",
+            "sub_administrative_area": null,
+            "locality": "New York",
+            "postal_code": "10013",
+            "street": "Laight St",
+            "premise": "28",
+            "sub_premise": "6AB"
+        },
+        "bedrooms": 4,
+        "bathrooms": 3.5,
+        "square_feet": 5462.0,
+        "sale_status": "Condo for sale",
+        "acre_lot": null,
+        "tour_available": true,
+        "image_source": "https://ap.rdcpix.com/7ce31271e4e1a009987dda2078e93e25l-m3104391383rd-w960_h720.jpg"
+    },
+    {
+        "price": 369000,
+        "address": {
+            "country": "US",
+            "administrative_area": "NY",
+            "sub_administrative_area": null,
+            "locality": "New York",
+            "postal_code": "10019",
+            "street": "W 57th St",
+            "premise": "100",
+            "sub_premise": "18G"
+        },
+        "bedrooms": 2,
+        "bathrooms": 2.0,
+        "square_feet": 1200.0,
+        "sale_status": "Co-op for sale",
+        "acre_lot": null,
+        "tour_available": true,
+        "image_source": "https://ap.rdcpix.com/50cce6a348fdab17ffc09c8db1df5b3al-m1297591020rd-w960_h720.jpg"
+    },
+    {
+        "price": 6495000,
+        "address": {
+            "country": "US",
+            "administrative_area": "NY",
+            "sub_administrative_area": null,
+            "locality": "New York",
+            "postal_code": "10021",
+            "street": "E 69th St",
+            "premise": "328",
+            "sub_premise": null
+        },
+        "bedrooms": 4,
+        "bathrooms": 4.5,
+        "square_feet": null,
+        "sale_status": "Townhouse for sale",
+        "acre_lot": null,
+        "tour_available": true,
+        "image_source": "https://ap.rdcpix.com/d0bab8cfd4bb687a69055d173bb8bcb1l-m1572984217rd-w960_h720.jpg"
+    },
+    {
+        "price": 120198,
+        "address": {
+            "country": "US",
+            "administrative_area": "NY",
+            "sub_administrative_area": null,
+            "locality": "New York",
+            "postal_code": "10026",
+            "street": "W 111th St",
+            "premise": "127",
+            "sub_premise": null
+        },
+        "bedrooms": 4,
+        "bathrooms": 1.0,
+        "square_feet": null,
+        "sale_status": "Co-op for sale",
+        "acre_lot": null,
+        "tour_available": true,
+        "image_source": "https://ap.rdcpix.com/abba2385c8d8e31e2d2c691626f58e72l-m2432186762rd-w960_h720.jpg"
+    },
+    {
+        "price": 65000000,
+        "address": {
+            "country": "US",
+            "administrative_area": "NY",
+            "sub_administrative_area": null,
+            "locality": "New York",
+            "postal_code": "10022",
+            "street": "E 58th St Ph 80",
+            "premise": "430",
+            "sub_premise": null
+        },
+        "bedrooms": 5,
+        "bathrooms": 6.5,
+        "square_feet": 9191.0,
+        "sale_status": "Condo for sale",
+        "acre_lot": 6000.0,
+        "tour_available": true,
+        "image_source": "https://ap.rdcpix.com/b72ea9651ef4bfa8963f3517a771ed6el-m2754026345rd-w960_h720.jpg"
+    },
+    {
+        "price": 399999,
+        "address": {
+            "country": "US",
+            "administrative_area": "NY",
+            "sub_administrative_area": null,
+            "locality": "Manhattan",
+            "postal_code": "10030",
+            "street": "W 133rd St",
+            "premise": "161",
+            "sub_premise": "1B"
+        },
+        "bedrooms": null,
+        "bathrooms": 1.5,
+        "square_feet": 708.0,
+        "sale_status": "Condo for sale",
+        "acre_lot": null,
+        "tour_available": true,
+        "image_source": "https://ap.rdcpix.com/d536c26a4bf3418201e2e8b5ed39c1f5l-m3636916712rd-w960_h720.jpg"
+    },
+    {
+        "price": 678000,
+        "address": {
+            "country": "US",
+            "administrative_area": "NY",
+            "sub_administrative_area": null,
+            "locality": "New York",
+            "postal_code": "10029",
+            "street": "2nd Ave",
+            "premise": "2132",
+            "sub_premise": "7B"
+        },
+        "bedrooms": 3,
+        "bathrooms": 2.0,
+        "square_feet": 1027.0,
+        "sale_status": "Condo for sale",
+        "acre_lot": null,
+        "tour_available": true,
+        "image_source": "https://ap.rdcpix.com/0bb04407be15ad11da9594fa811ad38dl-m3263730841rd-w960_h720.jpg"
+    },
+    {
+        "price": 279000,
+        "address": {
+            "country": "US",
+            "administrative_area": "NY",
+            "sub_administrative_area": null,
+            "locality": "New York",
+            "postal_code": "10037",
+            "street": "Madison Ave",
+            "premise": "2090",
+            "sub_premise": "1D"
+        },
+        "bedrooms": 2,
+        "bathrooms": 1.0,
+        "square_feet": null,
+        "sale_status": "Co-op for sale",
+        "acre_lot": null,
+        "tour_available": true,
+        "image_source": "https://ap.rdcpix.com/12ec9e1aa2be5598c9e9217ff3dc583dl-m1407923815rd-w960_h720.jpg"
+    },
+    {
+        "price": 16500000,
+        "address": {
+            "country": "US",
+            "administrative_area": "NY",
+            "sub_administrative_area": null,
+            "locality": "Manhattan",
+            "postal_code": "10007",
+            "street": "Warren St",
+            "premise": "37",
+            "sub_premise": "Phcd"
+        },
+        "bedrooms": 5,
+        "bathrooms": 5.5,
+        "square_feet": 5499.0,
+        "sale_status": "Condo for sale",
+        "acre_lot": null,
+        "tour_available": true,
+        "image_source": "https://ap.rdcpix.com/6480858faaddeb334a4baf917d2b4eb6l-m2214059484rd-w960_h720.jpg"
+    },
+    {
+        "price": 692000,
+        "address": {
+            "country": "US",
+            "administrative_area": "NY",
+            "sub_administrative_area": null,
+            "locality": "New York",
+            "postal_code": "10024",
+            "street": "W 81st St",
+            "premise": "203",
+            "sub_premise": "4E"
+        },
+        "bedrooms": 2,
+        "bathrooms": 1.0,
+        "square_feet": 780.0,
+        "sale_status": "Condo for sale",
+        "acre_lot": null,
+        "tour_available": true,
+        "image_source": "https://ap.rdcpix.com/9f3e0a88d41c0f96ae6a284c830d3c14l-m3376480244rd-w960_h720.jpg"
+    },
+    {
+        "price": 5999000,
+        "address": {
+            "country": "US",
+            "administrative_area": "NY",
+            "sub_administrative_area": null,
+            "locality": "Manhattan",
+            "postal_code": "10022",
+            "street": "52nd St",
+            "premise": "301",
+            "sub_premise": null
+        },
+        "bedrooms": 5,
+        "bathrooms": 3.0,
+        "square_feet": 5000.0,
+        "sale_status": "Co-op for sale",
+        "acre_lot": null,
+        "tour_available": true,
+        "image_source": "https://ap.rdcpix.com/4eaba94acbe696ff52d42d03dc387aa5l-m19581888rd-w960_h720.jpg"
+    },
+    {
+        "price": 499000,
+        "address": {
+            "country": "US",
+            "administrative_area": "NY",
+            "sub_administrative_area": null,
+            "locality": "Manhattan",
+            "postal_code": "10028",
+            "street": "Park Ave",
+            "premise": "969",
+            "sub_premise": "1D"
+        },
+        "bedrooms": 3,
+        "bathrooms": 2.0,
+        "square_feet": 1000.0,
+        "sale_status": "Co-op for sale",
+        "acre_lot": null,
+        "tour_available": true,
+        "image_source": "https://ap.rdcpix.com/b2f24a30c3276360bca04d9655eff710l-m2028594701rd-w960_h720.jpg"
+    },
+    {
+        "price": 195000,
+        "address": {
+            "country": "US",
+            "administrative_area": "NY",
+            "sub_administrative_area": null,
+            "locality": "New York",
+            "postal_code": "10022",
+            "street": "E 55th St",
+            "premise": "2",
+            "sub_premise": "901"
+        },
+        "bedrooms": 1,
+        "bathrooms": 2.0,
+        "square_feet": 934.0,
+        "sale_status": "Condo for sale",
+        "acre_lot": null,
+        "tour_available": true,
+        "image_source": "https://ap.rdcpix.com/1507e7551ee2d77031836f2149de4fadl-m2762043229rd-w960_h720.jpg"
+    },
+    {
+        "price": 599000,
+        "address": {
+            "country": "US",
+            "administrative_area": "NY",
+            "sub_administrative_area": null,
+            "locality": "Manhattan",
+            "postal_code": "10075",
+            "street": "E 80th St",
+            "premise": "40",
+            "sub_premise": "21A"
+        },
+        "bedrooms": 3,
+        "bathrooms": 3.0,
+        "square_feet": null,
+        "sale_status": "Pending",
+        "acre_lot": 0.29,
+        "tour_available": true,
+        "image_source": "https://ap.rdcpix.com/f47b42a0c9c0c09790dd6f7cf0d25a24l-m677740200rd-w960_h720.jpg"
+    },
+    {
+        "price": 379000,
+        "address": {
+            "country": "US",
+            "administrative_area": "NY",
+            "sub_administrative_area": null,
+            "locality": "New York",
+            "postal_code": "10037",
+            "street": "E 132nd St",
+            "premise": "48",
+            "sub_premise": "5E"
+        },
+        "bedrooms": null,
+        "bathrooms": 1.0,
+        "square_feet": 444.0,
+        "sale_status": "Condo for sale",
+        "acre_lot": 2500.0,
+        "tour_available": true,
+        "image_source": "https://ap.rdcpix.com/0e74f5cfd80eaebb8685ca12dad9331cl-m3023933958rd-w960_h720.jpg"
+    },
+    {
+        "price": 19500000,
+        "address": {
+            "country": "US",
+            "administrative_area": "NY",
+            "sub_administrative_area": null,
+            "locality": "New York",
+            "postal_code": "10021",
+            "street": "E 76th St",
+            "premise": "16",
+            "sub_premise": null
+        },
+        "bedrooms": 6,
+        "bathrooms": 6.5,
+        "square_feet": 10258.0,
+        "sale_status": "House for sale",
+        "acre_lot": null,
+        "tour_available": true,
+        "image_source": "https://ap.rdcpix.com/072c41722ca9128698369a62d325c225l-m2526432372rd-w960_h720.jpg"
+    },
+    {
+        "price": 2995000,
+        "address": {
+            "country": "US",
+            "administrative_area": "NY",
+            "sub_administrative_area": null,
+            "locality": "New York",
+            "postal_code": "10001",
+            "street": "W 30th St",
+            "premise": "252",
+            "sub_premise": "12FLOOR"
+        },
+        "bedrooms": 3,
+        "bathrooms": 2.5,
+        "square_feet": null,
+        "sale_status": "Condo for sale",
+        "acre_lot": null,
+        "tour_available": true,
+        "image_source": "https://ap.rdcpix.com/1e6dc62d146a3d9c633a0c1eda6b7d75l-m131317146rd-w960_h720.jpg"
+    },
+    {
+        "price": 1400000,
+        "address": {
+            "country": "US",
+            "administrative_area": "NY",
+            "sub_administrative_area": null,
+            "locality": "Manhattan",
+            "postal_code": "10029",
+            "street": "Park Ave",
+            "premise": "1399",
+            "sub_premise": "8D"
+        },
+        "bedrooms": 3,
+        "bathrooms": 2.5,
+        "square_feet": 1462.0,
+        "sale_status": "Condo for sale",
+        "acre_lot": null,
+        "tour_available": true,
+        "image_source": "https://ap.rdcpix.com/01bc9f9a6beec81591e7ce23759297a0l-m494242911rd-w960_h720.jpg"
+    },
+    {
+        "price": 55000000,
+        "address": {
+            "country": "US",
+            "administrative_area": "NY",
+            "sub_administrative_area": null,
+            "locality": "Manhattan",
+            "postal_code": "10065",
+            "street": "E 63rd St",
+            "premise": "36",
+            "sub_premise": null
+        },
+        "bedrooms": 10,
+        "bathrooms": 10.5,
+        "square_feet": 15875.0,
+        "sale_status": "Townhouse for sale",
+        "acre_lot": null,
+        "tour_available": true,
+        "image_source": "https://ap.rdcpix.com/c48ee41d0eeea181b8b6a2e96b70290fl-m855945101rd-w960_h720.jpg"
+    },
+    {
+        "price": 775000,
+        "address": {
+            "country": "US",
+            "administrative_area": "NY",
+            "sub_administrative_area": null,
+            "locality": "New York",
+            "postal_code": "10014",
+            "street": "Commerce St",
+            "premise": "46",
+            "sub_premise": "5"
+        },
+        "bedrooms": null,
+        "bathrooms": 1.0,
+        "square_feet": null,
+        "sale_status": "Co-op for sale",
+        "acre_lot": null,
+        "tour_available": true,
+        "image_source": "https://ap.rdcpix.com/a101f649df8417474ab49462e6487882l-m2078521604rd-w960_h720.jpg"
+    },
+    {
+        "price": 695000,
+        "address": {
+            "country": "US",
+            "administrative_area": "NY",
+            "sub_administrative_area": null,
+            "locality": "Manhattan",
+            "postal_code": "10033",
+            "street": "Amsterdam Ave",
+            "premise": "2360",
+            "sub_premise": "3A"
+        },
+        "bedrooms": 3,
+        "bathrooms": 2.0,
+        "square_feet": 1172.0,
+        "sale_status": "Condo for sale",
+        "acre_lot": null,
+        "tour_available": true,
+        "image_source": "https://ap.rdcpix.com/b310629983cf5a674ab20e7cc23e9a26l-m1608148639rd-w960_h720.jpg"
+    },
+    {
+        "price": 6920000,
+        "address": {
+            "country": "US",
+            "administrative_area": "NY",
+            "sub_administrative_area": null,
+            "locality": "New York",
+            "postal_code": "10019",
+            "street": "Central Park S",
+            "premise": "110",
+            "sub_premise": "11B"
+        },
+        "bedrooms": 4,
+        "bathrooms": 5.5,
+        "square_feet": null,
+        "sale_status": "House for sale",
+        "acre_lot": null,
+        "tour_available": true,
+        "image_source": "https://ap.rdcpix.com/3ffe0f4228aaea59692629ad4ee2a5cal-m3380628614rd-w960_h720.jpg"
+    },
+    {
+        "price": 24700000,
+        "address": {
+            "country": "US",
+            "administrative_area": "NY",
+            "sub_administrative_area": null,
+            "locality": "Manhattan",
+            "postal_code": "10075",
+            "street": "E 77th St",
+            "premise": "255",
+            "sub_premise": "B"
+        },
+        "bedrooms": 7,
+        "bathrooms": 6.5,
+        "square_feet": 5516.0,
+        "sale_status": "Condo for sale",
+        "acre_lot": null,
+        "tour_available": true,
+        "image_source": "https://ap.rdcpix.com/32f1a5df1cf562b03de8272be113ba41l-m3085408854rd-w960_h720.jpg"
+    },
+    {
+        "price": 60000000,
+        "address": {
+            "country": "US",
+            "administrative_area": "NY",
+            "sub_administrative_area": null,
+            "locality": "Manhattan",
+            "postal_code": "10065",
+            "street": "62nd St",
+            "premise": "35",
+            "sub_premise": null
+        },
+        "bedrooms": null,
+        "bathrooms": 10.0,
+        "square_feet": 25000.0,
+        "sale_status": "Townhouse for sale",
+        "acre_lot": null,
+        "tour_available": true,
+        "image_source": "https://ap.rdcpix.com/9b46a94b729f8d0a29feed153505d6dal-m1259884120rd-w960_h720.jpg"
+    },
+    {
+        "price": 5750000,
+        "address": {
+            "country": "US",
+            "administrative_area": "NY",
+            "sub_administrative_area": null,
+            "locality": "New York",
+            "postal_code": "10013",
+            "street": "Greenwich St #",
+            "premise": "355",
+            "sub_premise": "ph"
+        },
+        "bedrooms": 3,
+        "bathrooms": 3.0,
+        "square_feet": 3419.0,
+        "sale_status": "Pending",
+        "acre_lot": null,
+        "tour_available": true,
+        "image_source": "https://ap.rdcpix.com/5e7b2562f2fe3e7386a75ed2f58c5e5fl-m1868524946rd-w960_h720.jpg"
+    },
+    {
+        "price": 2500000,
+        "address": {
+            "country": "US",
+            "administrative_area": "NY",
+            "sub_administrative_area": null,
+            "locality": "New York",
+            "postal_code": "10031",
+            "street": "Broadway",
+            "premise": "3686",
+            "sub_premise": null
+        },
+        "bedrooms": 4,
+        "bathrooms": 2.5,
+        "square_feet": 4193.0,
+        "sale_status": "Townhouse for sale",
+        "acre_lot": 1248.0,
+        "tour_available": true,
+        "image_source": "https://ap.rdcpix.com/23543e0321360d051bc9e03cf2c79cd5l-m4250612445rd-w960_h720.jpg"
+    },
+    {
+        "price": 675000,
+        "address": {
+            "country": "US",
+            "administrative_area": "NY",
+            "sub_administrative_area": null,
+            "locality": "New York",
+            "postal_code": "10011",
+            "street": "W 16th St",
+            "premise": "161",
+            "sub_premise": "5C"
+        },
+        "bedrooms": 1,
+        "bathrooms": 1.0,
+        "square_feet": null,
+        "sale_status": "Co-op for sale",
+        "acre_lot": null,
+        "tour_available": true,
+        "image_source": "https://ap.rdcpix.com/ec8161b866bb9f75f1de006cf63711e2l-m881490182rd-w960_h720.jpg"
+    },
+    {
+        "price": 2075,
+        "address": {
+            "country": "US",
+            "administrative_area": "NY",
+            "sub_administrative_area": null,
+            "locality": "New York",
+            "postal_code": "10029",
+            "street": "2nd Ave",
+            "premise": "2028",
+            "sub_premise": "A"
+        },
+        "bedrooms": 2,
+        "bathrooms": 2.0,
+        "square_feet": null,
+        "sale_status": "For Rent - House",
+        "acre_lot": null,
+        "tour_available": true,
+        "image_source": "https://ap.rdcpix.com/a86b4fcfb2c11525d41e97d035ae1ceal-m4037439443rd-w960_h720.jpg"
+    },
+    {
+        "price": 15621620,
+        "address": {
+            "country": "US",
+            "administrative_area": "New",
+            "sub_administrative_area": null,
+            "locality": "215 E 124th St",
+            "postal_code": "York",
+            "street": "The Reserve",
+            "premise": null,
+            "sub_premise": null
+        },
+        "bedrooms": null,
+        "bathrooms": 12.0,
+        "square_feet": 200.0,
+        "sale_status": "For Rent - Apartment",
+        "acre_lot": null,
+        "tour_available": true,
+        "image_source": "https://ar.rdcpix.com/1ffb44f8b8e113c2460e967734ff5292c-f3401457067rd-w960_h720.jpg"
+    },
+    {
+        "price": 47097678,
+        "address": {
+            "country": "US",
+            "administrative_area": "New",
+            "sub_administrative_area": null,
+            "locality": "560 W 43rd St",
+            "postal_code": "York",
+            "street": "Riverbank",
+            "premise": null,
+            "sub_premise": null
+        },
+        "bedrooms": 3,
+        "bathrooms": 12.0,
+        "square_feet": 3861126.0,
+        "sale_status": "For Rent - Apartment",
+        "acre_lot": null,
+        "tour_available": true,
+        "image_source": "https://ar.rdcpix.com/9d49c4dead35e5fa2d7deb863585f791c-f691209815rd-w960_h720.jpg"
+    },
+    {
+        "price": 33245516,
+        "address": {
+            "country": "US",
+            "administrative_area": "New",
+            "sub_administrative_area": null,
+            "locality": "888 Main St",
+            "postal_code": "York",
+            "street": "The Octagon",
+            "premise": null,
+            "sub_premise": null
+        },
+        "bedrooms": 3,
+        "bathrooms": 12.0,
+        "square_feet": 5001316.0,
+        "sale_status": "For Rent - Apartment",
+        "acre_lot": null,
+        "tour_available": true,
+        "image_source": "https://static.rdc.moveaws.com/images/common/photos-coming-soon.svg"
+    },
+    {
+        "price": 39819054,
+        "address": {
+            "country": "US",
+            "administrative_area": "New",
+            "sub_administrative_area": null,
+            "locality": "189 W 89th St",
+            "postal_code": "York",
+            "street": "The Sagamore",
+            "premise": null,
+            "sub_premise": null
+        },
+        "bedrooms": 2,
+        "bathrooms": 12.0,
+        "square_feet": 4791078.0,
+        "sale_status": "For Rent - Apartment",
+        "acre_lot": null,
+        "tour_available": true,
+        "image_source": "https://static.rdc.moveaws.com/images/common/photos-coming-soon.svg"
+    },
+    {
+        "price": 41738207,
+        "address": {
+            "country": "US",
+            "administrative_area": "New",
+            "sub_administrative_area": null,
+            "locality": "19 Dutch St",
+            "postal_code": "York",
+            "street": "Dutch",
+            "premise": "19",
+            "sub_premise": null
+        },
+        "bedrooms": 2,
+        "bathrooms": 12.0,
+        "square_feet": 4431052.0,
+        "sale_status": "For Rent - Apartment",
+        "acre_lot": null,
+        "tour_available": true,
+        "image_source": "https://static.rdc.moveaws.com/images/common/photos-coming-soon.svg"
+    },
+    {
+        "price": 3000,
+        "address": {
+            "country": "US",
+            "administrative_area": "NY",
+            "sub_administrative_area": null,
+            "locality": "New York",
+            "postal_code": "10025",
+            "street": "Central Park W",
+            "premise": "485",
+            "sub_premise": "2G"
+        },
+        "bedrooms": 1,
+        "bathrooms": 1.0,
+        "square_feet": null,
+        "sale_status": "For Rent - Apartment",
+        "acre_lot": null,
+        "tour_available": true,
+        "image_source": "https://static.rdc.moveaws.com/images/common/photos-coming-soon.svg"
+    },
+    {
+        "price": 34806800,
+        "address": {
+            "country": "US",
+            "administrative_area": "New",
+            "sub_administrative_area": null,
+            "locality": "55 Broad St",
+            "postal_code": "York",
+            "street": "Broad Street",
+            "premise": "55",
+            "sub_premise": null
+        },
+        "bedrooms": 2,
+        "bathrooms": 12.0,
+        "square_feet": null,
+        "sale_status": "For Rent - Apartment",
+        "acre_lot": null,
+        "tour_available": true,
+        "image_source": "https://static.rdc.moveaws.com/images/common/photos-coming-soon.svg"
+    },
+    {
+        "price": 28700000,
+        "address": {
+            "country": "US",
+            "administrative_area": "NY",
+            "sub_administrative_area": null,
+            "locality": "Manhattan",
+            "postal_code": "10019",
+            "street": "Central Park S",
+            "premise": "1",
+            "sub_premise": "1801/1901"
+        },
+        "bedrooms": 8,
+        "bathrooms": 7.5,
+        "square_feet": 7762.0,
+        "sale_status": "Condo for sale",
+        "acre_lot": null,
+        "tour_available": true,
+        "image_source": "https://ap.rdcpix.com/f2e65c83efade5594da7c8f10724e020l-m272202675rd-w960_h720.jpg"
+    },
+    {
+        "price": 2275000,
+        "address": {
+            "country": "US",
+            "administrative_area": "NY",
+            "sub_administrative_area": null,
+            "locality": "New York",
+            "postal_code": "10031",
+            "street": "W 141st St",
+            "premise": "523",
+            "sub_premise": null
+        },
+        "bedrooms": 8,
+        "bathrooms": 5.0,
+        "square_feet": null,
+        "sale_status": "House for sale",
+        "acre_lot": 1600.0,
+        "tour_available": true,
+        "image_source": "https://ap.rdcpix.com/b29fc0ed6400f696300752e839dbe7d8l-m1555406256rd-w960_h720.jpg"
+    },
+    {
+        "price": 415000,
+        "address": {
+            "country": "US",
+            "administrative_area": "NY",
+            "sub_administrative_area": null,
+            "locality": "Manhattan",
+            "postal_code": "10017",
+            "street": "E 42nd St",
+            "premise": "320",
+            "sub_premise": "2210"
+        },
+        "bedrooms": null,
+        "bathrooms": 1.0,
+        "square_feet": null,
+        "sale_status": "Co-op for sale",
+        "acre_lot": null,
+        "tour_available": true,
+        "image_source": "https://ap.rdcpix.com/02ce53ceab5d068fbfcd3d4a9f0dd549l-m9882444rd-w960_h720.jpg"
+    },
+    {
+        "price": 449000,
+        "address": {
+            "country": "US",
+            "administrative_area": "NY",
+            "sub_administrative_area": null,
+            "locality": "New York",
+            "postal_code": "10032",
+            "street": "Riverside Dr",
+            "premise": "870",
+            "sub_premise": "2B"
+        },
+        "bedrooms": 3,
+        "bathrooms": 1.0,
+        "square_feet": 1200.0,
+        "sale_status": "Co-op for sale",
+        "acre_lot": null,
+        "tour_available": true,
+        "image_source": "https://ap.rdcpix.com/b8546481db3b27c18648798323ad222al-m248334666rd-w960_h720.jpg"
+    },
+    {
+        "price": 34500000,
+        "address": {
+            "country": "US",
+            "administrative_area": "NY",
+            "sub_administrative_area": null,
+            "locality": "New York",
+            "postal_code": "10065",
+            "street": "-37-39 E 63rd St",
+            "premise": "35",
+            "sub_premise": null
+        },
+        "bedrooms": 16,
+        "bathrooms": 22.5,
+        "square_feet": 20036.0,
+        "sale_status": "Townhouse for sale",
+        "acre_lot": null,
+        "tour_available": true,
+        "image_source": "https://ap.rdcpix.com/9dd5955ce173263417dcd39d18ca3159l-m1252063150rd-w960_h720.jpg"
+    },
+    {
+        "price": 1795000,
+        "address": {
+            "country": "US",
+            "administrative_area": "NY",
+            "sub_administrative_area": null,
+            "locality": "New York",
+            "postal_code": "10025",
+            "street": "Riverside Dr",
+            "premise": "299",
+            "sub_premise": "3C"
+        },
+        "bedrooms": 3,
+        "bathrooms": 2.0,
+        "square_feet": 1300.0,
+        "sale_status": "Co-op for sale",
+        "acre_lot": 9086.0,
+        "tour_available": true,
+        "image_source": "https://ap.rdcpix.com/d7dcab765baf276930e49d521674594el-m4211046596rd-w960_h720.jpg"
+    },
+    {
+        "price": 1099000,
+        "address": {
+            "country": "US",
+            "administrative_area": "NY",
+            "sub_administrative_area": null,
+            "locality": "Manhattan",
+            "postal_code": "10024",
+            "street": "W 87th St",
+            "premise": "269",
+            "sub_premise": "3C"
+        },
+        "bedrooms": 2,
+        "bathrooms": 2.5,
+        "square_feet": 1406.0,
+        "sale_status": "House for sale",
+        "acre_lot": null,
+        "tour_available": true,
+        "image_source": "https://ap.rdcpix.com/4b7d307f2998564db0eeab9e83a8ab42l-m2281827717rd-w960_h720.jpg"
+    },
+    {
+        "price": 320000,
+        "address": {
+            "country": "US",
+            "administrative_area": "NY",
+            "sub_administrative_area": null,
+            "locality": "Manhattan",
+            "postal_code": "10128",
+            "street": "E 90th St",
+            "premise": "246",
+            "sub_premise": "5B"
+        },
+        "bedrooms": 1,
+        "bathrooms": 1.0,
+        "square_feet": null,
+        "sale_status": "Co-op for sale",
+        "acre_lot": null,
+        "tour_available": true,
+        "image_source": "https://ap.rdcpix.com/42b46fbac5cf8aae9fa8933c82a4b0b1l-m2486530804rd-w960_h720.jpg"
+    },
+    {
+        "price": 499000,
+        "address": {
+            "country": "US",
+            "administrative_area": "NY",
+            "sub_administrative_area": null,
+            "locality": "New York",
+            "postal_code": "10017",
+            "street": "E 46th St",
+            "premise": "225",
+            "sub_premise": "9B"
+        },
+        "bedrooms": null,
+        "bathrooms": 1.0,
+        "square_feet": null,
+        "sale_status": "House for sale",
+        "acre_lot": null,
+        "tour_available": true,
+        "image_source": "https://ap.rdcpix.com/35041756965c6b2d1f621f7c9fd64de0l-m984664552rd-w960_h720.jpg"
+    },
+    {
+        "price": 2295000,
+        "address": {
+            "country": "US",
+            "administrative_area": "NY",
+            "sub_administrative_area": null,
+            "locality": "New York",
+            "postal_code": "10016",
+            "street": "Park Ave",
+            "premise": "23",
+            "sub_premise": "1N"
+        },
+        "bedrooms": 2,
+        "bathrooms": 2.5,
+        "square_feet": null,
+        "sale_status": "Co-op for sale",
+        "acre_lot": null,
+        "tour_available": true,
+        "image_source": "https://ap.rdcpix.com/74e5b32987810e47f32eea7ef54eb3cal-m1399580148rd-w960_h720.jpg"
+    },
+    {
+        "price": 349000,
+        "address": {
+            "country": "US",
+            "administrative_area": "NY",
+            "sub_administrative_area": null,
+            "locality": "New York",
+            "postal_code": "10028",
+            "street": "E 82nd St",
+            "premise": "415",
+            "sub_premise": "5B"
+        },
+        "bedrooms": null,
+        "bathrooms": 1.0,
+        "square_feet": null,
+        "sale_status": "Co-op for sale",
+        "acre_lot": null,
+        "tour_available": true,
+        "image_source": "https://ap.rdcpix.com/564d5722395bb891b4e0243f5cc7588al-m1832885558rd-w960_h720.jpg"
+    },
+    {
+        "price": 2850000,
+        "address": {
+            "country": "US",
+            "administrative_area": "NY",
+            "sub_administrative_area": null,
+            "locality": "New York",
+            "postal_code": "10017",
+            "street": "E 46th St Ph H",
+            "premise": "310",
+            "sub_premise": null
+        },
+        "bedrooms": 6,
+        "bathrooms": 4.5,
+        "square_feet": 4511.0,
+        "sale_status": "House for sale",
+        "acre_lot": null,
+        "tour_available": true,
+        "image_source": "https://ap.rdcpix.com/2221baa401051ef8dd866f5965ee0a66l-m543145772rd-w960_h720.jpg"
+    },
+    {
+        "price": 725000,
+        "address": {
+            "country": "US",
+            "administrative_area": "NY",
+            "sub_administrative_area": null,
+            "locality": "New York",
+            "postal_code": "10017",
+            "street": "E 46th St",
+            "premise": "310",
+            "sub_premise": "3W"
+        },
+        "bedrooms": 1,
+        "bathrooms": 1.0,
+        "square_feet": null,
+        "sale_status": "House for sale",
+        "acre_lot": null,
+        "tour_available": true,
+        "image_source": "https://ap.rdcpix.com/7beb6733e882015645b913de69a2df93l-m995243824rd-w960_h720.jpg"
+    },
+    {
+        "price": 1195000,
+        "address": {
+            "country": "US",
+            "administrative_area": "NY",
+            "sub_administrative_area": null,
+            "locality": "New York",
+            "postal_code": "10025",
+            "street": "W 98th St",
+            "premise": "203",
+            "sub_premise": "4CD"
+        },
+        "bedrooms": 3,
+        "bathrooms": 2.0,
+        "square_feet": null,
+        "sale_status": "House for sale",
+        "acre_lot": null,
+        "tour_available": true,
+        "image_source": "https://ap.rdcpix.com/aa8f754b8cf7143adca30d18ea2bedd4l-m3499526434rd-w960_h720.jpg"
+    },
+    {
+        "price": 2995000,
+        "address": {
+            "country": "US",
+            "administrative_area": "NY",
+            "sub_administrative_area": null,
+            "locality": "New York",
+            "postal_code": "10019",
+            "street": "Central Park S",
+            "premise": "230",
+            "sub_premise": "3AB"
+        },
+        "bedrooms": 1,
+        "bathrooms": 2.0,
+        "square_feet": null,
+        "sale_status": "House for sale",
+        "acre_lot": null,
+        "tour_available": true,
+        "image_source": "https://ap.rdcpix.com/a297426f428c6630b77cc684e8696fa8l-m3905664529rd-w960_h720.jpg"
+    },
+    {
+        "price": 499000,
+        "address": {
+            "country": "US",
+            "administrative_area": "NY",
+            "sub_administrative_area": null,
+            "locality": "New York",
+            "postal_code": "10012",
+            "street": "Bleecker St",
+            "premise": "160",
+            "sub_premise": "5AW"
+        },
+        "bedrooms": null,
+        "bathrooms": 1.0,
+        "square_feet": null,
+        "sale_status": "House for sale",
+        "acre_lot": null,
+        "tour_available": true,
+        "image_source": "https://ap.rdcpix.com/cfc50bc8ec1b7631da7cdb82f474785al-m2740870794rd-w960_h720.jpg"
+    },
+    {
+        "price": 429000,
+        "address": {
+            "country": "US",
+            "administrative_area": "NY",
+            "sub_administrative_area": null,
+            "locality": "Manhattan",
+            "postal_code": "10028",
+            "street": "E 82nd St",
+            "premise": "218",
+            "sub_premise": "4FW"
+        },
+        "bedrooms": 1,
+        "bathrooms": 1.0,
+        "square_feet": null,
+        "sale_status": "Co-op for sale",
+        "acre_lot": null,
+        "tour_available": true,
+        "image_source": "https://ap.rdcpix.com/5e564b06f02ca7d954009caef26abec0l-m1732065458rd-w960_h720.jpg"
+    },
+    {
+        "price": 5295000,
+        "address": {
+            "country": "US",
+            "administrative_area": "NY",
+            "sub_administrative_area": null,
+            "locality": "New York",
+            "postal_code": "10002",
+            "street": "Orchard St Ph C",
+            "premise": "196",
+            "sub_premise": null
+        },
+        "bedrooms": 3,
+        "bathrooms": 3.5,
+        "square_feet": 1997.0,
+        "sale_status": "Condo for sale",
+        "acre_lot": null,
+        "tour_available": true,
+        "image_source": "https://ap.rdcpix.com/4d3c362b10c09e660683c73dcabaadb7l-m2394458264rd-w960_h720.jpg"
+    },
+    {
+        "price": 1200000,
+        "address": {
+            "country": "US",
+            "administrative_area": "NY",
+            "sub_administrative_area": null,
+            "locality": "Manhattan",
+            "postal_code": "10021",
+            "street": "E 72nd St",
+            "premise": "530",
+            "sub_premise": "19E"
+        },
+        "bedrooms": 2,
+        "bathrooms": 2.0,
+        "square_feet": 1650.0,
+        "sale_status": "Co-op for sale",
+        "acre_lot": null,
+        "tour_available": true,
+        "image_source": "https://ap.rdcpix.com/91d39be52e701db42e4431c6087cefa0l-m3743063290rd-w960_h720.jpg"
+    },
+    {
+        "price": 3499000,
+        "address": {
+            "country": "US",
+            "administrative_area": "NY",
+            "sub_administrative_area": null,
+            "locality": "New York",
+            "postal_code": "10016",
+            "street": "E 28th St",
+            "premise": null,
+            "sub_premise": "1502"
+        },
+        "bedrooms": null,
+        "bathrooms": 2.5,
+        "square_feet": null,
+        "sale_status": "House for sale",
+        "acre_lot": null,
+        "tour_available": true,
+        "image_source": "https://ap.rdcpix.com/d6727f550063b570f264681c5a02dbadl-m2733855201rd-w960_h720.jpg"
+    },
+    {
+        "price": 1600000,
+        "address": {
+            "country": "US",
+            "administrative_area": "NY",
+            "sub_administrative_area": null,
+            "locality": "Manhattan",
+            "postal_code": "10128",
+            "street": "Park Avenue Ave",
+            "premise": "1235",
+            "sub_premise": "1A"
+        },
+        "bedrooms": 2,
+        "bathrooms": 2.0,
+        "square_feet": 1462.0,
+        "sale_status": "Condo for sale",
+        "acre_lot": 9090.0,
+        "tour_available": true,
+        "image_source": "https://ap.rdcpix.com/76cdc0989c76927300825ce95399986el-m1472383696rd-w960_h720.jpg"
+    },
+    {
+        "price": 39500000,
+        "address": {
+            "country": "US",
+            "administrative_area": "NY",
+            "sub_administrative_area": null,
+            "locality": "Manhattan",
+            "postal_code": "10065",
+            "street": "E 63rd St",
+            "premise": "15",
+            "sub_premise": null
+        },
+        "bedrooms": 7,
+        "bathrooms": 8.5,
+        "square_feet": 18000.0,
+        "sale_status": "Townhouse for sale",
+        "acre_lot": 2500.0,
+        "tour_available": true,
+        "image_source": "https://ap.rdcpix.com/ce41937046ac4abddfa42f898f63e8c6l-m1078238204rd-w960_h720.jpg"
+    },
+    {
+        "price": 3350000,
+        "address": {
+            "country": "US",
+            "administrative_area": "NY",
+            "sub_administrative_area": null,
+            "locality": "New York",
+            "postal_code": "10128",
+            "street": "E 91st St",
+            "premise": "333",
+            "sub_premise": "31CD"
+        },
+        "bedrooms": 3,
+        "bathrooms": 3.5,
+        "square_feet": 2952.0,
+        "sale_status": "House for sale",
+        "acre_lot": null,
+        "tour_available": true,
+        "image_source": "https://ap.rdcpix.com/f20ef27e1c20415070b32c42b8eeaf04l-m1562535103rd-w960_h720.jpg"
+    },
+    {
+        "price": 795000,
+        "address": {
+            "country": "US",
+            "administrative_area": "NY",
+            "sub_administrative_area": null,
+            "locality": "New York",
+            "postal_code": "10065",
+            "street": "E 63rd St",
+            "premise": "425",
+            "sub_premise": "W7G"
+        },
+        "bedrooms": 1,
+        "bathrooms": 1.0,
+        "square_feet": null,
+        "sale_status": "House for sale",
+        "acre_lot": null,
+        "tour_available": true,
+        "image_source": "https://ap.rdcpix.com/b91c9b8b78d805af4e5cfd1175b73ef0l-m732247916rd-w960_h720.jpg"
+    },
+    {
+        "price": 1249000,
+        "address": {
+            "country": "US",
+            "administrative_area": "NY",
+            "sub_administrative_area": null,
+            "locality": "New York",
+            "postal_code": "10044",
+            "street": "Main St",
+            "premise": "531",
+            "sub_premise": "1213"
+        },
+        "bedrooms": 2,
+        "bathrooms": 2.0,
+        "square_feet": 1350.0,
+        "sale_status": "Co-op for sale",
+        "acre_lot": 2.77,
+        "tour_available": true,
+        "image_source": "https://ap.rdcpix.com/8b94fee1e8327789bdbeb53b03ef5085l-m1591763080rd-w960_h720.jpg"
+    },
+    {
+        "price": 3350000,
+        "address": {
+            "country": "US",
+            "administrative_area": "NY",
+            "sub_administrative_area": null,
+            "locality": "New York",
+            "postal_code": "10027",
+            "street": "W 121st St",
+            "premise": "14",
+            "sub_premise": null
+        },
+        "bedrooms": 6,
+        "bathrooms": 5.0,
+        "square_feet": 5320.0,
+        "sale_status": "Townhouse for sale",
+        "acre_lot": 2018.0,
+        "tour_available": true,
+        "image_source": "https://ap.rdcpix.com/ede851a09411c9741fdc661138cddc5al-m1500393674rd-w960_h720.jpg"
+    },
+    {
+        "price": 799000,
+        "address": {
+            "country": "US",
+            "administrative_area": "NY",
+            "sub_administrative_area": null,
+            "locality": "New York",
+            "postal_code": "10065",
+            "street": "E 63rd St",
+            "premise": "425",
+            "sub_premise": "W2G"
+        },
+        "bedrooms": 1,
+        "bathrooms": 1.0,
+        "square_feet": null,
+        "sale_status": "House for sale",
+        "acre_lot": null,
+        "tour_available": true,
+        "image_source": "https://ap.rdcpix.com/60bd23b2f85ff7e0d75a48963aff5c0bl-m983049901rd-w960_h720.jpg"
+    },
+    {
+        "price": 399000,
+        "address": {
+            "country": "US",
+            "administrative_area": "NY",
+            "sub_administrative_area": null,
+            "locality": "Manhattan",
+            "postal_code": "10019",
+            "street": "W 49th St",
+            "premise": "312",
+            "sub_premise": "5RW"
+        },
+        "bedrooms": 1,
+        "bathrooms": 1.0,
+        "square_feet": null,
+        "sale_status": "Co-op for sale",
+        "acre_lot": null,
+        "tour_available": true,
+        "image_source": "https://ap.rdcpix.com/678fe19bc3b7095db6f3f0244da5e00al-m130608053rd-w960_h720.jpg"
+    },
+    {
+        "price": 750000,
+        "address": {
+            "country": "US",
+            "administrative_area": "NY",
+            "sub_administrative_area": null,
+            "locality": "New York",
+            "postal_code": "10009",
+            "street": "E 5th St",
+            "premise": "753",
+            "sub_premise": "4C"
+        },
+        "bedrooms": 2,
+        "bathrooms": 2.0,
+        "square_feet": 741.0,
+        "sale_status": "Condo for sale",
+        "acre_lot": 2214.0,
+        "tour_available": true,
+        "image_source": "https://ap.rdcpix.com/01be2bc340adfba4c4a79bd903d7aa1cl-m3940439931rd-w960_h720.jpg"
+    },
+    {
+        "price": 3295000,
+        "address": {
+            "country": "US",
+            "administrative_area": "NY",
+            "sub_administrative_area": null,
+            "locality": "Manhattan",
+            "postal_code": "10024",
+            "street": "W End Ave",
+            "premise": "500",
+            "sub_premise": "5B"
+        },
+        "bedrooms": 4,
+        "bathrooms": 3.0,
+        "square_feet": 2488.0,
+        "sale_status": "Condo for sale",
+        "acre_lot": null,
+        "tour_available": true,
+        "image_source": "https://ap.rdcpix.com/17d79c5d7c594e21683011ae253b7c5el-m2171571991rd-w960_h720.jpg"
+    },
+    {
+        "price": 915000,
+        "address": {
+            "country": "US",
+            "administrative_area": "NY",
+            "sub_administrative_area": null,
+            "locality": "New York",
+            "postal_code": "10004",
+            "street": "West St",
+            "premise": "20",
+            "sub_premise": "11F"
+        },
+        "bedrooms": 3,
+        "bathrooms": 2.0,
+        "square_feet": 1415.0,
+        "sale_status": "Condo for sale",
+        "acre_lot": null,
+        "tour_available": true,
+        "image_source": "https://ap.rdcpix.com/ed817e78fdc51b69f2855f4afddf65f4l-m2935333341rd-w960_h720.jpg"
+    },
+    {
+        "price": 9995000,
+        "address": {
+            "country": "US",
+            "administrative_area": "NY",
+            "sub_administrative_area": null,
+            "locality": "New York",
+            "postal_code": "10011",
+            "street": "W 24th St",
+            "premise": "453",
+            "sub_premise": null
+        },
+        "bedrooms": 5,
+        "bathrooms": 3.0,
+        "square_feet": 4404.0,
+        "sale_status": "Townhouse for sale",
+        "acre_lot": null,
+        "tour_available": true,
+        "image_source": "https://ap.rdcpix.com/08adb7dc4680f4e0a32c83ead4d5f2a6l-m863382rd-w960_h720.jpg"
+    },
+    {
+        "price": 7000000,
+        "address": {
+            "country": "US",
+            "administrative_area": "NY",
+            "sub_administrative_area": null,
+            "locality": "Manhattan",
+            "postal_code": "10036",
+            "street": "W 46th St Ph 2",
+            "premise": "247",
+            "sub_premise": null
+        },
+        "bedrooms": 4,
+        "bathrooms": 7.0,
+        "square_feet": 4365.0,
+        "sale_status": "Condo for sale",
+        "acre_lot": null,
+        "tour_available": true,
+        "image_source": "https://ap.rdcpix.com/ac4054ebcfef7473be4583e69c476fecl-m2520807868rd-w960_h720.jpg"
+    },
+    {
+        "price": 2750000,
+        "address": {
+            "country": "US",
+            "administrative_area": "NY",
+            "sub_administrative_area": null,
+            "locality": "New York",
+            "postal_code": "10018",
+            "street": "W 36th St",
+            "premise": "70",
+            "sub_premise": "5C"
+        },
+        "bedrooms": null,
+        "bathrooms": 2.0,
+        "square_feet": 1932.0,
+        "sale_status": "House for sale",
+        "acre_lot": 9900.0,
+        "tour_available": true,
+        "image_source": "https://ap.rdcpix.com/2b4f38b04cce5c61ccb2023cc8121396l-m1556860644rd-w960_h720.jpg"
+    },
+    {
+        "price": 5795000,
+        "address": {
+            "country": "US",
+            "administrative_area": "NY",
+            "sub_administrative_area": null,
+            "locality": "Manhattan",
+            "postal_code": "10014",
+            "street": "Bedford St",
+            "premise": "10",
+            "sub_premise": null
+        },
+        "bedrooms": 6,
+        "bathrooms": 4.5,
+        "square_feet": 3780.0,
+        "sale_status": "Townhouse for sale",
+        "acre_lot": null,
+        "tour_available": true,
+        "image_source": "https://ap.rdcpix.com/a80266d469586b3cf4eb5039bc42e73al-m3904419237rd-w960_h720.jpg"
+    },
+    {
+        "price": 5500000,
+        "address": {
+            "country": "US",
+            "administrative_area": "NY",
+            "sub_administrative_area": null,
+            "locality": "New York",
+            "postal_code": "10018",
+            "street": "9th Ave",
+            "premise": "520",
+            "sub_premise": "Building"
+        },
+        "bedrooms": 6,
+        "bathrooms": 6.0,
+        "square_feet": null,
+        "sale_status": "House for sale",
+        "acre_lot": null,
+        "tour_available": true,
+        "image_source": "https://ap.rdcpix.com/6d77ae500a1f4744ce185a4be65aa4f0l-m2584118335rd-w960_h720.jpg"
+    },
+    {
+        "price": 35000000,
+        "address": {
+            "country": "US",
+            "administrative_area": "NY",
+            "sub_administrative_area": null,
+            "locality": "New York",
+            "postal_code": "10011",
+            "street": "W 12th St",
+            "premise": "34",
+            "sub_premise": null
+        },
+        "bedrooms": 5,
+        "bathrooms": 5.5,
+        "square_feet": 7373.0,
+        "sale_status": "Townhouse for sale",
+        "acre_lot": null,
+        "tour_available": true,
+        "image_source": "https://ap.rdcpix.com/189f4ed958059c217789a7639337f176l-m3525123998rd-w960_h720.jpg"
+    },
+    {
+        "price": 1675000,
+        "address": {
+            "country": "US",
+            "administrative_area": "NY",
+            "sub_administrative_area": null,
+            "locality": "Manhattan",
+            "postal_code": "10031",
+            "street": "W 140th St",
+            "premise": "475",
+            "sub_premise": null
+        },
+        "bedrooms": 8,
+        "bathrooms": 4.0,
+        "square_feet": 3588.0,
+        "sale_status": "Townhouse for sale",
+        "acre_lot": null,
+        "tour_available": true,
+        "image_source": "https://ap.rdcpix.com/1891628c55cfa9af23573c805881be1dl-m3741668499rd-w960_h720.jpg"
+    },
+    {
+        "price": 175000,
+        "address": {
+            "country": "US",
+            "administrative_area": "NY",
+            "sub_administrative_area": null,
+            "locality": "New York",
+            "postal_code": "10037",
+            "street": "Lenox Ave",
+            "premise": "430",
+            "sub_premise": "2F"
+        },
+        "bedrooms": null,
+        "bathrooms": 1.0,
+        "square_feet": null,
+        "sale_status": "Co-op for sale",
+        "acre_lot": null,
+        "tour_available": true,
+        "image_source": "https://ap.rdcpix.com/39a9c180afd41c0790b9e0ed35b5ee9el-m2470174918rd-w960_h720.jpg"
+    },
+    {
+        "price": 6750000,
+        "address": {
+            "country": "US",
+            "administrative_area": "NY",
+            "sub_administrative_area": null,
+            "locality": "Manhattan",
+            "postal_code": "10128",
+            "street": "E 89th St",
+            "premise": "412",
+            "sub_premise": null
+        },
+        "bedrooms": 8,
+        "bathrooms": 4.0,
+        "square_feet": 4290.0,
+        "sale_status": "Townhouse for sale",
+        "acre_lot": 2000.0,
+        "tour_available": true,
+        "image_source": "https://ap.rdcpix.com/781574430721792bbd79ec4e34322494l-m3250743753rd-w960_h720.jpg"
+    },
+    {
+        "price": 1795000,
+        "address": {
+            "country": "US",
+            "administrative_area": "NY",
+            "sub_administrative_area": null,
+            "locality": "New York",
+            "postal_code": "10023",
+            "street": "W 68th St",
+            "premise": "74",
+            "sub_premise": "4AB"
+        },
+        "bedrooms": 3,
+        "bathrooms": 2.0,
+        "square_feet": 1260.0,
+        "sale_status": "Co-op for sale",
+        "acre_lot": null,
+        "tour_available": true,
+        "image_source": "https://ap.rdcpix.com/26573af2c6679bd7c9e57c501841e920l-m3045855172rd-w960_h720.jpg"
+    },
+    {
+        "price": 750000,
+        "address": {
+            "country": "US",
+            "administrative_area": "NY",
+            "sub_administrative_area": null,
+            "locality": "New York",
+            "postal_code": "10024",
+            "street": "W 86th St",
+            "premise": "127",
+            "sub_premise": "5"
+        },
+        "bedrooms": 1,
+        "bathrooms": 1.0,
+        "square_feet": null,
+        "sale_status": "Co-op for sale",
+        "acre_lot": null,
+        "tour_available": true,
+        "image_source": "https://ap.rdcpix.com/4c558c1f6ab12fa6a1932bbca33eda86l-m3897971710rd-w960_h720.jpg"
+    },
+    {
+        "price": 2075,
+        "address": {
+            "country": "US",
+            "administrative_area": "NY",
+            "sub_administrative_area": null,
+            "locality": "New York",
+            "postal_code": "10029",
+            "street": "2nd Ave",
+            "premise": "2028",
+            "sub_premise": "A"
+        },
+        "bedrooms": 2,
+        "bathrooms": 2.0,
+        "square_feet": null,
+        "sale_status": "For Rent - House",
+        "acre_lot": null,
+        "tour_available": true,
+        "image_source": "https://ap.rdcpix.com/a86b4fcfb2c11525d41e97d035ae1ceal-m4037439443rd-w960_h720.jpg"
+    },
+    {
+        "price": 15621620,
+        "address": {
+            "country": "US",
+            "administrative_area": "New",
+            "sub_administrative_area": null,
+            "locality": "215 E 124th St",
+            "postal_code": "York",
+            "street": "The Reserve",
+            "premise": null,
+            "sub_premise": null
+        },
+        "bedrooms": null,
+        "bathrooms": 12.0,
+        "square_feet": 200.0,
+        "sale_status": "For Rent - Apartment",
+        "acre_lot": null,
+        "tour_available": true,
+        "image_source": "https://ar.rdcpix.com/1ffb44f8b8e113c2460e967734ff5292c-f3401457067rd-w960_h720.jpg"
+    },
+    {
+        "price": 47097678,
+        "address": {
+            "country": "US",
+            "administrative_area": "New",
+            "sub_administrative_area": null,
+            "locality": "560 W 43rd St",
+            "postal_code": "York",
+            "street": "Riverbank",
+            "premise": null,
+            "sub_premise": null
+        },
+        "bedrooms": 3,
+        "bathrooms": 12.0,
+        "square_feet": 3861126.0,
+        "sale_status": "For Rent - Apartment",
+        "acre_lot": null,
+        "tour_available": true,
+        "image_source": "https://ar.rdcpix.com/9d49c4dead35e5fa2d7deb863585f791c-f691209815rd-w960_h720.jpg"
+    },
+    {
+        "price": 33245516,
+        "address": {
+            "country": "US",
+            "administrative_area": "New",
+            "sub_administrative_area": null,
+            "locality": "888 Main St",
+            "postal_code": "York",
+            "street": "The Octagon",
+            "premise": null,
+            "sub_premise": null
+        },
+        "bedrooms": 3,
+        "bathrooms": 12.0,
+        "square_feet": 5001316.0,
+        "sale_status": "For Rent - Apartment",
+        "acre_lot": null,
+        "tour_available": true,
+        "image_source": "https://static.rdc.moveaws.com/images/common/photos-coming-soon.svg"
+    },
+    {
+        "price": 39819054,
+        "address": {
+            "country": "US",
+            "administrative_area": "New",
+            "sub_administrative_area": null,
+            "locality": "189 W 89th St",
+            "postal_code": "York",
+            "street": "The Sagamore",
+            "premise": null,
+            "sub_premise": null
+        },
+        "bedrooms": 2,
+        "bathrooms": 12.0,
+        "square_feet": 4791078.0,
+        "sale_status": "For Rent - Apartment",
+        "acre_lot": null,
+        "tour_available": true,
+        "image_source": "https://static.rdc.moveaws.com/images/common/photos-coming-soon.svg"
+    },
+    {
+        "price": 41738207,
+        "address": {
+            "country": "US",
+            "administrative_area": "New",
+            "sub_administrative_area": null,
+            "locality": "19 Dutch St",
+            "postal_code": "York",
+            "street": "Dutch",
+            "premise": "19",
+            "sub_premise": null
+        },
+        "bedrooms": 2,
+        "bathrooms": 12.0,
+        "square_feet": 4431052.0,
+        "sale_status": "For Rent - Apartment",
+        "acre_lot": null,
+        "tour_available": true,
+        "image_source": "https://static.rdc.moveaws.com/images/common/photos-coming-soon.svg"
+    },
+    {
+        "price": 3000,
+        "address": {
+            "country": "US",
+            "administrative_area": "NY",
+            "sub_administrative_area": null,
+            "locality": "New York",
+            "postal_code": "10025",
+            "street": "Central Park W",
+            "premise": "485",
+            "sub_premise": "2G"
+        },
+        "bedrooms": 1,
+        "bathrooms": 1.0,
+        "square_feet": null,
+        "sale_status": "For Rent - Apartment",
+        "acre_lot": null,
+        "tour_available": true,
+        "image_source": "https://static.rdc.moveaws.com/images/common/photos-coming-soon.svg"
+    },
+    {
+        "price": 34806800,
+        "address": {
+            "country": "US",
+            "administrative_area": "New",
+            "sub_administrative_area": null,
+            "locality": "55 Broad St",
+            "postal_code": "York",
+            "street": "Broad Street",
+            "premise": "55",
+            "sub_premise": null
+        },
+        "bedrooms": 2,
+        "bathrooms": 12.0,
+        "square_feet": null,
+        "sale_status": "For Rent - Apartment",
+        "acre_lot": null,
+        "tour_available": true,
+        "image_source": "https://static.rdc.moveaws.com/images/common/photos-coming-soon.svg"
+    },
+    {
+        "price": 925000,
+        "address": {
+            "country": "US",
+            "administrative_area": "NY",
+            "sub_administrative_area": null,
+            "locality": "New York",
+            "postal_code": "10021",
+            "street": "E 74th St",
+            "premise": "401",
+            "sub_premise": "3R"
+        },
+        "bedrooms": 2,
+        "bathrooms": 1.0,
+        "square_feet": 975.0,
+        "sale_status": "Co-op for sale",
+        "acre_lot": null,
+        "tour_available": true,
+        "image_source": "https://ap.rdcpix.com/bdea915e0c232e856a076cbfa2ab4b53l-m1781408966rd-w960_h720.jpg"
+    },
+    {
+        "price": 939000,
+        "address": {
+            "country": "US",
+            "administrative_area": "NY",
+            "sub_administrative_area": null,
+            "locality": "Manhattan",
+            "postal_code": "10023",
+            "street": "W 76th St",
+            "premise": "44",
+            "sub_premise": "2"
+        },
+        "bedrooms": 1,
+        "bathrooms": 1.0,
+        "square_feet": 650.0,
+        "sale_status": "Condo for sale",
+        "acre_lot": null,
+        "tour_available": true,
+        "image_source": "https://ap.rdcpix.com/e4418b3aa63862d6ac0520af452dacc7l-m809093797rd-w960_h720.jpg"
+    },
+    {
+        "price": 2550000,
+        "address": {
+            "country": "US",
+            "administrative_area": "NY",
+            "sub_administrative_area": null,
+            "locality": "New York",
+            "postal_code": "10007",
+            "street": "Chambers St",
+            "premise": "49",
+            "sub_premise": "14H"
+        },
+        "bedrooms": 2,
+        "bathrooms": 2.0,
+        "square_feet": 1459.0,
+        "sale_status": "Condo for sale",
+        "acre_lot": null,
+        "tour_available": true,
+        "image_source": "https://ap.rdcpix.com/e8f40fed1ce67a79c7c2af494cec02e5l-m2521436723rd-w960_h720.jpg"
+    },
+    {
+        "price": 290000,
+        "address": {
+            "country": "US",
+            "administrative_area": "NY",
+            "sub_administrative_area": null,
+            "locality": "Manhattan",
+            "postal_code": "10022",
+            "street": "E 53rd St",
+            "premise": "334",
+            "sub_premise": "3A"
+        },
+        "bedrooms": null,
+        "bathrooms": 1.0,
+        "square_feet": 300.0,
+        "sale_status": "Co-op for sale",
+        "acre_lot": null,
+        "tour_available": true,
+        "image_source": "https://ap.rdcpix.com/4d5478fdc726921da4633ece8b8bbaa5l-m2856536134rd-w960_h720.jpg"
+    },
+    {
+        "price": 495000,
+        "address": {
+            "country": "US",
+            "administrative_area": "NY",
+            "sub_administrative_area": null,
+            "locality": "New York",
+            "postal_code": "10033",
+            "street": "Pinehurst Ave",
+            "premise": "116",
+            "sub_premise": "G33"
+        },
+        "bedrooms": 1,
+        "bathrooms": 1.0,
+        "square_feet": null,
+        "sale_status": "Co-op for sale",
+        "acre_lot": 4.39,
+        "tour_available": true,
+        "image_source": "https://ap.rdcpix.com/9b4db2f1da6846375f7ebcab3732b0f5l-m3707372093rd-w960_h720.jpg"
+    },
+    {
+        "price": 575000,
+        "address": {
+            "country": "US",
+            "administrative_area": "NY",
+            "sub_administrative_area": null,
+            "locality": "Manhattan",
+            "postal_code": "10035",
+            "street": "3rd Ave",
+            "premise": "2279",
+            "sub_premise": "6B"
+        },
+        "bedrooms": 1,
+        "bathrooms": 1.0,
+        "square_feet": 868.0,
+        "sale_status": "Condo for sale",
+        "acre_lot": null,
+        "tour_available": true,
+        "image_source": "https://ap.rdcpix.com/8932bee6e9840a4f630d7e66a82d5ba1l-m2108849656rd-w960_h720.jpg"
+    },
+    {
+        "price": 1100000,
+        "address": {
+            "country": "US",
+            "administrative_area": "NY",
+            "sub_administrative_area": null,
+            "locality": "Manhattan",
+            "postal_code": "10002",
+            "street": "Henry St",
+            "premise": "161",
+            "sub_premise": "5A"
+        },
+        "bedrooms": 2,
+        "bathrooms": 1.0,
+        "square_feet": null,
+        "sale_status": "Condo for sale",
+        "acre_lot": null,
+        "tour_available": true,
+        "image_source": "https://ap.rdcpix.com/3d18eed24ac96e189ba193d06b195e6el-m1943528237rd-w960_h720.jpg"
+    },
+    {
+        "price": 4000000,
+        "address": {
+            "country": "US",
+            "administrative_area": "NY",
+            "sub_administrative_area": null,
+            "locality": "Manhattan",
+            "postal_code": "10012",
+            "street": "Prince St",
+            "premise": "100",
+            "sub_premise": "5W"
+        },
+        "bedrooms": 2,
+        "bathrooms": 1.0,
+        "square_feet": 2540.0,
+        "sale_status": "Co-op for sale",
+        "acre_lot": null,
+        "tour_available": true,
+        "image_source": "https://ap.rdcpix.com/cb7b970e48783709e7265fa177f3684al-m411699802rd-w960_h720.jpg"
+    },
+    {
+        "price": 579900,
+        "address": {
+            "country": "US",
+            "administrative_area": "NY",
+            "sub_administrative_area": null,
+            "locality": "New York",
+            "postal_code": "10025",
+            "street": "Central Park W",
+            "premise": "485",
+            "sub_premise": "2G"
+        },
+        "bedrooms": 1,
+        "bathrooms": 1.0,
+        "square_feet": null,
+        "sale_status": "Co-op for sale",
+        "acre_lot": null,
+        "tour_available": true,
+        "image_source": "https://ap.rdcpix.com/522c6bf157d4850d9926ca792dc5603fl-m4106973901rd-w960_h720.jpg"
+    },
+    {
+        "price": 975000,
+        "address": {
+            "country": "US",
+            "administrative_area": "NY",
+            "sub_administrative_area": null,
+            "locality": "New York",
+            "postal_code": "10022",
+            "street": "E 55th St",
+            "premise": "235",
+            "sub_premise": "45B"
+        },
+        "bedrooms": 1,
+        "bathrooms": 1.5,
+        "square_feet": 900.0,
+        "sale_status": "House for sale",
+        "acre_lot": null,
+        "tour_available": true,
+        "image_source": "https://ap.rdcpix.com/737d3ca705c0f92b31b372bb5214b006l-m3686959960rd-w960_h720.jpg"
+    },
+    {
+        "price": 1399000,
+        "address": {
+            "country": "US",
+            "administrative_area": "NY",
+            "sub_administrative_area": null,
+            "locality": "Manhattan",
+            "postal_code": "10025",
+            "street": "Morningside Dr",
+            "premise": "50",
+            "sub_premise": "32"
+        },
+        "bedrooms": 3,
+        "bathrooms": 2.0,
+        "square_feet": null,
+        "sale_status": "Co-op for sale",
+        "acre_lot": null,
+        "tour_available": true,
+        "image_source": "https://ap.rdcpix.com/df1fb4fa18fb0c3ff15732abd4096568l-m118391469rd-w960_h720.jpg"
+    },
+    {
+        "price": 16608375,
+        "address": {
+            "country": "US",
+            "administrative_area": "NY",
+            "sub_administrative_area": null,
+            "locality": "Manhattan",
+            "postal_code": "11201",
+            "street": "Warren St",
+            "premise": "75",
+            "sub_premise": null
+        },
+        "bedrooms": 6,
+        "bathrooms": 6.0,
+        "square_feet": 1080.0,
+        "sale_status": "Townhouse for sale",
+        "acre_lot": null,
+        "tour_available": true,
+        "image_source": "https://ap.rdcpix.com/199098f2d7de1c456b0ed9aaa02d9afel-m1280122635rd-w960_h720.jpg"
+    },
+    {
+        "price": 849000,
+        "address": {
+            "country": "US",
+            "administrative_area": "NY",
+            "sub_administrative_area": null,
+            "locality": "Manhattan",
+            "postal_code": "10025",
+            "street": "Central Park W",
+            "premise": "418",
+            "sub_premise": "3"
+        },
+        "bedrooms": 1,
+        "bathrooms": 1.0,
+        "square_feet": 723.0,
+        "sale_status": "Pending",
+        "acre_lot": null,
+        "tour_available": true,
+        "image_source": "https://ap.rdcpix.com/cb49b391f521ffb6900292b9bc960fafl-m1053855139rd-w960_h720.jpg"
+    },
+    {
+        "price": 450000,
+        "address": {
+            "country": "US",
+            "administrative_area": "NY",
+            "sub_administrative_area": null,
+            "locality": "New York",
+            "postal_code": "10011",
+            "street": "W 24th St",
+            "premise": "410",
+            "sub_premise": "4E"
+        },
+        "bedrooms": 1,
+        "bathrooms": 1.0,
+        "square_feet": 900.0,
+        "sale_status": "Co-op for sale",
+        "acre_lot": null,
+        "tour_available": true,
+        "image_source": "https://ap.rdcpix.com/20200abe247f5b6122829499c1a81884l-m2051194670rd-w960_h720.jpg"
+    },
+    {
+        "price": 475000,
+        "address": {
+            "country": "US",
+            "administrative_area": "NY",
+            "sub_administrative_area": null,
+            "locality": "New York",
+            "postal_code": "10044",
+            "street": "Main St",
+            "premise": "531",
+            "sub_premise": "1504"
+        },
+        "bedrooms": null,
+        "bathrooms": 1.5,
+        "square_feet": null,
+        "sale_status": "Co-op for sale",
+        "acre_lot": 2.77,
+        "tour_available": true,
+        "image_source": "https://ap.rdcpix.com/20fde464156ed098966925a2d07131cel-m1629455526rd-w960_h720.jpg"
+    },
+    {
+        "price": 499000,
+        "address": {
+            "country": "US",
+            "administrative_area": "NY",
+            "sub_administrative_area": null,
+            "locality": "New York",
+            "postal_code": "10019",
+            "street": "W 57th St",
+            "premise": "100",
+            "sub_premise": "11J"
+        },
+        "bedrooms": 3,
+        "bathrooms": 2.0,
+        "square_feet": 1550.0,
+        "sale_status": "Co-op for sale",
+        "acre_lot": null,
+        "tour_available": true,
+        "image_source": "https://ap.rdcpix.com/3313dc635a03102c71d10312810838edl-m3649031033rd-w960_h720.jpg"
+    },
+    {
+        "price": 4000000,
+        "address": {
+            "country": "US",
+            "administrative_area": "NY",
+            "sub_administrative_area": null,
+            "locality": "Manhattan",
+            "postal_code": "10007",
+            "street": "Warren St",
+            "premise": "16",
+            "sub_premise": "Penthouse"
+        },
+        "bedrooms": 3,
+        "bathrooms": 3.5,
+        "square_feet": 3381.0,
+        "sale_status": "Condo for sale",
+        "acre_lot": null,
+        "tour_available": true,
+        "image_source": "https://ap.rdcpix.com/39ec894750cbbab054b4ba4ea7477232l-m173477541rd-w960_h720.jpg"
+    },
+    {
+        "price": 1900000,
+        "address": {
+            "country": "US",
+            "administrative_area": "NY",
+            "sub_administrative_area": null,
+            "locality": "Manhattan",
+            "postal_code": "10025",
+            "street": "W End Ave",
+            "premise": "645",
+            "sub_premise": "9C"
+        },
+        "bedrooms": 3,
+        "bathrooms": 3.0,
+        "square_feet": 1500.0,
+        "sale_status": "Co-op for sale",
+        "acre_lot": null,
+        "tour_available": true,
+        "image_source": "https://ap.rdcpix.com/c0e2d7533c28c7660a6cc50c04327e07l-m1832353248rd-w960_h720.jpg"
+    },
+    {
+        "price": 429000,
+        "address": {
+            "country": "US",
+            "administrative_area": "NY",
+            "sub_administrative_area": null,
+            "locality": "New York",
+            "postal_code": "10025",
+            "street": "Riverside Dr",
+            "premise": "214",
+            "sub_premise": "407"
+        },
+        "bedrooms": null,
+        "bathrooms": 1.0,
+        "square_feet": null,
+        "sale_status": "Co-op for sale",
+        "acre_lot": null,
+        "tour_available": true,
+        "image_source": "https://ap.rdcpix.com/9c7210f2d4804b7d2fb18141228647a6l-m1072363957rd-w960_h720.jpg"
+    },
+    {
+        "price": 2695000,
+        "address": {
+            "country": "US",
+            "administrative_area": "NY",
+            "sub_administrative_area": null,
+            "locality": "New York",
+            "postal_code": "10026",
+            "street": "W 113th St",
+            "premise": "303",
+            "sub_premise": "Th"
+        },
+        "bedrooms": 4,
+        "bathrooms": 3.5,
+        "square_feet": 2498.0,
+        "sale_status": "Condo for sale",
+        "acre_lot": null,
+        "tour_available": true,
+        "image_source": "https://ap.rdcpix.com/6d36a792d0d524bc0f4252a6d4e61096l-m2695450294rd-w960_h720.jpg"
+    },
+    {
+        "price": 465000,
+        "address": {
+            "country": "US",
+            "administrative_area": "NY",
+            "sub_administrative_area": null,
+            "locality": "New York",
+            "postal_code": "10024",
+            "street": "W 86th St",
+            "premise": "257",
+            "sub_premise": "9C"
+        },
+        "bedrooms": 1,
+        "bathrooms": 1.0,
+        "square_feet": null,
+        "sale_status": "Co-op for sale",
+        "acre_lot": 7575.0,
+        "tour_available": true,
+        "image_source": "https://ap.rdcpix.com/1c2a2887a8736fac46e98a4ad88e5122l-m870269452rd-w960_h720.jpg"
+    },
+    {
+        "price": 275000,
+        "address": {
+            "country": "US",
+            "administrative_area": "NY",
+            "sub_administrative_area": null,
+            "locality": "New York",
+            "postal_code": "10028",
+            "street": "E 84th St",
+            "premise": "148",
+            "sub_premise": "3C"
+        },
+        "bedrooms": 1,
+        "bathrooms": 1.0,
+        "square_feet": null,
+        "sale_status": "Co-op for sale",
+        "acre_lot": null,
+        "tour_available": true,
+        "image_source": "https://ap.rdcpix.com/5a821117d108da04ef2b09d617d0a039l-m1786655066rd-w960_h720.jpg"
+    },
+    {
+        "price": 550000,
+        "address": {
+            "country": "US",
+            "administrative_area": "NY",
+            "sub_administrative_area": null,
+            "locality": "New York",
+            "postal_code": "10065",
+            "street": "E 63rd St",
+            "premise": "205",
+            "sub_premise": "14D"
+        },
+        "bedrooms": 2,
+        "bathrooms": 2.0,
+        "square_feet": 1335.0,
+        "sale_status": "Co-op for sale",
+        "acre_lot": null,
+        "tour_available": true,
+        "image_source": "https://ap.rdcpix.com/d134beb5892e3cc30148fc5ada12ade6l-m1857452235rd-w960_h720.jpg"
+    },
+    {
+        "price": 68000000,
+        "address": {
+            "country": "US",
+            "administrative_area": "NY",
+            "sub_administrative_area": null,
+            "locality": "New York",
+            "postal_code": "10022",
+            "street": "Park Ave",
+            "premise": "432",
+            "sub_premise": "71"
+        },
+        "bedrooms": 8,
+        "bathrooms": 7.5,
+        "square_feet": 8108.0,
+        "sale_status": "Condo for sale",
+        "acre_lot": null,
+        "tour_available": true,
+        "image_source": "https://ap.rdcpix.com/0d697de11b51d3c9bf7861796a0ef616l-b3124613242rd-w960_h720.jpg"
+    },
+    {
+        "price": 399000,
+        "address": {
+            "country": "US",
+            "administrative_area": "NY",
+            "sub_administrative_area": null,
+            "locality": "New York",
+            "postal_code": "10009",
+            "street": "E 14th St",
+            "premise": "630",
+            "sub_premise": "16"
+        },
+        "bedrooms": 1,
+        "bathrooms": 1.0,
+        "square_feet": 450.0,
+        "sale_status": "Co-op for sale",
+        "acre_lot": null,
+        "tour_available": true,
+        "image_source": "https://ap.rdcpix.com/1f2b30c61afbe7d49064a1429982eda6l-m3074110896rd-w960_h720.jpg"
+    },
+    {
+        "price": 11900000,
+        "address": {
+            "country": "US",
+            "administrative_area": "NY",
+            "sub_administrative_area": null,
+            "locality": "New York",
+            "postal_code": "10011",
+            "street": "W 14th St",
+            "premise": "251",
+            "sub_premise": "Penthouse"
+        },
+        "bedrooms": 4,
+        "bathrooms": 4.5,
+        "square_feet": 3619.0,
+        "sale_status": "House for sale",
+        "acre_lot": null,
+        "tour_available": true,
+        "image_source": "https://ap.rdcpix.com/0dceaa7de8a2d1b17afbdf467bf12533l-m1167257258rd-w960_h720.jpg"
+    },
+    {
+        "price": 4995000,
+        "address": {
+            "country": "US",
+            "administrative_area": "NY",
+            "sub_administrative_area": null,
+            "locality": "New York",
+            "postal_code": "10024",
+            "street": "W 88th St",
+            "premise": "166",
+            "sub_premise": null
+        },
+        "bedrooms": 6,
+        "bathrooms": 4.5,
+        "square_feet": null,
+        "sale_status": "Multi-family home for sale",
+        "acre_lot": null,
+        "tour_available": true,
+        "image_source": "https://ap.rdcpix.com/9910ac66b1977fbcd1f63507a2d9f680l-m792679230rd-w960_h720.jpg"
+    },
+    {
+        "price": 1700000,
+        "address": {
+            "country": "US",
+            "administrative_area": "NY",
+            "sub_administrative_area": null,
+            "locality": "Manhattan",
+            "postal_code": "10032",
+            "street": "W 165th St",
+            "premise": "546",
+            "sub_premise": null
+        },
+        "bedrooms": 15,
+        "bathrooms": 6.0,
+        "square_feet": 8125.0,
+        "sale_status": "Multi-family home for sale",
+        "acre_lot": null,
+        "tour_available": true,
+        "image_source": "https://ap.rdcpix.com/c13c6ba66638d74cca0839ea7ee13f4cl-m2806096684rd-w960_h720.jpg"
+    },
+    {
+        "price": 13500000,
+        "address": {
+            "country": "US",
+            "administrative_area": "NY",
+            "sub_administrative_area": null,
+            "locality": "Manhattan",
+            "postal_code": "10011",
+            "street": "W 10th St",
+            "premise": "28",
+            "sub_premise": null
+        },
+        "bedrooms": 7,
+        "bathrooms": 7.5,
+        "square_feet": 7038.0,
+        "sale_status": "Townhouse for sale",
+        "acre_lot": null,
+        "tour_available": true,
+        "image_source": "https://ap.rdcpix.com/77637fa27ec6982100df8c1139e5b995l-m2636024309rd-w960_h720.jpg"
+    },
+    {
+        "price": 49500000,
+        "address": {
+            "country": "US",
+            "administrative_area": "NY",
+            "sub_administrative_area": null,
+            "locality": "New York",
+            "postal_code": "10019",
+            "street": "W 54th St",
+            "premise": "9",
+            "sub_premise": null
+        },
+        "bedrooms": 11,
+        "bathrooms": 10.0,
+        "square_feet": 24000.0,
+        "sale_status": "House for sale",
+        "acre_lot": null,
+        "tour_available": true,
+        "image_source": "https://ap.rdcpix.com/fe04913eaaa8552644ee83bd3595ef9bl-m3549088937rd-w960_h720.jpg"
+    },
+    {
+        "price": 1500000,
+        "address": {
+            "country": "US",
+            "administrative_area": "NY",
+            "sub_administrative_area": null,
+            "locality": "New York",
+            "postal_code": "10025",
+            "street": "Riverside Dr",
+            "premise": "258",
+            "sub_premise": null
+        },
+        "bedrooms": 3,
+        "bathrooms": 2.0,
+        "square_feet": 1476.0,
+        "sale_status": "Co-op for sale",
+        "acre_lot": 0.25,
+        "tour_available": true,
+        "image_source": "https://ap.rdcpix.com/d49912756678ebe7c771afd4306198abl-m3410513067rd-w960_h720.jpg"
+    },
+    {
+        "price": 550000,
+        "address": {
+            "country": "US",
+            "administrative_area": "NY",
+            "sub_administrative_area": null,
+            "locality": "Manhattan",
+            "postal_code": "10016",
+            "street": "E 35th St",
+            "premise": "234",
+            "sub_premise": "3R"
+        },
+        "bedrooms": 2,
+        "bathrooms": 1.0,
+        "square_feet": null,
+        "sale_status": "Co-op for sale",
+        "acre_lot": null,
+        "tour_available": true,
+        "image_source": "https://ap.rdcpix.com/44fea954bfc0302b9f7c2f8d381feb20l-m3861258528rd-w960_h720.jpg"
+    },
+    {
+        "price": 4750000,
+        "address": {
+            "country": "US",
+            "administrative_area": "NY",
+            "sub_administrative_area": null,
+            "locality": "New York",
+            "postal_code": "10011",
+            "street": "W 14th St",
+            "premise": "251",
+            "sub_premise": "9A"
+        },
+        "bedrooms": 2,
+        "bathrooms": 2.5,
+        "square_feet": 1563.0,
+        "sale_status": "House for sale",
+        "acre_lot": null,
+        "tour_available": true,
+        "image_source": "https://ap.rdcpix.com/676d99be1d2c22c54d092a0e7962778el-m3048408098rd-w960_h720.jpg"
+    },
+    {
+        "price": 1295000,
+        "address": {
+            "country": "US",
+            "administrative_area": "NY",
+            "sub_administrative_area": null,
+            "locality": "New York",
+            "postal_code": "10022",
+            "street": "Sutton Pl S",
+            "premise": "14",
+            "sub_premise": "13F"
+        },
+        "bedrooms": 2,
+        "bathrooms": 2.0,
+        "square_feet": null,
+        "sale_status": "Co-op for sale",
+        "acre_lot": null,
+        "tour_available": true,
+        "image_source": "https://ap.rdcpix.com/10182d70c0230eff9e6c46b8147d254dl-m3862593589rd-w960_h720.jpg"
+    },
+    {
+        "price": 249000,
+        "address": {
+            "country": "US",
+            "administrative_area": "NY",
+            "sub_administrative_area": null,
+            "locality": "New York",
+            "postal_code": "10016",
+            "street": "E 32nd St",
+            "premise": "251",
+            "sub_premise": "21F"
+        },
+        "bedrooms": null,
+        "bathrooms": 1.0,
+        "square_feet": null,
+        "sale_status": "Contingent",
+        "acre_lot": null,
+        "tour_available": true,
+        "image_source": "https://ap.rdcpix.com/98d19bfe81abba662862d38e37063fc6l-m3047452160rd-w960_h720.jpg"
+    },
+    {
+        "price": 1195000,
+        "address": {
+            "country": "US",
+            "administrative_area": "NY",
+            "sub_administrative_area": null,
+            "locality": "Manhattan",
+            "postal_code": "10014",
+            "street": "Bethune St",
+            "premise": "8",
+            "sub_premise": "14"
+        },
+        "bedrooms": 2,
+        "bathrooms": 1.0,
+        "square_feet": null,
+        "sale_status": "Co-op for sale",
+        "acre_lot": null,
+        "tour_available": true,
+        "image_source": "https://ap.rdcpix.com/bc3d71d142031d3d1e63df3466167b9fl-m118791137rd-w960_h720.jpg"
+    },
+    {
+        "price": 775000,
+        "address": {
+            "country": "US",
+            "administrative_area": "NY",
+            "sub_administrative_area": null,
+            "locality": "Manhattan",
+            "postal_code": "10032",
+            "street": "Riverside Dr",
+            "premise": "807",
+            "sub_premise": "3B"
+        },
+        "bedrooms": 3,
+        "bathrooms": 1.5,
+        "square_feet": 1221.0,
+        "sale_status": "Condo for sale",
+        "acre_lot": null,
+        "tour_available": true,
+        "image_source": "https://ap.rdcpix.com/e06131112a11995b822c7a24ac412cc0l-m2797194703rd-w960_h720.jpg"
+    },
+    {
+        "price": 1650000,
+        "address": {
+            "country": "US",
+            "administrative_area": "NY",
+            "sub_administrative_area": null,
+            "locality": "New York",
+            "postal_code": "10011",
+            "street": "W 14th St",
+            "premise": "251",
+            "sub_premise": "4B"
+        },
+        "bedrooms": 1,
+        "bathrooms": 1.0,
+        "square_feet": 784.0,
+        "sale_status": "House for sale",
+        "acre_lot": null,
+        "tour_available": true,
+        "image_source": "https://ap.rdcpix.com/435f9e67ba9ff1966c9f7455f940900fl-m3048408098rd-w960_h720.jpg"
+    },
+    {
+        "price": 300000,
+        "address": {
+            "country": "US",
+            "administrative_area": "NY",
+            "sub_administrative_area": null,
+            "locality": "New York",
+            "postal_code": "10039",
+            "street": "Macombs Pl",
+            "premise": "30",
+            "sub_premise": "61"
+        },
+        "bedrooms": 2,
+        "bathrooms": 1.0,
+        "square_feet": 600.0,
+        "sale_status": "Co-op for sale",
+        "acre_lot": null,
+        "tour_available": true,
+        "image_source": "https://ap.rdcpix.com/b31affccf204f51b71affcebd96a0134l-m1005310165rd-w960_h720.jpg"
+    },
+    {
+        "price": 7095000,
+        "address": {
+            "country": "US",
+            "administrative_area": "NY",
+            "sub_administrative_area": null,
+            "locality": "New York",
+            "postal_code": "10023",
+            "street": "W 72nd St",
+            "premise": "212",
+            "sub_premise": "18E"
+        },
+        "bedrooms": 4,
+        "bathrooms": 4.5,
+        "square_feet": 2371.0,
+        "sale_status": "Condo for sale",
+        "acre_lot": null,
+        "tour_available": true,
+        "image_source": "https://ap.rdcpix.com/c95d6d388082ce65a85c99626f60d3d1l-m449684403rd-w960_h720.jpg"
+    },
+    {
+        "price": 250000,
+        "address": {
+            "country": "US",
+            "administrative_area": "NY",
+            "sub_administrative_area": null,
+            "locality": "New York",
+            "postal_code": "10034",
+            "street": "Nagle Ave",
+            "premise": "278",
+            "sub_premise": "2E"
+        },
+        "bedrooms": 2,
+        "bathrooms": 1.0,
+        "square_feet": null,
+        "sale_status": "Co-op for sale",
+        "acre_lot": null,
+        "tour_available": true,
+        "image_source": "https://ap.rdcpix.com/a215e4ddf7695926c704f83584e02a75l-m645357042rd-w960_h720.jpg"
+    },
+    {
+        "price": 3595000,
+        "address": {
+            "country": "US",
+            "administrative_area": "NY",
+            "sub_administrative_area": null,
+            "locality": "New York",
+            "postal_code": "10023",
+            "street": "W 72nd St",
+            "premise": "212",
+            "sub_premise": "7J"
+        },
+        "bedrooms": 3,
+        "bathrooms": 2.5,
+        "square_feet": 1694.0,
+        "sale_status": "Condo for sale",
+        "acre_lot": null,
+        "tour_available": true,
+        "image_source": "https://ap.rdcpix.com/a2753889e257a37c02b0aa8ff5a2d428l-m872897987rd-w960_h720.jpg"
+    },
+    {
+        "price": 2075,
+        "address": {
+            "country": "US",
+            "administrative_area": "NY",
+            "sub_administrative_area": null,
+            "locality": "New York",
+            "postal_code": "10029",
+            "street": "2nd Ave",
+            "premise": "2028",
+            "sub_premise": "A"
+        },
+        "bedrooms": 2,
+        "bathrooms": 2.0,
+        "square_feet": null,
+        "sale_status": "For Rent - House",
+        "acre_lot": null,
+        "tour_available": true,
+        "image_source": "https://ap.rdcpix.com/a86b4fcfb2c11525d41e97d035ae1ceal-m4037439443rd-w960_h720.jpg"
+    },
+    {
+        "price": 15621620,
+        "address": {
+            "country": "US",
+            "administrative_area": "New",
+            "sub_administrative_area": null,
+            "locality": "215 E 124th St",
+            "postal_code": "York",
+            "street": "The Reserve",
+            "premise": null,
+            "sub_premise": null
+        },
+        "bedrooms": null,
+        "bathrooms": 12.0,
+        "square_feet": 200.0,
+        "sale_status": "For Rent - Apartment",
+        "acre_lot": null,
+        "tour_available": true,
+        "image_source": "https://ar.rdcpix.com/1ffb44f8b8e113c2460e967734ff5292c-f3401457067rd-w960_h720.jpg"
+    },
+    {
+        "price": 47097678,
+        "address": {
+            "country": "US",
+            "administrative_area": "New",
+            "sub_administrative_area": null,
+            "locality": "560 W 43rd St",
+            "postal_code": "York",
+            "street": "Riverbank",
+            "premise": null,
+            "sub_premise": null
+        },
+        "bedrooms": 3,
+        "bathrooms": 12.0,
+        "square_feet": 3861126.0,
+        "sale_status": "For Rent - Apartment",
+        "acre_lot": null,
+        "tour_available": true,
+        "image_source": "https://ar.rdcpix.com/9d49c4dead35e5fa2d7deb863585f791c-f691209815rd-w960_h720.jpg"
+    },
+    {
+        "price": 33245516,
+        "address": {
+            "country": "US",
+            "administrative_area": "New",
+            "sub_administrative_area": null,
+            "locality": "888 Main St",
+            "postal_code": "York",
+            "street": "The Octagon",
+            "premise": null,
+            "sub_premise": null
+        },
+        "bedrooms": 3,
+        "bathrooms": 12.0,
+        "square_feet": 5001316.0,
+        "sale_status": "For Rent - Apartment",
+        "acre_lot": null,
+        "tour_available": true,
+        "image_source": "https://static.rdc.moveaws.com/images/common/photos-coming-soon.svg"
+    },
+    {
+        "price": 39819054,
+        "address": {
+            "country": "US",
+            "administrative_area": "New",
+            "sub_administrative_area": null,
+            "locality": "189 W 89th St",
+            "postal_code": "York",
+            "street": "The Sagamore",
+            "premise": null,
+            "sub_premise": null
+        },
+        "bedrooms": 2,
+        "bathrooms": 12.0,
+        "square_feet": 4791078.0,
+        "sale_status": "For Rent - Apartment",
+        "acre_lot": null,
+        "tour_available": true,
+        "image_source": "https://static.rdc.moveaws.com/images/common/photos-coming-soon.svg"
+    },
+    {
+        "price": 41738207,
+        "address": {
+            "country": "US",
+            "administrative_area": "New",
+            "sub_administrative_area": null,
+            "locality": "19 Dutch St",
+            "postal_code": "York",
+            "street": "Dutch",
+            "premise": "19",
+            "sub_premise": null
+        },
+        "bedrooms": 2,
+        "bathrooms": 12.0,
+        "square_feet": 4431052.0,
+        "sale_status": "For Rent - Apartment",
+        "acre_lot": null,
+        "tour_available": true,
+        "image_source": "https://static.rdc.moveaws.com/images/common/photos-coming-soon.svg"
+    },
+    {
+        "price": 3000,
+        "address": {
+            "country": "US",
+            "administrative_area": "NY",
+            "sub_administrative_area": null,
+            "locality": "New York",
+            "postal_code": "10025",
+            "street": "Central Park W",
+            "premise": "485",
+            "sub_premise": "2G"
+        },
+        "bedrooms": 1,
+        "bathrooms": 1.0,
+        "square_feet": null,
+        "sale_status": "For Rent - Apartment",
+        "acre_lot": null,
+        "tour_available": true,
+        "image_source": "https://static.rdc.moveaws.com/images/common/photos-coming-soon.svg"
+    },
+    {
+        "price": 34806800,
+        "address": {
+            "country": "US",
+            "administrative_area": "New",
+            "sub_administrative_area": null,
+            "locality": "55 Broad St",
+            "postal_code": "York",
+            "street": "Broad Street",
+            "premise": "55",
+            "sub_premise": null
+        },
+        "bedrooms": 2,
+        "bathrooms": 12.0,
+        "square_feet": null,
+        "sale_status": "For Rent - Apartment",
+        "acre_lot": null,
+        "tour_available": true,
+        "image_source": "https://static.rdc.moveaws.com/images/common/photos-coming-soon.svg"
+    }
+]
