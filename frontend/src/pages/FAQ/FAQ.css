@@ -2,7 +2,7 @@
     display: flex;
     flex-direction: column;
     min-height: 100vh;
-    max-height: 90vh;
+    /* max-height: 90vh; */
     background-image: url(../../assets/FAQ_Background.svg);
     background-size: cover;
     background-position: center;
@@ -86,4 +86,19 @@
     max-height: 200px;
     padding: 10px 15px;
     display: block;
+}
+
+@media (max-width: 768px) {
+    .faq-title {
+        font-size: 10vw;
+        margin-top: 25%;
+    }
+
+    .faq-question{
+        font-size: 1.25rem;
+    }
+    
+    .faq-answer{
+        font-size: 3.8vw;
+    }
 }

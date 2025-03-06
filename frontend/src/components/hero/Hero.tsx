@@ -1,6 +1,7 @@
 import React, { useCallback, useEffect, useState } from 'react'
 import './Hero.css'
 import ArrowButton from "../../assets/next.png"
+import Search_bar from '../search_bar/Search_bar'
 
 interface HeroProps {
   heroData: { text1: string; text2: string };
@@ -43,12 +44,9 @@ const Hero: React.FC<HeroProps> = ({ heroData, setHeroCount, heroCount }) => {
                     <p>{previousText.text2}</p>
                 </div>
             </div>
+          
+            <Search_bar />
 
-            
-            <div className="hero-explore">
-                <p>Get a Fair Deal</p>
-                <img src={ArrowButton} alt="Next" className="arrow-image" />
-            </div>
             <div className="hero-dot-show">
                 <ul className="hero-dots">
                     {[0, 1, 2].map((num) => ( 

@@ -13,14 +13,12 @@
     backdrop-filter: blur(8px);
 }
 
-
 .nav-logo {
     font-size: 36px;
     font-weight: 600;
     text-shadow: #007bff 0px 2px 4px;
     text-shadow: 0px 0px 3px #007bff, -1px -1px #007bff, 1px 1px #007bff;
 }
-
 
 .nav-container {
     display: flex;
@@ -82,7 +80,7 @@
     display: none;
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 800px) {
     .nav {
         flex-direction: row;
         justify-content: space-between;
@@ -136,5 +134,15 @@
     }
     .singin-hamburger {
         display: flex;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 1200px) {
+
+    .nav-menu {
+        flex-grow: 0;
+    }
+    .nav-signin{
+        padding: 5px 15px;
     }
 }

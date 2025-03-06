@@ -2,7 +2,7 @@
   display: flex;
   justify-content: center;
   gap: 30px;
-  padding: 280px;
+  padding: 100px;
   flex-wrap: wrap;
 }
 
@@ -10,8 +10,8 @@
   border: none;
   background: none;
   cursor: pointer;
-  width: 300px;
-  height: 360px;
+  width: 400px;
+  height: 460px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -63,7 +63,7 @@
 
 .recommendation-title {
   margin-top: 8px;
-  font-size: 18px;
+  font-size: 0.8vw;
   font-weight: 700;
   font-family: Noto Sans, sans-serif;
   color: white;
@@ -90,7 +90,7 @@
 
 @media (max-width: 768px) {
   .recommendation-header {
-    font-size: 25px;
+    font-size: 6vw;
     font-weight: 700;
     font-family: Lexend Deca;
     color: whitesmoke;
@@ -107,13 +107,44 @@
   }
 
   .recommendation-button {
-    width: 90%;
-    max-width: 300px;
+    width: 300px;
+    height: 360px;
   }
 
   .recommendation-button:hover {
     transform: scale(1.1);
     /* background-color: white; */
     background-image: none;
+  }
+
+  .recommendation-button:hover .recommendation-title {
+    color:white;
+  }
+
+  .recommendation-title {
+    font-size: 1rem;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1200px) {
+
+  .recommendation-button {
+    width: 360px;
+    height: 400px;
+  }
+
+  .recommendation-title {
+    font-size: 1rem;
+  }
+}
+
+@media (min-width: 1200px) and (max-width: 1800px) {
+  .recommendation-button {
+    width: 400px;
+    height: 460px;
+  }
+
+  .recommendation-title {
+    font-size: 1rem;
   }
 }
