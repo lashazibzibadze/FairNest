@@ -19,6 +19,25 @@
 # New*                label-new
 # Image               picture-img
 
+
+
+
+################# PAGE INFO ##########################
+# Information         Property "data-test-id"'s value
+# Agent and Broker    ldp-agent-overview
+# Images              responsive-image
+# Address             address-line-ldp
+# Beds                property-meta-beds
+# Baths               property-meta-baths
+# Square Feet         property-meta-sqft
+# Lot Size            property-meta-lot-size
+# Price               ldp-list-price
+# Sale Status         status-indicator
+
+# Back button: aria-label="back to search results"
+# Listing item link: rdc-property-card's first anchor tag
+
+
 # * = May not be there
 # Property is useful only if all non-* information is present
 # """
