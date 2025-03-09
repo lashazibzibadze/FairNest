@@ -1,9 +1,9 @@
-import "./Recommendation.css"
-import Manhattan from "../../assets/Recommendation/Manhattan.jpg"
-import Bronx from "../../assets/Recommendation/Bronx.jpg"
-import Queens from "../../assets/Recommendation/Queens.jpg"
-import Brooklyn from "../../assets/Recommendation/Brooklyn.jpg"
-import StatenIsland from "../../assets/Recommendation/Staten_island.jpg"
+import "./Recommendation.css";
+import Manhattan from "../../assets/Recommendation/Manhattan.jpg";
+import Bronx from "../../assets/Recommendation/Bronx.jpg";
+import Queens from "../../assets/Recommendation/Queens.jpg";
+import Brooklyn from "../../assets/Recommendation/Brooklyn.jpg";
+import StatenIsland from "../../assets/Recommendation/Staten_island.jpg";
 
 const recommendations = [
   { id: 1, title: "Manhattan", img: Manhattan },
@@ -13,7 +13,7 @@ const recommendations = [
   { id: 5, title: "Staten Island", img: StatenIsland },
 ];
 
-const Recommendation: React.FC = () => {
+const Recommendation = () => {
   return (
     <div className="flex flex-col items-center p-10">
       {/* Title */}
@@ -24,11 +24,11 @@ const Recommendation: React.FC = () => {
       </div>
 
       {/* Search Buttons */}
-      <div className="flex flex-wrap justify-center gap-10 p-10 sm:gap-6 sm:p-5">
+      <div className="flex flex-wrap justify-center gap-10 p-10 sm:gap-4 sm:p-5">
         {recommendations.map((item) => (
           <button
             key={item.id}
-            className="w-[340px] h-[400px] flex flex-col items-center justify-center rounded-lg overflow-hidden transition-transform duration-500 ease-in-out hover:scale-110 hover:bg-gradient-to-b from-[rgba(255,255,255,0.25)] to-white"
+            className="w-[290px] h-[340px] flex flex-col items-center justify-center rounded-lg overflow-hidden transition-transform duration-500 ease-in-out hover:scale-110 hover:bg-gradient-to-b from-[rgba(255,255,255,0.25)] to-white"
           >
             <img
               src={item.img}
