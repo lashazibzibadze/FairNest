@@ -1,5 +1,6 @@
 import Navbar from "../../components/navbar/Navbar";
 import Footer from "../../components/footer/footer";
+import Background_FAQ from "../../assets/FAQ_Background.svg";
 import { useState } from "react";
 import "./FAQ.css";
 
@@ -26,14 +27,13 @@ const faqs = [
   },
   {
     question: "Can I list my property on FairNest?",
-    answer:
-      "No, currently we do not offer a platform for listing properties.",
+    answer: "No, currently we do not offer a platform for listing properties.",
   },
   {
     question: "Does FairNest provide loan services?",
     answer:
       "No, FairNest does not provide mortgage or loan services. We only rank properties based on fairness.",
-  }
+  },
 ];
 
 const FAQ = () => {
@@ -44,23 +44,42 @@ const FAQ = () => {
   };
 
   return (
-    <div className="faq-body">
+    <div
+      className="flex flex-col min-h-screen bg-cover bg-center bg-no-repeat pt-24"
+      style={{ backgroundImage: `url(${Background_FAQ})` }}
+    >
       <Navbar />
-      <div className="faq-container">
-        <h2 className="faq-title">Frequently Asked Questions</h2>
-        <div className="faq-list">
+      <div className="max-w-3xl mx-auto my-10 px-6 text-left font-bold flex-1">
+        <h2 className="text-5xl md:text-6xl font-semibold mb-5 text-white drop-shadow-lg text-center">
+          Frequently Asked Questions
+        </h2>
+        <div className="flex flex-col gap-4 pt-4">
           {faqs.map((faq, index) => (
-            <div key={index} className={`faq-item ${openIndex === index ? "open" : ""}`}>
-              <button className="faq-question" onClick={() => switchFAQ(index)}>
+            <div
+              key={index}
+              className={`border border-gray-300 rounded-xl overflow-hidden bg-gray-200 transition-all duration-300 ${
+                openIndex === index ? "max-h-[1000px]" : "max-h-20 md:max-h-14"
+              }`}
+            >
+              <button
+                className="flex justify-between items-center w-full p-4 text-lg font-semibold cursor-pointer md:hover:bg-cyan-100 transition-all text-left whitespace-normal break-words"
+                onClick={() => switchFAQ(index)}
+              >
                 {faq.question}
                 <span
-                  className={`faq-icon ${openIndex === index ? "open" : ""}`}
+                  className={`text-xl transition-transform duration-300 ${
+                    openIndex === index ? "rotate-180" : ""
+                  }`}
                 >
                   &#x25BC;
                 </span>
               </button>
               <div
-                className={`faq-answer ${openIndex === index ? "visible" : ""}`}
+                className={`px-4 pb-4 text-left text-base font-semibold transition-all duration-300 ${
+                  openIndex === index
+                    ? "max-h-[1000px] opacity-100"
+                    : "max-h-0 opacity-0 overflow-hidden"
+                }`}
               >
                 {faq.answer}
               </div>

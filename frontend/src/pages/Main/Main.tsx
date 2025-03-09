@@ -30,7 +30,6 @@ const Main = () => {
         <Hero
           heroData={heroData[heroCount]}
           heroCount={heroCount}
-          setHeroCount={setHeroCount}
         />
       </div>
 
@@ -42,7 +41,5 @@ const Main = () => {
   )
 
 }
-
-
 
 export default Main

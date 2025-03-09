@@ -73,7 +73,6 @@ body::-webkit-scrollbar,
   opacity: 0.95;
 } */
 
-body
-{
+body {
   background-color: gray;
 }
