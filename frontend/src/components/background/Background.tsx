@@ -1,43 +1,40 @@
-import "./Background.css";
-import background1 from "../../assets/Background/Sunny_1.jpg";
-import background2 from "../../assets/Background/Sunny_2.jpg";
-import background3 from "../../assets/Background/Sunny_3.jpg";
-import { useEffect } from "react";
-import { useState } from "react";
+import "./Background.css"
+import { useEffect, useState } from "react";
 
-const backgroundImages = [background1, background2, background3];
+const backgroundImages = [
+  "/Background/Sunny_1.jpg",
+  "/Background/Sunny_2.jpg",
+  "/Background/Sunny_3.jpg",
+];
 
 const Background = ({ heroCount }: { heroCount: number }) => {
-  const [prevImage, setPrevImage] = useState(backgroundImages[heroCount]);
   const [currentImage, setCurrentImage] = useState(backgroundImages[heroCount]);
+  const [prevImage, setPrevImage] = useState(backgroundImages[heroCount]);
   const [fade, setFade] = useState(false);
 
   useEffect(() => {
     setFade(true);
-
     const switchTimeout = setTimeout(() => {
       setPrevImage(currentImage);
       setCurrentImage(backgroundImages[heroCount]);
-    }, 300);
-
-    const fadeTimeout = setTimeout(() => {
       setFade(false);
-    }, 900);
-
-    return () => {
-      clearTimeout(switchTimeout);
-      clearTimeout(fadeTimeout);
-    };
+    }, 1000);
+    return () => clearTimeout(switchTimeout);
   }, [heroCount]);
 
   return (
-    <div className="background-container">
+    <div className="absolute top-0 left-0 w-full h-screen -z-10 overflow-hidden brightness-75">
+      {/* Previous Image*/}
       <div
-        className={`background ${fade ? "fade-out" : ""}`}
+        className="absolute w-full h-full bg-cover bg-center bg-no-repeat opacity-100"
         style={{ backgroundImage: `url(${prevImage})` }}
       />
+
+      {/* Current Image*/}
       <div
-        className={`background ${fade ? "fade-in" : ""}`}
+        className={`absolute w-full h-full bg-cover bg-center bg-no-repeat transition-opacity duration-1000 ${
+          fade ? "opacity-0" : "opacity-100"
+        }`}
         style={{ backgroundImage: `url(${currentImage})` }}
       />
     </div>
