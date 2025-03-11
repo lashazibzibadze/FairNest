@@ -15,14 +15,12 @@ class Listing(Base):
     acre_lot = Column(DECIMAL(6,4), nullable=True)
     tour_available = Column(Boolean, default=False)
     image_source = Column(Text, nullable=True)
-    
-    date_posted = Column(DateTime, default=func.now())
 
-    address_id = Column(Integer, ForeignKey("addresses.id"), nullable=False)
+    address_id = Column(Integer, ForeignKey("address.id"), nullable=False)
     address = relationship("Address", back_populates="listings")
 
 class Address(Base):
-    __tablename__ = "addresses"
+    __tablename__ = "address"
 
     id = Column(Integer, primary_key=True, index=True)
     country = Column(String(50), nullable=False)
@@ -33,5 +31,6 @@ class Address(Base):
     street = Column(String(100), nullable=False)
     premise = Column(String(50), nullable=True)
     sub_premise = Column(String(50), nullable=True)
+    created_at = Column(DateTime, default=func.now())
 
     listings = relationship("Listing", back_populates="address", cascade="all, delete-orphan")
