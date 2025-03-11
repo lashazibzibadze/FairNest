@@ -26,8 +26,30 @@ def get_listings_by_address(db: Session, address_id: int):
     return db.query(models.Listing).filter(models.Listing.address_id == address_id).all()
 
 @router.get("/", response_model=List[schemas.ListingResponse])
-def get_listings(db: db_dependency, skip: int = 0, limit: int = 10):
-    return db.query(models.Listing).offset(skip).limit(limit).all()
+def get_listings(
+    db: db_dependency,
+    skip: int = 0,
+    limit: int = 10,
+    country: str = None,
+    postal_code: str = None,
+    street: str = None,
+    administrative_area: str = None,
+    locality: str = None
+):
+    query = db.query(models.Listing).join(models.Address)
+    
+    if country:
+        query = query.filter(models.Address.country == country)
+    if postal_code:
+        query = query.filter(models.Address.postal_code == postal_code)
+    if street:
+        query = query.filter(models.Address.street == street)
+    if administrative_area:
+        query = query.filter(models.Address.administrative_area == administrative_area)
+    if locality:
+        query = query.filter(models.Address.locality == locality)
+    
+    return query.offset(skip).limit(limit).all()
 
 @router.get("/{listing_id}", response_model=schemas.ListingResponse)
 def get_listing(listing_id: int, db: db_dependency):
