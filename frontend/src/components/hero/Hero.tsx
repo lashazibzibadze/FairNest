@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./Hero.css";
 import Search_bar from "../search_bar/Search_bar";
 
@@ -25,7 +25,11 @@ const Hero: React.FC<HeroProps> = ({ heroData, heroCount }) => {
       {/* Hero Text */}
       <div className="relative min-h-[120px] text-center">
         <div
-          className={`text-white text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-semibold leading-tight max-w-[2000px] py-4 rounded-lg drop-shadow-[0px_4px_20px_rgba(0,0,0,0.8)] transition-opacity duration-1000 ${
+          style={{
+            textShadow:
+              "1px 1px 10px rgb(52, 52, 53), 1px -1px #080808, 1px 1px #0f0f0f",
+          }}
+          className={`text-white text-5xl sm:text-5xl md:text-7xl lg:text-8xl font-semibold leading-tight max-w-[2000px] py-4 rounded-lg drop-shadow-[0px_4px_20px_rgba(0,0,0,0.8)] transition-opacity duration-1000 ${
             fade ? "opacity-0" : "opacity-100"
           }`}
         >

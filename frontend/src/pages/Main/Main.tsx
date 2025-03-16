@@ -2,8 +2,8 @@ import { useEffect, useState } from "react"
 import Background from "../../components/background/Background";
 import Navbar from "../../components/navbar/Navbar";
 import Hero from "../../components/hero/Hero";
-import Recommendation from "../../components/recommendation/Recommendation";
-import Footer from "../../components/footer/footer";
+// import Recommendation from "../../components/recommendation/Recommendation";
+// import Footer from "../../components/footer/footer";
 import '../../App.css';
 
 const heroData = [
@@ -26,17 +26,17 @@ const Main = () => {
     <div className="body-container">
       <div className="hero-container">
         <Navbar/>
-        <Background heroCount={heroCount}/>
+        <Background/>
         <Hero
           heroData={heroData[heroCount]}
           heroCount={heroCount}
         />
       </div>
-
+{/* 
       <div className="lower-container">
         <Recommendation />
         <Footer />
-      </div>
+      </div> */}
     </div>
   )
 
