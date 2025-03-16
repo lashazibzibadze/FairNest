@@ -3,8 +3,9 @@ import json
 from playwright.async_api import async_playwright
 import asyncio
 import random
-from datetime import date, timedelta
+from datetime import date, timedelta, datetime
 from playwright_stealth import stealth_async
+from formatter import format_realtor_data
 
 async def scroll_until_bottom(page):
     """Scroll down the page until the bottom is reached."""
@@ -30,8 +31,6 @@ async def scroll_until_bottom(page):
             break
 
         last_height = new_height  # Update the last height
-
-    
         
 async def scroll_until_element_in_view(page, element):
     """Scroll until specified element is in view."""
@@ -42,7 +41,6 @@ async def scroll_until_element_in_view(page, element):
             print("Element not found.")
     except Exception as e:
         print(f"Error scrolling element into view: {e}")
-
 
 async def scrape_listing_details(detail_page):
     try:
@@ -65,43 +63,27 @@ async def scrape_listing_details(detail_page):
         return "N/A"
 
 
+async def scrape_realtor(url, browser, start_page=1, end_page=1, timeout=60):
+    USER_AGENTS = [
+    "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Safari/537.36",
+    "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36",
+    "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36"
+    ]
 
-async def scrape_realtor(url, start_page=1, end_page=-1, timeout=60, output_file_name="output"):
-    async with async_playwright() as p:
-        browser = await p.firefox.launch(headless=False)
-        context = await browser.new_context(
-            viewport={"width":1080, "height":4320},
-            ignore_https_errors=True,
-            bypass_csp=True,
-            user_agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36",
-            accept_downloads=True,
-            java_script_enabled=True
-        )
-        # Block all CSS
-        await context.route("**/*.{woff,woff2,gif}", lambda route: route.abort())
-        
-        
-        
-        page = await context.new_page()
-        
-        
-        await page.set_extra_http_headers({ "Accept-Language": "en-US,en;q=0.9","Referer": "https://www.google.com/", "DNT": "1", })
-        
-        # await stealth_async(page)
-        
+    random_user_agent = random.choice(USER_AGENTS)
+    
+    
+    async with async_playwright() as p: 
+        page = await browser.new_page()
+
         await page.goto(f"{url}/type-single-family-home,condo,townhome,multi-family-home/pnd-hide/fc-hide/pg-{start_page}", timeout=timeout * 1000)
-        # await page.goto(f"{url}/pg-{start_page}", timeout=timeout * 1000)
-        # await page.goto(f"{url}", timeout=timeout * 1000)
 
         data = []
         current_page = start_page
 
         await scroll_until_bottom(page)
-
-
-        if end_page == -1:
-            end_page = int(await page.locator(".page-container a.pagination-item").last.inner_text())    
         
+        total_pages = int(await page.locator(".page-container a.pagination-item").last.inner_text())
 
         while current_page <= end_page:
             print(f"Scraping page {current_page} where end page is {end_page}...")
@@ -131,25 +113,13 @@ async def scrape_realtor(url, start_page=1, end_page=-1, timeout=60, output_file
                     
                     image_element = listing.locator("[data-testid='picture-img']").first
                     image_source = await image_element.get_attribute("src") if await image_element.count() > 0 else "N/A"
+                    
+                    realtor_link = await listing.locator("a").first.get_attribute("href") if await listing.locator("a").count() > 0 else "N/A"
+                    
 
                     # Make bedrooms and bathrooms in one line
                     bedrooms = ' '.join(bedrooms.splitlines()).strip()
                     bathrooms = ' '.join(bathrooms.splitlines()).strip()
-
-
-                    # Go to individual listing page
-                    # await asyncio.sleep(random.uniform(2,3))
-                    # link_element = listing.locator("[data-testid='card-content'] a").first
-                    
-                    
-                    # if await link_element.count() > 0:
-                    #     await link_element.click()
-                    #     await page.wait_for_selector("div:has-text('On Realtor.com') + p")
-                    #     date_posted = await scrape_listing_details(page)
-                    #     await page.go_back()
-                    #     await scroll_until_bottom(page)
-                    #     asyncio.sleep(random.uniform(3,4))
-                    
 
                     data.append({
                         "Price": price,
@@ -161,6 +131,7 @@ async def scrape_realtor(url, start_page=1, end_page=-1, timeout=60, output_file
                         "Acre Lot": acre_lot,
                         "Tour Available": tour_available,
                         "Image Source": image_source,
+                        "Realtor Link": f"https://www.realtor.com{realtor_link}" if realtor_link != "N/A" else "N/A",
                         # "Date Posted": date_posted,
                     })
                     
@@ -180,34 +151,62 @@ async def scrape_realtor(url, start_page=1, end_page=-1, timeout=60, output_file
                 break  # No more pages
             
 
-        await browser.close()
-        
-        # Dump JSON
-        dump_dir = Path("backend") / "app" / "scraper" / "json-dump"
-        dump_path = dump_dir / f"{output_file_name}.json"
-        dump_path.parent.mkdir(parents=True, exist_ok=True)
-        
-        with open(dump_path, 'w') as json_file:
-            json.dump(data, json_file, indent=4)
-        
-        print("JSON successfully dumped with " + str(len(data)) + " entries!")
-        
-        return data
+        await page.close()
+        return data, total_pages
 
 
 # URL to scrape
-url = "https://www.realtor.com/realestateandhomes-search/Manhattan_NY"
+manhattanUrl = "https://www.realtor.com/realestateandhomes-search/Manhattan_NY"
+bronxUrl = "https://www.realtor.com/realestateandhomes-search/Bronx_NY"
 
 # Scrape data asynchronously
 async def main():
-    # task1 = asyncio.create_task(scrape_realtor(url, start_page=1, end_page=50, output_file_name="manhattan1-50"))
-    # task2 = asyncio.create_task(scrape_realtor(url, start_page=51, end_page=98, output_file_name="manhattan51-end"))
-
-    # await asyncio.gather(task1, task2, return_exceptions=True)
-    await scrape_realtor(url, start_page=1, end_page=50, output_file_name="manhattan1-50")
-    await asyncio.sleep(30)
-    await scrape_realtor(url, start_page=51, end_page=98, output_file_name="manhattan51-end")
+    async with async_playwright() as p:
+        chrome_user_data = r"C:\Users\chowj\AppData\Local\Google\Chrome\User Data"
+        browser = await p.chromium.launch_persistent_context(chrome_user_data, channel="chrome", headless=False, viewport={"width":1080,"height":4320})
     
+        # QUICK CONFIGURABLES
+        target_URL = manhattanUrl
+        output_file_name = "manhattan"
+        pages_per_task = 25
+    
+        # Scrape the first page to get the total number of pages
+        initial_data, total_pages = await scrape_realtor(target_URL, browser=browser, start_page=1, end_page=1)
+        
+        tasks = []
+        
+        for start_page in range(1, total_pages + 1, pages_per_task):
+            end_page = min(start_page + pages_per_task - 1, total_pages)
+            task = asyncio.create_task(scrape_realtor(target_URL, browser=browser, start_page=start_page, end_page=end_page))
+            tasks.append(task)
+        
+        # Gather results from all tasks
+        results = await asyncio.gather(*tasks, return_exceptions=True)
+        await browser.close()
+
+        # Merge scraped data into single list of dictionaries
+        combined_data = []
+        for index, result in enumerate(results):
+            if isinstance(result, tuple) and len(result) == 2:
+                data, total_pages = result
+                combined_data.extend(data)
+            else:
+                print(f"Error during scraping task {index + 1}: {result}") 
+            
+        
+        # Dump JSON
+        
+        now = datetime.now()
+        formatted_time = now.strftime("%Y-%m-%d")
+        dump_dir = Path("backend") / "app" / "scraper" / "json-dump"
+        dump_path = dump_dir / f"{output_file_name}-{formatted_time}.json"
+        dump_path.parent.mkdir(parents=True, exist_ok=True)
+        
+        with open(dump_path, 'w') as json_file:
+            json.dump(combined_data, json_file, indent=4)
+        
+        print("JSON successfully dumped with " + str(len(combined_data)) + " entries!")
+
 
 # Run the main function
 asyncio.run(main())
