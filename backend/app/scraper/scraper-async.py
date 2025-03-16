@@ -156,8 +156,11 @@ async def scrape_realtor(url, browser, start_page=1, end_page=1, timeout=60):
 
 
 # URL to scrape
-manhattanUrl = "https://www.realtor.com/realestateandhomes-search/Manhattan_NY"
-bronxUrl = "https://www.realtor.com/realestateandhomes-search/Bronx_NY"
+manhattan_URL = "https://www.realtor.com/realestateandhomes-search/Manhattan_NY"
+bronx_URL = "https://www.realtor.com/realestateandhomes-search/Bronx_NY"
+brooklyn_URL = "https://www.realtor.com/realestateandhomes-search/Brooklyn_NY"
+queens_URL = "https://www.realtor.com/realestateandhomes-search/Queens_NY"
+staten_URL = "https://www.realtor.com/realestateandhomes-search/Staten-Island_NY"
 
 # Scrape data asynchronously
 async def main():
@@ -166,8 +169,8 @@ async def main():
         browser = await p.chromium.launch_persistent_context(chrome_user_data, channel="chrome", headless=False, viewport={"width":1080,"height":4320})
     
         # QUICK CONFIGURABLES
-        target_URL = manhattanUrl
-        output_file_name = "manhattan"
+        target_URL = staten_URL
+        output_file_name = "staten-island"
         pages_per_task = 25
     
         # Scrape the first page to get the total number of pages
@@ -206,6 +209,9 @@ async def main():
             json.dump(combined_data, json_file, indent=4)
         
         print("JSON successfully dumped with " + str(len(combined_data)) + " entries!")
+        
+        formatted_dump_path = dump_dir / f"{output_file_name}-{formatted_time}-formatted.json"
+        format_realtor_data(dump_path, formatted_dump_path)
 
 
 # Run the main function
