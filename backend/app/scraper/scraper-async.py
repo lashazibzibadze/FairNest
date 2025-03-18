@@ -4,7 +4,6 @@ from playwright.async_api import async_playwright
 import asyncio
 import random
 from datetime import date, timedelta, datetime
-from playwright_stealth import stealth_async
 from formatter import format_realtor_data
 
 async def scroll_until_bottom(page):
@@ -14,11 +13,6 @@ async def scroll_until_bottom(page):
     while True:
         # Scroll down by a fixed distance
         await page.evaluate("window.scrollBy(0, window.innerHeight);")
-        
-        # Scroll to last element
-        # listings = await page.locator("[data-testid='rdc-property-card']").all()
-        # if listings:
-        #     await listings[-1].scroll_into_view_if_needed()
         
         await asyncio.sleep(3)  # Wait for content to load
 
@@ -115,7 +109,6 @@ async def scrape_realtor(url, browser, start_page=1, end_page=1, timeout=60):
                     image_source = await image_element.get_attribute("src") if await image_element.count() > 0 else "N/A"
                     
                     realtor_link = await listing.locator("a").first.get_attribute("href") if await listing.locator("a").count() > 0 else "N/A"
-                    
 
                     # Make bedrooms and bathrooms in one line
                     bedrooms = ' '.join(bedrooms.splitlines()).strip()
@@ -132,7 +125,6 @@ async def scrape_realtor(url, browser, start_page=1, end_page=1, timeout=60):
                         "Tour Available": tour_available,
                         "Image Source": image_source,
                         "Realtor Link": f"https://www.realtor.com{realtor_link}" if realtor_link != "N/A" else "N/A",
-                        # "Date Posted": date_posted,
                     })
                     
                     print("Appended entry:", address)
@@ -165,7 +157,7 @@ staten_URL = "https://www.realtor.com/realestateandhomes-search/Staten-Island_NY
 # Scrape data asynchronously
 async def main():
     async with async_playwright() as p:
-        chrome_user_data = r"C:\Users\chowj\AppData\Local\Google\Chrome\User Data"
+        chrome_user_data = r"C:\Users\chowj\AppData\Local\Google\Chrome\User Data" # Might want to replace with Path to be OS-independent and make path relative
         browser = await p.chromium.launch_persistent_context(chrome_user_data, channel="chrome", headless=False, viewport={"width":1080,"height":4320})
     
         # QUICK CONFIGURABLES
