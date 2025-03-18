@@ -2,7 +2,6 @@ import { useListings } from "../../useListings";
 
 const ListingsComponent = () => {
 
-
     return (
         <></>
     );

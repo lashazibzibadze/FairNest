@@ -2,9 +2,12 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import "./Navbar.css";
 import HamburgerMenu from "../../assets/burger-menu.svg";
+import SignIn from "../Authentication/SignIn";
+import SignOut from "../Authentication/Logout";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  
 
   return (
     <nav className="fixed top-0 left-0 w-full flex justify-between items-center px-10 py-5 text-white z-[9999] bg-[rgba(50,50,50,0.8)] backdrop-blur-md">
@@ -22,9 +25,8 @@ const Navbar = () => {
         </ul>
 
         <div className="hidden md:block">
-          <Link to="/signin" className="bg-blue-500 text-white px-5 py-2.5 rounded-lg text-center hover:bg-blue-700 transition">
-            Sign In
-          </Link>
+          <SignIn />
+          <SignOut />
         </div>
       </div>
 
