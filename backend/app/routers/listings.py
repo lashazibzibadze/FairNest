@@ -28,27 +28,48 @@ def get_listings_by_address(db: Session, address_id: int):
 @router.get("/", response_model=List[schemas.ListingResponse])
 def get_listings(
     db: db_dependency,
+    filters: schemas.ListingFilter = Depends(),
     skip: int = 0,
-    limit: int = 10,
-    country: str = None,
-    postal_code: str = None,
-    street: str = None,
-    administrative_area: str = None,
-    locality: str = None
+    limit: int = 10
 ):
     query = db.query(models.Listing).join(models.Address)
-    
-    if country:
-        query = query.filter(models.Address.country == country)
-    if postal_code:
-        query = query.filter(models.Address.postal_code == postal_code)
-    if street:
-        query = query.filter(models.Address.street == street)
-    if administrative_area:
-        query = query.filter(models.Address.administrative_area == administrative_area)
-    if locality:
-        query = query.filter(models.Address.locality == locality)
-    
+
+    filter_mappings = {
+        "country": models.Address.country,
+        "postal_code": models.Address.postal_code,
+        "street": models.Address.street,
+        "administrative_area": models.Address.administrative_area,
+        "locality": models.Address.locality,
+        "sale_status": models.Listing.sale_status,
+        "tour_available": models.Listing.tour_available
+    }
+
+    range_filters = {
+        "min_price": (models.Listing.price, ">="),
+        "max_price": (models.Listing.price, "<="),
+        "min_bedrooms": (models.Listing.bedrooms, ">="),
+        "max_bedrooms": (models.Listing.bedrooms, "<="),
+        "min_bathrooms": (models.Listing.bathrooms, ">="),
+        "max_bathrooms": (models.Listing.bathrooms, "<="),
+        "min_square_feet": (models.Listing.square_feet, ">="),
+        "max_square_feet": (models.Listing.square_feet, "<="),
+        "min_acre_lot": (models.Listing.acre_lot, ">="),
+        "max_acre_lot": (models.Listing.acre_lot, "<="),
+    }
+
+    for param, column in filter_mappings.items():
+        value = getattr(filters, param)
+        if value is not None:
+            query = query.filter(column == value)
+
+    for param, (column, operator) in range_filters.items():
+        value = getattr(filters, param)
+        if value is not None:
+            if operator == ">=":
+                query = query.filter(column >= value)
+            elif operator == "<=":
+                query = query.filter(column <= value)
+
     return query.offset(skip).limit(limit).all()
 
 @router.get("/{listing_id}", response_model=schemas.ListingResponse)
