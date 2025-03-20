@@ -38,6 +38,36 @@ cd app
 uvicorn main:app --reload
 ```
 
+## Database Documentation
+### Naming Conventions
+1. Table names: Use plural nouns in lowercase (e.g., users, listings).
+2. Column names: Use snake_case (e.g., first_name, address_id, created_at).
+3. Enums: Enum values should be capitalized (e.g., ACTIVE, INACTIVE).
+
+### Modifying the Database Schema
+Please use migrations when modifying the database schema!
+
+We are using Alembic for migrations
+
+#### Steps to modify the database schema
+1. Modify the python models directly in backend/app/models.py
+2. Generate a new migration script using the following command
+```bash
+alembic revision --autogenerate -m "Description of changes"
+```
+3. Apply the migration script
+```bash
+alembic upgrade head
+```
+
+#### Rollback a migration
+If you haven't applied the migration script yet, look in backend/app/alembic/versions. Click in each version until you find the migration script with the same message in the head and delete it. Then you can regenerate the migration script after modifications.
+
+If you applied the migration script, run the following command.
+```bash
+alembic downgrade -1
+```
+Then follow the same steps as above to delete the migration script.
 ## API Documentation
 
 FastAPI automatically generates interactive API docs:
