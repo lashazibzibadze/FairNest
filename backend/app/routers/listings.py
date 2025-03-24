@@ -3,6 +3,7 @@ from sqlalchemy.orm import Session
 from typing import List
 import schemas, models
 from database import db_dependency
+import math
 
 router = APIRouter(prefix="/listings", tags=["Listings"])
 
@@ -28,27 +29,48 @@ def get_listings_by_address(db: Session, address_id: int):
 @router.get("/", response_model=List[schemas.ListingResponse])
 def get_listings(
     db: db_dependency,
+    filters: schemas.ListingFilter = Depends(),
     skip: int = 0,
-    limit: int = 10,
-    country: str = None,
-    postal_code: str = None,
-    street: str = None,
-    administrative_area: str = None,
-    locality: str = None
+    limit: int = 10
 ):
     query = db.query(models.Listing).join(models.Address)
-    
-    if country:
-        query = query.filter(models.Address.country == country)
-    if postal_code:
-        query = query.filter(models.Address.postal_code == postal_code)
-    if street:
-        query = query.filter(models.Address.street == street)
-    if administrative_area:
-        query = query.filter(models.Address.administrative_area == administrative_area)
-    if locality:
-        query = query.filter(models.Address.locality == locality)
-    
+
+    filter_mappings = {
+        "country": models.Address.country,
+        "postal_code": models.Address.postal_code,
+        "street": models.Address.street,
+        "administrative_area": models.Address.administrative_area,
+        "locality": models.Address.locality,
+        "sale_status": models.Listing.sale_status,
+        "tour_available": models.Listing.tour_available
+    }
+
+    range_filters = {
+        "min_price": (models.Listing.price, ">="),
+        "max_price": (models.Listing.price, "<="),
+        "min_bedrooms": (models.Listing.bedrooms, ">="),
+        "max_bedrooms": (models.Listing.bedrooms, "<="),
+        "min_bathrooms": (models.Listing.bathrooms, ">="),
+        "max_bathrooms": (models.Listing.bathrooms, "<="),
+        "min_square_feet": (models.Listing.square_feet, ">="),
+        "max_square_feet": (models.Listing.square_feet, "<="),
+        "min_acre_lot": (models.Listing.acre_lot, ">="),
+        "max_acre_lot": (models.Listing.acre_lot, "<="),
+    }
+
+    for param, column in filter_mappings.items():
+        value = getattr(filters, param)
+        if value is not None:
+            query = query.filter(column == value)
+
+    for param, (column, operator) in range_filters.items():
+        value = getattr(filters, param)
+        if value is not None:
+            if operator == ">=":
+                query = query.filter(column >= value)
+            elif operator == "<=":
+                query = query.filter(column <= value)
+
     return query.offset(skip).limit(limit).all()
 
 @router.get("/{listing_id}", response_model=schemas.ListingResponse)
@@ -115,3 +137,59 @@ def get_listings_for_address(address_id: int, db: db_dependency):
     if not listings:
         raise HTTPException(status_code=404, detail="No listings found for this address")
     return listings
+
+@router.get("/nearby-listings/")
+def get_nearby_listings(listing_id: int, unit: str, radius: float, db: db_dependency):
+    if unit != "km" and unit != "mile":
+        raise HTTPException(status_code=400, detail="Unit must be either 'km' or 'mile'")
+    listing = db.query(models.Listing).filter(models.Listing.id == listing_id).first()
+    if not listing:
+        raise HTTPException(status_code=404, detail="Listing not found")
+    if not listing.address.latitude or not listing.address.longitude:
+        raise HTTPException(status_code=400, detail="Listing does not have latitude and longitude")
+    
+    longitude = float(listing.address.longitude)
+    latitude = float(listing.address.latitude)
+    listings = (
+        db.query(models.Listing)
+        .join(models.Address)
+        .filter(models.Address.latitude.isnot(None), models.Address.longitude.isnot(None))
+        .all()
+    )
+
+    nearby_listings = []
+    for listing in listings:
+        if listing.address.latitude and listing.address.longitude:
+            distance = haversine(latitude, longitude, float(listing.address.latitude), float(listing.address.longitude), unit)
+            if distance <= radius:
+                nearby_listings.append({
+                    "id": listing.id,
+                    "price": listing.price,
+                    "bedrooms": listing.bedrooms,
+                    "bathrooms": listing.bathrooms,
+                    "square_feet": listing.square_feet,
+                    "sale_status": listing.sale_status,
+                    "acre_lot": listing.acre_lot,
+                    "tour_available": listing.tour_available,
+                    "image_source": listing.image_source,
+                    "address": {
+                        "street": listing.address.street,
+                        "locality": listing.address.locality,
+                        "postal_code": listing.address.postal_code,
+                        "latitude": listing.address.latitude,
+                        "longitude": listing.address.longitude,
+                    },
+                    "distance": distance,
+                    "unit": unit,
+                })
+    
+    return {"nearby_listings": sorted(nearby_listings, key=lambda x: x["distance"])[1:] }
+
+def haversine(lat1, lon1, lat2, lon2, unit="mile"):
+    R = 6371 if unit == "km" else 3958.8
+    lat1, lon1, lat2, lon2 = map(math.radians, [lat1, lon1, lat2, lon2])
+    dlat = lat2 - lat1
+    dlon = lon2 - lon1
+    a = math.sin(dlat/2)**2 + math.cos(lat1) * math.cos(lat2) * math.sin(dlon/2)**2
+    c = 2 * math.atan2(math.sqrt(a), math.sqrt(1 - a))
+    return R * c
