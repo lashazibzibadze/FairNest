@@ -5,6 +5,27 @@ import asyncio
 import random
 from datetime import date, timedelta, datetime
 from formatter import format_realtor_data
+import aioboto3
+
+
+async def upload_to_s3(file_path):
+    bucket_name = "fairnest"
+    file_name = file_path.name
+    
+    async with aioboto3.Session().client("s3") as s3:
+        with open(file_path, "rb") as data:
+            await s3.put_object(
+                Bucket=bucket_name,
+                Key=file_name,
+                Body=data,
+                ContentType="application/json"
+            )
+    
+    print(f"Uploaded to S3: {file_name}")
+
+
+
+
 
 async def scroll_until_bottom(page):
     """Scroll down the page until the bottom is reached."""
@@ -57,7 +78,7 @@ async def scrape_listing_details(detail_page):
         return "N/A"
 
 
-async def scrape_realtor(url, browser, start_page=1, end_page=1, timeout=60):
+async def scrape_realtor(url, browser, start_page=1, end_page=1, timeout=100):
     USER_AGENTS = [
     "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Safari/537.36",
     "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36",
@@ -147,12 +168,14 @@ async def scrape_realtor(url, browser, start_page=1, end_page=1, timeout=60):
         return data, total_pages
 
 
-# URL to scrape
-manhattan_URL = "https://www.realtor.com/realestateandhomes-search/Manhattan_NY"
-bronx_URL = "https://www.realtor.com/realestateandhomes-search/Bronx_NY"
-brooklyn_URL = "https://www.realtor.com/realestateandhomes-search/Brooklyn_NY"
-queens_URL = "https://www.realtor.com/realestateandhomes-search/Queens_NY"
-staten_URL = "https://www.realtor.com/realestateandhomes-search/Staten-Island_NY"
+# List of borough URLs
+borough_urls = [
+    "https://www.realtor.com/realestateandhomes-search/Manhattan_NY",
+    "https://www.realtor.com/realestateandhomes-search/Bronx_NY",
+    "https://www.realtor.com/realestateandhomes-search/Brooklyn_NY",
+    "https://www.realtor.com/realestateandhomes-search/Queens_NY",
+    "https://www.realtor.com/realestateandhomes-search/Staten-Island_NY"
+]
 
 # Scrape data asynchronously
 async def main():
@@ -160,41 +183,42 @@ async def main():
         chrome_user_data = r"C:\Users\chowj\AppData\Local\Google\Chrome\User Data" # Might want to replace with Path to be OS-independent and make path relative
         browser = await p.chromium.launch_persistent_context(chrome_user_data, channel="chrome", headless=False, viewport={"width":1080,"height":4320})
     
-        # QUICK CONFIGURABLES
-        target_URL = staten_URL
-        output_file_name = "staten-island"
-        pages_per_task = 25
-    
-        # Scrape the first page to get the total number of pages
-        initial_data, total_pages = await scrape_realtor(target_URL, browser=browser, start_page=1, end_page=1)
-        
-        tasks = []
-        
-        for start_page in range(1, total_pages + 1, pages_per_task):
-            end_page = min(start_page + pages_per_task - 1, total_pages)
-            task = asyncio.create_task(scrape_realtor(target_URL, browser=browser, start_page=start_page, end_page=end_page))
-            tasks.append(task)
-        
-        # Gather results from all tasks
-        results = await asyncio.gather(*tasks, return_exceptions=True)
-        await browser.close()
-
-        # Merge scraped data into single list of dictionaries
         combined_data = []
-        for index, result in enumerate(results):
-            if isinstance(result, tuple) and len(result) == 2:
-                data, total_pages = result
-                combined_data.extend(data)
-            else:
-                print(f"Error during scraping task {index + 1}: {result}") 
+    
+        # QUICK CONFIGURABLES
+        pages_per_task = 10
+        
+        for borough_url in borough_urls:
+            print(f"Scraping data for: {borough_url}")
+            
+            # Scrape the first page to get the total number of pages
+            initial_data, total_pages = await scrape_realtor(borough_url, browser=browser, start_page=1, end_page=1)
+        
+            tasks = []
+            for start_page in range(1, total_pages + 1, pages_per_task):
+                end_page = min(start_page + pages_per_task - 1, total_pages)
+                task = asyncio.create_task(scrape_realtor(borough_url, browser=browser, start_page=start_page, end_page=end_page))
+                tasks.append(task)
+        
+            # Gather results from all tasks
+            results = await asyncio.gather(*tasks, return_exceptions=True)
+            
+            # Merged scraped data into combined list
+            for index, result in enumerate(results):
+                if isinstance(result, tuple) and len(result) == 2:
+                    data, _ = result
+                    combined_data.extend(data)
+                else:
+                    print(f"Error during scraping task for {borough_url}: {result}")
+            
+        await browser.close()
             
         
         # Dump JSON
-        
         now = datetime.now()
         formatted_time = now.strftime("%Y-%m-%d")
         dump_dir = Path("backend") / "app" / "scraper" / "json-dump"
-        dump_path = dump_dir / f"{output_file_name}-{formatted_time}.json"
+        dump_path = dump_dir / f"nyc_housing_data_{formatted_time}.json"
         dump_path.parent.mkdir(parents=True, exist_ok=True)
         
         with open(dump_path, 'w') as json_file:
@@ -202,8 +226,10 @@ async def main():
         
         print("JSON successfully dumped with " + str(len(combined_data)) + " entries!")
         
-        formatted_dump_path = dump_dir / f"{output_file_name}-{formatted_time}-formatted.json"
+        formatted_dump_path = dump_dir / f"nyc_housing_data_{formatted_time}.json"
         format_realtor_data(dump_path, formatted_dump_path)
+        
+        await upload_to_s3(formatted_dump_path)
 
 
 # Run the main function
