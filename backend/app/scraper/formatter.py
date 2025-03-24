@@ -1,6 +1,7 @@
 import re
 from pathlib import Path
 import json
+from datetime import datetime
 
 def extract_premise_and_sub_premise(address):
     """
@@ -39,7 +40,12 @@ def safe_float(value):
         return None
 
 
-def format_realtor_data(raw_data):
+def format_realtor_data(input_path, output_path):
+    # Load raw scraped data
+    with open(input_path, "r") as file:
+        raw_data = json.load(file)
+    
+    
     formatted_data = []
     
     for item in raw_data:
@@ -96,28 +102,28 @@ def format_realtor_data(raw_data):
                 "sale_status": item["Sale Status"],
                 "acre_lot": acre_lot,
                 "tour_available": tour_available,
-                "image_source": item["Image Source"]
+                "image_source": item["Image Source"],
+                "realtor_link": item["Realtor Link"]
             }
             
             formatted_data.append(formatted_item)
         except Exception as e:
             print(f"Error formatting data: {e}")
+            
+    # Save formatted JSON
+    with open(output_path, "w") as file:
+        json.dump(formatted_data, file, indent=4)
+    
+    print(f"Formatted JSON saved with {len(formatted_data)} entries!")
     return formatted_data
 
 
 
-# Load raw scraped data
-dump_path = Path("backend") / "app" / "scraper" / "json-dump" / "real_estate_listings.json"
+# output_file_name = "manhattan"
+# now = datetime.now()
+# formatted_time = now.strftime("%Y-%m-%d")
+# dump_dir = Path("backend") / "app" / "scraper" / "json-dump"
+# dump_path = dump_dir / f"{output_file_name}-{formatted_time}.json"
+# formatted_dump_path = dump_dir / f"{output_file_name}-{formatted_time}-formatted.json"
 
-with open(dump_path, "r") as file:
-    raw_data = json.load(file)
-    
-formatted_data = format_realtor_data(raw_data)
-
-# Save formatted JSON
-formatted_dump_path = Path("backend") / "app" / "scraper" / "json-dump" / "formatted_real_estate_listings.json"
-
-with open(formatted_dump_path, "w") as file:
-    json.dump(formatted_data, file, indent=4)
-    
-print(f"Formatted JSON saved with {len(formatted_data)} entries!")
+# format_realtor_data(dump_path, formatted_dump_path)
