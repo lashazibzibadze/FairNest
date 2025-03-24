@@ -3,7 +3,7 @@ import ListingsComponent from "../../components/listings/listings";
 
 const Listings = () => {
   return (
-    <div>
+    <div className="pt-24">
       <Navbar />
       <ListingsComponent />
     </div>

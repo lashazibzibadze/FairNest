@@ -32,11 +32,6 @@ const Main = () => {
           heroCount={heroCount}
         />
       </div>
-{/* 
-      <div className="lower-container">
-        <Recommendation />
-        <Footer />
-      </div> */}
     </div>
   )
 
