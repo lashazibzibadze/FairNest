@@ -4,7 +4,7 @@ import ContactBanner from "../../assets/Contact_Background.svg";
 
 const Contact = () => {
   return (
-    <div className="flex flex-col min-h-screen">
+    <div className="flex flex-col min-h-screen pt-16">
       {/* Navbar */}
       <Navbar />
 
@@ -17,7 +17,13 @@ const Contact = () => {
         <div className="absolute inset-0 bg-black bg-opacity-50"></div>
 
         {/* Banner Text */}
-        <div className="relative z-10 text-white px-6">
+        <div
+          className="relative z-10 text-white px-6"
+          style={{
+            textShadow:
+              "1px 1px 10px rgb(52, 52, 53), 1px -1px #080808, 1px 1px #0f0f0f",
+          }}
+        >
           <h1 className="text-5xl md:text-6xl font-bold">Contact Us</h1>
           <p className="text-lg md:text-xl mt-4">
             Have questions? Reach out and we'll get back to you as soon as

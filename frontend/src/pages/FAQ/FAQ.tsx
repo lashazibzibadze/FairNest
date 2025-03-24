@@ -49,7 +49,7 @@ const FAQ = () => {
   };
 
   return (
-    <div className="flex flex-col min-h-screen bg-cover bg-center bg-no-repeat">
+    <div className="flex flex-col min-h-screen bg-cover bg-center bg-no-repeat pt-16">
       <Navbar />
 
       {/* Main Content*/}

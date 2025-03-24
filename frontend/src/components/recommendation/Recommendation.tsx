@@ -18,24 +18,24 @@ const Recommendation = () => {
     <div className="flex flex-col items-center p-10">
       {/* Title */}
       <div className="text-center">
-        <h2 className="text-4xl font-bold text-white drop-shadow-[0px_4px_8px_black]">
+        <h2 className="text-4xl md:text-5xl font-semibold pb-8">
           Explore NYC Neighborhoods
         </h2>
       </div>
 
       {/* Search Buttons */}
-      <div className="flex flex-wrap justify-center gap-10 p-10 sm:gap-4 sm:p-5">
+      <div className="flex flex-wrap justify-center gap-10 p-10 sm:gap-4 md:gap-10 pt-16">
         {recommendations.map((item) => (
           <button
             key={item.id}
-            className="w-[290px] h-[340px] flex flex-col items-center justify-center rounded-lg overflow-hidden transition-transform duration-500 ease-in-out hover:scale-110 hover:bg-gradient-to-b from-[rgba(255,255,255,0.25)] to-white"
+            className="w-[290px] h-[340px] md:w-80 md:h-96 flex flex-col items-center justify-center rounded-lg overflow-hidden transition-transform duration-500 ease-in-out hover:scale-110 hover:drop-shadow-[0px_4px_10px_rgba(0,0,0,0.5)] bg-white bg-opacity-75 hover:bg-opacity-100"
           >
             <img
               src={item.img}
               alt={item.title}
               className="w-[95%] h-[85%] object-cover rounded-lg shadow-[0px_4px_10px_rgba(0,0,0,0.5)]"
             />
-            <span className="mt-2 text-sm font-bold text-white drop-shadow-[0px_3px_8px_black] sm:text-base hover:text-gray-900 hover:drop-shadow-none">
+            <span className="mt-2 text-sm font-bold text-black sm:text-base hover:text-gray-900 hover:drop-shadow-none">
               {item.title}
             </span>
           </button>
