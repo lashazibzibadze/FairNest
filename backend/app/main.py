@@ -1,24 +1,37 @@
-from fastapi import FastAPI, HTTPException, Depends
-from typing import List, Annotated
-from pydantic_settings import BaseSettings, SettingsConfigDict
-from database import SessionLocal, engine
-from sqlalchemy.orm import Session
+from fastapi import FastAPI
+from database import engine
+from routers import listings
+from fastapi.middleware.cors import CORSMiddleware
+import models
 
-class Settings(BaseSettings):
-    app_name: str = "FairNest API"
-    model_config = SettingsConfigDict(env_file=".env")
-    
-app = FastAPI()
+# class Settings(BaseSettings):
+#     app_name: str = "FairNest API"
+#     model_config = SettingsConfigDict(env_file=".env")
 
-def get_db():
-    db = SessionLocal()
-    try:
-        yield db
-    finally:
-        db.close()
-        
-db_dependency = Annotated[Session, Depends(get_db)]
+# settings = Settings()
+
+app = FastAPI(
+    title="FairNest API",
+    summary="API for FairNest, where everyone has a fair chance to find their dream home.",
+    version="0.0.1"
+)
+
+origins = [
+    "http://localhost:5173", 
+]
+
+models.Base.metadata.create_all(bind=engine)
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True, 
+    allow_methods=["*"], 
+    allow_headers=["*"],
+)
+
+app.include_router(listings.router)
 
 @app.get("/")
 def read_root():
-    return {"Hello": "World"}
+    return {"message": "Welcome to the FairNest API!"}
