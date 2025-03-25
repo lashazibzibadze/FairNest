@@ -1,28 +1,31 @@
-from pydantic import BaseModel, Field
+from pydantic import BaseModel, Field, ConfigDict
 from datetime import datetime
 from typing import Optional
-from .address import AddressCreate, AddressResponse
+from .address import AddressResponse
 
 class ListingBase(BaseModel):
-    price: int = Field(..., gt=0)
+    price: int
     bedrooms: Optional[int] = None
-    bathrooms: Optional[float] = None
-    square_feet: Optional[int] = None
-    sale_status: str
-    acre_lot: Optional[float] = None
-    tour_available: bool
+    bathrooms: Optional[float] = Field(None, ge=0, decimal_places=1)
+    square_feet: Optional[float] = Field(None, ge=0)
+    sale_status: str = Field(..., max_length=255)
+    acre_lot: Optional[float] = Field(None, ge=0)
+    tour_available: bool = False
     image_source: Optional[str] = None
+    realtor_link: Optional[str] = None
+    date_posted: Optional[datetime] = None
 
 class ListingCreate(ListingBase):
-    address: AddressCreate 
+    address_id: int
 
 class ListingResponse(ListingBase):
     id: int
-    date_posted: Optional[datetime] = None
-    address: AddressResponse 
+    address: AddressResponse
+    created_at: Optional[datetime] = None
+    updated_at: Optional[datetime] = None
 
-    class Config:
-        from_attributes = True
+    model_config = ConfigDict(from_attributes=True)
+        
 class ListingFilter(BaseModel):
     country: Optional[str] = None
     postal_code: Optional[str] = None

@@ -59,6 +59,7 @@ alembic revision --autogenerate -m "Description of changes"
 ```bash
 alembic upgrade head
 ```
+4. If possible, please update the pydantic schemas in backend/app/schemas to reflect the changes as well
 
 #### Rollback a migration
 If you haven't applied the migration script yet, look in backend/app/alembic/versions. Click in each version until you find the migration script with the same message in the head and delete it. Then you can regenerate the migration script after modifications.

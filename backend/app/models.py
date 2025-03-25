@@ -1,6 +1,6 @@
 from sqlalchemy import Column, Integer, String, Boolean, ForeignKey, DECIMAL, BigInteger, Text, DateTime, func
 from sqlalchemy.orm import relationship
-from database import Base
+from app.database import Base
 
 
 class Listing(Base):
