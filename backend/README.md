@@ -34,8 +34,8 @@ Create an .env file in /backend/app and copy the secrets from discord
 ### 5. Start up the FastAPI server
 
 ```bash
-cd app
-uvicorn main:app --reload
+cd backend
+uvicorn app.main:app --reload
 ```
 
 ## Database Documentation

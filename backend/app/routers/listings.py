@@ -1,8 +1,8 @@
 from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.orm import Session
 from typing import List
-import schemas, models
-from database import db_dependency
+from app import schemas, models
+from app.database import db_dependency
 import math
 
 router = APIRouter(prefix="/listings", tags=["Listings"])
