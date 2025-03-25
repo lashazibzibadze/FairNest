@@ -1,5 +1,5 @@
 from .address import AddressBase, AddressCreate, AddressResponse
-from .listing import ListingBase, ListingCreate, ListingResponse, ListingFilter
+from .listings import ListingBase, ListingCreate, ListingResponse, ListingFilter
 
 __all__ = [
     "AddressBase",
