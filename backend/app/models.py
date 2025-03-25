@@ -1,4 +1,4 @@
-from sqlalchemy import Column, Integer, String, Boolean, ForeignKey, DECIMAL, BigInteger, Text, DateTime, func
+from sqlalchemy import Column, Integer, String, Boolean, ForeignKey, DECIMAL, BigInteger, Text, DateTime, UniqueConstraint, func
 from sqlalchemy.orm import relationship
 from database import Base
 
@@ -26,6 +26,13 @@ class Listing(Base):
 
     favorites = relationship("Favorite", back_populates="listing")
 
+    __tarble_args__ = (
+        UniqueConstraint(
+            'address_id', 'price', 'sale_status', name="unique_property_listing_constraint"
+        ),
+    )
+    
+
 
 class Address(Base):
     __tablename__ = "address"
@@ -46,6 +53,13 @@ class Address(Base):
     updated_at = Column(DateTime, nullable=True, default=func.now(), onupdate=func.now())
 
     listings = relationship("Listing", back_populates="address", cascade="all, delete-orphan")
+
+    __table_args__ = (
+        UniqueConstraint (
+            'country', 'adminstrative_area', 'sub_administrative_area', 'locality', 'postal_code', 'street', 'premise', 'sub_premise',
+            name = 'unique_adress_constraint'
+        ),
+    )
 
 
 class Favorite(Base):
