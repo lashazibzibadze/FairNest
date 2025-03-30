@@ -31,7 +31,7 @@ pip install -r requirements.txt
 
 ### 4. Set Up Environment Variables
 
-Create an .env file in /backend/app and copy the secrets from discord
+Create an .env file in /backend/app and copy secrets
 
 ### 5. Start up the FastAPI server
 
@@ -42,13 +42,16 @@ uvicorn main:app --reload
 
 ## Step 3) Setup & Launch React Project, Follow Steps Bellow:
 
-### To run a Vite React application, you need to have Node.js (version 18 or higher) and a package manager like npm or yarn installed
+### 1. To run a Vite React application, you need to have Node.js (version 18 or higher) and a package manager like npm or yarn installed
 
+### 2. Run following commands
 ```bash
 cd frontend/
 npm install
 npm run dev
 ```
+
+### 3. Create an .env file in /frontend and copy secrets
 
 ## Step 4) How to Run Web Scraper
 
