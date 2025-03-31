@@ -1,5 +1,6 @@
 from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.orm import Session
+from sqlalchemy import func
 from typing import List
 from app import schemas, models
 from app.database import db_dependency
@@ -28,7 +29,7 @@ def get_or_create_address(db: Session, address_data: schemas.AddressCreate):
 def get_listings_by_address(db: Session, address_id: int):
     return db.query(models.Listing).filter(models.Listing.address_id == address_id).all()
 
-@router.get("/", response_model=List[schemas.ListingResponse])
+@router.get("/", response_model=schemas.PaginatedListingsResponse)
 def get_listings(
     db: db_dependency,
     filters: schemas.ListingFilter = Depends(),
@@ -73,7 +74,18 @@ def get_listings(
             elif operator == "<=":
                 query = query.filter(column <= value)
 
-    return query.offset(skip).limit(limit).all()
+    total_records = query.with_entities(func.count(models.Listing.id)).scalar()
+    total_pages = math.ceil(total_records / limit) if total_records > 0 else 1
+    
+    listings = query.offset(skip).limit(limit).all()
+
+    return {
+        "listings": listings,
+        "total_records": total_records,
+        "total_pages": total_pages,
+        "current_page": (skip // limit) + 1,
+        "page_size": limit
+    }
 
 @router.get("/{listing_id}", response_model=schemas.ListingResponse)
 def get_listing(listing_id: int, db: db_dependency):

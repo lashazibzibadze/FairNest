@@ -26,6 +26,14 @@ class ListingResponse(ListingBase):
     updated_at: Optional[datetime] = None
 
     model_config = ConfigDict(from_attributes=True)
+
+class PaginatedListingsResponse(BaseModel):
+    listings: list[ListingResponse]
+    total_records: int
+    total_pages: int
+    current_page: int
+    page_size: int
+    model_config = ConfigDict(from_attributes=True)
         
 class ListingFilter(BaseModel):
     country: Optional[str] = None
