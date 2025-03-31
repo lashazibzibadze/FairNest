@@ -15,6 +15,10 @@ load_dotenv(Path("backend") / ".env")
 
 AWS_ACCESS_KEY_ID = os.getenv("AWS_ACCESS_KEY_ID")
 AWS_SECRET_ACCESS_KEY = os.getenv("AWS_SECRET_ACCESS_KEY")
+CHROME_USER_DATA = os.getenv("CHROME_USER_DATA") # Make sure this is declared in env
+
+if not CHROME_USER_DATA:
+    raise ValueError("The CHROME_USER_DATA path is not defined in the .env file.")
 
 
 
@@ -194,8 +198,7 @@ borough_urls = [
 # Scrape data asynchronously
 async def main():
     async with async_playwright() as p:
-        chrome_user_data = r"C:\Users\chowj\AppData\Local\Google\Chrome\User Data" # Might want to replace with Path to be OS-independent and make path relative
-        browser = await p.chromium.launch_persistent_context(chrome_user_data, channel="chrome", headless=False, viewport={"width":1080,"height":4320})
+        browser = await p.chromium.launch_persistent_context(CHROME_USER_DATA, channel="chrome", headless=False, viewport={"width":1080,"height":4320})
     
         combined_data = []
     
