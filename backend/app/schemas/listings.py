@@ -1,15 +1,16 @@
+from decimal import Decimal
 from pydantic import BaseModel, Field, ConfigDict
 from datetime import datetime
-from typing import Optional
+from typing import Optional, Annotated
 from .address import AddressResponse
 
 class ListingBase(BaseModel):
     price: int
     bedrooms: Optional[int] = None
-    bathrooms: Optional[float] = Field(None, ge=0, decimal_places=1)
-    square_feet: Optional[float] = Field(None, ge=0)
+    bathrooms: Optional[Annotated[Decimal, Field(None, ge=0, max_digits=3, decimal_places=1)]] = None
+    square_feet: Optional[Annotated[Decimal, Field(None, ge=0, max_digits=10, decimal_places=2)]] = None
     sale_status: str = Field(..., max_length=255)
-    acre_lot: Optional[float] = Field(None, ge=0)
+    acre_lot: Optional[Annotated[Decimal, Field(None, ge=0, max_digits=10, decimal_places=2)]] = None
     tour_available: bool = False
     image_source: Optional[str] = None
     realtor_link: Optional[str] = None
@@ -38,8 +39,8 @@ class ListingFilter(BaseModel):
     max_bedrooms: Optional[int] = None
     min_bathrooms: Optional[float] = None
     max_bathrooms: Optional[float] = None
-    min_square_feet: Optional[int] = None
-    max_square_feet: Optional[int] = None
+    min_square_feet: Optional[float] = None
+    max_square_feet: Optional[float] = None
     sale_status: Optional[str] = None
     min_acre_lot: Optional[float] = None
     max_acre_lot: Optional[float] = None
