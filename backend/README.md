@@ -38,6 +38,11 @@ cd backend
 uvicorn app.main:app --reload
 ```
 
+
+## Celery(Distributed Task Queue) Documentation
+> [!IMPORTANT]  
+> Always update your dependencies by installing from the latest ```requirements.txt``` file to ensure compatibility and stability. Use ```pip install -r requirements.txt``` to install the specified versions.
+
 ## Database Documentation
 ### Naming Conventions
 1. Table names: Use plural nouns in lowercase (e.g., users, listings).
