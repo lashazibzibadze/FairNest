@@ -2,7 +2,7 @@ from decimal import Decimal
 from pydantic import BaseModel, Field, ConfigDict
 from datetime import datetime
 from typing import Optional, Annotated
-from .address import AddressResponse
+from .address import AddressResponse, AddressCreate
 
 class ListingBase(BaseModel):
     price: int
@@ -17,7 +17,7 @@ class ListingBase(BaseModel):
     date_posted: Optional[datetime] = None
 
 class ListingCreate(ListingBase):
-    address_id: int
+    address: AddressCreate
 
 class ListingResponse(ListingBase):
     id: int

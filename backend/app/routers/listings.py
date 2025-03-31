@@ -3,6 +3,7 @@ from sqlalchemy.orm import Session
 from typing import List
 from app import schemas, models
 from app.database import db_dependency
+from app.task_queue.celery_app import app
 import math
 
 router = APIRouter(prefix="/listings", tags=["Listings"])
@@ -21,6 +22,7 @@ def get_or_create_address(db: Session, address_data: schemas.AddressCreate):
     db.add(new_address)
     db.commit()
     db.refresh(new_address)
+    app.send_task("update_listings.tasks.update_address", args=[new_address.id, new_address.premise, new_address.street, new_address.locality, new_address.administrative_area], queue="update_listings")
     return new_address
 
 def get_listings_by_address(db: Session, address_id: int):

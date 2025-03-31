@@ -1,5 +1,5 @@
 import requests
-from app.db_actions.geocords import get_listings_to_update, update_listing_with_geocords
+from app.db_actions.geocords import get_addresses_to_update, update_address_with_geocords
 from app.database import SessionLocal
 from app.config import key
 from app.task_queue.celery_app import app
@@ -9,24 +9,44 @@ def update_existing_geocords():
     print("Running task to update existing geocords")
     
     with SessionLocal() as db:
-        listings = get_listings_to_update(db)
+        addresses = get_addresses_to_update(db)
 
-        for listing in listings:
-            print(f"Updating listing {listing.id}")
+        for address in addresses:
+            print(f"Updating address {address.id}")
+            query_string = f"key={key}&address={address.premise}{address.street},{address.locality},{address.administrative_area}"
             response = requests.get(
-                f"https://maps.googleapis.com/maps/api/geocode/json?key={key}address={listing.premise}{listing.street},{listing.locality},{listing.administrative_area}"
+                f"https://maps.googleapis.com/maps/api/geocode/json?{query_string}"
             )
             data = response.json()
 
             if data["status"] == "OK":
                 lat, lng = data["results"][0]["geometry"]["location"].values()
                 print(f"Geocords: {lat}, {lng}")
-                update_listing_with_geocords(db, listing.id, lat, lng)
+                update_address_with_geocords(db, address.id, lat, lng)
             else:
-                print(f"Status code {data["status"]}: Failed to get geocords for listing {listing.id}")
+                print(f"Status code {data["status"]}: Failed to get geocords for listing {address.id}")
 
-    return {"message": f"Task completed! Updated {len(listings)} listings."}
+    return {"message": f"Task completed! Updated {len(address)} addresses."}
 
+@app.task(name="update_listings.tasks.update_address")
+def update_address(address_id, premise, street, locality, administrative_area):
+    with SessionLocal() as db:
+        print(f"Updating address {address_id}")
+        query_string = f"key={key}&address={premise}{street},{locality},{administrative_area}"
+        response = requests.get(
+            f"https://maps.googleapis.com/maps/api/geocode/json?{query_string}"
+        )
+        
+        data = response.json()
+
+        if data["status"] == "OK":
+            lat, lng = data["results"][0]["geometry"]["location"].values()
+            print(f"Geocords: {lat}, {lng}")
+            update_address_with_geocords(db, address_id, lat, lng)
+        else:
+            print(f"Status code {data["status"]}: Failed to get geocords for listing {address_id}")
+            
+    return {"message": f"Task completed! Updated address {address_id}."}
 
 @app.task(name="update_listings.tasks.add")
 def add(x, y):

@@ -12,8 +12,8 @@ class AddressBase(BaseModel):
     street: str = Field(..., max_length=100)
     premise: Optional[str] = Field(None, max_length=50)
     sub_premise: Optional[str] = Field(None, max_length=50)
-    latitude: Optional[Annotated[Decimal, Field(None, ge=-90, le=90)]]
-    longitude: Optional[Annotated[Decimal, Field(None, ge=-180, le=180)]]
+    latitude: Optional[Annotated[Decimal, Field(None, ge=-90, le=90)]] = None
+    longitude: Optional[Annotated[Decimal, Field(None, ge=-180, le=180)]] = None
 
 class AddressCreate(AddressBase):
     pass
