@@ -6,13 +6,27 @@ import random
 from datetime import date, timedelta, datetime
 from formatter import format_realtor_data
 import aioboto3
+import os
+from dotenv import load_dotenv
+
+
+# Load environment variables
+load_dotenv(Path("backend") / ".env")
+
+AWS_ACCESS_KEY_ID = os.getenv("AWS_ACCESS_KEY_ID")
+AWS_SECRET_ACCESS_KEY = os.getenv("AWS_SECRET_ACCESS_KEY")
+
 
 
 async def upload_to_s3(file_path):
     bucket_name = "fairnest"
     file_name = file_path.name
     
-    async with aioboto3.Session().client("s3") as s3:
+    async with aioboto3.Session().client(
+        "s3",
+        aws_access_key_id=AWS_ACCESS_KEY_ID,
+        aws_secret_access_key=AWS_SECRET_ACCESS_KEY
+    ) as s3:
         with open(file_path, "rb") as data:
             await s3.put_object(
                 Bucket=bucket_name,
@@ -78,7 +92,7 @@ async def scrape_listing_details(detail_page):
         return "N/A"
 
 
-async def scrape_realtor(url, browser, start_page=1, end_page=1, timeout=100):
+async def scrape_realtor(url, browser, start_page=1, end_page=1, timeout=300):
     USER_AGENTS = [
     "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Safari/537.36",
     "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36",
