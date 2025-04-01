@@ -119,3 +119,11 @@ def format_realtor_data(input_path, output_path):
 
 
 
+# output_file_name = "manhattan"
+# now = datetime.now()
+# formatted_time = now.strftime("%Y-%m-%d")
+# dump_dir = Path("backend") / "app" / "scraper" / "json-dump"
+# dump_path = dump_dir / f"{output_file_name}-{formatted_time}.json"
+# formatted_dump_path = dump_dir / f"{output_file_name}-{formatted_time}-formatted.json"
+
+# format_realtor_data(dump_path, formatted_dump_path)

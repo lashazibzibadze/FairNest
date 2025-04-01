@@ -1,40 +1,63 @@
 import { useQuery } from "@tanstack/react-query";
+import { Listing } from "./types";
 
-interface Filters {
-  minPrice?: string;
-  maxPrice?: string;
-  bedrooms?: string;
-  bathrooms?: string;
-  homeTypes?: string[];
-}
-
-export const useListings = (
-  skip = 0,
-  limit = 10,
-  country?: string,
-  postal_code?: string,
-  filters?: Filters
-) => {
-  return useQuery({
-    queryKey: ["listings", skip, limit, country, postal_code, filters],
-    queryFn: async () => {
-      const params = new URLSearchParams({
+const fetchListings = async (
+    skip = 0,
+    limit = 10,
+    country?: string,
+    postal_code?: string,
+    street?: string,
+    administrative_area?: string,
+    locality?: string
+): Promise<Listing[]> => {
+    const queryParams = new URLSearchParams({
         skip: skip.toString(),
         limit: limit.toString(),
         ...(country && { country }),
         ...(postal_code && { postal_code }),
-        ...(filters?.minPrice && { min_price: filters.minPrice }),
-        ...(filters?.maxPrice && { max_price: filters.maxPrice }),
-        ...(filters?.bedrooms && { bedrooms: filters.bedrooms }),
-        ...(filters?.bathrooms && { bathrooms: filters.bathrooms }),
-        ...(filters?.homeTypes?.length && {
-          home_types: filters.homeTypes.join(","),
-        }),
-      });
+        ...(street && { street }),
+        ...(administrative_area && { administrative_area }),
+        ...(locality && { locality }),
+    }).toString();
 
-      const res = await fetch(`http://127.0.0.1:8000/listings?${params}`);
-      if (!res.ok) throw new Error("Failed to fetch listings");
-      return res.json();
-    },
-  });
+    const response = await fetch(
+        `http://127.0.0.1:8000/listings?${queryParams}`
+    );
+    if (!response.ok) {
+        throw new Error("Failed to fetch listings");
+    }
+    return response.json();
 };
+
+export function useListings(
+    skip = 0,
+    limit = 10,
+    country?: string,
+    postal_code?: string,
+    street?: string,
+    administrative_area?: string,
+    locality?: string
+) {
+    return useQuery({
+        queryKey: [
+            "listings",
+            skip,
+            limit,
+            country,
+            postal_code,
+            street,
+            administrative_area,
+            locality,
+        ],
+        queryFn: () =>
+            fetchListings(
+                skip,
+                limit,
+                country,
+                postal_code,
+                street,
+                administrative_area,
+                locality
+            ),
+    });
+}

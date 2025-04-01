@@ -62,7 +62,7 @@ const aboutCards: Card[] = [
       },
       {
         label: "💡 Innovation",
-        desc: "Machine Learning and data science to support fairness.",
+        desc: "Blending AI and data science to support fairness.",
       },
       {
         label: "🔓 Open Access",
@@ -132,7 +132,7 @@ const About = () => {
               {/* Hover overlay */}
               <div className="absolute inset-0 bg-white bg-opacity-95 text-black p-5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col justify-center gap-3 text-left">
                 <h3 className="text-2xl font-bold text-center">{card.title}</h3>
-                <ul className="list-disc list-inside text-sm space-y-1 list-none">
+                <ul className="list-disc list-inside text-sm space-y-1">
                   {card.points.map((point, i) => (
                     <li key={i}>
                       <strong>{point.label}</strong>: {point.desc}
