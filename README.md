@@ -54,7 +54,7 @@ npm run dev
 ### 3. Create an .env file in /frontend and copy secrets
 
 ## Step 4) How to Run Web Scraper
-Dependencies installed through dependencies.txt
+Dependencies installed through requirements.txt in `backend` folder
 ```
 cd /backend/app/scraper/
 python scraper-async.py
