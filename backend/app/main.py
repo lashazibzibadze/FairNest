@@ -1,6 +1,6 @@
 from fastapi import FastAPI
 from app.database import engine
-from app.routers import listings, users, favorites
+from app.routers import listings, users, favorites, contacts
 from fastapi.middleware.cors import CORSMiddleware
 from app import models
 
@@ -33,6 +33,7 @@ app.add_middleware(
 app.include_router(listings.router)
 app.include_router(users.router)
 app.include_router(favorites.router)
+app.include_router(contacts.router)
 
 @app.get("/")
 def read_root():
