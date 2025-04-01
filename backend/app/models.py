@@ -58,7 +58,7 @@ class Address(Base):
     __table_args__ = (
         UniqueConstraint (
             'country', 'administrative_area', 'sub_administrative_area', 'locality', 'postal_code', 'street', 'premise', 'sub_premise',
-            name = 'unique_address_constraint'
+            name='unique_adress_constraint'
         ),
     )
 
