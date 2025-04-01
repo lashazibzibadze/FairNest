@@ -1,17 +1,16 @@
 from sqlalchemy.orm import Session
-from app import schemas, models
+import schemas, models
 
-def get_addresses_to_update(db: Session):
+def get_listings_to_update(db: Session):
     return db.query(models.Address).filter(
         models.Address.longitude == None,
         models.Address.latitude == None
-    ).all()
+    ).limit(10).all()
 
-def update_address_with_geocords(db: Session, address_id: int, lat: float, lng: float):
-    address = db.query(models.Address).filter(models.Address.id == address_id).first()
-    address.latitude = lat
-    address.longitude = lng
+def update_listing_with_geocords(db: Session, listing_id: int, lat: float, lng: float):
+    listing = db.query(models.Address).filter(models.Address.id == listing_id).first()
+    listing.latitude = lat
+    listing.longitude = lng
     db.commit()
-    db.refresh(address)
-    return address
-
+    db.refresh(listing)
+    return listing

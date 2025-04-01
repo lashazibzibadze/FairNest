@@ -1,10 +1,8 @@
 from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.orm import Session
-from sqlalchemy import func
 from typing import List
-from app import schemas, models
-from app.database import db_dependency
-from app.task_queue.celery_app import app
+import schemas, models
+from database import db_dependency
 import math
 
 router = APIRouter(prefix="/listings", tags=["Listings"])
@@ -23,13 +21,12 @@ def get_or_create_address(db: Session, address_data: schemas.AddressCreate):
     db.add(new_address)
     db.commit()
     db.refresh(new_address)
-    app.send_task("update_listings.tasks.update_address", args=[new_address.id, new_address.premise, new_address.street, new_address.locality, new_address.administrative_area], queue="update_listings")
     return new_address
 
 def get_listings_by_address(db: Session, address_id: int):
     return db.query(models.Listing).filter(models.Listing.address_id == address_id).all()
 
-@router.get("/", response_model=schemas.PaginatedListingsResponse)
+@router.get("/", response_model=List[schemas.ListingResponse])
 def get_listings(
     db: db_dependency,
     filters: schemas.ListingFilter = Depends(),
@@ -74,18 +71,7 @@ def get_listings(
             elif operator == "<=":
                 query = query.filter(column <= value)
 
-    total_records = query.with_entities(func.count(models.Listing.id)).scalar()
-    total_pages = math.ceil(total_records / limit) if total_records > 0 else 1
-    
-    listings = query.offset(skip).limit(limit).all()
-
-    return {
-        "listings": listings,
-        "total_records": total_records,
-        "total_pages": total_pages,
-        "current_page": (skip // limit) + 1,
-        "page_size": limit
-    }
+    return query.offset(skip).limit(limit).all()
 
 @router.get("/{listing_id}", response_model=schemas.ListingResponse)
 def get_listing(listing_id: int, db: db_dependency):

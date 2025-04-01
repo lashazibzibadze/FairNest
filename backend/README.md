@@ -34,42 +34,11 @@ Create an .env file in /backend/app and copy the secrets from discord
 ### 5. Start up the FastAPI server
 
 ```bash
-cd backend
-uvicorn app.main:app --reload
-```
-
-
-## Celery(Distributed Task Queue) Documentation
-> [!IMPORTANT]  
-> Always update your dependencies by installing from the latest ```requirements.txt``` file to ensure compatibility and stability. Use ```pip install -r requirements.txt``` to install the specified versions.
-
-### Setting up the broker
-1. Install [docker](http://docker.com/) if you don't have it already.
-2. Pull and run the docker image for RabbitMQ
-```bash
-docker run -d -p 5672:5672 -p 15672:15672 rabbitmq:management
-```
-
-You can access RabbitMQ's management UI at http://localhost:15672/ (default user/pass: guest/guest).
-
-### Running Celery
-> [!Note]  
-> Make sure you are in the backend directory and not backend/app
-
-**Start the Celery Worker:**
-```bash
-celery -A worker.worker worker --loglevel=info -Q update_listings
-```
-
-### Manually sending a task to the queue
-This is for updating existing addresses with geocords
-```bash
-PYTHONPATH=$(pwd) python3 -m app.task_queue.test.update_existing_geocords
+cd app
+uvicorn main:app --reload
 ```
 
 ## Database Documentation
-> [!IMPORTANT]  
-> Always update your dependencies by installing from the latest ```requirements.txt``` file to ensure compatibility and stability. Use ```pip install -r requirements.txt``` to install the specified versions.
 ### Naming Conventions
 1. Table names: Use plural nouns in lowercase (e.g., users, listings).
 2. Column names: Use snake_case (e.g., first_name, address_id, created_at).
@@ -82,10 +51,6 @@ We are using Alembic for migrations
 
 #### Steps to modify the database schema
 1. Modify the python models directly in backend/app/models.py
-
-> [!Note]  
-> Make sure you are in the backend directory and not backend/app
-
 2. Generate a new migration script using the following command
 ```bash
 alembic revision --autogenerate -m "Description of changes"
@@ -94,7 +59,6 @@ alembic revision --autogenerate -m "Description of changes"
 ```bash
 alembic upgrade head
 ```
-4. If possible, please update the pydantic schemas in backend/app/schemas to reflect the changes as well
 
 #### Rollback a migration
 If you haven't applied the migration script yet, look in backend/app/alembic/versions. Click in each version until you find the migration script with the same message in the head and delete it. Then you can regenerate the migration script after modifications.
@@ -162,8 +126,6 @@ GET /listings?skip={skip}&limit={limit}&country={country}&postal_code={postal_co
 ```
 
 ## Using TanStack Query to Fetch Listings
-> [!IMPORTANT]  
-> Always update your dependencies by installing from the latest ```requirements.txt``` file to ensure compatibility and stability. Use ```pip install -r requirements.txt``` to install the specified versions.
 
 ### Install TanStack Query
 
