@@ -11,7 +11,7 @@ type Filters = {
 };
 
 const ListingsComponent = ({ filters }: { filters: Filters }) => {
-  const { data, error, isLoading } = useListings(0, 100, "", "", filters);
+  const { data, error, isLoading } = useListings(0, 100, "", "79936", filters); // replace zip code with 90011 for midterm demo
 
   if (isLoading)
     return <p className="animate-ping text-center py-10 text-lg">Loading...</p>;
