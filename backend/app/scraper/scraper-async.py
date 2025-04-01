@@ -4,7 +4,203 @@ from playwright.async_api import async_playwright
 import asyncio
 import random
 from datetime import date, timedelta, datetime
-from formatter import format_realtor_data
+from formatter import safe_int, safe_float, extract_premise_and_sub_premise
+import re
+# import aioboto3
+import os
+from dotenv import load_dotenv
+from supabase import create_client, Client
+import requests
+
+
+# Load environment variables
+load_dotenv()
+
+AWS_ACCESS_KEY_ID = os.getenv("AWS_ACCESS_KEY_ID")
+AWS_SECRET_ACCESS_KEY = os.getenv("AWS_SECRET_ACCESS_KEY")
+CHROME_USER_DATA = os.getenv("CHROME_USER_DATA") # Make sure this is declared in env
+if not CHROME_USER_DATA:
+    raise ValueError("The CHROME_USER_DATA path is not defined in the .env file.")
+
+
+# Supabase
+#Initialize supabase connection
+SUPABASE_URL = os.getenv("SUPABASE_URL")
+SUPABASE_KEY = os.getenv("SUPABASE_KEY")
+SUPABASE_URL = os.getenv("SUPABASE_URL")
+GOOGLE_GEOCODE_KEY = os.getenv('key')
+
+supabase: Client = create_client(SUPABASE_URL, SUPABASE_KEY)
+print("Supabase client initialized successfully!")
+
+
+def format_data(raw_data):
+    formatted_data = []
+    
+    for item in raw_data:
+        try:
+            # Convert price to integer
+            price = safe_int(re.sub(r"[^\d]","", item["Price"]))
+            
+            # Extract address components
+            address_parts = item["Address"].split(", ")
+            street = address_parts[0] if len(address_parts) > 0 else None
+            city = address_parts[1] if len(address_parts) > 1 else None
+            state_zip = address_parts[2] if len(address_parts) > 2 else None
+            
+            # Extract state and postal code
+            if state_zip and " " in state_zip:
+                state, postal_code = state_zip.split()[:2]
+            else:
+                state, postal_code = state_zip, None
+                
+            
+            # Bedrooms and bathroooms
+            bedrooms = safe_int(re.sub(r"[^\d]", "", item.get("Bedrooms", "")))
+            bathrooms = safe_float(re.sub(r"[^\d.]", "", item.get("Bathrooms", "")))
+            if bathrooms is not None:
+                bathrooms = round(bathrooms, 1)
+            
+            # Square feet and acre lot
+            square_feet = safe_float(re.sub(r"[^\d]", "", item.get("Square Feet", "")))
+            acre_lot = safe_float(re.sub(r"[^\d.]", "", item.get("Acre Lot", "")))
+            
+            # Convert tour availability to boolean
+            tour_available = item.get("Tour Available", "N/A") != "N/A"
+            
+            # Premise and subpremise
+            premise, sub_premise, street_clean = extract_premise_and_sub_premise(street)
+            
+            
+            # Create formatted dictionary
+            formatted_item = {
+                "price": price,
+                "address": {
+                    "country": "US",
+                    "administrative_area": state,
+                    "sub_administrative_area": None,
+                    "locality": city,
+                    "postal_code": postal_code,
+                    "street": street_clean,
+                    "premise": premise,
+                    "sub_premise": sub_premise,
+                },
+                "bedrooms": bedrooms,
+                "bathrooms": bathrooms,
+                "square_feet": square_feet,
+                "sale_status": item["Sale Status"],
+                "acre_lot": acre_lot,
+                "tour_available": tour_available,
+                "image_source": item["Image Source"],
+                "realtor_link": item["Realtor Link"]
+            }
+            
+            formatted_data.append(formatted_item)
+        except Exception as e:
+            print(f"Error formatting data: {e}")
+    
+    print(f"Formatted JSON saved with {len(formatted_data)} entries!")
+    return formatted_data
+
+
+# async def upload_to_s3(file_path):
+#     bucket_name = "fairnest"
+#     file_name = file_path.name
+    
+#     async with aioboto3.Session().client(
+#         "s3",
+#         aws_access_key_id=AWS_ACCESS_KEY_ID,
+#         aws_secret_access_key=AWS_SECRET_ACCESS_KEY
+#     ) as s3:
+#         with open(file_path, "rb") as data:
+#             await s3.put_object(
+#                 Bucket=bucket_name,
+#                 Key=file_name,
+#                 Body=data,
+#                 ContentType="application/json"
+#             )
+    
+#     print(f"Uploaded to S3: {file_name}")
+
+
+#Helper function to get geocode with google API
+def get_geocode(address_data):
+    address = f"{address_data['premise']} {address_data['street']}, {address_data['locality']}, {address_data['administrative_area']}"
+    uri = f"https://maps.googleapis.com/maps/api/geocode/json?key={GOOGLE_GEOCODE_KEY}&address={address}"
+    response = requests.get(uri)
+    if response.status_code == 200:
+        data = response.json()
+        if data['results']:
+            location = data['results'][0]['geometry']['location']
+            return location['lat'], location['lng']
+    return None, None
+
+
+#Helper function to read dataset
+def getData(filePath):
+    with open(filePath, 'r') as f:
+        data = json.load(f)
+        return data
+
+#Insert function into supabase
+def insert_data(data):
+    for entry in data:
+        address_data = {
+            'country': entry['address']['country'] or '',
+            'administrative_area': entry['address']['administrative_area'] or '',
+            'sub_administrative_area': entry['address']['sub_administrative_area'] or '',
+            'locality': entry['address']['locality'] or '',
+            'postal_code': entry['address']['postal_code'] or '',
+            'street': entry['address']['street'] or '',
+            'premise': entry['address']['premise'] or '',
+            'sub_premise': entry['address']['sub_premise'] or '',
+        }
+
+        # geocode for the address
+        lat, lng = get_geocode(address_data)
+        address_data['latitude'] = lat
+        address_data['longitude'] = lng
+
+        address_response = supabase.table('address').upsert(
+            [address_data],
+            on_conflict="country,administrative_area,sub_administrative_area,locality,postal_code,street,premise,sub_premise"
+        ).execute()
+        
+        if address_response.data:
+            address_id = address_response.data[0]['id']
+        else:
+            print(f"Error upserting address data: {address_response}")
+            continue 
+        
+        # Convert None to 0 for numeric entries
+        price = entry['price'] if entry['price'] is not None else 0
+        bedrooms = entry['bedrooms'] if entry['bedrooms'] is not None else 0
+        bathrooms = entry['bathrooms'] if entry['bathrooms'] is not None else 0
+        square_feet = entry['square_feet'] if entry['square_feet'] is not None else 0
+        acre_lot = entry['acre_lot'] if entry['acre_lot'] is not None else 0
+        
+        property_listing_data = {
+            'price': price,
+            'bedrooms': bedrooms,
+            'bathrooms': bathrooms,
+            'square_feet': square_feet,
+            'sale_status': entry['sale_status'],
+            'acre_lot': acre_lot,
+            'tour_available': entry['tour_available'],
+            'image_source': entry['image_source'],
+            'address_id': address_id
+        }
+        
+        property_response = supabase.table('property_listings').upsert(
+            [property_listing_data],
+            on_conflict='address_id,price,sale_status'
+        ).execute()
+        
+        if property_response.data:
+            print(f"Successfully upserted property listing: {property_listing_data}")
+        else:
+            print(f"Error upserting property listing data: {property_response}")
+
 
 async def scroll_until_bottom(page):
     """Scroll down the page until the bottom is reached."""
@@ -57,7 +253,7 @@ async def scrape_listing_details(detail_page):
         return "N/A"
 
 
-async def scrape_realtor(url, browser, start_page=1, end_page=1, timeout=60):
+async def scrape_realtor(url, browser, start_page=1, end_page=1, timeout=300):
     USER_AGENTS = [
     "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Safari/537.36",
     "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36",
@@ -70,6 +266,7 @@ async def scrape_realtor(url, browser, start_page=1, end_page=1, timeout=60):
     async with async_playwright() as p: 
         page = await browser.new_page()
 
+        # await page.goto(f"{url}/type-single-family-home,condo,townhome,multi-family-home/pnd-hide/fc-hide/dom-1/pg-{start_page}", timeout=timeout * 1000)
         await page.goto(f"{url}/type-single-family-home,condo,townhome,multi-family-home/pnd-hide/fc-hide/pg-{start_page}", timeout=timeout * 1000)
 
         data = []
@@ -147,63 +344,72 @@ async def scrape_realtor(url, browser, start_page=1, end_page=1, timeout=60):
         return data, total_pages
 
 
-# URL to scrape
-manhattan_URL = "https://www.realtor.com/realestateandhomes-search/Manhattan_NY"
-bronx_URL = "https://www.realtor.com/realestateandhomes-search/Bronx_NY"
-brooklyn_URL = "https://www.realtor.com/realestateandhomes-search/Brooklyn_NY"
-queens_URL = "https://www.realtor.com/realestateandhomes-search/Queens_NY"
-staten_URL = "https://www.realtor.com/realestateandhomes-search/Staten-Island_NY"
+# List of borough URLs
+borough_urls = [
+    # "https://www.realtor.com/realestateandhomes-search/Manhattan_NY",
+    # "https://www.realtor.com/realestateandhomes-search/Bronx_NY",
+    # "https://www.realtor.com/realestateandhomes-search/Brooklyn_NY",
+    # "https://www.realtor.com/realestateandhomes-search/Queens_NY",
+    # "https://www.realtor.com/realestateandhomes-search/Staten-Island_NY"
+    
+    "https://www.realtor.com/realestateandhomes-search/79936" # texas
+    # "https://www.realtor.com/realestateandhomes-search/90011" # DEMO la
+]
 
 # Scrape data asynchronously
 async def main():
     async with async_playwright() as p:
-        chrome_user_data = r"C:\Users\chowj\AppData\Local\Google\Chrome\User Data" # Might want to replace with Path to be OS-independent and make path relative
-        browser = await p.chromium.launch_persistent_context(chrome_user_data, channel="chrome", headless=False, viewport={"width":1080,"height":4320})
+        browser = await p.chromium.launch_persistent_context(CHROME_USER_DATA, channel="chrome", headless=False, viewport={"width":1080,"height":4320})
+    
+        combined_data = []
     
         # QUICK CONFIGURABLES
-        target_URL = staten_URL
-        output_file_name = "staten-island"
-        pages_per_task = 25
-    
-        # Scrape the first page to get the total number of pages
-        initial_data, total_pages = await scrape_realtor(target_URL, browser=browser, start_page=1, end_page=1)
+        pages_per_task = 1
         
-        tasks = []
+        for borough_url in borough_urls:
+            print(f"Scraping data for: {borough_url}")
+            
+            # Scrape the first page to get the total number of pages
+            initial_data, total_pages = await scrape_realtor(borough_url, browser=browser, start_page=1, end_page=1)
         
-        for start_page in range(1, total_pages + 1, pages_per_task):
-            end_page = min(start_page + pages_per_task - 1, total_pages)
-            task = asyncio.create_task(scrape_realtor(target_URL, browser=browser, start_page=start_page, end_page=end_page))
-            tasks.append(task)
+            tasks = []
+            for start_page in range(1, total_pages + 1, pages_per_task):
+                end_page = min(start_page + pages_per_task - 1, total_pages)
+                task = asyncio.create_task(scrape_realtor(borough_url, browser=browser, start_page=start_page, end_page=end_page))
+                tasks.append(task)
         
-        # Gather results from all tasks
-        results = await asyncio.gather(*tasks, return_exceptions=True)
+            # Gather results from all tasks
+            results = await asyncio.gather(*tasks, return_exceptions=True)
+            
+            # Merged scraped data into combined list
+            for index, result in enumerate(results):
+                if isinstance(result, tuple) and len(result) == 2:
+                    data, _ = result
+                    combined_data.extend(data)
+                else:
+                    print(f"Error during scraping task for {borough_url}: {result}")
+            
         await browser.close()
-
-        # Merge scraped data into single list of dictionaries
-        combined_data = []
-        for index, result in enumerate(results):
-            if isinstance(result, tuple) and len(result) == 2:
-                data, total_pages = result
-                combined_data.extend(data)
-            else:
-                print(f"Error during scraping task {index + 1}: {result}") 
             
         
         # Dump JSON
+        # now = datetime.now()
+        # formatted_time = now.strftime("%Y-%m-%d")
+        # dump_dir = Path("backend") / "app" / "scraper" / "json-dump"
+        # dump_path = dump_dir / f"nyc_housing_data_{formatted_time}.json"
+        # dump_path.parent.mkdir(parents=True, exist_ok=True)
         
-        now = datetime.now()
-        formatted_time = now.strftime("%Y-%m-%d")
-        dump_dir = Path("backend") / "app" / "scraper" / "json-dump"
-        dump_path = dump_dir / f"{output_file_name}-{formatted_time}.json"
-        dump_path.parent.mkdir(parents=True, exist_ok=True)
+        # with open(dump_path, 'w') as json_file:
+        #     json.dump(combined_data, json_file, indent=4)
         
-        with open(dump_path, 'w') as json_file:
-            json.dump(combined_data, json_file, indent=4)
+        # print("JSON successfully dumped with " + str(len(combined_data)) + " entries!")
         
-        print("JSON successfully dumped with " + str(len(combined_data)) + " entries!")
+        # formatted_dump_path = dump_dir / f"nyc_housing_data_{formatted_time}.json"
+        formatted_data = format_data(combined_data)
         
-        formatted_dump_path = dump_dir / f"{output_file_name}-{formatted_time}-formatted.json"
-        format_realtor_data(dump_path, formatted_dump_path)
+        insert_data(formatted_data)
+        
+        # await upload_to_s3(formatted_dump_path)
 
 
 # Run the main function
