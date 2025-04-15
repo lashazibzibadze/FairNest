@@ -1,8 +1,8 @@
 from fastapi import FastAPI
-from database import engine
-from routers import listings
+from app.database import engine
+from app.routers import listings, users, favorites
 from fastapi.middleware.cors import CORSMiddleware
-import models
+from app import models
 
 # class Settings(BaseSettings):
 #     app_name: str = "FairNest API"
@@ -37,6 +37,8 @@ app.add_middleware(
 )
 
 app.include_router(listings.router)
+app.include_router(users.router)
+app.include_router(favorites.router)
 
 @app.get("/")
 def read_root():
