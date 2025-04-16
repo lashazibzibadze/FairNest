@@ -42,7 +42,6 @@ SUPABASE_URL = os.getenv("SUPABASE_URL")
 GOOGLE_GEOCODE_KEY = os.getenv('GEOCODE_KEY')
 
 supabase: Client = create_client(SUPABASE_URL, SUPABASE_KEY)
-semaphore = asyncio.Semaphore(32)
 print("Supabase client initialized successfully!")
 
 
@@ -455,15 +454,11 @@ async def scrape_realtor(url, browser, start_page=1, end_page=1, timeout=300):
 
 # List of borough URLs
 borough_urls = [
-    # "https://www.realtor.com/realestateandhomes-search/Manhattan_NY",
+    "https://www.realtor.com/realestateandhomes-search/Manhattan_NY",
     "https://www.realtor.com/realestateandhomes-search/Bronx_NY",
-    # "https://www.realtor.com/realestateandhomes-search/Brooklyn_NY",
-    # "https://www.realtor.com/realestateandhomes-search/Queens_NY",
-    # "https://www.realtor.com/realestateandhomes-search/Staten-Island_NY"
-    
-    # "https://www.realtor.com/realestateandhomes-search/79936" # texas
-    # "https://www.realtor.com/realestateandhomes-search/60629" # chicago
-    # "https://www.realtor.com/realestateandhomes-search/90011" # DEMO la
+    "https://www.realtor.com/realestateandhomes-search/Brooklyn_NY",
+    "https://www.realtor.com/realestateandhomes-search/Queens_NY",
+    "https://www.realtor.com/realestateandhomes-search/Staten-Island_NY"
 ]
 
 # Scrape data asynchronously
