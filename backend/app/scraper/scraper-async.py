@@ -17,7 +17,6 @@ import sys
 import time
 import signal
 import math
-import httpx
 from collections import Counter
 from postgrest.exceptions import APIError
 
@@ -43,6 +42,7 @@ SUPABASE_URL = os.getenv("SUPABASE_URL")
 GOOGLE_GEOCODE_KEY = os.getenv('GEOCODE_KEY')
 
 supabase: Client = create_client(SUPABASE_URL, SUPABASE_KEY)
+semaphore = asyncio.Semaphore(32)
 print("Supabase client initialized successfully!")
 
 
@@ -97,11 +97,12 @@ def format_data(raw_data):
         except Exception as e:
             print(item)
             print(f"Error formatting data: {e}.")
+            sys.exit(1)
     
     
     # Save formatted JSON
-    dump_dir = Path("backend") / "app" / "scraper" / "json-dump"
-    dump_path = dump_dir / "nyc_housing_data_test.json"
+    script_dir = os.path.dirname(os.path.abspath(__file__))
+    dump_path = os.path.join(script_dir, "json-dump", "nyc_housing_data_test.json")
         
     with open(dump_path, "w") as file:
         json.dump(formatted_data, file, indent=4)
@@ -136,195 +137,18 @@ def getData(filePath):
         data = json.load(f)
         return data
 
-#Insert function into supabase
-# def insert_data(data):
-#     for entry in data:
-#         address_data = {
-#             'country': entry['address']['country'] or '',
-#             'administrative_area': entry['address']['administrative_area'] or '',
-#             'sub_administrative_area': entry['address']['sub_administrative_area'] or '',
-#             'locality': entry['address']['locality'] or '',
-#             'postal_code': entry['address']['postal_code'] or '',
-#             'street': entry['address']['street'] or '',
-#             'premise': entry['address']['premise'] or '',
-#             'sub_premise': entry['address']['sub_premise'] or '',
-#         }
-
-#         # geocode for the address
-#         lat, lng = get_geocode(address_data)
-#         address_data['latitude'] = lat
-#         address_data['longitude'] = lng
-
-#         address_response = supabase.table('address').upsert(
-#             [address_data],
-#             on_conflict="country,administrative_area,sub_administrative_area,locality,postal_code,street,premise,sub_premise"
-#         ).execute()
-        
-#         if address_response.data:
-#             address_id = address_response.data[0]['id']
-#         else:
-#             print(f"Error upserting address data: {address_response}")
-#             continue 
-        
-#         # Convert None to 0 for numeric entries
-#         price = entry['price'] if entry['price'] is not None else 0
-#         bedrooms = entry['bedrooms'] if entry['bedrooms'] is not None else 0
-#         bathrooms = entry['bathrooms'] if entry['bathrooms'] is not None else 0
-#         square_feet = entry['square_feet'] if entry['square_feet'] is not None else 0
-#         acre_lot = entry['acre_lot'] if entry['acre_lot'] is not None else 0
-        
-#         property_listing_data = {
-#             'price': price,
-#             'bedrooms': bedrooms,
-#             'bathrooms': bathrooms,
-#             'square_feet': square_feet,
-#             'sale_status': entry['sale_status'],
-#             'acre_lot': acre_lot,
-#             'tour_available': entry['tour_available'],
-#             'image_source': entry['image_source'],
-#             'address_id': address_id
-#         }
-        
-#         property_response = supabase.table('property_listings').upsert(
-#             [property_listing_data],
-#             on_conflict='address_id,price,sale_status'
-#         ).execute()
-        
-#         if property_response.data:
-#             print(f"Successfully upserted property listing: {property_listing_data}")
-#         else:
-#             print(f"Error upserting property listing data: {property_response}")
 
 
 
 
-def insert_data(data, batch_size=50):
-    address_rows = []
-    property_rows = []
-
-    for i, entry in enumerate(data):
-        address_data = {
-            'country': entry['address']['country'] or '',
-            'administrative_area': entry['address']['administrative_area'] or '',
-            'sub_administrative_area': entry['address']['sub_administrative_area'] or '',
-            'locality': entry['address']['locality'] or '',
-            'postal_code': entry['address']['postal_code'] or '',
-            'street': entry['address']['street'] or '',
-            'premise': entry['address']['premise'] or '',
-            'sub_premise': entry['address']['sub_premise'] or '',
-        }
-
-        lat, lng = get_geocode(address_data)
-        address_data['latitude'] = lat
-        address_data['longitude'] = lng
-        address_rows.append(address_data)
-
-        price = entry['price'] or 0
-        bedrooms = entry['bedrooms'] or 0
-        bathrooms = entry['bathrooms'] or 0
-        square_feet = entry['square_feet'] or 0
-        acre_lot = entry['acre_lot'] or 0
-
-        property_rows.append({
-            'address_data': address_data,
-            'property_data': {
-                'price': price,
-                'bedrooms': bedrooms,
-                'bathrooms': bathrooms,
-                'square_feet': square_feet,
-                'sale_status': entry['sale_status'],
-                'acre_lot': acre_lot,
-                'tour_available': entry['tour_available'],
-                'image_source': entry['image_source'],
-            }
-        })
-
-        if len(address_rows) >= batch_size or i == len(data) - 1:
-            try:
-                address_response = supabase.table('address').upsert(
-                    address_rows,
-                    on_conflict="country,administrative_area,sub_administrative_area,locality,postal_code,street,premise,sub_premise"
-                ).execute()
-
-                address_map = {
-                    (row['country'], row['administrative_area'], row['sub_administrative_area'], row['locality'],
-                     row['postal_code'], row['street'], row['premise'], row['sub_premise']): row['id']
-                    for row in address_response.data
-                }
-
-                seen_keys = set()
-                property_payload = []
-                for row in property_rows:
-                    addr = row['address_data']
-                    key = (
-                        addr['country'], addr['administrative_area'], addr['sub_administrative_area'],
-                        addr['locality'], addr['postal_code'], addr['street'], addr['premise'], addr['sub_premise']
-                    )
-                    address_id = address_map.get(key)
-                    if not address_id:
-                        print("❗ Address ID not found for:", key)
-                        continue
-
-                    listing = row['property_data']
-                    listing['address_id'] = address_id
-
-                    conflict_key = (
-                        int(address_id),
-                        round(float(listing['price']), 2),
-                        listing['sale_status'].strip().lower()
-                    )
-                    if conflict_key not in seen_keys:
-                        seen_keys.add(conflict_key)
-                        property_payload.append(listing)
-
-             
-                # Try the batch insert in a sub-try
-                try:
-                    supabase.table('property_listings').upsert(
-                        property_payload,
-                        on_conflict="address_id,price,sale_status"
-                    ).execute()
-                    print(f"✅ Inserted {len(property_payload)} unique property listings.")
-
-                except APIError as e:
-                    if hasattr(e, "args") and isinstance(e.args[0], dict) and e.args[0].get("code") == "21000":
-                        print("⚠️ Batch insert failed due to conflict. Falling back to row-by-row insert...")
-                        failed_rows = []
-                        successful = 0
-
-                        for row in property_payload:
-                            try:
-                                supabase.table('property_listings').upsert(
-                                    [row],
-                                    on_conflict="address_id,price,sale_status"
-                                ).execute()
-                                successful += 1
-                            except Exception as single_e:
-                                failed_rows.append({**row, "_error": str(single_e)})
-                                print(f"🚫 Failed single insert for {row} → {single_e}")
-
-                        if failed_rows:
-                            with open("failed_property_rows.json", "w") as f:
-                                json.dump(failed_rows, f, indent=2)
-                            print(f"📁 Logged {len(failed_rows)} failed rows to 'failed_property_rows.json'")
-                        print(f"🧾 Row-by-row insert: {successful} succeeded, {len(failed_rows)} failed.")
-                    else:
-                        raise
-
-            except Exception as e:
-                print(f"🔥 Unhandled exception in batch: {e}")
-                raise
-
-            address_rows = []
-            property_rows = []
 
 
 
 
-from collections import Counter
-import json
-import time
-from postgrest.exceptions import APIError
+
+
+
+
 
 def insert_data(data, batch_size=50):
     address_rows = []
@@ -397,6 +221,7 @@ def insert_data(data, batch_size=50):
                     ).execute()
                 except Exception as e:
                     print(f"🔥 Error inserting address batch: {e}")
+                    sys.exit(1)
                     raise
 
                 address_map = {
@@ -464,11 +289,14 @@ def insert_data(data, batch_size=50):
                             print(f"📁 Logged {failed} failed rows to 'failed_property_rows.json'.")
 
                         print(f"🧾 Fallback complete: {successful} inserted, {failed} failed.")
+                        sys.exit(1)
                     else:
+                        sys.exit(1)
                         raise
 
             except Exception as e:
                 print(f"🔥 Unhandled exception in batch: {e}")
+                sys.exit(1)
                 raise
 
             address_rows = []
@@ -508,6 +336,7 @@ async def scroll_until_element_in_view(page, element):
             print("Element not found.")
     except Exception as e:
         print(f"Error scrolling element into view: {e}")
+        sys.exit(1)
 
 async def scrape_listing_details(detail_page):
     try:
@@ -527,6 +356,7 @@ async def scrape_listing_details(detail_page):
     
     except Exception as e:
         print(f"Error parsing listing page: {e}")
+        sys.exit(1)
         return "N/A"
 
 
@@ -607,6 +437,7 @@ async def scrape_realtor(url, browser, start_page=1, end_page=1, timeout=300):
                     
                 except Exception as e:
                     print(f"Error parsing listing: {e}")
+                    sys.exit(1)
 
             # Check for the "Next" button if needed
             next_button = page.locator("[aria-label='Go to next page']").first
@@ -624,11 +455,11 @@ async def scrape_realtor(url, browser, start_page=1, end_page=1, timeout=300):
 
 # List of borough URLs
 borough_urls = [
-    "https://www.realtor.com/realestateandhomes-search/Manhattan_NY",
+    # "https://www.realtor.com/realestateandhomes-search/Manhattan_NY",
     "https://www.realtor.com/realestateandhomes-search/Bronx_NY",
-    "https://www.realtor.com/realestateandhomes-search/Brooklyn_NY",
-    "https://www.realtor.com/realestateandhomes-search/Queens_NY",
-    "https://www.realtor.com/realestateandhomes-search/Staten-Island_NY"
+    # "https://www.realtor.com/realestateandhomes-search/Brooklyn_NY",
+    # "https://www.realtor.com/realestateandhomes-search/Queens_NY",
+    # "https://www.realtor.com/realestateandhomes-search/Staten-Island_NY"
     
     # "https://www.realtor.com/realestateandhomes-search/79936" # texas
     # "https://www.realtor.com/realestateandhomes-search/60629" # chicago
@@ -674,8 +505,7 @@ async def main():
         formatted_data = format_data(combined_data)
         
         insert_data(formatted_data)
-        
-        # await upload_to_s3(formatted_dump_path)
+     
 
 
 def refresh_cookies():
@@ -699,19 +529,18 @@ def refresh_cookies():
     else:
         os.kill(process.pid, signal.SIGTERM)
 
-# refresh_cookies()
+refresh_cookies()
 
 
 # Run the main function
-# asyncio.run(main())
+asyncio.run(main())
 
 
-open_dir = Path("backend") / "app" / "scraper" / "json-dump"
-open_path = open_dir / "nyc_housing_data_test.json"
+# open_dir = Path("backend") / "app" / "scraper" / "json-dump"
+# open_path = open_dir / "nyc_housing_data_test.json"
         
-with open(open_path, "r") as file:
-    data = json.load(file)
+# with open(open_path, "r") as file:
+#     data = json.load(file)
     
     
-# print(data) 
-insert_data(data)
+# insert_data(data)
