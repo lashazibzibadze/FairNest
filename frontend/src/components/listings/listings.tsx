@@ -23,7 +23,7 @@ const ListingsComponent = ({
   // if listings are loading show a loading skeleton
   if (isLoading) {
     return (
-      <div className="pt-32 pb-16 px-4 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+      <div className="pb-16 px-4 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
         {Array.from({ length: 6 }).map((_, idx) => (
           <div
             key={idx}

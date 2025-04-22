@@ -16,14 +16,16 @@ const ListingsPage = () => {
     homeTypes: [] as string[],
   });
 
-  //pagination, each page shows 10 listings
+  //pagination, each page shows limited amount of listings (limit)
   const [currentPage, setCurrentPage] = useState(1);
-  const limit = 10;
+  const limit = 35;
   const skip = (currentPage - 1) * limit;
   const { data, isLoading, error } = useListings(skip, limit);
 
+  const listings = data?.listings ?? [];
+  const totalPages = data?.total_pages ?? 0;
+
   //error handling
-  if (!data) return null;
   if (error)
     return (
       <div className="animate-pulse text-red-500">Something went wrong</div>
@@ -36,16 +38,16 @@ const ListingsPage = () => {
 
       {/*map*/}
       <div className="top-[175px] w-1/2 h-[calc(100vh-200px)] fixed left-0 z-0">
-        <ListingMap listings={data.listings} />
+        <ListingMap listings={listings} />
       </div>
 
       {/*listings*/}
       <div className="ml-auto w-1/2 relative z-10 overflow-y-auto max-h-[calc(100vh-200px)] pr-4">
         <ListingsComponent
-          listings={data.listings}
+          listings={listings}
           currentPage={currentPage}
           setCurrentPage={setCurrentPage}
-          totalPages={data.total_pages}
+          totalPages={totalPages}
           isLoading={isLoading}
         />
       </div>
