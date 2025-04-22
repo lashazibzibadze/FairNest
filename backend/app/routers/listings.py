@@ -1,6 +1,6 @@
 from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.orm import Session
-from sqlalchemy import func
+from sqlalchemy import func, and_, desc
 from typing import List
 from app import schemas, models
 from app.database import db_dependency
@@ -36,7 +36,20 @@ def get_listings(
     skip: int = 0,
     limit: int = 10
 ):
-    query = db.query(models.Listing).join(models.Address)
+    subquery = (
+        db.query(func.max(models.Listing.created_at).label("max_created_at"), models.Listing.address_id)
+        .group_by(models.Listing.address_id)
+        .subquery()
+    )
+
+    query = (
+        db.query(models.Listing)
+        .join(models.Address)
+        .join(subquery, and_(
+            models.Listing.created_at == subquery.c.max_created_at,
+            models.Listing.address_id == subquery.c.address_id
+        ))
+    )
 
     filter_mappings = {
         "country": models.Address.country,
@@ -74,9 +87,11 @@ def get_listings(
             elif operator == "<=":
                 query = query.filter(column <= value)
 
-    total_records = query.with_entities(func.count(models.Listing.id)).scalar()
+    query = query.order_by(desc(models.Listing.created_at))
+
+    total_records = query.order_by(None).with_entities(func.count()).scalar()
     total_pages = math.ceil(total_records / limit) if total_records > 0 else 1
-    
+
     listings = query.offset(skip).limit(limit).all()
 
     return {
