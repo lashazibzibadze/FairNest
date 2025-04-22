@@ -4,8 +4,8 @@ from typing import List
 from app import schemas, models
 from app.database import db_dependency
 from app.dependencies import auth
-router = APIRouter(prefix="/favorites", tags=["Favorites"])
 
+router = APIRouter(prefix="/favorites", tags=["Favorites"])
 
 @router.get("/", response_model=List[schemas.FavoriteResponse])
 def get_favorites(

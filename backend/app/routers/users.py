@@ -1,32 +1,43 @@
-from fastapi import APIRouter, Depends, HTTPException
+from fastapi import APIRouter, HTTPException, Security
 from sqlalchemy import or_
 from typing import List
 from app import schemas, models
 from app.database import db_dependency
 from typing import Union
+from app.dependencies import auth
 
 router = APIRouter(prefix="/users", tags=["Users"])
-
 
 @router.get("/", response_model=List[schemas.UserResponse])
 def get_users(
     db: db_dependency,
+    auth_result: str = Security(auth.verify),
     skip: int = 0,
     limit: int = 10
 ):
-
+    if not auth_result and not auth_result["sub"]:
+        raise HTTPException(status_code=401, detail="Invalid authentication credentials")
+    
+    auth_id = auth_result["sub"]
     return db.query(models.User).offset(skip).limit(limit).all()
     
 
 @router.get("/{user_id}", response_model=schemas.UserResponse)
-def get_user(db: db_dependency, user_id: Union[int, str] = None):
+def get_user(db: db_dependency, auth_result: str = Security(auth.verify), user_id: Union[int, str] = None):
+    if not auth_result and not auth_result["sub"]:
+        raise HTTPException(status_code=401, detail="Invalid authentication credentials")
+    
+    auth_id = auth_result["sub"]
     if user_id is None:
         raise HTTPException(
             status_code=400, 
             detail="User identifier must be provided"
         )
-    
-    user = db.query(models.User).filter(or_(models.User.id == user_id, models.User.auth_id == user_id)).first()
+        
+    if type(user_id) == str:
+        user = db.query(models.User).filter(models.User.auth_id == user_id).first()
+    else:
+        user = db.query(models.User).filter(models.User.id == user_id).first()
   
     if not user:
         raise HTTPException(status_code=404, detail="User not found")
@@ -35,8 +46,14 @@ def get_user(db: db_dependency, user_id: Union[int, str] = None):
 
 
 @router.post("/", response_model=schemas.UserResponse)
-def create_user(user: schemas.UserCreate, db: db_dependency):
-    # Check if user with same email or auth_id already exists
+def create_user(user: schemas.UserCreate, db: db_dependency, auth_result: str = Security(auth.verify)):
+    if not auth_result and not auth_result["sub"]:
+        raise HTTPException(status_code=401, detail="Invalid authentication credentials")
+    
+    auth_id = auth_result["sub"]
+    if auth_id != user.auth_id:
+        raise HTTPException(status_code=403, detail="You do not have permission to create this user")
+    
     existing_user_email = db.query(models.User).filter(models.User.email == user.email).first()
     if existing_user_email:
         raise HTTPException(
@@ -64,10 +81,38 @@ def create_user(user: schemas.UserCreate, db: db_dependency):
     db.refresh(new_user)
     return new_user
 
+@router.put("/{user_id}", response_model=schemas.UserResponse)
+def update_user(user_id: int, user: schemas.UserUpdate, db: db_dependency, auth_result: str = Security(auth.verify)):
+    if not auth_result and not auth_result["sub"]:
+        raise HTTPException(status_code=401, detail="Invalid authentication credentials")
+    
+    auth_id = auth_result["sub"]
+    if type(user_id) == str:
+        user_to_update = db.query(models.User).filter(models.User.auth_id == user_id).first()
+    else:
+        user_to_update = db.query(models.User).filter(models.User.id == user_id).first()
+
+    if not user_to_update:
+        raise HTTPException(status_code=404, detail="User not found")
+    
+    if user_to_update.auth_id != auth_id:
+        raise HTTPException(status_code=403, detail="You do not have permission to update this user")
+    
+    for key, value in user.dict(exclude_unset=True).items():
+        setattr(user_to_update, key, value)
+    
+    db.commit()
+    db.refresh(user_to_update)
+    return user_to_update
+
 @router.delete("/{user_id}")
-def delete_user(user_id: int, db: db_dependency):
+def delete_user(user_id: int, db: db_dependency, auth_result: str = Security(auth.verify)):
+    if not auth_result and not auth_result["sub"]:
+        raise HTTPException(status_code=401, detail="Invalid authentication credentials")
+    
+    auth_id = auth_result["sub"]
     user = db.query(models.User).filter(or_(models.User.id == user_id, models.User.auth_id == user_id )).first()
-    if not user:
+    if not user or user.auth_id != auth_id:
         raise HTTPException(status_code=404, detail="User not found")
     db.delete(user)
     db.commit()
