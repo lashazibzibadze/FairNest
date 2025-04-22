@@ -8,6 +8,7 @@ import AboutPage from "./pages/About/About";
 import ListingsPage from "./pages/Listings/Listings";
 import FAQPage from "./pages/FAQ/FAQ";
 import ContactPage from "./pages/Contact/Contact";
+import ListingDetails from "./pages/ListingDetails/ListingDetails";
 import "./app.css";
 
 const App = () => {
@@ -19,6 +20,7 @@ const App = () => {
       <Route path="/listings" element={<ListingsPage />} />
       <Route path="/faq" element={<FAQPage />} />
       <Route path="/contact" element={<ContactPage />} />
+      <Route path="/listing/:id" element={<ListingDetails />} />
     </Routes>
   );
 };
