@@ -67,7 +67,7 @@ class Favorite(Base):
     __tablename__ = "favorites"
 
     id = Column(Integer, primary_key=True, index=True)
-    user_id = Column(Integer, ForeignKey("users.id"), nullable=False)
+    auth_id = Column(String(255), ForeignKey("users.auth_id"), nullable=False)
     listing_id = Column(Integer, ForeignKey("property_listings.id"), nullable=False)
     
     created_at = Column(DateTime, nullable=True, default=func.now())

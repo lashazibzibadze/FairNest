@@ -4,7 +4,7 @@ from typing import Optional
 from .listings import ListingResponse
 
 class FavoriteBase(BaseModel):
-    user_id: int
+    auth_id: str
     listing_id: int
 
 class FavoriteCreate(FavoriteBase):
