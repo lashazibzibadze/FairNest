@@ -2,6 +2,7 @@ from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.orm import Session
 from sqlalchemy import func, and_, desc
 from typing import List
+from math import radians, cos
 from app import schemas, models
 from app.database import db_dependency
 from app.task_queue.celery_app import app
@@ -167,52 +168,33 @@ def get_listings_for_address(address_id: int, db: db_dependency):
         raise HTTPException(status_code=404, detail="No listings found for this address")
     return listings
 
-@router.get("/nearby-listings/")
+
+@router.get("/nearby-listings/", response_model=List[schemas.ListingResponse])
 def get_nearby_listings(listing_id: int, unit: str, radius: float, db: db_dependency):
-    if unit != "km" and unit != "mile":
+    if unit not in ("km", "mile"):
         raise HTTPException(status_code=400, detail="Unit must be either 'km' or 'mile'")
+
     listing = db.query(models.Listing).filter(models.Listing.id == listing_id).first()
-    if not listing:
-        raise HTTPException(status_code=404, detail="Listing not found")
-    if not listing.address.latitude or not listing.address.longitude:
-        raise HTTPException(status_code=400, detail="Listing does not have latitude and longitude")
-    
-    longitude = float(listing.address.longitude)
+    if not listing or not listing.address or not listing.address.latitude or not listing.address.longitude:
+        raise HTTPException(status_code=404, detail="Listing not found or missing coordinates")
+
     latitude = float(listing.address.latitude)
+    longitude = float(listing.address.longitude)
+
+    radius_km = radius * 1.60934 if unit == "mile" else radius
+
+    lat_min, lat_max, lon_min, lon_max = bounding_box(latitude, longitude, radius_km)
+
     listings = (
         db.query(models.Listing)
         .join(models.Address)
-        .filter(models.Address.latitude.isnot(None), models.Address.longitude.isnot(None))
+        .filter(
+            models.Address.latitude.between(lat_min, lat_max),
+            models.Address.longitude.between(lon_min, lon_max)
+        )
         .all()
     )
-
-    nearby_listings = []
-    for listing in listings:
-        if listing.address.latitude and listing.address.longitude:
-            distance = haversine(latitude, longitude, float(listing.address.latitude), float(listing.address.longitude), unit)
-            if distance <= radius:
-                nearby_listings.append({
-                    "id": listing.id,
-                    "price": listing.price,
-                    "bedrooms": listing.bedrooms,
-                    "bathrooms": listing.bathrooms,
-                    "square_feet": listing.square_feet,
-                    "sale_status": listing.sale_status,
-                    "acre_lot": listing.acre_lot,
-                    "tour_available": listing.tour_available,
-                    "image_source": listing.image_source,
-                    "address": {
-                        "street": listing.address.street,
-                        "locality": listing.address.locality,
-                        "postal_code": listing.address.postal_code,
-                        "latitude": listing.address.latitude,
-                        "longitude": listing.address.longitude,
-                    },
-                    "distance": distance,
-                    "unit": unit,
-                })
-    
-    return {"nearby_listings": sorted(nearby_listings, key=lambda x: x["distance"])[1:] }
+    return listings
 
 def haversine(lat1, lon1, lat2, lon2, unit="mile"):
     R = 6371 if unit == "km" else 3958.8
@@ -222,3 +204,8 @@ def haversine(lat1, lon1, lat2, lon2, unit="mile"):
     a = math.sin(dlat/2)**2 + math.cos(lat1) * math.cos(lat2) * math.sin(dlon/2)**2
     c = 2 * math.atan2(math.sqrt(a), math.sqrt(1 - a))
     return R * c
+
+def bounding_box(lat, lon, radius_km):
+    delta_lat = radius_km / 111 
+    delta_lon = radius_km / (111 * cos(radians(lat)))
+    return lat - delta_lat, lat + delta_lat, lon - delta_lon, lon + delta_lon
