@@ -1,40 +1,27 @@
-import { useQuery } from "@tanstack/react-query";
+import { useQuery, UseQueryResult } from "@tanstack/react-query";
+import { Listing } from "./types";
 
-interface Filters {
-  minPrice?: string;
-  maxPrice?: string;
-  bedrooms?: string;
-  bathrooms?: string;
-  homeTypes?: string[];
+export interface ListingsResponse {
+  listings: Listing[];
+  total_pages: number;
+  total_records: number;
+  current_page: number;
+  page_size: number;
 }
 
 export const useListings = (
-  skip = 0,
-  limit = 10,
-  country?: string,
-  postal_code?: string,
-  filters?: Filters
-) => {
-  return useQuery({
-    queryKey: ["listings", skip, limit, country, postal_code, filters],
-    queryFn: async () => {
-      const params = new URLSearchParams({
-        skip: skip.toString(),
-        limit: limit.toString(),
-        ...(country && { country }),
-        ...(postal_code && { postal_code }),
-        ...(filters?.minPrice && { min_price: filters.minPrice }),
-        ...(filters?.maxPrice && { max_price: filters.maxPrice }),
-        ...(filters?.bedrooms && { bedrooms: filters.bedrooms }),
-        ...(filters?.bathrooms && { bathrooms: filters.bathrooms }),
-        ...(filters?.homeTypes?.length && {
-          home_types: filters.homeTypes.join(","),
-        }),
-      });
-
-      const res = await fetch(`http://127.0.0.1:8000/listings?${params}`);
-      if (!res.ok) throw new Error("Failed to fetch listings");
+  skip: number,
+  limit: number
+): UseQueryResult<ListingsResponse, Error> => {
+  return useQuery<ListingsResponse, Error>({
+    queryKey: ["listings", skip, limit],
+    queryFn: async (): Promise<ListingsResponse> => {
+      const res = await fetch(`http://127.0.0.1:8000/listings?skip=${skip}&limit=${limit}`);
+      if (!res.ok) {
+        throw new Error("Failed to fetch listings");
+      }
       return res.json();
     },
+    staleTime: 1000 * 60 * 1,
   });
 };
