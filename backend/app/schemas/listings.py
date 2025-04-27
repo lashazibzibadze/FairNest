@@ -3,7 +3,13 @@ from pydantic import BaseModel, Field, ConfigDict
 from datetime import datetime
 from typing import Optional, Annotated
 from .address import AddressResponse, AddressCreate
+from enum import Enum
 
+class FairnessRating(str, Enum):
+    FRAUD = "fraud"
+    BAD = "bad"
+    FAIR = "fair"
+    GOOD = "good"
 class ListingBase(BaseModel):
     price: int
     bedrooms: Optional[int] = None
@@ -15,6 +21,7 @@ class ListingBase(BaseModel):
     image_source: Optional[str] = None
     realtor_link: Optional[str] = None
     date_posted: Optional[datetime] = None
+    fairness_rating: Optional[FairnessRating] = None
 
 class ListingCreate(ListingBase):
     address: AddressCreate
