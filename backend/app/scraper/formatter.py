@@ -3,27 +3,55 @@ from pathlib import Path
 import json
 from datetime import datetime
 
-def extract_premise_and_sub_premise(address):
-    """
-    Extracts premise (house/street number) and sub_premise (apt/floor/unit) from the street address.
-    """
-    # Pattern to match house/street numbers (e.g., "123", "764", "303")
-    premise_match = re.match(r"^(\d+)", address.strip())
+import re
 
-    # Pattern to find sub-premise keywords like Apt, Unit, Floor (e.g., "Apt 3B", "Unit 127/128", "Floor 5")
-    sub_premise_match = re.search(r"(?:Apt|Unit|Floor|Suite|#)\s*([\w\d/-]+)", address, re.IGNORECASE)
+import re
+
+def extract_address(full_address):
+    """
+    Extracts:
+    - premise (e.g. "78-01")
+    - sub_premise (e.g. "Apt 3B")
+    - street (e.g. "86th St")
+    - city (e.g. "Glendale")
+    - state (e.g. "NY")
+    - postal code (e.g. "11385")
+    """
+
+    # Split the full address
+    address_parts = full_address.strip().split(", ")
+    street_part = address_parts[0] if len(address_parts) > 0 else ""
+    city = address_parts[1] if len(address_parts) > 1 else None
+    state_zip = address_parts[2] if len(address_parts) > 2 else ""
+
+    # Extract state and ZIP
+    state = postal_code = None
+    if state_zip:
+        match = re.match(r"([A-Z]{2})\s+(\d{5})", state_zip)
+        if match:
+            state, postal_code = match.groups()
+
+    # Extract premise like "123" or "78-01"
+    premise_match = re.match(r"^(\d+(?:-\d+)?)(?:\s+|$)", street_part)
+
+    # Extract sub-premise like Apt/Unit/Floor/Suite
+    sub_premise_match = re.search(r"(?:Apt|Unit|Floor|Suite|#)\s*([\w\d/-]+)", street_part, re.IGNORECASE)
 
     premise = premise_match.group(1) if premise_match else None
     sub_premise = sub_premise_match.group(1) if sub_premise_match else None
 
-    # Remove premise and sub_premise from the street name
-    street_clean = address
+    # Clean the street name
+    street_clean = street_part
     if premise:
-        street_clean = re.sub(r"^\d+\s*", "", street_clean)  # Remove leading number
+        street_clean = re.sub(rf"^{re.escape(premise)}\s*", "", street_clean)
     if sub_premise:
         street_clean = re.sub(r"(?:Apt|Unit|Floor|Suite|#)\s*[\w\d/-]+", "", street_clean, flags=re.IGNORECASE)
 
-    return premise, sub_premise, street_clean.strip()
+    street_clean = street_clean.strip()
+
+    return premise, sub_premise, street_clean, city, state, postal_code
+
+
 
 
 def safe_int(value):
@@ -39,83 +67,7 @@ def safe_float(value):
     except ValueError:
         return None
 
-
-def format_realtor_data(input_path, output_path):
-    # Load raw scraped data
-    with open(input_path, "r") as file:
-        raw_data = json.load(file)
-    
-    
-    formatted_data = []
-    
-    for item in raw_data:
-        try:
-            # Convert price to integer
-            price = safe_int(re.sub(r"[^\d]","", item["Price"]))
-            
-            # Extract address components
-            address_parts = item["Address"].split(", ")
-            street = address_parts[0] if len(address_parts) > 0 else None
-            city = address_parts[1] if len(address_parts) > 1 else None
-            state_zip = address_parts[2] if len(address_parts) > 2 else None
-            
-            # Extract state and postal code
-            if state_zip and " " in state_zip:
-                state, postal_code = state_zip.split()[:2]
-            else:
-                state, postal_code = state_zip, None
-                
-            
-            # Bedrooms and bathroooms
-            bedrooms = safe_int(re.sub(r"[^\d]", "", item.get("Bedrooms", "")))
-            bathrooms = safe_float(re.sub(r"[^\d.]", "", item.get("Bathrooms", "")))
-            if bathrooms is not None:
-                bathrooms = round(bathrooms, 1)
-            
-            # Square feet and acre lot
-            square_feet = safe_float(re.sub(r"[^\d]", "", item.get("Square Feet", "")))
-            acre_lot = safe_float(re.sub(r"[^\d.]", "", item.get("Acre Lot", "")))
-            
-            # Convert tour availability to boolean
-            tour_available = item.get("Tour Available", "N/A") != "N/A"
-            
-            # Premise and subpremise
-            premise, sub_premise, street_clean = extract_premise_and_sub_premise(street)
-            
-            
-            # Create formatted dictionary
-            formatted_item = {
-                "price": price,
-                "address": {
-                    "country": "US",
-                    "administrative_area": state,
-                    "sub_administrative_area": None,
-                    "locality": city,
-                    "postal_code": postal_code,
-                    "street": street_clean,
-                    "premise": premise,
-                    "sub_premise": sub_premise,
-                },
-                "bedrooms": bedrooms,
-                "bathrooms": bathrooms,
-                "square_feet": square_feet,
-                "sale_status": item["Sale Status"],
-                "acre_lot": acre_lot,
-                "tour_available": tour_available,
-                "image_source": item["Image Source"],
-                "realtor_link": item["Realtor Link"]
-            }
-            
-            formatted_data.append(formatted_item)
-        except Exception as e:
-            print(f"Error formatting data: {e}")
-            
-    # Save formatted JSON
-    with open(output_path, "w") as file:
-        json.dump(formatted_data, file, indent=4)
-    
-    print(f"Formatted JSON saved with {len(formatted_data)} entries!")
-    return formatted_data
-
-
+# print(extract_premise_and_sub_premise("3308 210th St, Bayside, NY 11361"))
+# print(extract_premise_and_sub_premise("301 E 69th St Apt 15K, New York, NY 10021"))
+# print(extract_premise_and_sub_premise("646-662 Port Richmond Ave, Staten Island, NY 10302"))
 
