@@ -138,20 +138,11 @@ def getData(filePath):
 
 
 
-
-
-
-
-
-
-
-
-
-
-
 def insert_data(data, batch_size=50):
     address_rows = []
     property_rows = []
+    batches_inserted = 0
+    current_batch = 1
 
     for i, entry in enumerate(data):
         address_data = {
@@ -187,6 +178,7 @@ def insert_data(data, batch_size=50):
                 'acre_lot': acre_lot,
                 'tour_available': entry['tour_available'],
                 'image_source': entry['image_source'],
+                'realtor_link': entry['realtor_link']
             }
         })
 
@@ -262,6 +254,9 @@ def insert_data(data, batch_size=50):
                         on_conflict="address_id,price,sale_status"
                     ).execute()
                     print(f"✅ Inserted {len(property_payload)} unique property listings.")
+                    batches_inserted += len(property_payload)
+                    print(f"📦 Batch {current_batch} complete — {len(property_payload)} listings inserted, total so far: {batches_inserted} ({len(data):.2f}%)")
+                    current_batch += 1
 
                 except APIError as e:
                     err_info = e.args[0] if isinstance(e.args[0], dict) else {}
@@ -300,10 +295,6 @@ def insert_data(data, batch_size=50):
 
             address_rows = []
             property_rows = []
-
-
-
-
 
 
 async def scroll_until_bottom(page):
