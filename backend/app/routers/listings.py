@@ -1,5 +1,5 @@
-from fastapi import APIRouter, Depends, HTTPException
-from sqlalchemy.orm import Session
+from fastapi import APIRouter, Depends, HTTPException, Security
+from sqlalchemy.orm import Session, joinedload
 from sqlalchemy import func, and_, desc
 from typing import List
 from math import radians, cos
@@ -7,6 +7,9 @@ from app import schemas, models
 from app.database import db_dependency
 from app.task_queue.celery_app import app
 import math
+from decimal import Decimal
+from app.dependencies import auth
+
 
 router = APIRouter(prefix="/listings", tags=["Listings"])
 
@@ -131,8 +134,12 @@ def create_listing(listing_data: schemas.ListingCreate, db: db_dependency):
     return new_listing
 
 @router.put("/{listing_id}", response_model=schemas.ListingResponse)
-def update_listing(listing_id: int, listing_data: schemas.ListingCreate, db: db_dependency):
-    listing = db.query(models.Listing).filter(models.Listing.id == listing_id).first()
+def update_listing(listing_id: int, listing_data: schemas.ListingCreate, db: db_dependency, auth_result: str = Security(auth.verify)):
+    if not auth_result and not auth_result["sub"]:
+        raise HTTPException(status_code=401, detail="Invalid authentication credentials")
+    
+    auth_id = auth_result["sub"]
+    listing = db.query(models.Listing).filter(models.Listing.id == listing_id, models.User.auth_id == auth_id).first()
     if not listing:
         raise HTTPException(status_code=404, detail="Listing not found")
     
@@ -153,8 +160,12 @@ def update_listing(listing_id: int, listing_data: schemas.ListingCreate, db: db_
     return listing
 
 @router.delete("/{listing_id}")
-def delete_listing(listing_id: int, db: db_dependency):
-    listing = db.query(models.Listing).filter(models.Listing.id == listing_id).first()
+def delete_listing(listing_id: int, db: db_dependency, auth_result: str = Security(auth.verify)):
+    if not auth_result and not auth_result["sub"]:
+        raise HTTPException(status_code=401, detail="Invalid authentication credentials")
+    
+    auth_id = auth_result["sub"]
+    listing = db.query(models.Listing).filter(models.Listing.id == listing_id, models.User.auth_id == auth_id).first()
     if not listing:
         raise HTTPException(status_code=404, detail="Listing not found")
     db.delete(listing)
@@ -167,6 +178,50 @@ def get_listings_for_address(address_id: int, db: db_dependency):
     if not listings:
         raise HTTPException(status_code=404, detail="No listings found for this address")
     return listings
+
+@router.get("/fairness/{listing_id}", response_model=schemas.ListingFairnessResponse)
+def get_listing_fairness(listing_id: int, db: db_dependency):
+    listing = db.query(models.Listing).filter(models.Listing.id == listing_id).first()
+    if not listing:
+        raise HTTPException(status_code=404, detail="Listing not found")
+    
+    min_sqft = float(listing.square_feet) * 0.8
+    max_sqft = float(listing.square_feet) * 1.2
+
+    
+    similar = (
+        db.query(models.Listing)
+        .join(models.Address)
+        .filter(models.Address.postal_code == listing.address.postal_code)
+        .filter(models.Listing.id != listing.id)
+    )
+
+    if listing.bedrooms is not None:
+        similar = similar.filter(
+            models.Listing.bedrooms.between(listing.bedrooms - 1, listing.bedrooms + 1)
+        )
+
+    if listing.bathrooms is not None:
+        similar = similar.filter(
+            models.Listing.bathrooms.between(float(listing.bathrooms) - 1.0, float(listing.bathrooms) + 1.0)
+        )
+
+    if listing.square_feet is not None:
+        min_sqft = listing.square_feet * Decimal('0.8')
+        max_sqft = listing.square_feet * Decimal('1.2')
+
+        similar = similar.filter(
+            models.Listing.square_feet.between(min_sqft, max_sqft)
+        )
+
+    similar = similar.options(joinedload(models.Listing.address)).limit(10).all()
+
+    return {
+        "listing_id": listing.id,
+        "fairness_rating": listing.fairness_rating,
+        "fairness_rating_updated_at": listing.fairness_rating_updated_at,
+        "similar_listings": similar
+    }
 
 
 @router.get("/nearby-listings/", response_model=List[schemas.ListingResponse])

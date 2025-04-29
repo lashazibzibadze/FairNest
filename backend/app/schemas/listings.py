@@ -62,3 +62,11 @@ class ListingFilter(BaseModel):
     max_acre_lot: Optional[float] = None
     tour_available: Optional[bool] = None
 
+class ListingFairnessResponse(BaseModel):
+    listing_id: int
+    fairness_rating: Optional[FairnessRating] = None
+    fairness_rating_updated_at: Optional[datetime] = None
+    
+    similar_listings: list[ListingResponse]
+    
+    model_config = ConfigDict(from_attributes=True)
