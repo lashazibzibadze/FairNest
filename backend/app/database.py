@@ -1,7 +1,7 @@
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker, Session
 from sqlalchemy.ext.declarative import declarative_base
-from config import username, password, host, port, dbname
+from app.config import username, password, host, port, dbname
 from typing import Annotated
 from fastapi import Depends
 

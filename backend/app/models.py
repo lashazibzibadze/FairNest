@@ -1,7 +1,9 @@
-from sqlalchemy import Column, Integer, String, Boolean, ForeignKey, DECIMAL, BigInteger, Text, DateTime, UniqueConstraint, func
-from sqlalchemy.orm import relationship
-from database import Base
-
+from sqlalchemy import BigInteger, Boolean, Column, DateTime, DECIMAL, Integer, LargeBinary, PrimaryKeyConstraint, String, Text, UniqueConstraint, func, ForeignKey
+from sqlalchemy.orm import Mapped, mapped_column, relationship
+from app.database import Base
+from typing import Optional
+import datetime
+from sqlalchemy.dialects.postgresql import ENUM
 
 class Listing(Base):
     __tablename__ = "property_listings"
@@ -17,6 +19,11 @@ class Listing(Base):
     image_source = Column(Text, nullable=True)
     realtor_link = Column(Text, nullable=True)
     date_posted = Column(DateTime, nullable=True, default=func.now())
+    fairness_rating = Column(
+        ENUM("fraud", "bad", "fair", "good", name="fairness_rating_enum"),
+        nullable=True,
+        default="fair"
+    )
     
     created_at = Column(DateTime, nullable=True, default=func.now())
     updated_at = Column(DateTime, nullable=True, default=func.now(), onupdate=func.now())
@@ -57,7 +64,7 @@ class Address(Base):
     __table_args__ = (
         UniqueConstraint (
             'country', 'administrative_area', 'sub_administrative_area', 'locality', 'postal_code', 'street', 'premise', 'sub_premise',
-            name = 'unique_adress_constraint'
+            name='unique_adress_constraint'
         ),
     )
 
@@ -66,7 +73,7 @@ class Favorite(Base):
     __tablename__ = "favorites"
 
     id = Column(Integer, primary_key=True, index=True)
-    user_id = Column(Integer, ForeignKey("users.id"), nullable=False)
+    auth_id = Column(String(255), ForeignKey("users.auth_id"), nullable=False)
     listing_id = Column(Integer, ForeignKey("property_listings.id"), nullable=False)
     
     created_at = Column(DateTime, nullable=True, default=func.now())
@@ -145,3 +152,37 @@ class AddressTest(Base):
     updated_at = Column(DateTime, nullable=True, default=func.now(), onupdate=func.now())
 
     listings = relationship("ListingTest", back_populates="address", cascade="all, delete-orphan")
+
+    
+class CeleryTaskmeta(Base):
+    __tablename__ = 'celery_taskmeta'
+    __table_args__ = (
+        PrimaryKeyConstraint('id', name='celery_taskmeta_pkey'),
+        UniqueConstraint('task_id', name='celery_taskmeta_task_id_key')
+    )
+
+    id: Mapped[int] = mapped_column(Integer, primary_key=True)
+    task_id: Mapped[Optional[str]] = mapped_column(String(155))
+    status: Mapped[Optional[str]] = mapped_column(String(50))
+    result: Mapped[Optional[bytes]] = mapped_column(LargeBinary)
+    date_done: Mapped[Optional[datetime.datetime]] = mapped_column(DateTime)
+    traceback: Mapped[Optional[str]] = mapped_column(Text)
+    name: Mapped[Optional[str]] = mapped_column(String(155))
+    args: Mapped[Optional[bytes]] = mapped_column(LargeBinary)
+    kwargs: Mapped[Optional[bytes]] = mapped_column(LargeBinary)
+    worker: Mapped[Optional[str]] = mapped_column(String(155))
+    retries: Mapped[Optional[int]] = mapped_column(Integer)
+    queue: Mapped[Optional[str]] = mapped_column(String(155))
+
+
+class CeleryTasksetmeta(Base):
+    __tablename__ = 'celery_tasksetmeta'
+    __table_args__ = (
+        PrimaryKeyConstraint('id', name='celery_tasksetmeta_pkey'),
+        UniqueConstraint('taskset_id', name='celery_tasksetmeta_taskset_id_key')
+    )
+
+    id: Mapped[int] = mapped_column(Integer, primary_key=True)
+    taskset_id: Mapped[Optional[str]] = mapped_column(String(155))
+    result: Mapped[Optional[bytes]] = mapped_column(LargeBinary)
+    date_done: Mapped[Optional[datetime.datetime]] = mapped_column(DateTime)
