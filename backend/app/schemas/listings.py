@@ -22,6 +22,7 @@ class ListingBase(BaseModel):
     realtor_link: Optional[str] = None
     date_posted: Optional[datetime] = None
     fairness_rating: Optional[FairnessRating] = None
+    fairness_rating_updated_at: Optional[datetime] = None
 
 class ListingCreate(ListingBase):
     address: AddressCreate
