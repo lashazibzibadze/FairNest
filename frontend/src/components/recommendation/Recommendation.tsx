@@ -4,7 +4,7 @@ import Manhattan from "../../assets/Recommendation/Manhattan.jpg";
 import Bronx from "../../assets/Recommendation/Bronx.jpg";
 import Queens from "../../assets/Recommendation/Queens.jpg";
 import Brooklyn from "../../assets/Recommendation/Brooklyn.jpg";
-import StatenIsland from "../../assets/Recommendation/Staten_island.jpg";
+import StatenIsland from "../../assets/Recommendation/Staten_Island.jpg";
 
 const recommendations = [
   { id: 1, title: "Manhattan", img: Manhattan },
