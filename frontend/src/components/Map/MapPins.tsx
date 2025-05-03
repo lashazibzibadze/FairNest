@@ -26,25 +26,29 @@ type MapProps = {
 };
 
 const ListingMap = ({ listings }: MapProps) => {
-  //check if the Google Maps API is loaded
   const { isLoaded } = useJsApiLoader({
     googleMapsApiKey: import.meta.env
       .VITE_GOOGLE_API_KEY_2_Developement as string,
   });
+
   const navigate = useNavigate();
   const [selected, setSelected] = useState<Listing | null>(null);
   const dealType = getRandomDealType();
 
-  //check if the listings are empty
   if (!isLoaded)
     return <div className="w-full h-full bg-gray-300">Loading map...</div>;
+
   return (
     <GoogleMap mapContainerStyle={containerStyle} center={center} zoom={11}>
       {listings.map((listing) => {
-        const lat = parseFloat(listing.address.latitude);
-        const lng = parseFloat(listing.address.longitude);
+        const latStr = listing.address?.latitude ?? "0";
+        const lngStr = listing.address?.longitude ?? "0";
+
+        const lat = parseFloat(latStr);
+        const lng = parseFloat(lngStr);
 
         if (isNaN(lat) || isNaN(lng)) return null;
+
         return (
           <MarkerF
             key={listing.id}
@@ -57,8 +61,8 @@ const ListingMap = ({ listings }: MapProps) => {
       {selected && (
         <InfoWindowF
           position={{
-            lat: parseFloat(selected.address.latitude),
-            lng: parseFloat(selected.address.longitude),
+            lat: parseFloat(selected.address?.latitude ?? "0"),
+            lng: parseFloat(selected.address?.longitude ?? "0"),
           }}
           onCloseClick={() => setSelected(null)}
         >
