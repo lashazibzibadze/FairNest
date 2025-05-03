@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Filters } from "../../types";
+import "./filters.css";
 
 // prop types for the SearchHeader component
 interface Props {

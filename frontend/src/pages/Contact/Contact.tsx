@@ -2,6 +2,7 @@ import { useState } from "react";
 import Navbar from "../../components/navbar/Navbar";
 import Footer from "../../components/footer/footer";
 import ContactBanner from "../../assets/Contact_Background.svg";
+import "./Contact.css";
 
 const Contact = () => {
   //state to manage form inputs and submission status

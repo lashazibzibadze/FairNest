@@ -17,6 +17,7 @@ import {
   FaTree,
   FaHeart,
 } from "react-icons/fa";
+import "./ListingDetails.css";
 
 //backgrounds by locality
 const backgroundMap: Record<string, string> = {

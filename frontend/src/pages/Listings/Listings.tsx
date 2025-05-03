@@ -6,6 +6,7 @@ import ListingsComponent from "../../components/listings/listings";
 import ListingMap from "../../components/Map/MapPins";
 import { useListings } from "../../useListings";
 import { Filters } from "../../types";
+import "./Listings.css";
 
 const ListingsPage = () => {
   //get query params from URL
