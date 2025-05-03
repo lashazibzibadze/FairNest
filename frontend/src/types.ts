@@ -1,15 +1,15 @@
 export interface Address {
+  id: number;
   country: string;
   administrative_area: string;
-  sub_administrative_area?: string;
+  sub_administrative_area?: string | null;
   locality: string;
   postal_code: string;
   street: string;
-  premise?: string;
-  sub_premise?: string;
-  latitude: string;
-  longitude: string;
-  id: number;
+  premise?: string | null;
+  sub_premise?: string | null;
+  latitude?: string | null;
+  longitude?: string | null;
   created_at?: string;
   updated_at?: string;
 }
@@ -28,4 +28,28 @@ export interface Listing {
   realtor_link?: string | null;
   address: Address;
   created_at?: string;
+  updated_at?: string;
+}
+
+export interface ListingsResponse {
+  listings: Listing[];
+  total_records: number;
+  total_pages: number;
+  current_page: number;
+  page_size: number;
+}
+
+export interface Filters {
+  country?: string;
+  postal_code?: string;
+  street?: string;
+  administrative_area?: string;
+  locality?: string;
+  minPrice?: string;
+  maxPrice?: string;
+  bedrooms?: string;
+  bathrooms?: string;
+  homeType?: string;
+  homeTypes?: string[];
+  addressQuery?: string;
 }

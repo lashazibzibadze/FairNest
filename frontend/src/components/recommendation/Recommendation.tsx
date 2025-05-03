@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router-dom";
 import "./Recommendation.css";
 import Manhattan from "../../assets/Recommendation/Manhattan.jpg";
 import Bronx from "../../assets/Recommendation/Bronx.jpg";
@@ -14,6 +15,12 @@ const recommendations = [
 ];
 
 const Recommendation = () => {
+  //using useNavigate to navigate user to prefilled search results (about page -> listings page)
+  const navigate = useNavigate();
+  const handleClick = (borough: string) => {
+    navigate(`/listings?type=locality&value=${encodeURIComponent(borough)}`);
+  };
+  
   return (
     <div className="flex flex-col items-center p-10">
       {/* Title */}
@@ -28,6 +35,7 @@ const Recommendation = () => {
         {recommendations.map((item) => (
           <button
             key={item.id}
+            onClick={() => handleClick(item.title)}
             className="w-[290px] h-[340px] md:w-80 md:h-96 flex flex-col items-center justify-center rounded-lg overflow-hidden transition-transform duration-500 ease-in-out hover:scale-110 hover:drop-shadow-[0px_4px_10px_rgba(0,0,0,0.5)] bg-white bg-opacity-75 hover:bg-opacity-100"
           >
             <img

@@ -9,7 +9,8 @@ import ListingsPage from "./pages/Listings/Listings";
 import FAQPage from "./pages/FAQ/FAQ";
 import ContactPage from "./pages/Contact/Contact";
 import ListingDetails from "./pages/ListingDetails/ListingDetails";
-import "./app.css";
+import AdminPage from "./pages/Admin/admin";
+import "./App.css";
 
 const App = () => {
   return (
@@ -21,6 +22,7 @@ const App = () => {
       <Route path="/faq" element={<FAQPage />} />
       <Route path="/contact" element={<ContactPage />} />
       <Route path="/listing/:id" element={<ListingDetails />} />
+      <Route path="/admin" element={<AdminPage />} />
     </Routes>
   );
 };
