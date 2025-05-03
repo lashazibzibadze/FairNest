@@ -2,6 +2,7 @@ import { useNavigate } from "react-router-dom";
 import { Listing } from "../../types";
 import { formatPrice } from "../../utils/formatprice";
 import { getRandomDealType } from "../../utils/random";
+import "./listings.css";
 
 type ListingsComponentProps = {
   listings: Listing[];
