@@ -1,31 +1,55 @@
-import { useState } from "react";
+import { useLocation } from "react-router-dom";
+import { useState, useEffect } from "react";
 import Navbar from "../../components/navbar/Navbar";
 import SearchHeader from "../../components/searchheader/filters";
 import ListingsComponent from "../../components/listings/listings";
 import ListingMap from "../../components/Map/MapPins";
 import { useListings } from "../../useListings";
+import { Filters } from "../../types";
 
 const ListingsPage = () => {
+  //get query params from URL
+  //using useLocation from react-router-dom to access the current location object
+  const location = useLocation();
+  const queryParams = new URLSearchParams(location.search);
+  const type = queryParams.get("type");
+  const value = queryParams.get("value");
 
-  //filters for the listings
-  const [filters, setFilters] = useState({
+  //state to manage filters for listings page
+  const [filters, setFilters] = useState<Filters>({
+    country: "",
+    postal_code: "",
+    street: "",
+    administrative_area: "",
+    locality: "",
     minPrice: "",
     maxPrice: "",
     bedrooms: "",
     bathrooms: "",
-    homeTypes: [] as string[],
+    homeType: "",
+    homeTypes: [],
+    addressQuery: "",
   });
 
-  //pagination, each page shows limited amount of listings (limit)
+  //state to manage the current page of listings
   const [currentPage, setCurrentPage] = useState(1);
-  const limit = 35;
-  const skip = (currentPage - 1) * limit;
-  const { data, isLoading, error } = useListings(skip, limit);
+  const { data, isLoading, error } = useListings(currentPage, filters);
+
+  //useEffect to set filters based on query params
+  useEffect(() => {
+    if (type && value) {
+      setFilters((prev) => ({
+        ...prev,
+        [type]: value,
+        addressQuery: value,
+      }));
+    }
+  }, [type, value]);
 
   const listings = data?.listings ?? [];
   const totalPages = data?.total_pages ?? 0;
 
-  //error handling
+  // error handling
   if (error)
     return (
       <div className="animate-pulse text-red-500">Something went wrong</div>
@@ -34,14 +58,16 @@ const ListingsPage = () => {
   return (
     <div className="pt-44 flex relative min-h-screen bg-gray-200">
       <Navbar />
-      <SearchHeader filters={filters} setFilters={setFilters} />
-
-      {/*map*/}
+      <SearchHeader
+        filters={filters}
+        setFilters={setFilters}
+        onSearch={() => {
+          setCurrentPage(1);
+        }}
+      />
       <div className="top-[175px] w-1/2 h-[calc(100vh-200px)] fixed left-0 z-0">
         <ListingMap listings={listings} />
       </div>
-
-      {/*listings*/}
       <div className="ml-auto w-1/2 relative z-10 overflow-y-auto max-h-[calc(100vh-200px)] pr-4">
         <ListingsComponent
           listings={listings}

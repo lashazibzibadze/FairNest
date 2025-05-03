@@ -1,32 +1,33 @@
 import { useState } from "react";
+import { Filters } from "../../types";
 
-type Filters = {
-  minPrice: string;
-  maxPrice: string;
-  bedrooms: string;
-  bathrooms: string;
-  homeTypes: string[];
-};
-
-type Props = {
+// prop types for the SearchHeader component
+interface Props {
   filters: Filters;
   setFilters: React.Dispatch<React.SetStateAction<Filters>>;
-};
+  onSearch: () => void;
+}
 
 const SearchHeader = ({ filters, setFilters }: Props) => {
+  //state to manage the visibility of filters on mobile
   const [showFilters, setShowFilters] = useState(false);
 
-  const handleHomeTypeChange = (type: string) => {
-    setFilters((prev) => ({
-      ...prev,
-      homeTypes: prev.homeTypes.includes(type)
-        ? prev.homeTypes.filter((t) => t !== type)
-        : [...prev.homeTypes, type],
-    }));
-  };
-
-  const handleSearch = () => {
-    console.log("Filters applied:", filters);
+  //function to handle the reset of filters
+  const handleReset = () => {
+    setFilters({
+      country: "",
+      postal_code: "",
+      street: "",
+      administrative_area: "",
+      locality: "",
+      minPrice: "",
+      maxPrice: "",
+      bedrooms: "",
+      bathrooms: "",
+      homeType: "",
+      homeTypes: [],
+      addressQuery: "",
+    });
   };
 
   return (
@@ -45,11 +46,18 @@ const SearchHeader = ({ filters, setFilters }: Props) => {
           showFilters ? "flex" : "hidden"
         } sm:flex flex-wrap items-center justify-center gap-4 px-6 py-4`}
       >
+        {/*search Bar for listings page */}
         <input
           type="text"
           placeholder="Address, neighborhood, city, ZIP"
           className="w-96 px-4 py-2 border border-gray-300 rounded-md bg-white text-black"
+          value={filters.addressQuery}
+          onChange={(e) =>
+            setFilters((prev) => ({ ...prev, addressQuery: e.target.value }))
+          }
         />
+
+        {/* Min Price for listings page*/}
         <input
           type="number"
           placeholder="Min Price"
@@ -59,6 +67,8 @@ const SearchHeader = ({ filters, setFilters }: Props) => {
             setFilters((prev) => ({ ...prev, minPrice: e.target.value }))
           }
         />
+
+        {/* Max Price for listings page*/}
         <input
           type="number"
           placeholder="Max Price"
@@ -69,6 +79,7 @@ const SearchHeader = ({ filters, setFilters }: Props) => {
           }
         />
 
+        {/* min Bedrooms for listings page*/}
         <select
           className="px-2 w-20 py-2 rounded-md text-black"
           value={filters.bedrooms}
@@ -83,6 +94,7 @@ const SearchHeader = ({ filters, setFilters }: Props) => {
           <option value="4">4+</option>
         </select>
 
+        {/*min Bathrooms for listings page */}
         <select
           className="px-2 w-20 py-2 rounded-md text-black"
           value={filters.bathrooms}
@@ -97,25 +109,29 @@ const SearchHeader = ({ filters, setFilters }: Props) => {
           <option value="4">4+</option>
         </select>
 
-        <div className="flex gap-2 items-center">
-          {["Condo", "Apartment", "Townhouse"].map((type) => (
-            <label key={type} className="flex items-center text-sm gap-1">
-              <input
-                type="checkbox"
-                className="accent-blue-500"
-                checked={filters.homeTypes.includes(type)}
-                onChange={() => handleHomeTypeChange(type)}
-              />
-              {type}
-            </label>
-          ))}
-        </div>
-
-        <button
-          onClick={handleSearch}
-          className="bg-blue-500 text-white hover:bg-blue-600 px-4 py-2 rounded-md text-sm"
+        {/* Home Types for listingspage */}
+        <select
+          className="px-2 w-60 py-2 rounded-md text-black"
+          value={filters.homeType}
+          onChange={(e) =>
+            setFilters((prev) => ({ ...prev, homeType: e.target.value }))
+          }
         >
-          Search
+          <option value="">Home Type</option>
+          <option value="Condo for sale">Condo for sale</option>
+          <option value="Multi-family home for sale">
+            Multi-family home for sale
+          </option>
+          <option value="House for sale">House for sale</option>
+          <option value="Townhouse for sale">Townhouse for sale</option>
+        </select>
+
+        {/*reset button for listings page */}
+        <button
+          onClick={handleReset}
+          className="px-4 py-2 bg-red-500 hover:bg-red-600 text-white rounded"
+        >
+          Reset
         </button>
       </div>
     </nav>
