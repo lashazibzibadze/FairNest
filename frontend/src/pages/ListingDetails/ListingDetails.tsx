@@ -36,8 +36,10 @@ const getBackground = (locality: string = "") => {
 };
 
 //function to fetch listing details by ID
+const API_BASE_URL = import.meta.env.VITE_API_URL || "http://127.0.0.1:8000";
+
 const fetchListing = async (id: string): Promise<Listing> => {
-  const res = await fetch(`http://127.0.0.1:8000/listings/${id}`);
+  const res = await fetch(`${API_BASE_URL}/listings/${id}`);
   if (!res.ok) throw new Error("Failed to fetch listing details");
   return res.json();
 };
