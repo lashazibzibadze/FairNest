@@ -74,7 +74,7 @@ class Favorite(Base):
     __tablename__ = "favorites"
 
     id = Column(Integer, primary_key=True, index=True)
-    auth_id = Column(String(255), ForeignKey("users.auth_id"), nullable=False)
+    user_id = Column(String(255), ForeignKey("users.user_id"), nullable=False)
     listing_id = Column(Integer, ForeignKey("property_listings.id"), nullable=False)
     
     created_at = Column(DateTime, nullable=True, default=func.now())
@@ -87,8 +87,7 @@ class Favorite(Base):
 class User(Base):
     __tablename__ = "users"
     
-    id = Column(Integer, primary_key=True, index=True)
-    auth_id = Column(String(255), unique=True, nullable=False)
+    user_id = Column(String(255), primary_key=True, unique=True, nullable=False)
     email = Column(String(255), unique=True, nullable=False)
     first_name = Column(String(50), nullable=False)
     last_name = Column(String(50), nullable=False)
@@ -97,7 +96,7 @@ class User(Base):
     created_at = Column(DateTime, nullable=True, default=func.now())
     updated_at = Column(DateTime, nullable=True, default=func.now(), onupdate=func.now())
     
-    favorites = relationship("Favorite", back_populates="user", cascade="all, delete-orphan")
+    favorites = relationship("Favorite", back_populates="users", cascade="all, delete-orphan")
 
 
 class Contact(Base):
