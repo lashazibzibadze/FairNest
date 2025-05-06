@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import { Listing } from "../../types";
 import { formatPrice } from "../../utils/formatprice";
-import { getRandomDealType } from "../../utils/random";
+// import { getRandomDealType } from "../../utils/random";
 import "./listings.css";
 
 type ListingsComponentProps = {
@@ -55,7 +55,8 @@ const ListingsComponent = ({
     <div className="pb-16 px-4">
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
         {listings.map((listing) => {
-          const dealType = getRandomDealType();
+          // const dealType = getRandomDealType();
+          const dealType = listing.fairness_rating ?? "No Rating";
 
           return (
             <div
@@ -71,14 +72,16 @@ const ListingsComponent = ({
               <div className="p-4 space-y-1">
                 <span
                   className={`text-xs font-bold uppercase px-2 py-1 rounded-full inline-block ${
-                    dealType === "Fraud"
-                      ? "bg-red-100 text-red-600"
-                      : dealType === "Fair"
+                    dealType.toLowerCase() === "bad"
+                      ? "bg-red-500 text-white"
+                      : dealType.toLowerCase() === "fair"
                       ? "bg-yellow-100 text-yellow-600"
-                      : "bg-green-100 text-green-600"
+                      : dealType.toLowerCase() === "good"
+                      ? "bg-green-100 text-green-600"
+                      : "bg-gray-100 text-gray-600"
                   }`}
                 >
-                  {dealType} Deal
+                  {dealType.charAt(0).toUpperCase() + dealType.slice(1)} Deal
                 </span>
                 <h3 className="text-xl font-bold text-blue-600">
                   ${formatPrice(listing.price)}

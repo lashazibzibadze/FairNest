@@ -27,6 +27,7 @@ export interface Listing {
   date_posted?: string | null;
   realtor_link?: string | null;
   address: Address;
+  fairness_rating?: string | null;
   created_at?: string;
   updated_at?: string;
 }
