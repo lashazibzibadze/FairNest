@@ -4,6 +4,7 @@ from supabase import create_client, Client
 import pandas as pd
 from statsmodels import robust
 
+
 #Initialize Supabase client
 load_dotenv()
 SUPABASE_URL = os.getenv("SUPABASE_URL")
@@ -150,7 +151,8 @@ def update_fairness_rating(batch_size=100):
                 'address_id': int(row['address_id']),  # Convert to native Python int
                 'fairness_rating': row['fairness_rating'],
                 'price': int(result_df.loc[result_df['id'] == row['address_id'], 'price'].values[0]),  # Convert to native Python int
-                'sale_status': result_df.loc[result_df['id'] == row['address_id'], 'sale_status'].values[0]  # Ensure sale_status is included
+                'sale_status': result_df.loc[result_df['id'] == row['address_id'], 'sale_status'].values[0],  # Ensure sale_status is included
+                'fairness_rating_updated_at': pd.Timestamp.now().isoformat()
             })
 
         # Perform batch updates
