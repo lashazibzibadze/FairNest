@@ -9,7 +9,7 @@ const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <nav className="fixed top-0 left-0 w-full flex justify-between items-center px-6 py-5 text-white z-[9999] bg-[rgba(50,50,50,0.8)] backdrop-blur-md">
+    <nav className="fixed top-0 left-0 w-full flex justify-between items-center px-6 h-24 text-white z-[9999] bg-[rgba(50,50,50,0.8)] backdrop-blur-md">
       <div className="flex items-center w-full">
         <Link to="/home" className="flex items-center gap-2">
           <img
@@ -48,6 +48,11 @@ const Navbar = () => {
           <li>
             <Link to="/contact" className="text-white hover:text-cyan-100">
               Contact Us
+            </Link>
+          </li>
+          <li>
+            <Link to="/my-listings" className="text-white hover:text-cyan-100">
+              My Listings
             </Link>
           </li>
         </ul>
@@ -107,6 +112,13 @@ const Navbar = () => {
           onClick={() => setIsOpen(false)}
         >
           Contact Us
+        </Link>
+        <Link
+          to="/my-listings"
+          className="text-white hover:text-lightblue"
+          onClick={() => setIsOpen(false)}
+        >
+          My Listings
         </Link>
         <div className="self-center" onClick={() => setIsOpen(false)}>
           <SignIn />
