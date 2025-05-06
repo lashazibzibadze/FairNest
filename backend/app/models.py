@@ -24,6 +24,7 @@ class Listing(Base):
         nullable=True,
         default="fair"
     )
+    fairness_rating_updated_at = Column(DateTime, nullable=True, default=func.now(), onupdate=func.now())
     
     created_at = Column(DateTime, nullable=True, default=func.now())
     updated_at = Column(DateTime, nullable=True, default=func.now(), onupdate=func.now())

@@ -1,5 +1,5 @@
 from .address import AddressBase, AddressCreate, AddressResponse
-from .listings import ListingBase, ListingCreate, ListingResponse, PaginatedListingsResponse, ListingFilter
+from .listings import ListingBase, ListingCreate, ListingResponse, PaginatedListingsResponse, ListingFilter, ListingFairnessResponse
 from .users import UserBase, UserCreate, UserUpdate, UserResponse
 from .favorites import FavoriteBase, FavoriteCreate, FavoriteResponse
 from .contacts import ContactBase, ContactCreate, ContactResponse
@@ -11,6 +11,7 @@ __all__ = [
     "ListingBase",
     "ListingCreate",
     "ListingResponse",
+    "ListingFairnessResponse",
     "PaginatedListingsResponse",
     "ListingFilter",
     "UserBase",
