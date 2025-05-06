@@ -9,6 +9,7 @@ class Listing(Base):
     __tablename__ = "property_listings"
 
     id = Column(Integer, primary_key=True, index=True)
+    user_id = Column(String(255), ForeignKey("users.user_id"), nullable=True)
     price = Column(BigInteger, nullable=False)
     bedrooms = Column(Integer, nullable=True)
     bathrooms = Column(DECIMAL(3,1), nullable=True)
@@ -32,6 +33,7 @@ class Listing(Base):
     address_id = Column(Integer, ForeignKey("address.id"), nullable=False)
     address = relationship("Address", back_populates="listings")
 
+    user = relationship("User", back_populates="listings")
     favorites = relationship("Favorite", back_populates="listing")
 
     __tarble_args__ = (
@@ -96,7 +98,8 @@ class User(Base):
     created_at = Column(DateTime, nullable=True, default=func.now())
     updated_at = Column(DateTime, nullable=True, default=func.now(), onupdate=func.now())
     
-    favorites = relationship("Favorite", back_populates="users", cascade="all, delete-orphan")
+    favorites = relationship("Favorite", back_populates="user", cascade="all, delete-orphan")
+    listings = relationship("Listing", back_populates="user", cascade="all, delete-orphan")
 
 
 class Contact(Base):

@@ -11,6 +11,7 @@ class FairnessRating(str, Enum):
     FAIR = "fair"
     GOOD = "good"
 class ListingBase(BaseModel):
+    user_id: Optional[str] = None
     price: int
     bedrooms: Optional[int] = None
     bathrooms: Optional[Annotated[Decimal, Field(None, ge=0, max_digits=3, decimal_places=1)]] = None
