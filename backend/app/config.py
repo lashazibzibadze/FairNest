@@ -17,6 +17,7 @@ port = os.getenv("port")
 host = os.getenv("host")
 key = os.getenv("key")
 
+FRONTEND_URL = os.getenv("FRONTEND_URL", "http://localhost:3000")
 AUTH0_DOMAIN = os.getenv("AUTH0_DOMAIN")
 AUTH0_API_AUDIENCE = os.getenv("AUTH0_API_AUDIENCE")
 AUTH0_ISSUER = os.getenv("AUTH0_ISSUER")
