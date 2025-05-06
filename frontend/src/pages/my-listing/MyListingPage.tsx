@@ -4,10 +4,6 @@ import { NavbarWrapper } from "../../utils/NavbarWrapper";
 
 export default function MyListings() {
     const { data, isLoading, error } = useUserListings(0, 10);
-    console.log("MyListings");
-    console.log(data);
-    console.log(isLoading);
-    console.log(error);
     return (
         <NavbarWrapper>
             {isLoading && <p>Loading your listings…</p>}
