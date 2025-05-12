@@ -30,10 +30,7 @@ AWS_SECRET_ACCESS_KEY = os.getenv("AWS_SECRET_ACCESS_KEY")
 CHROME_PATH = os.getenv("CHROME_PATH")
 CHROME_PROFILE_NAME = os.getenv("CHROME_PROFILE_NAME")
 CHROME_USER_DATA = os.getenv("CHROME_USER_DATA") # Make sure this is declared in env
-FIREFOX_USER_DATA = os.getenv("FIREFOX_USER_DATA") # Make sure this is declared in env
 if not CHROME_USER_DATA:
-    raise ValueError("The CHROME_USER_DATA path is not defined in the .env file.")
-if not FIREFOX_USER_DATA:
     raise ValueError("The CHROME_USER_DATA path is not defined in the .env file.")
 if not CHROME_PATH:
     raise ValueError("CHROME_PATH is not set!")
