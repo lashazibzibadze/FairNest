@@ -1,0 +1,54 @@
+[
+  {
+    "price": 679000,
+    "bedrooms": 2,
+    "bathrooms": 1.5,
+    "square_feet": 1144.0,
+    "sale_status": "Townhouse for sale",
+    "acre_lot": 1300.0,
+    "tour_available": true,
+    "image_source": "https://ap.rdcpix.com/a2b823485846a64c8304f5ac1d9e4791l-m3300585035rd-w960_h720.jpg",
+    "realtor_link": "https://www.realtor.com/realestateandhomes-detail/135-Saint-Johns-Ave_Staten-Island_NY_10305_M34297-14840?from=srp-list-card",
+    "address_id": 65454,
+    "_error": "{'code': '23505', 'details': 'Key (address_id)=(65454) already exists.', 'hint': None, 'message': 'duplicate key value violates unique constraint \"unique_address_id\"'}"
+  },
+  {
+    "price": 1475000,
+    "bedrooms": 7,
+    "bathrooms": 5.5,
+    "square_feet": 4649.0,
+    "sale_status": "Multi-family home for sale",
+    "acre_lot": 6250.0,
+    "tour_available": true,
+    "image_source": "https://ap.rdcpix.com/95f8157fda1e1f2505a3dc0988a5d81dl-m2299598186rd-w960_h720.jpg",
+    "realtor_link": "https://www.realtor.com/realestateandhomes-detail/63-Forest-Ave_Staten-Island_NY_10301_M46210-63307?from=srp-list-card",
+    "address_id": 65489,
+    "_error": "{'code': '23505', 'details': 'Key (address_id)=(65489) already exists.', 'hint': None, 'message': 'duplicate key value violates unique constraint \"unique_address_id\"'}"
+  },
+  {
+    "price": 1849888,
+    "bedrooms": 0,
+    "bathrooms": 0.5,
+    "square_feet": 7200.0,
+    "sale_status": "House for sale",
+    "acre_lot": 3600.0,
+    "tour_available": true,
+    "image_source": "https://ap.rdcpix.com/3f3008461c5c9e6d1628b49156db972dl-m4000355050rd-w960_h720.jpg",
+    "realtor_link": "https://www.realtor.com/realestateandhomes-detail/250-Buel-Ave_Staten-Island_NY_10305_M97089-46424?from=srp-list-card",
+    "address_id": 65535,
+    "_error": "{'code': '23505', 'details': 'Key (address_id)=(65535) already exists.', 'hint': None, 'message': 'duplicate key value violates unique constraint \"unique_address_id\"'}"
+  },
+  {
+    "price": 669000,
+    "bedrooms": 3,
+    "bathrooms": 2.5,
+    "square_feet": 1440.0,
+    "sale_status": "Townhouse for sale",
+    "acre_lot": 2142.0,
+    "tour_available": true,
+    "image_source": "https://ap.rdcpix.com/b97f3282a326f16bb42da503ffe1ba64l-m3421798974rd-w960_h720.jpg",
+    "realtor_link": "https://www.realtor.com/realestateandhomes-detail/105-Beach-St_Staten-Island_NY_10304_M39548-29238?from=srp-list-card",
+    "address_id": 65723,
+    "_error": "{'code': '23505', 'details': 'Key (address_id)=(65723) already exists.', 'hint': None, 'message': 'duplicate key value violates unique constraint \"unique_address_id\"'}"
+  }
+]
