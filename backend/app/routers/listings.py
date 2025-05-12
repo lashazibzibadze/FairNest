@@ -9,7 +9,12 @@ from app.task_queue.celery_app import app
 import math
 from decimal import Decimal
 from app.dependencies import auth
-
+from app.crud.listings import (
+    get_base_listing_query,
+    apply_field_filters,
+    apply_range_filters,
+    paginate,
+)
 
 router = APIRouter(prefix="/listings", tags=["Listings"])
 
@@ -38,73 +43,12 @@ def get_listings(
     db: db_dependency,
     filters: schemas.ListingFilter = Depends(),
     skip: int = 0,
-    limit: int = 10
+    limit: int = 10,
 ):
-    subquery = (
-        db.query(func.max(models.Listing.created_at).label("max_created_at"), models.Listing.address_id)
-        .group_by(models.Listing.address_id)
-        .subquery()
-    )
-
-    query = (
-        db.query(models.Listing)
-        .join(models.Address)
-        .join(subquery, and_(
-            models.Listing.created_at == subquery.c.max_created_at,
-            models.Listing.address_id == subquery.c.address_id
-        ))
-    )
-
-    filter_mappings = {
-        "country": models.Address.country,
-        "postal_code": models.Address.postal_code,
-        "street": models.Address.street,
-        "administrative_area": models.Address.administrative_area,
-        "locality": models.Address.locality,
-        "sale_status": models.Listing.sale_status,
-        "tour_available": models.Listing.tour_available
-    }
-
-    range_filters = {
-        "min_price": (models.Listing.price, ">="),
-        "max_price": (models.Listing.price, "<="),
-        "min_bedrooms": (models.Listing.bedrooms, ">="),
-        "max_bedrooms": (models.Listing.bedrooms, "<="),
-        "min_bathrooms": (models.Listing.bathrooms, ">="),
-        "max_bathrooms": (models.Listing.bathrooms, "<="),
-        "min_square_feet": (models.Listing.square_feet, ">="),
-        "max_square_feet": (models.Listing.square_feet, "<="),
-        "min_acre_lot": (models.Listing.acre_lot, ">="),
-        "max_acre_lot": (models.Listing.acre_lot, "<="),
-    }
-
-    for param, column in filter_mappings.items():
-        value = getattr(filters, param)
-        if value is not None:
-            query = query.filter(column == value)
-
-    for param, (column, operator) in range_filters.items():
-        value = getattr(filters, param)
-        if value is not None:
-            if operator == ">=":
-                query = query.filter(column >= value)
-            elif operator == "<=":
-                query = query.filter(column <= value)
-
-    query = query.order_by(desc(models.Listing.created_at))
-
-    total_records = query.order_by(None).with_entities(func.count()).scalar()
-    total_pages = math.ceil(total_records / limit) if total_records > 0 else 1
-
-    listings = query.offset(skip).limit(limit).all()
-
-    return {
-        "listings": listings,
-        "total_records": total_records,
-        "total_pages": total_pages,
-        "current_page": (skip // limit) + 1,
-        "page_size": limit
-    }
+    q = get_base_listing_query(db)
+    q = apply_field_filters(q, filters)
+    q = apply_range_filters(q, filters)
+    return paginate(q, skip, limit)
 
 @router.get("/{listing_id}", response_model=schemas.ListingResponse)
 def get_listing(listing_id: int, db: db_dependency):
@@ -114,8 +58,12 @@ def get_listing(listing_id: int, db: db_dependency):
     return listing
 
 @router.post("/", response_model=schemas.ListingResponse)
-def create_listing(listing_data: schemas.ListingCreate, db: db_dependency):
+def create_listing(listing_data: schemas.ListingCreate, db: db_dependency, auth_result: str = Security(auth.verify)):
     address = get_or_create_address(db, listing_data.address)
+    if not auth_result and not auth_result["sub"]:
+        raise HTTPException(status_code=401, detail="Invalid authentication credentials")
+    
+    auth_id = auth_result["sub"]
     
     new_listing = models.Listing(
         price=listing_data.price,
@@ -126,7 +74,8 @@ def create_listing(listing_data: schemas.ListingCreate, db: db_dependency):
         acre_lot=listing_data.acre_lot,
         tour_available=listing_data.tour_available,
         image_source=listing_data.image_source,
-        address_id=address.id
+        address_id=address.id,
+        user_id=auth_id
     )
     db.add(new_listing)
     db.commit()
@@ -139,7 +88,7 @@ def update_listing(listing_id: int, listing_data: schemas.ListingCreate, db: db_
         raise HTTPException(status_code=401, detail="Invalid authentication credentials")
     
     auth_id = auth_result["sub"]
-    listing = db.query(models.Listing).filter(models.Listing.id == listing_id, models.User.auth_id == auth_id).first()
+    listing = db.query(models.Listing).filter(models.Listing.id == listing_id, models.User.user_id == auth_id).first()
     if not listing:
         raise HTTPException(status_code=404, detail="Listing not found")
     
@@ -165,7 +114,7 @@ def delete_listing(listing_id: int, db: db_dependency, auth_result: str = Securi
         raise HTTPException(status_code=401, detail="Invalid authentication credentials")
     
     auth_id = auth_result["sub"]
-    listing = db.query(models.Listing).filter(models.Listing.id == listing_id, models.User.auth_id == auth_id).first()
+    listing = db.query(models.Listing).filter(models.Listing.id == listing_id, models.User.user_id == auth_id).first()
     if not listing:
         raise HTTPException(status_code=404, detail="Listing not found")
     db.delete(listing)

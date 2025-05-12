@@ -10,6 +10,8 @@ import FAQPage from "./pages/FAQ/FAQ";
 import ContactPage from "./pages/Contact/Contact";
 import ListingDetails from "./pages/ListingDetails/ListingDetails";
 import AdminPage from "./pages/Admin/admin";
+import CreateListingPage from "./pages/create-listing/CreateListingPage";
+import MyListingPage from "./pages/my-listing/MyListingPage";
 import "./App.css";
 
 const App = () => {
@@ -23,6 +25,8 @@ const App = () => {
       <Route path="/contact" element={<ContactPage />} />
       <Route path="/listing/:id" element={<ListingDetails />} />
       <Route path="/admin" element={<AdminPage />} />
+      <Route path="/create-listing" element={<CreateListingPage />} />
+      <Route path="my-listings" element={<MyListingPage />} />
     </Routes>
   );
 };
