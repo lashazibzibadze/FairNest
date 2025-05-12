@@ -1,7 +1,7 @@
 import { useParams, useNavigate } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 import Navbar from "../../components/navbar/Navbar";
-import { getRandomDealType } from "../../utils/random";
+// import { getRandomDealType } from "../../utils/random";
 import { formatPrice } from "../../utils/formatprice";
 import { Listing } from "../../types";
 import BronxImg from "/ListingDetails/The_Bronx.png";
@@ -52,7 +52,7 @@ const ListingDetails = () => {
     queryFn: () => fetchListing(id!),
     enabled: !!id,
   });
-  const dealType = getRandomDealType();
+  // const dealType = getRandomDealType();
 
   if (isLoading) {
     return (
@@ -82,6 +82,8 @@ const ListingDetails = () => {
   );
   const sqftDiff = (data.square_feet ?? 0) - neighborhoodAvgSqft;
   //
+
+  const dealType = data.fairness_rating ?? "No Rating";
 
   return (
     <div
@@ -138,15 +140,17 @@ const ListingDetails = () => {
             {/*deal type & save listings */}
             <div className="flex items-center gap-4">
               <span
-                className={`text-sm font-bold uppercase px-3 py-1 rounded-full inline-block ${
-                  dealType === "Fraud"
-                    ? "bg-red-200 text-red-800"
-                    : dealType === "Fair"
-                    ? "bg-yellow-200 text-yellow-800"
-                    : "bg-green-200 text-green-800"
+                className={`text-xs font-bold uppercase px-2 py-1 rounded-full inline-block ${
+                  dealType.toLowerCase() === "bad"
+                    ? "bg-red-500 text-white"
+                    : dealType.toLowerCase() === "fair"
+                    ? "bg-yellow-100 text-yellow-600"
+                    : dealType.toLowerCase() === "good"
+                    ? "bg-green-100 text-green-600"
+                    : "bg-gray-100 text-gray-600"
                 }`}
               >
-                {dealType} Deal
+                {dealType.charAt(0).toUpperCase() + dealType.slice(1)} Deal
               </span>
               <button className="flex items-center gap-2 text-red-600 hover:text-red-800 font-medium transition">
                 <FaHeart /> Save Listing
