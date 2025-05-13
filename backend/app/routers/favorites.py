@@ -31,7 +31,7 @@ def get_favorite(db: db_dependency, auth_result: str = Security(auth.verify), fa
     if not favorite:
         raise HTTPException(status_code=404, detail="Favorite listing not found")
     
-    if favorite.auth_id != auth_id:
+    if favorite.user_id != auth_id:
         raise HTTPException(status_code=403, detail="You do not have permission to access this favorite")
     
     return favorite
@@ -52,7 +52,7 @@ def create_favorite(listing_id: int, db: db_dependency, auth_result: str = Secur
     
     new_favorite = models.Favorite(
         listing_id=listing_id,
-        auth_id=auth_id
+        user_id=auth_id
     )
     
     db.add(new_favorite)
