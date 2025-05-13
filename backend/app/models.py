@@ -9,7 +9,7 @@ class Listing(Base):
     __tablename__ = "property_listings"
 
     id = Column(Integer, primary_key=True, index=True)
-    user_id = Column(String(255), ForeignKey("users.user_id"), nullable=True)
+    user_id = Column(String(255), ForeignKey("users.user_id", ondelete="CASCADE"), nullable=True)
     price = Column(BigInteger, nullable=False)
     bedrooms = Column(Integer, nullable=True)
     bathrooms = Column(DECIMAL(3,1), nullable=True)
@@ -76,8 +76,8 @@ class Favorite(Base):
     __tablename__ = "favorites"
 
     id = Column(Integer, primary_key=True, index=True)
-    user_id = Column(String(255), ForeignKey("users.user_id"), nullable=False)
-    listing_id = Column(Integer, ForeignKey("property_listings.id"), nullable=False)
+    user_id = Column(String(255), ForeignKey("users.user_id", ondelete="CASCADE"), nullable=False)
+    listing_id = Column(Integer, ForeignKey("property_listings.id", ondelete="CASCADE"), nullable=False)
     
     created_at = Column(DateTime, nullable=True, default=func.now())
     updated_at = Column(DateTime, nullable=True, default=func.now(), onupdate=func.now())
