@@ -92,3 +92,12 @@ export interface PaginatedResponse<T> {
   current_page: number
   page_size: number
 }
+
+export type Favorite = {
+  id: number;
+  user_id: string;
+  listing_id: number;
+  created_at: string;
+  updated_at: string;
+  listing: Listing;
+};

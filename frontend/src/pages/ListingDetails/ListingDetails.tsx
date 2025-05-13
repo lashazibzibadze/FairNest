@@ -18,6 +18,8 @@ import {
   FaHeart,
 } from "react-icons/fa";
 import "./ListingDetails.css";
+import { useAuth0 } from "@auth0/auth0-react";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 
 //backgrounds by locality
 const backgroundMap: Record<string, string> = {
@@ -53,6 +55,37 @@ const ListingDetails = () => {
     enabled: !!id,
   });
   // const dealType = getRandomDealType();
+
+  const { getAccessTokenSilently } = useAuth0();
+  const queryClient = useQueryClient();
+
+  const favoriteMutation = useMutation({
+    mutationFn: async () => {
+      const token = await getAccessTokenSilently();
+
+      const res = await fetch(`${API_BASE_URL}/favorites/?listing_id=${id}`, {
+        method: "POST",
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+
+      if (!res.ok) {
+        throw new Error("Failed to add favorite");
+      }
+
+      return res.json();
+    },
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ["favorites"] });
+      alert("Listing saved to favorites!");
+    },
+    onError: (error) => {
+      console.error("Mutation error:", error);
+      alert("Could not save listing to favorites.");
+    },
+  });
+
 
   if (isLoading) {
     return (
@@ -152,7 +185,10 @@ const ListingDetails = () => {
               >
                 {dealType.charAt(0).toUpperCase() + dealType.slice(1)} Deal
               </span>
-              <button className="flex items-center gap-2 text-red-600 hover:text-red-800 font-medium transition">
+              <button
+                className="flex items-center gap-2 text-red-600 hover:text-red-800 font-medium transition"
+                onClick={() => favoriteMutation.mutate()}
+              >
                 <FaHeart /> Save Listing
               </button>
             </div>
