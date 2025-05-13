@@ -58,24 +58,29 @@ export interface Filters {
 }
 
 export interface AddressInput {
-  street: string
-  locality: string
-  postal_code?: string
-  country: string
-  administrative_area: string
+  country: string;
+  administrative_area: string;
+  sub_administrative_area?: string;
+  locality: string;
+  postal_code: string;
+  street: string;
+  premise?: string;
+  sub_premise?: string;
+  latitude?: number;
+  longitude?: number;
 }
 
 export interface ListingInput {
-  price: number
-  bedrooms?: number
-  bathrooms?: number
-  square_feet?: number
-  sale_status: string
-  acre_lot?: number
-  tour_available: boolean
-  image_source?: string
-  realtor_link?: string
-  address: AddressInput
+  price: number;
+  bedrooms?: number;
+  bathrooms?: number;
+  square_feet?: number;
+  sale_status: string;
+  acre_lot?: number;
+  tour_available: boolean;
+  image_source?: string;
+  realtor_link?: string;
+  address: AddressInput;
 }
 
 export type FairnessRating = "fraud" | "bad" | "fair" | "good"

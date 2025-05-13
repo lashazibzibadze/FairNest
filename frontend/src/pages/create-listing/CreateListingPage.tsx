@@ -11,8 +11,6 @@ export default function CreateListing() {
 
     const onSubmit = async (data: ListingInput) => {
         console.log("CreateListing");
-        data.address.administrative_area = "NY";
-        data.address.country = "US";
         console.log(data)
         await mutateAsync(data);
         navigate("/my-listings");
