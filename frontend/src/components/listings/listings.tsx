@@ -65,7 +65,7 @@ const ListingsComponent = ({
               className="cursor-pointer bg-white shadow-md rounded-xl overflow-hidden hover:shadow-xl transition-all"
             >
               <img
-                src={listing.image_source || "/placeholder.jpg"}
+                src={listing.image_source || "/house/placeholder.jpeg"}
                 className="w-full h-48 object-cover"
                 alt={`Listing ${listing.id}`}
               />

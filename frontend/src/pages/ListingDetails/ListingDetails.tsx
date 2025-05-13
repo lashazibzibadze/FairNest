@@ -20,6 +20,7 @@ import {
 import "./ListingDetails.css";
 import { useAuth0 } from "@auth0/auth0-react";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { formatString } from "../../utils/formatString";
 
 //backgrounds by locality
 const backgroundMap: Record<string, string> = {
@@ -140,7 +141,7 @@ const ListingDetails = () => {
           <div className="md:w-1/2 flex flex-col gap-7 h-fit">
             <div className="rounded-lg border-4 border-white shadow-xl overflow-hidden h-[500px]">
               <img
-                src={data.image_source || "/blankimage1.jpg"}
+                src={data.image_source || "/house/placeholder.jpeg"}
                 alt="Listing"
                 className="object-cover w-full h-full"
               />
@@ -212,7 +213,7 @@ const ListingDetails = () => {
                 {data.acre_lot ?? "N/A"} Acres
               </div>
               <div className="col-span-2">
-                <strong>Status:</strong> {data.sale_status}
+                <strong>Status:</strong> {formatString(data.sale_status)}
               </div>
               <div className="col-span-2">
                 <strong>Tour Available:</strong>{" "}

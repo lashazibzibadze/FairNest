@@ -77,7 +77,7 @@ export default function FavoritesPage() {
                   </button>
 
                   <img
-                    src={listing.image_source || "/placeholder.jpg"}
+                    src={listing.image_source || "/house/placeholder.jpeg"}
                     onClick={() => navigate(`/listing/${listing.id}`)}
                     className="w-full h-48 object-cover cursor-pointer"
                     alt={`Listing ${listing.id}`}
