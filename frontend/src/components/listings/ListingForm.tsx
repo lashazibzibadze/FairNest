@@ -1,26 +1,76 @@
 import { useForm, SubmitHandler } from "react-hook-form";
 import { ListingInput } from "../../types";
+import { AddressAutocomplete } from "./AddressAutocomplete";
 
 interface Props {
     onSubmit: SubmitHandler<ListingInput>;
     defaultValues?: Partial<ListingInput>;
+    isSaving: boolean;
 }
 
-export default function ListingForm({ onSubmit, defaultValues }: Props) {
+export default function ListingForm({
+    onSubmit,
+    defaultValues,
+    isSaving,
+}: Props) {
     const {
         register,
         handleSubmit,
         formState: { errors },
+        setValue,
     } = useForm<ListingInput>({ defaultValues });
+
+    const handleAddressSelect = (address: ListingInput["address"]) => {
+        setValue("address", address, { shouldValidate: true });
+    };
 
     return (
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
+            {/* Address Autocomplete */}
+            <div>
+                <label className="block mb-1">
+                    Address <span className="text-red-500">*</span>
+                </label>
+                <AddressAutocomplete
+                    apiKey={import.meta.env.VITE_GOOGLE_API_KEY_2}
+                    onSelect={handleAddressSelect}
+                />
+                {errors.address?.street && (
+                    <p className="text-red-500 text-sm">Address is required</p>
+                )}
+                {/* Hidden fields to register address subfields */}
+                <input type="hidden" {...register("address.country")} />
+                <input
+                    type="hidden"
+                    {...register("address.administrative_area")}
+                />
+                <input
+                    type="hidden"
+                    {...register("address.sub_administrative_area")}
+                />
+                <input type="hidden" {...register("address.locality")} />
+                <input type="hidden" {...register("address.postal_code")} />
+                <input
+                    type="hidden"
+                    {...register("address.street", { required: true })}
+                />
+                <input type="hidden" {...register("address.premise")} />
+                <input type="hidden" {...register("address.sub_premise")} />
+                <input type="hidden" {...register("address.latitude")} />
+                <input type="hidden" {...register("address.longitude")} />
+            </div>
+
             {/* Price */}
             <div>
-                <label className="block mb-1">Price</label>
+                <label className="block mb-1">
+                    Price <span className="text-red-500">*</span>
+                </label>
                 <input
                     type="number"
-                    {...register("price", { required: "Price is required" })}
+                    {...register("price", {
+                        required: "Price is required",
+                        valueAsNumber: true,
+                    })}
                     className="w-full border rounded px-3 py-2"
                 />
                 {errors.price && (
@@ -36,7 +86,10 @@ export default function ListingForm({ onSubmit, defaultValues }: Props) {
                     <label className="block mb-1">Bedrooms</label>
                     <input
                         type="number"
-                        {...register("bedrooms")}
+                        {...register("bedrooms", {
+                            valueAsNumber: true,
+                            setValueAs: (v) => (v === "" ? undefined : v),
+                        })}
                         className="w-full border rounded px-3 py-2"
                     />
                 </div>
@@ -45,7 +98,10 @@ export default function ListingForm({ onSubmit, defaultValues }: Props) {
                     <input
                         step="0.1"
                         type="number"
-                        {...register("bathrooms")}
+                        {...register("bathrooms", {
+                            valueAsNumber: true,
+                            setValueAs: (v) => (v === "" ? undefined : v),
+                        })}
                         className="w-full border rounded px-3 py-2"
                     />
                 </div>
@@ -58,7 +114,10 @@ export default function ListingForm({ onSubmit, defaultValues }: Props) {
                     <input
                         step="0.01"
                         type="number"
-                        {...register("square_feet")}
+                        {...register("square_feet", {
+                            valueAsNumber: true,
+                            setValueAs: (v) => (v === "" ? undefined : v),
+                        })}
                         className="w-full border rounded px-3 py-2"
                     />
                 </div>
@@ -67,15 +126,19 @@ export default function ListingForm({ onSubmit, defaultValues }: Props) {
                     <input
                         step="0.01"
                         type="number"
-                        {...register("acre_lot")}
-                        className="w-full border rounded px-3 py-2"
+                        {...register("acre_lot", {
+                            valueAsNumber: true,
+                            setValueAs: (v) => (v === "" ? undefined : v),
+                        })}
                     />
                 </div>
             </div>
 
             {/* Sale Status */}
             <div>
-                <label className="block mb-1">Sale Status</label>
+                <label className="block mb-1">
+                    Sale Status <span className="text-red-500">*</span>
+                </label>
                 <select
                     {...register("sale_status", {
                         required: "Select a status",
@@ -104,7 +167,7 @@ export default function ListingForm({ onSubmit, defaultValues }: Props) {
                 <label htmlFor="tourAvailable">Tour Available</label>
             </div>
 
-            {/* Image & Link */}
+            {/* Image URL */}
             <div>
                 <label className="block mb-1">Image URL</label>
                 <input
@@ -112,56 +175,13 @@ export default function ListingForm({ onSubmit, defaultValues }: Props) {
                     className="w-full border rounded px-3 py-2"
                 />
             </div>
-            <div>
-                <label className="block mb-1">Realtor Link</label>
-                <input
-                    {...register("realtor_link")}
-                    className="w-full border rounded px-3 py-2"
-                />
-            </div>
-
-            {/* Address sub-form */}
-            <div>
-                <label className="block mb-1">Street</label>
-                <input
-                    {...register("address.street", {
-                        required: "Street is required",
-                    })}
-                    className="w-full border rounded px-3 py-2"
-                />
-                {errors.address?.street && (
-                    <p className="text-red-500 text-sm">
-                        {errors.address.street.message}
-                    </p>
-                )}
-            </div>
-            <div>
-                <label className="block mb-1">City</label>
-                <input
-                    {...register("address.locality", {
-                        required: "City is required",
-                    })}
-                    className="w-full border rounded px-3 py-2"
-                />
-                {errors.address?.locality && (
-                    <p className="text-red-500 text-sm">
-                        {errors.address.locality.message}
-                    </p>
-                )}
-            </div>
-            <div>
-                <label className="block mb-1">Postal Code</label>
-                <input
-                    {...register("address.postal_code")}
-                    className="w-full border rounded px-3 py-2"
-                />
-            </div>
 
             <button
                 type="submit"
                 className="bg-blue-600 text-white rounded px-4 py-2 hover:bg-blue-700"
+                disabled={isSaving}
             >
-                Save Listing
+                {isSaving ? "Saving..." : "Save Listing"}
             </button>
         </form>
     );

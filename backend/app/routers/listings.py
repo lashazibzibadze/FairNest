@@ -32,7 +32,8 @@ def get_or_create_address(db: Session, address_data: schemas.AddressCreate):
     db.add(new_address)
     db.commit()
     db.refresh(new_address)
-    app.send_task("update_listings.tasks.update_address", args=[new_address.id, new_address.premise, new_address.street, new_address.locality, new_address.administrative_area], queue="update_listings")
+    if not new_address.latitude or not new_address.longitude:
+        app.send_task("update_listings.tasks.update_address", args=[new_address.id, new_address.premise, new_address.street, new_address.locality, new_address.administrative_area], queue="update_listings")
     return new_address
 
 def get_listings_by_address(db: Session, address_id: int):
