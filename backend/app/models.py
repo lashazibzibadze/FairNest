@@ -9,6 +9,7 @@ class Listing(Base):
     __tablename__ = "property_listings"
 
     id = Column(Integer, primary_key=True, index=True)
+    user_id = Column(String(255), ForeignKey("users.user_id", ondelete="CASCADE"), nullable=True)
     price = Column(BigInteger, nullable=False)
     bedrooms = Column(Integer, nullable=True)
     bathrooms = Column(DECIMAL(3,1), nullable=True)
@@ -32,6 +33,7 @@ class Listing(Base):
     address_id = Column(Integer, ForeignKey("address.id"), nullable=False)
     address = relationship("Address", back_populates="listings")
 
+    user = relationship("User", back_populates="listings")
     favorites = relationship("Favorite", back_populates="listing")
 
     __tarble_args__ = (
@@ -77,8 +79,8 @@ class Favorite(Base):
     __tablename__ = "favorites"
 
     id = Column(Integer, primary_key=True, index=True)
-    auth_id = Column(String(255), ForeignKey("users.auth_id"), nullable=False)
-    listing_id = Column(Integer, ForeignKey("property_listings.id"), nullable=False)
+    user_id = Column(String(255), ForeignKey("users.user_id", ondelete="CASCADE"), nullable=False)
+    listing_id = Column(Integer, ForeignKey("property_listings.id", ondelete="CASCADE"), nullable=False)
     
     created_at = Column(DateTime, nullable=True, default=func.now())
     updated_at = Column(DateTime, nullable=True, default=func.now(), onupdate=func.now())
@@ -90,8 +92,7 @@ class Favorite(Base):
 class User(Base):
     __tablename__ = "users"
     
-    id = Column(Integer, primary_key=True, index=True)
-    auth_id = Column(String(255), unique=True, nullable=False)
+    user_id = Column(String(255), primary_key=True, unique=True, nullable=False)
     email = Column(String(255), unique=True, nullable=False)
     first_name = Column(String(50), nullable=False)
     last_name = Column(String(50), nullable=False)
@@ -101,6 +102,7 @@ class User(Base):
     updated_at = Column(DateTime, nullable=True, default=func.now(), onupdate=func.now())
     
     favorites = relationship("Favorite", back_populates="user", cascade="all, delete-orphan")
+    listings = relationship("Listing", back_populates="user", cascade="all, delete-orphan")
 
 
 class Contact(Base):

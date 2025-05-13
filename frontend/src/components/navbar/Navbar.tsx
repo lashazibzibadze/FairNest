@@ -4,12 +4,15 @@ import "./Navbar.css";
 import HamburgerMenu from "../../assets/burger-menu.svg";
 import SignIn from "../Authentication/SignIn";
 import SignOut from "../Authentication/Logout";
+import { useAuth0 } from "@auth0/auth0-react";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
 
+  const { isAuthenticated, user } = useAuth0();
+
   return (
-    <nav className="fixed top-0 left-0 w-full flex justify-between items-center px-6 py-5 text-white z-[9999] bg-[rgba(50,50,50,0.8)] backdrop-blur-md">
+    <nav className="fixed top-0 left-0 w-full flex justify-between items-center px-6 h-24 text-white z-[9999] bg-[rgba(50,50,50,0.8)] backdrop-blur-md">
       <div className="flex items-center w-full">
         <Link to="/home" className="flex items-center gap-2">
           <img
@@ -50,6 +53,25 @@ const Navbar = () => {
               Contact Us
             </Link>
           </li>
+
+          {isAuthenticated && user && (
+            <li>
+              <Link
+                to="/my-listings"
+                className="text-white hover:text-cyan-100"
+              >
+                My Listings
+              </Link>
+            </li>
+          )}
+
+          {isAuthenticated && user && (
+            <li>
+              <Link to="/favorites" className="text-white hover:text-cyan-100">
+                Favorites
+              </Link>
+            </li>
+          )}
         </ul>
 
         <div className="hidden md:block">
@@ -108,6 +130,26 @@ const Navbar = () => {
         >
           Contact Us
         </Link>
+
+        {isAuthenticated && user && (
+          <Link
+            to="/my-listings"
+            className="text-white hover:text-lightblue"
+            onClick={() => setIsOpen(false)}
+          >
+            My Listings
+          </Link>
+        )}
+        
+        {isAuthenticated && user && (
+          <Link
+            to="/favorites"
+            className="text-white hover:text-lightblue"
+            onClick={() => setIsOpen(false)}
+          >
+            Favorites
+          </Link>
+        )}
         <div className="self-center" onClick={() => setIsOpen(false)}>
           <SignIn />
           <SignOut />

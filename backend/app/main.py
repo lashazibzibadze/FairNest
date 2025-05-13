@@ -5,7 +5,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from fastapi.security import HTTPBearer
 from app import models
 from .utils import VerifyToken
-from os import getenv
+from app.config import FRONTEND_URL
 
 app = FastAPI(
     title="FairNest API",
@@ -16,11 +16,10 @@ auth = VerifyToken()
 
 models.Base.metadata.create_all(bind=engine)
 
-frontend_url = getenv("FRONTEND_URL", "http://localhost:3000")
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=[frontend_url],
+    allow_origins=[FRONTEND_URL],
     allow_credentials=True,
     allow_methods=["GET", "POST", "PUT", "DELETE", "OPTIONS"],
     allow_headers=["Authorization", "Content-Type"],

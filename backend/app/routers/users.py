@@ -1,10 +1,16 @@
-from fastapi import APIRouter, HTTPException, Security
+from fastapi import APIRouter, Depends, HTTPException, Security
 from sqlalchemy import or_
 from typing import List
 from app import schemas, models
 from app.database import db_dependency
 from typing import Union
 from app.dependencies import auth
+from app.crud.listings import (
+    get_base_listing_query,
+    apply_field_filters,
+    apply_range_filters,
+    paginate,
+)
 
 router = APIRouter(prefix="/users", tags=["Users"])
 
@@ -117,3 +123,36 @@ def delete_user(user_id: int, db: db_dependency, auth_result: str = Security(aut
     db.delete(user)
     db.commit()
     return {"message": "User deleted"}
+
+@router.get(
+    "/{user_id}/listings",
+    response_model=schemas.PaginatedListingsResponse,
+    summary="Get paginated listings for a specific user"
+)
+def get_user_listings(
+    user_id: str,
+    db: db_dependency,
+    filters: schemas.ListingFilter = Depends(),
+    skip: int = 0,
+    limit: int = 10,
+    auth_result: str = Security(auth.verify)
+):
+    if not auth_result and not auth_result["sub"]:
+        raise HTTPException(status_code=401, detail="Invalid authentication credentials")
+    auth_id = auth_result["sub"]
+    current_user = db.query(models.User).filter(models.User.user_id == auth_id).first()
+    
+    print(f"Current user ID: {current_user.user_id}")
+    print(f"Requested user ID: {user_id}")
+    # if current_user.id != user_id and not current_user.is_admin:
+    if current_user.user_id != user_id:
+        raise HTTPException(status_code=403, detail="Not authorized to view these listings")
+
+    query = get_base_listing_query(db)
+    query = query.filter(models.Listing.user_id == user_id)
+
+    query = apply_field_filters(query, filters)
+    query = apply_range_filters(query, filters)
+
+    # Paginate and return
+    return paginate(query, skip, limit)

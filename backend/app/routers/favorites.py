@@ -17,7 +17,7 @@ def get_favorites(
     if not auth_result and not auth_result["sub"]:
         raise HTTPException(status_code=401, detail="Invalid authentication credentials")
     print(auth_result["sub"])
-    return db.query(models.Favorite).filter(models.Favorite.auth_id == auth_result["sub"]).join(models.Listing).offset(skip).limit(limit).all()
+    return db.query(models.Favorite).filter(models.Favorite.user_id == auth_result["sub"]).join(models.Listing).offset(skip).limit(limit).all()
     
 
 @router.get("/{favorite_id}", response_model=schemas.FavoriteResponse)
@@ -31,7 +31,7 @@ def get_favorite(db: db_dependency, auth_result: str = Security(auth.verify), fa
     if not favorite:
         raise HTTPException(status_code=404, detail="Favorite listing not found")
     
-    if favorite.auth_id != auth_id:
+    if favorite.user_id != auth_id:
         raise HTTPException(status_code=403, detail="You do not have permission to access this favorite")
     
     return favorite
@@ -43,7 +43,7 @@ def create_favorite(listing_id: int, db: db_dependency, auth_result: str = Secur
         raise HTTPException(status_code=401, detail="Invalid authentication credentials")
     
     auth_id = auth_result["sub"]
-    existing_favorite = db.query(models.Favorite).filter(and_(models.Favorite.listing_id == listing_id, models.Favorite.auth_id == auth_id)).first()
+    existing_favorite = db.query(models.Favorite).filter(and_(models.Favorite.listing_id == listing_id, models.Favorite.user_id == auth_id)).first()
     if existing_favorite:
         raise HTTPException(
             status_code=400, 
@@ -52,7 +52,7 @@ def create_favorite(listing_id: int, db: db_dependency, auth_result: str = Secur
     
     new_favorite = models.Favorite(
         listing_id=listing_id,
-        auth_id=auth_id
+        user_id=auth_id
     )
     
     db.add(new_favorite)
@@ -65,7 +65,7 @@ def delete_favorite(favorite_id: int, db: db_dependency, auth_result: str = Secu
     if not auth_result and not auth_result["sub"]:
         raise HTTPException(status_code=401, detail="Invalid authentication credentials")
     auth_id = auth_result["sub"]
-    favorite = db.query(models.Favorite).filter(and_(models.Favorite.id == favorite_id, models.User.auth_id == auth_id)).first()
+    favorite = db.query(models.Favorite).filter(and_(models.Favorite.id == favorite_id, models.User.user_id == auth_id)).first()
     if not favorite:
         raise HTTPException(status_code=404, detail="Favorite listing not found")
     db.delete(favorite)

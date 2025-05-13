@@ -6,7 +6,6 @@ import {
 } from "@react-google-maps/api";
 import { useState } from "react";
 import { Listing } from "../../types";
-import { getRandomDealType } from "../../utils/random";
 import { formatPrice } from "../../utils/formatprice";
 import { useNavigate } from "react-router-dom";
 
@@ -15,7 +14,7 @@ const containerStyle = {
   height: "100%",
 };
 
-//New York City coordinates for the map center
+// New York City coordinates for the map center
 const center = {
   lat: 40.7128,
   lng: -74.006,
@@ -33,7 +32,6 @@ const ListingMap = ({ listings }: MapProps) => {
 
   const navigate = useNavigate();
   const [selected, setSelected] = useState<Listing | null>(null);
-  const dealType = getRandomDealType();
 
   if (!isLoaded)
     return <div className="w-full h-full bg-gray-300">Loading map...</div>;
@@ -75,15 +73,22 @@ const ListingMap = ({ listings }: MapProps) => {
             />
             <div
               className={`text-xs font-bold uppercase px-2 py-1 rounded-full inline-block ${
-                dealType === "Fraud"
-                  ? "bg-red-100 text-red-600"
-                  : dealType === "Fair"
+                selected.fairness_rating?.toLowerCase() === "bad"
+                  ? "bg-red-500 text-white"
+                  : selected.fairness_rating?.toLowerCase() === "fair"
                   ? "bg-yellow-100 text-yellow-600"
-                  : "bg-green-100 text-green-600"
+                  : selected.fairness_rating?.toLowerCase() === "good"
+                  ? "bg-green-100 text-green-600"
+                  : "bg-gray-100 text-gray-600"
               }`}
             >
-              {dealType} Deal
+              {selected.fairness_rating
+                ? selected.fairness_rating.charAt(0).toUpperCase() +
+                  selected.fairness_rating.slice(1).toLowerCase()
+                : "No Rating"}{" "}
+              Deal
             </div>
+
             <div className="text-xl font-bold text-blue-600">
               ${formatPrice(selected.price)}
             </div>

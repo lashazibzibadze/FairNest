@@ -66,7 +66,7 @@ const ListingsPage = () => {
           setCurrentPage(1);
         }}
       />
-      <div className="top-[175px] w-1/2 h-[calc(100vh-200px)] fixed left-0 z-0">
+      <div className="top-[165px] w-1/2 h-[calc(100vh-165px)] fixed left-0 z-0">
         <ListingMap listings={listings} />
       </div>
       <div className="ml-auto w-1/2 relative z-10 overflow-y-auto max-h-[calc(100vh-200px)] pr-4">
