@@ -27,11 +27,10 @@ export interface Listing {
   image_source?: string | null;
   date_posted?: string | null;
   realtor_link?: string | null;
-  fairness_rating?: FairnessRating
+  fairness_rating?: FairnessRating | null;
   fairness_rating_updated_at?: string
   created_at?: string
   updated_at?: string
-
   address: Address
 }
 
