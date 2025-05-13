@@ -13,6 +13,7 @@ import AdminPage from "./pages/Admin/admin";
 import CreateListingPage from "./pages/create-listing/CreateListingPage";
 import MyListingPage from "./pages/my-listing/MyListingPage";
 import Favorites from "./pages/Favorites/Favorites";
+import UpdateListingPage from "./pages/update-listing/UpdateListingPage";
 import "./App.css";
 
 const App = () => {
@@ -27,7 +28,8 @@ const App = () => {
       <Route path="/listing/:id" element={<ListingDetails />} />
       <Route path="/admin" element={<AdminPage />} />
       <Route path="/create-listing" element={<CreateListingPage />} />
-      <Route path="my-listings" element={<MyListingPage />} />
+      <Route path="/my-listings" element={<MyListingPage />} />
+      <Route path="/update-listing/:id" element={<UpdateListingPage />} />
       <Route path="/favorites" element={<Favorites />} />
     </Routes>
   );

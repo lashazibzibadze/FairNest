@@ -5,23 +5,27 @@ import { AddressInput } from "../../types";
 interface AddressAutocompleteProps {
     onSelect: (address: AddressInput) => void;
     apiKey: string;
+    defaultValue?: string;
 }
 
 export const AddressAutocomplete = ({
     onSelect,
     apiKey,
+    defaultValue,
 }: AddressAutocompleteProps) => {
     return (
         <APIProvider apiKey={apiKey} libraries={["places"]}>
-            <AddressInputField onSelect={onSelect} />
+            <AddressInputField onSelect={onSelect} defaultValue={defaultValue} />
         </APIProvider>
     );
 };
 
 const AddressInputField = ({
     onSelect,
+    defaultValue = "",
 }: {
     onSelect: (address: AddressInput) => void;
+    defaultValue?: string;
 }) => {
     const inputRef = useRef<HTMLInputElement>(null);
     const [autocomplete, setAutocomplete] =
@@ -45,8 +49,6 @@ const AddressInputField = ({
         const listener = autocomplete.addListener("place_changed", () => {
             const place = autocomplete.getPlace();
             if (!place.address_components || !place.geometry) return;
-
-            console.log(place);
 
             const getComponent = (type: string) =>
                 place.address_components?.find((c) => c.types.includes(type))
@@ -83,6 +85,7 @@ const AddressInputField = ({
     return (
         <input
             ref={inputRef}
+            defaultValue={defaultValue}
             placeholder="Enter address"
             className="w-full border rounded px-3 py-2"
         />

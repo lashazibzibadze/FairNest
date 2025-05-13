@@ -169,6 +169,11 @@ const ListingDetails = () => {
               <h1 className="text-4xl font-bold text-blue-600">
                 ${formatPrice(data.price)}
               </h1>
+              <button
+                onClick={() => navigate(`/update-listing/${data.id}`)}
+                className="p-2 rounded-lg bg-gray-200 text-gray-500 hover:text-gray-700">
+                Edit listing
+              </button>
             </div>
 
             {/*deal type & save listings */}

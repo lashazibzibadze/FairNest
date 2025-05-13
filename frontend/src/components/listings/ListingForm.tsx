@@ -1,28 +1,42 @@
 import { useForm, SubmitHandler } from "react-hook-form";
 import { ListingInput } from "../../types";
 import { AddressAutocomplete } from "./AddressAutocomplete";
+import { useEffect } from "react";
 
 interface Props {
+    mode: "edit" | "create";
     onSubmit: SubmitHandler<ListingInput>;
     defaultValues?: Partial<ListingInput>;
     isSaving: boolean;
+    listing?: ListingInput;
 }
 
 export default function ListingForm({
     onSubmit,
     defaultValues,
     isSaving,
+    mode,
+    listing,
 }: Props) {
     const {
         register,
         handleSubmit,
         formState: { errors },
         setValue,
+        reset,
     } = useForm<ListingInput>({ defaultValues });
+
+    useEffect(() => {
+        if (mode === "edit" && listing) {
+            reset(listing); // populate all fields at once
+        }
+    }, [mode, listing, reset]);
 
     const handleAddressSelect = (address: ListingInput["address"]) => {
         setValue("address", address, { shouldValidate: true });
     };
+
+    const address = listing?.address;
 
     return (
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
@@ -34,6 +48,7 @@ export default function ListingForm({
                 <AddressAutocomplete
                     apiKey={import.meta.env.VITE_GOOGLE_API_KEY_2}
                     onSelect={handleAddressSelect}
+                    defaultValue={address ? `${address.premise} ${address.street} ${address.locality}, ${address.administrative_area}, ${address.country}` : ""}
                 />
                 {errors.address?.street && (
                     <p className="text-red-500 text-sm">Address is required</p>

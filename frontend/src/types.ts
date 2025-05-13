@@ -60,26 +60,26 @@ export interface Filters {
 export interface AddressInput {
   country: string;
   administrative_area: string;
-  sub_administrative_area?: string;
+  sub_administrative_area?: string | null;
   locality: string;
   postal_code: string;
   street: string;
-  premise?: string;
-  sub_premise?: string;
-  latitude?: number;
-  longitude?: number;
+  premise?: string | null;
+  sub_premise?: string | null;
+  latitude?: number | null;
+  longitude?: number | null;
 }
 
 export interface ListingInput {
   price: number;
-  bedrooms?: number;
-  bathrooms?: number;
-  square_feet?: number;
+  bedrooms?: number | null;
+  bathrooms?: number | null;
+  square_feet?: number | null;
   sale_status: string;
-  acre_lot?: number;
+  acre_lot?: number | null;
   tour_available: boolean;
-  image_source?: string;
-  realtor_link?: string;
+  image_source?: string | null;
+  realtor_link?: string | null;
   address: AddressInput;
 }
 
