@@ -57,7 +57,7 @@ const ListingDetails = () => {
   });
   // const dealType = getRandomDealType();
 
-  const { getAccessTokenSilently } = useAuth0();
+  const { user, getAccessTokenSilently } = useAuth0();
   const queryClient = useQueryClient();
 
   const favoriteMutation = useMutation({
@@ -118,7 +118,7 @@ const ListingDetails = () => {
   //
 
   const dealType = data.fairness_rating ?? "No Rating";
-
+  
   return (
     <div
       className="min-h-screen bg-cover bg-center"
@@ -169,11 +169,16 @@ const ListingDetails = () => {
               <h1 className="text-4xl font-bold text-blue-600">
                 ${formatPrice(data.price)}
               </h1>
-              <button
-                onClick={() => navigate(`/update-listing/${data.id}`)}
-                className="p-2 rounded-lg bg-gray-200 text-gray-500 hover:text-gray-700">
-                Edit listing
-              </button>
+              {
+                user?.sub! === data.user_id && (
+                  <button
+                    onClick={() => navigate(`/update-listing/${data.id}`)}
+                    className="p-2 rounded-lg bg-gray-200 text-gray-500 hover:text-gray-700">
+                    Edit listing
+                  </button>
+                )
+              }
+              
             </div>
 
             {/*deal type & save listings */}
