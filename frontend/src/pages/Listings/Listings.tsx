@@ -15,7 +15,6 @@ const ListingsPage = () => {
   const queryParams = new URLSearchParams(location.search);
   const type = queryParams.get("type");
   const value = queryParams.get("value");
-
   //state to manage filters for listings page
   const [filters, setFilters] = useState<Filters>({
     country: "",
@@ -57,7 +56,7 @@ const ListingsPage = () => {
     );
 
   return (
-    <div className="pt-44 flex relative min-h-screen bg-gray-200">
+    <div className="pt-44 bg-gray-200 min-h-screen relative">
       <Navbar />
       <SearchHeader
         filters={filters}
@@ -66,18 +65,39 @@ const ListingsPage = () => {
           setCurrentPage(1);
         }}
       />
-      <div className="top-[165px] w-1/2 h-[calc(100vh-165px)] fixed left-0 z-0">
-        <ListingMap listings={listings} />
+
+      {/*desktop - large screens layout */}
+      <div className="hidden md:flex relative">
+        <div className="top-[165px] w-1/2 h-[calc(100vh-165px)] fixed left-0 z-0">
+          <ListingMap listings={listings} />
+        </div>
+        <div className="ml-auto w-1/2 relative z-10 overflow-y-auto max-h-[calc(100vh-200px)] pr-4">
+          <ListingsComponent
+            listings={listings}
+            currentPage={currentPage}
+            setCurrentPage={setCurrentPage}
+            totalPages={totalPages}
+            isLoading={isLoading}
+          />
+        </div>
       </div>
-      <div className="ml-auto w-1/2 relative z-10 overflow-y-auto max-h-[calc(100vh-200px)] pr-4">
-        <ListingsComponent
-          listings={listings}
-          currentPage={currentPage}
-          setCurrentPage={setCurrentPage}
-          totalPages={totalPages}
-          isLoading={isLoading}
-        />
+
+      {/*mobile layout */}
+      <div className="md:hidden min-h-screen relative pb-[46vh]">
+        <div className="overflow-y-auto px-4">
+          <ListingsComponent
+            listings={listings}
+            currentPage={currentPage}
+            setCurrentPage={setCurrentPage}
+            totalPages={totalPages}
+            isLoading={isLoading}
+          />
+        </div>
+        <div className="fixed bottom-0 left-0 w-full h-[46vh] z-10 border-t border-gray-300 bg-white">
+          <ListingMap listings={listings} />
+        </div>
       </div>
+
     </div>
   );
 };
