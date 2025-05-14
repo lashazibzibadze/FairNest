@@ -2,7 +2,7 @@ import "./footer.css";
 
 const Footer = () => {
   return (
-    <footer className="text-white py-5 text-center w-full">
+    <footer className="text-[#434343] py-5 text-center w-full">
       <div className="flex flex-col items-center justify-center gap-3">
         <p>© {new Date().getFullYear()} FairNest. All Rights Reserved.</p>
         <ul className="flex gap-6 list-none">

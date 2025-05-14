@@ -49,18 +49,14 @@ const FAQ = () => {
   };
 
   return (
-    <div className="flex flex-col min-h-screen bg-cover bg-center bg-no-repeat pt-16">
+    <div className="flex flex-col min-h-screen bg-cover bg-center bg-no-repeat pt-16 bg-gray-300">
       <Navbar />
 
       {/* Main Content*/}
       <div className="flex-1 flex flex-col justify-center items-center px-4 md:px-16 pt-24">
         {/* Title */}
         <h2
-          className="text-5xl md:text-6xl font-semibold text-white text-center drop-shadow-lg mb-10 p-4"
-          style={{
-            textShadow:
-              "1px 1px 10px rgb(52, 52, 53), 1px -1px #080808, 1px 1px #0f0f0f",
-          }}
+          className="text-5xl md:text-6xl font-semibold text-white text-center drop-shadow-[0_0_2px_#434343] mb-10 p-4"
         >
           Frequently Asked Questions
         </h2>

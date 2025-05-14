@@ -8,7 +8,7 @@ const Logout = () => {
     isAuthenticated && (
       <div>
         <button
-          className="flex items-center space-x-4 bg-blue-500 text-white px-5 py-2.5 rounded-lg text-center hover:bg-blue-700 transition"
+          className="flex items-center space-x-4 bg-[#434343] text-white px-5 py-2.5 rounded-lg text-center hover:bg-gray-500 transition"
           onClick={() => logout()}
           >
           {user?.picture && (

@@ -27,7 +27,7 @@ const App = () => {
       <Route path="/listing/:id" element={<ListingDetails />} />
       <Route path="/admin" element={<AdminPage />} />
       <Route path="/create-listing" element={<CreateListingPage />} />
-      <Route path="my-listings" element={<MyListingPage />} />
+      <Route path="/my-listings" element={<MyListingPage />} />
       <Route path="/favorites" element={<Favorites />} />
     </Routes>
   );

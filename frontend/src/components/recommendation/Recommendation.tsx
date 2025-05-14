@@ -25,7 +25,7 @@ const Recommendation = () => {
     <div className="flex flex-col items-center p-10">
       {/* Title */}
       <div className="text-center">
-        <h2 className="text-4xl md:text-5xl font-semibold pb-8">
+        <h2 className="text-4xl md:text-4xl font-semibold pb-8">
           Explore NYC Neighborhoods
         </h2>
       </div>

@@ -3,6 +3,7 @@ import { formatPrice } from "../../utils/formatprice";
 import { NavbarWrapper } from "../../utils/NavbarWrapper";
 import { RiDeleteBin6Line } from "react-icons/ri";
 import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import BirdFavorite from "../../assets/bird-favorite.webp";
 
 export default function MyListings() {
@@ -13,17 +14,17 @@ export default function MyListings() {
         <div className="bg-gray-300 min-h-screen">
             <NavbarWrapper>
                 <section className="p-6">
-                    <h1 className="text-3xl font-semibold mb-4 lg-shadow text-gray-600">
+                    <h1 className="text-2xl font-semibold mb-4 lg-shadow text-gray-600">
                         My Listings{" "}
                         {data && data.listings.length > 0 && (
                             <>
                                 {" "}
-                                <a
-                                    href="/create-listing"
+                                <Link
+                                    to="/create-listing"
                                     className="text-blue-600 underline hover:text-blue-800"
                                 >
                                     Create Listing
-                                </a>
+                                </Link>
                             </>
                         )}
                     </h1>
@@ -71,12 +72,12 @@ export default function MyListings() {
                             />
                             <p className="text-gray-600 text-lg">
                                 You have no listings yet.{" "}
-                                <a
-                                    href="/create-listing"
+                                <Link
+                                    to="/create-listing"
                                     className="text-blue-600"
                                 >
                                     Create one
-                                </a>
+                                </Link>
                             </p>
                         </div>
                     ) : (

@@ -77,21 +77,17 @@ const Contact = () => {
   };
 
   return (
-    <div className="flex flex-col min-h-screen pt-16">
+    <div className="flex flex-col min-h-screen pt-[4%] bg-gray-300">
       <Navbar />
 
       {/*banner Section */}
       <div
-        className="relative w-full h-[300px] md:h-[350px] lg:h-[400px] flex items-center justify-center text-center bg-cover bg-center"
+         className="relative bg-fill bg-center w-full h-[300px] md:h-[350px] lg:h-[400px] flex items-center justify-center text-center"
         style={{ backgroundImage: `url(${ContactBanner})` }}
       >
-        <div className="absolute inset-0 bg-black bg-opacity-50"></div>
+        <div className="absolute inset-0"></div>
         <div
-          className="relative z-10 text-white px-6"
-          style={{
-            textShadow:
-              "1px 1px 10px rgb(52, 52, 53), 1px -1px #080808, 1px 1px #0f0f0f",
-          }}
+          className="relative z-10 text-white px-6 drop-shadow-[0_0_2px_#434343]"
         >
           <h1 className="text-5xl md:text-6xl font-bold">Contact Us</h1>
           <p className="text-lg md:text-xl mt-4">
