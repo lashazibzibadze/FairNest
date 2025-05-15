@@ -19,7 +19,7 @@ export default function FavoritesPage() {
     <div className="bg-gray-300 min-h-screen">
     <NavbarWrapper>
       <section className="p-6">
-        <h1 className="text-3xl font-semibold mb-4 lg-shadow text-gray-600">My Favorites</h1>
+        <h1 className="text-2xl font-semibold mb-4 lg-shadow text-gray-600">My Favorites</h1>
 
         {/* Skeleton loading state */}
         {isLoading && (

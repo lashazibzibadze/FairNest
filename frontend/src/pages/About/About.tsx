@@ -92,16 +92,15 @@ const aboutCards: Card[] = [
 
 const About = () => {
   return (
-    <div className="pt-16">
+    <div className="pt-[4.1%] bg-gray-300">
       <Navbar />
       {/* Banner Section*/}
       <section
-        className="relative bg-cover bg-center h-96 flex items-center justify-center text-white"
+        className="relative bg-cover bg-center h-96 flex items-center justify-center"
         style={{ backgroundImage: "url('/Background/Banner_Sketch.jpg')" }}
       >
         <div
-          className="text-center px-5"
-          style={{ textShadow: "1px 1px 2px black" }}
+          className="text-center px-5 text-[#ffffff] drop-shadow-[0_0_3px_#000000]"
         >
           <h1 className="text-5xl md:text-6xl font-bold ">About FairNest</h1>
           <p className="mt-3 text-lg md:text-xl">
@@ -146,7 +145,7 @@ const About = () => {
       </div>
 
       {/*Action*/}
-      <section className="text-white py-14 text-center">
+      <section className="text-[#434343] py-14 text-center">
         <Recommendation />
         <h2 className="text-3xl md:text-4xl font-semibold">
           Start Your Fair Housing Journey!
@@ -154,29 +153,31 @@ const About = () => {
         <p className="mt-3">Find your dream home with FairNest today.</p>
         <a
           href="/listings"
-          className="mt-4 inline-block bg-blue-500 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-lg transition duration-300"
+          className="mt-4 inline-block bg-[#434343] hover:bg-gray-500 text-white font-bold py-3 px-6 rounded-lg transition duration-300"
         >
           Get a Fair Deal
         </a>
       </section>
 
       {/*Socials*/}
-      <section className="text-white py-14 text-center">
+      <section className="text-[#434343] py-14 text-center">
         <h2 className="text-3xl md:text-4xl font-semibold">
           Project Repository
         </h2>
         <p className="mt-3">Follow us on GitHub.</p>
         <div className="mt-6 flex justify-center space-x-6">
-          <a
+            <a
             href="https://github.com/lashazibzibadze/FairNest"
-            className="text-2xl text-white hover:text-blue-600"
-          >
+            className="text-2xl text-[#434343] hover:text-gray-500"
+            target="_blank"
+            rel="noopener noreferrer"
+            >
             <FaGithub />
-          </a>
+            </a>
         </div>
       </section>
 
-      <Footer />
+      <Footer/>
     </div>
   );
 };

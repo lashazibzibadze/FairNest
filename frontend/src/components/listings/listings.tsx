@@ -116,7 +116,7 @@ const ListingsComponent = ({
         <button
           disabled={currentPage === 1}
           onClick={() => setCurrentPage((p) => Math.max(p - 1, 1))}
-          className="px-4 py-2 bg-blue-600 text-white rounded disabled:opacity-40"
+          className="px-4 py-2 bg-[#434343] text-white rounded disabled:opacity-40"
         >
           Prev
         </button>
@@ -126,7 +126,7 @@ const ListingsComponent = ({
         <button
           disabled={currentPage >= totalPages}
           onClick={() => setCurrentPage((p) => p + 1)}
-          className="px-4 py-2 bg-blue-600 text-white rounded disabled:opacity-40"
+          className="px-4 py-2 bg-[#434334] text-white rounded disabled:opacity-40 hover:bg-gray-500 transition-all"
         >
           Next
         </button>

@@ -121,7 +121,7 @@ const ListingDetails = () => {
   
   return (
     <div
-      className="min-h-screen bg-cover bg-center"
+      className="min-h-screen bg-cover bg-center bg-gray-300"
       style={{
         backgroundImage: `url(${getBackground(address.locality)})`,
       }}
