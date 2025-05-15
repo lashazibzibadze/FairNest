@@ -13,8 +13,6 @@ export default function CreateListing() {
     const isLoading = status === "pending";
 
     const onSubmit = async (data: ListingInput) => {
-        console.log("CreateListing");
-
         // Clean up optional fields with blank values
         const cleanedData = JSON.parse(
             JSON.stringify(data, (_, value) =>
@@ -22,7 +20,6 @@ export default function CreateListing() {
             )
         ) as ListingInput;
 
-        console.log(cleanedData);
         await mutateAsync(cleanedData);
         navigate("/my-listings");
     };
