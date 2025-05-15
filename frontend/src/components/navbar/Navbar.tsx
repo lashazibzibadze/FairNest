@@ -29,7 +29,7 @@ const Navbar = () => {
         </div>
 
         {/*Navigation Links*/}
-        <ul className="hidden md:flex absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 text-xl gap-6 text-[#434343]">
+        <ul className="hidden md:flex absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 text-xl gap-6 text-[#434343] drop-shadow-[0_0_0.3px_#000000]">
           <li><Link to="/home" className="hover:text-gray-500">Home</Link></li>
           <li><Link to="/about" className="hover:text-gray-500">About</Link></li>
           <li><Link to="/listings" className="hover:text-gray-500">Listings</Link></li>

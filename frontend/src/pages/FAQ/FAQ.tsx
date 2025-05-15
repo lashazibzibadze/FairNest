@@ -69,14 +69,14 @@ const FAQ = () => {
               {faqs.map((faq, index) => (
                 <div
                   key={index}
-                  className={`border border-gray-300 rounded-xl overflow-hidden bg-gray-200 transition-all duration-300 ${
+                  className={`border border-gray-300 rounded-xl overflow-hidden bg-gray-500 font-semibold transition-all duration-300 text-white ${
                     openIndex === index
                       ? "max-h-[1000px]"
                       : "max-h-24 md:max-h-16"
                   }`}
                 >
                   <button
-                    className="flex justify-between items-center w-full p-5 text-xl md:text-lg font-semibold cursor-pointer md:hover:bg-cyan-100 transition-all text-left"
+                    className="flex justify-between items-center w-full p-5 text-xl md:text-lg cursor-pointer md:hover:bg-[#434343] transition-all text-left drop-shadow-[0_0_2px_#434343]"
                     onClick={() => switchFAQ(index)}
                   >
                     {faq.question}

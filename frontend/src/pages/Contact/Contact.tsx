@@ -101,7 +101,7 @@ const Contact = () => {
       <div className="flex-1 flex flex-col md:flex-row justify-center items-start gap-10 px-6 md:px-16 max-w-7xl mx-auto -mt-6 md:mt-16">
         {/* Left Side Info */}
         <div className="hidden md:flex flex-col w-full md:w-[55%] bg-white shadow-lg p-9 rounded-lg relative z-10">
-          <h2 className="text-2xl font-bold text-gray-800 mb-4 text-center">
+          <h2 className="text-2xl font-bold text-[#434343] mb-4 text-center">
             What Happens Next?
           </h2>
           <p className="text-gray-700 text-lg">
@@ -120,7 +120,7 @@ const Contact = () => {
 
         {/* Contact Form */}
         <div className="w-full md:w-[50%] bg-white shadow-2xl rounded-lg p-8 -mt-20 md:-mt-32 relative z-10">
-          <h2 className="text-2xl font-bold text-gray-800 mb-4">
+          <h2 className="text-2xl font-bold text-[#434343] mb-4">
             Leave Us a Message
           </h2>
           {sent && (
@@ -184,7 +184,7 @@ const Contact = () => {
             <button
               type="submit"
               disabled={loading}
-              className="w-full bg-cyan-600 text-white text-lg font-semibold py-3 rounded-lg hover:bg-cyan-700 transition-all duration-300 disabled:opacity-50"
+              className="w-full bg-cyan-500 text-white text-lg font-semibold py-3 rounded-lg hover:bg-cyan-700 transition-all duration-300 disabled:opacity-50"
             >
               {loading ? "Sending..." : "Send Message"}
             </button>
