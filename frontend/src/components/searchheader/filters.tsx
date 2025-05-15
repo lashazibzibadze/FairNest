@@ -51,7 +51,7 @@ const SearchHeader = ({ filters, setFilters }: Props) => {
         <input
           type="text"
           placeholder="Address, neighborhood, city, ZIP"
-          className="w-96 px-4 py-2 border border-gray-400 rounded-md bg-white placeholder-[#434344]"
+          className="w-96 px-4 py-2 border border-gray-400 rounded-md bg-white placeholder-[#434344] text-black"
           value={filters.addressQuery}
           onChange={(e) =>
             setFilters((prev) => ({ ...prev, addressQuery: e.target.value }))
@@ -62,7 +62,7 @@ const SearchHeader = ({ filters, setFilters }: Props) => {
         <input
           type="number"
           placeholder="Min Price"
-          className="w-28 px-2 py-2 rounded-md border border-gray-400 placeholder-[#434344]"
+          className="w-28 px-2 py-2 rounded-md border border-gray-400 placeholder-[#434344] text-black"
           value={filters.minPrice}
           onChange={(e) =>
             setFilters((prev) => ({ ...prev, minPrice: e.target.value }))
@@ -73,7 +73,7 @@ const SearchHeader = ({ filters, setFilters }: Props) => {
         <input
           type="number"
           placeholder="Max Price"
-          className="w-28 px-2 py-2 rounded-md border border-gray-400 placeholder-[#434344]"
+          className="w-28 px-2 py-2 rounded-md border border-gray-400 placeholder-[#434344] text-black"
           value={filters.maxPrice}
           onChange={(e) =>
             setFilters((prev) => ({ ...prev, maxPrice: e.target.value }))

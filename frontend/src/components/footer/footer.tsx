@@ -1,4 +1,5 @@
 import "./footer.css";
+import { Link } from "react-router-dom";
 
 const Footer = () => {
   return (
@@ -7,19 +8,19 @@ const Footer = () => {
         <p>© {new Date().getFullYear()} FairNest. All Rights Reserved.</p>
         <ul className="flex gap-6 list-none">
           <li>
-            <a href="#" className="text-whitesmoke transition-colors duration-300 hover:text-cyan-100">
+            <Link to="/privacy-policy" className="text-whitesmoke transition-colors duration-300 hover:text-gray-600">
               Privacy Policy
-            </a>
+            </Link>
           </li>
           <li>
-            <a href="#" className="text-whitesmoke transition-colors duration-300 hover:text-cyan-100">
+            <Link to="/terms-of-service" className="text-whitesmoke transition-colors duration-300 hover:text-gray-600">
               Terms of Service
-            </a>
+            </Link>
           </li>
           <li>
-            <a href="#" className="text-whitesmoke transition-colors duration-300 hover:text-cyan-100">
+            <Link to="/contact" className="text-whitesmoke transition-colors duration-300 hover:text-gray-600">
               Contact Us
-            </a>
+            </Link>
           </li>
         </ul>
       </div>

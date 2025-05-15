@@ -6,16 +6,25 @@ interface AddressAutocompleteProps {
     onSelect: (address: AddressInput) => void;
     apiKey: string;
     defaultValue?: string;
+    disabled?: boolean;
+    className?: string;
 }
 
 export const AddressAutocomplete = ({
     onSelect,
     apiKey,
     defaultValue,
+    disabled,
+    className,
 }: AddressAutocompleteProps) => {
     return (
         <APIProvider apiKey={apiKey} libraries={["places"]}>
-            <AddressInputField onSelect={onSelect} defaultValue={defaultValue} />
+            <AddressInputField
+                onSelect={onSelect}
+                defaultValue={defaultValue}
+                disabled={disabled}
+                className={className}
+            />
         </APIProvider>
     );
 };
@@ -23,9 +32,13 @@ export const AddressAutocomplete = ({
 const AddressInputField = ({
     onSelect,
     defaultValue = "",
+    disabled = false,
+    className = "",
 }: {
     onSelect: (address: AddressInput) => void;
     defaultValue?: string;
+    disabled?: boolean;
+    className?: string;
 }) => {
     const inputRef = useRef<HTMLInputElement>(null);
     const [autocomplete, setAutocomplete] =
@@ -33,7 +46,7 @@ const AddressInputField = ({
     const places = useMapsLibrary("places");
 
     useEffect(() => {
-        if (!places || !inputRef.current) return;
+        if (!places || !inputRef.current || disabled) return;
 
         const auto = new places.Autocomplete(inputRef.current, {
             fields: ["geometry", "address_components"],
@@ -41,10 +54,10 @@ const AddressInputField = ({
         });
 
         setAutocomplete(auto);
-    }, [places]);
+    }, [places, disabled]);
 
     useEffect(() => {
-        if (!autocomplete) return;
+        if (!autocomplete || disabled) return;
 
         const listener = autocomplete.addListener("place_changed", () => {
             const place = autocomplete.getPlace();
@@ -56,9 +69,7 @@ const AddressInputField = ({
 
             const address: AddressInput = {
                 country: getComponent("country"),
-                administrative_area: getComponent(
-                    "administrative_area_level_1"
-                ),
+                administrative_area: getComponent("administrative_area_level_1"),
                 sub_administrative_area:
                     getComponent("administrative_area_level_2") || undefined,
                 locality:
@@ -80,14 +91,16 @@ const AddressInputField = ({
         });
 
         return () => listener.remove();
-    }, [autocomplete, onSelect]);
+    }, [autocomplete, onSelect, disabled]);
 
     return (
         <input
             ref={inputRef}
             defaultValue={defaultValue}
             placeholder="Enter address"
-            className="w-full border rounded px-3 py-2"
+            className={className}
+            disabled={disabled}
         />
     );
 };
+

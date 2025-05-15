@@ -7,11 +7,19 @@ import { Link } from "react-router-dom";
 import BirdFavorite from "../../assets/bird-favorite.webp";
 import { FaPlus } from "react-icons/fa";
 import { useDeleteListing } from "../../hooks/useDeleteListing";
+import { IoMdSettings } from "react-icons/io";
+import { useState } from "react";
 
 export default function MyListings() {
   const { data, isLoading, error } = useUserListings(0, 10);
   const navigate = useNavigate();
   const deleteListingMutation = useDeleteListing();
+  const [confirmDeleteId, setConfirmDeleteId] = useState<number | null>(null);
+
+  const handleDelete = (id: number) => {
+    deleteListingMutation.mutate(String(id));
+    setConfirmDeleteId(null);
+  };
 
   return (
     <div className="bg-gray-300 min-h-screen">
@@ -63,8 +71,9 @@ export default function MyListings() {
               </p>
             </div>
           )}
+
           {/* No Listings saved */}
-          {!isLoading && (!data || data.listings.length == 0) ? (
+          {!isLoading && (!data || data.listings.length === 0) ? (
             <div className="flex flex-col items-center justify-center min-h-[50vh] text-center space-y-4">
               <img
                 src={BirdFavorite}
@@ -88,22 +97,50 @@ export default function MyListings() {
                     key={listing.id}
                     className="relative bg-white shadow-md rounded-xl overflow-hidden hover:shadow-xl transition-all"
                   >
-                    {/* Remove button */}
-                    <button
-                      onClick={() => {
-                        if (
-                          window.confirm(
-                            "Are you sure you want to delete this listing?"
-                          )
-                        ) {
-                          deleteListingMutation.mutate(String(listing.id));
-                        }
-                      }}
-                      className="absolute top-2 right-2 z-10 bg-red-600 text-white rounded-full p-1 hover:bg-red-700"
-                      title="Remove My Listing"
-                    >
-                      <RiDeleteBin6Line className="w-4 h-4" />
-                    </button>
+                    {/* Top right controls */}
+                    <div className="absolute top-2 right-2 z-10 flex flex-col items-end space-y-1">
+                      {confirmDeleteId === listing.id ? (
+                        <div className="mb-1 bg-white shadow-lg border rounded px-3 py-2 text-sm text-gray-700">
+                          <p className="mb-1">Are you sure?</p>
+                          <div className="flex justify-end gap-2">
+                            <button
+                              onClick={() => handleDelete(listing.id)}
+                              className="text-red-600 font-semibold hover:underline"
+                            >
+                              Yes
+                            </button>
+                            <button
+                              onClick={() => setConfirmDeleteId(null)}
+                              className="text-gray-500 hover:underline"
+                            >
+                              No
+                            </button>
+                          </div>
+                        </div>
+                      ) : (
+                        <>
+                          {/* Settings button (only show if not confirming delete) */}
+                          <button
+                            onClick={() =>
+                              navigate(`/update-listing/${listing.id}`)
+                            }
+                            className="bg-blue-600 text-white rounded-full p-1 hover:bg-blue-700"
+                            title="Update Listing"
+                          >
+                            <IoMdSettings className="w-4 h-4" />
+                          </button>
+
+                          {/* Remove button */}
+                          <button
+                            onClick={() => setConfirmDeleteId(listing.id)}
+                            className="bg-red-600 text-white rounded-full p-1 hover:bg-red-700"
+                            title="Remove Listing"
+                          >
+                            <RiDeleteBin6Line className="w-4 h-4" />
+                          </button>
+                        </>
+                      )}
+                    </div>
 
                     <img
                       src={listing.image_source || "/house/placeholder.jpeg"}
@@ -133,7 +170,8 @@ export default function MyListings() {
                         ${formatPrice(listing.price)}
                       </h3>
                       <p className="text-gray-600 text-sm">
-                        {listing.address?.street}, {listing.address?.locality}
+                        {listing.address?.premise} {listing.address?.street},{" "}
+                        {listing.address?.locality}
                       </p>
                     </div>
                   </div>

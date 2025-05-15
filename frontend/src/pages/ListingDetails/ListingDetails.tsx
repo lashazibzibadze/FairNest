@@ -87,7 +87,6 @@ const ListingDetails = () => {
     },
   });
 
-
   if (isLoading) {
     return (
       <div className="text-center pt-20 text-lg animate-pulse">Loading...</div>
@@ -118,7 +117,7 @@ const ListingDetails = () => {
   //
 
   const dealType = data.fairness_rating ?? "No Rating";
-  
+
   return (
     <div
       className="min-h-screen bg-cover bg-center bg-gray-300"
@@ -169,16 +168,14 @@ const ListingDetails = () => {
               <h1 className="text-4xl font-bold text-blue-600">
                 ${formatPrice(data.price)}
               </h1>
-              {
-                user?.sub! === data.user_id && (
-                  <button
-                    onClick={() => navigate(`/update-listing/${data.id}`)}
-                    className="p-2 rounded-lg bg-gray-200 text-gray-500 hover:text-gray-700">
-                    Edit listing
-                  </button>
-                )
-              }
-              
+              {user?.sub! === data.user_id && (
+                <button
+                  onClick={() => navigate(`/update-listing/${data.id}`)}
+                  className="p-2 rounded-lg bg-gray-200 text-gray-500 hover:text-gray-700"
+                >
+                  Edit listing
+                </button>
+              )}
             </div>
 
             {/*deal type & save listings */}
@@ -238,7 +235,9 @@ const ListingDetails = () => {
             {/*address*/}
             <div className="pt-4">
               <h2 className="text-lg font-semibold">Address</h2>
-              <p className="text-gray-600">{address.street}</p>
+              <p className="text-gray-600">
+                {address.premise} {address.street}
+              </p>
               <p className="text-gray-600">
                 {address.locality}, {address.administrative_area}
               </p>

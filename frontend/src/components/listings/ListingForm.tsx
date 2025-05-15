@@ -4,200 +4,207 @@ import { AddressAutocomplete } from "./AddressAutocomplete";
 import { useEffect } from "react";
 
 interface Props {
-    mode: "edit" | "create";
-    onSubmit: SubmitHandler<ListingInput>;
-    defaultValues?: Partial<ListingInput>;
-    isSaving: boolean;
-    listing?: ListingInput;
+  mode: "edit" | "create";
+  onSubmit: SubmitHandler<ListingInput>;
+  defaultValues?: Partial<ListingInput>;
+  isSaving: boolean;
+  listing?: ListingInput;
 }
 
 export default function ListingForm({
-    onSubmit,
-    defaultValues,
-    isSaving,
-    mode,
-    listing,
+  onSubmit,
+  defaultValues,
+  isSaving,
+  mode,
+  listing,
 }: Props) {
-    const {
-        register,
-        handleSubmit,
-        formState: { errors },
-        setValue,
-        reset,
-    } = useForm<ListingInput>({ defaultValues });
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+    setValue,
+    reset,
+  } = useForm<ListingInput>({ defaultValues });
 
-    useEffect(() => {
-        if (mode === "edit" && listing) {
-            reset(listing); // populate all fields at once
-        }
-    }, [mode, listing, reset]);
+  useEffect(() => {
+    if (mode === "edit" && listing) {
+      reset(listing); // populate all fields at once
+    }
+  }, [mode, listing, reset]);
 
-    const handleAddressSelect = (address: ListingInput["address"]) => {
-        setValue("address", address, { shouldValidate: true });
-    };
+  const handleAddressSelect = (address: ListingInput["address"]) => {
+    setValue("address", address, { shouldValidate: true });
+  };
 
-    const address = listing?.address;
+  const address = listing?.address;
 
-    return (
-        <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
-            {/* Address Autocomplete */}
-            <div>
-                <label className="block mb-1">
-                    Address <span className="text-red-500">*</span>
-                </label>
-                <AddressAutocomplete
-                    apiKey={import.meta.env.VITE_GOOGLE_API_KEY_2}
-                    onSelect={handleAddressSelect}
-                    defaultValue={address ? `${address.premise} ${address.street} ${address.locality}, ${address.administrative_area}, ${address.country}` : ""}
-                />
-                {errors.address?.street && (
-                    <p className="text-red-500 text-sm">Address is required</p>
-                )}
-                {/* Hidden fields to register address subfields */}
-                <input type="hidden" {...register("address.country")} />
-                <input
-                    type="hidden"
-                    {...register("address.administrative_area")}
-                />
-                <input
-                    type="hidden"
-                    {...register("address.sub_administrative_area")}
-                />
-                <input type="hidden" {...register("address.locality")} />
-                <input type="hidden" {...register("address.postal_code")} />
-                <input
-                    type="hidden"
-                    {...register("address.street", { required: true })}
-                />
-                <input type="hidden" {...register("address.premise")} />
-                <input type="hidden" {...register("address.sub_premise")} />
-                <input type="hidden" {...register("address.latitude")} />
-                <input type="hidden" {...register("address.longitude")} />
-            </div>
+  return (
+    <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
+      {/* Address Autocomplete */}
+      <div>
+        <label className="block mb-1">
+          Address <span className="text-red-500">*</span>
+        </label>
+        <AddressAutocomplete
+          apiKey={import.meta.env.VITE_GOOGLE_API_KEY_2}
+          onSelect={handleAddressSelect}
+          defaultValue={
+            address
+              ? `${address.premise} ${address.street} ${address.locality}, ${address.administrative_area}, ${address.country}`
+              : ""
+          }
+          disabled={mode === "edit"}
+          className={`w-full px-3 py-2 rounded border ${
+            mode === "edit"
+              ? "bg-gray-100 text-gray-500 cursor-not-allowed"
+              : ""
+          }`}
+        />
 
-            {/* Price */}
-            <div>
-                <label className="block mb-1">
-                    Price <span className="text-red-500">*</span>
-                </label>
-                <input
-                    type="number"
-                    {...register("price", {
-                        required: "Price is required",
-                        valueAsNumber: true,
-                    })}
-                    className="w-full border rounded px-3 py-2"
-                />
-                {errors.price && (
-                    <p className="text-red-500 text-sm">
-                        {errors.price.message}
-                    </p>
-                )}
-            </div>
+        {mode === "edit" && (
+          <p className="text-sm text-gray-500 mt-1 italic">
+            Address cannot be changed after listing is created.
+          </p>
+        )}
 
-            {/* Bedrooms / Bathrooms */}
-            <div className="grid grid-cols-2 gap-4">
-                <div>
-                    <label className="block mb-1">Bedrooms</label>
-                    <input
-                        type="number"
-                        {...register("bedrooms", {
-                            valueAsNumber: true,
-                            setValueAs: (v) => (v === "" ? undefined : v),
-                        })}
-                        className="w-full border rounded px-3 py-2"
-                    />
-                </div>
-                <div>
-                    <label className="block mb-1">Bathrooms</label>
-                    <input
-                        step="0.1"
-                        type="number"
-                        {...register("bathrooms", {
-                            valueAsNumber: true,
-                            setValueAs: (v) => (v === "" ? undefined : v),
-                        })}
-                        className="w-full border rounded px-3 py-2"
-                    />
-                </div>
-            </div>
+        {errors.address?.street && (
+          <p className="text-red-500 text-sm">Address is required</p>
+        )}
+        {/* Hidden fields to register address subfields */}
+        <input type="hidden" {...register("address.country")} />
+        <input type="hidden" {...register("address.administrative_area")} />
+        <input type="hidden" {...register("address.sub_administrative_area")} />
+        <input type="hidden" {...register("address.locality")} />
+        <input type="hidden" {...register("address.postal_code")} />
+        <input
+          type="hidden"
+          {...register("address.street", { required: true })}
+        />
+        <input type="hidden" {...register("address.premise")} />
+        <input type="hidden" {...register("address.sub_premise")} />
+        <input type="hidden" {...register("address.latitude")} />
+        <input type="hidden" {...register("address.longitude")} />
+      </div>
 
-            {/* Square Feet / Lot */}
-            <div className="grid grid-cols-2 gap-4">
-                <div>
-                    <label className="block mb-1">Square Feet</label>
-                    <input
-                        step="0.01"
-                        type="number"
-                        {...register("square_feet", {
-                            valueAsNumber: true,
-                            setValueAs: (v) => (v === "" ? undefined : v),
-                        })}
-                        className="w-full border rounded px-3 py-2"
-                    />
-                </div>
-                <div>
-                    <label className="block mb-1">Lot Size (acre)</label>
-                    <input
-                        step="0.01"
-                        type="number"
-                        {...register("acre_lot", {
-                            valueAsNumber: true,
-                            setValueAs: (v) => (v === "" ? undefined : v),
-                        })}
-                    />
-                </div>
-            </div>
+      {/* Price */}
+      <div>
+        <label className="block mb-1">
+          Price <span className="text-red-500">*</span>
+        </label>
+        <input
+          type="number"
+          {...register("price", {
+            required: "Price is required",
+            valueAsNumber: true,
+          })}
+          className="w-full border rounded px-3 py-2"
+        />
+        {errors.price && (
+          <p className="text-red-500 text-sm">{errors.price.message}</p>
+        )}
+      </div>
 
-            {/* Sale Status */}
-            <div>
-                <label className="block mb-1">
-                    Sale Status <span className="text-red-500">*</span>
-                </label>
-                <select
-                    {...register("sale_status", {
-                        required: "Select a status",
-                    })}
-                    className="w-full border rounded px-3 py-2"
-                >
-                    <option value="">— choose —</option>
-                    <option value="for_sale">For Sale</option>
-                    <option value="sold">Sold</option>
-                </select>
-                {errors.sale_status && (
-                    <p className="text-red-500 text-sm">
-                        {errors.sale_status.message}
-                    </p>
-                )}
-            </div>
+      {/* Bedrooms / Bathrooms */}
+      <div className="grid grid-cols-2 gap-4">
+        <div>
+          <label className="block mb-1">Bedrooms</label>
+          <input
+            type="number"
+            {...register("bedrooms", {
+              valueAsNumber: true,
+              setValueAs: (v) => (v === "" ? undefined : v),
+            })}
+            className="w-full border rounded px-3 py-2"
+          />
+        </div>
+        <div>
+          <label className="block mb-1">Bathrooms</label>
+          <input
+            step="0.1"
+            type="number"
+            {...register("bathrooms", {
+              valueAsNumber: true,
+              setValueAs: (v) => (v === "" ? undefined : v),
+            })}
+            className="w-full border rounded px-3 py-2"
+          />
+        </div>
+      </div>
 
-            {/* Tour Available */}
-            <div className="flex items-center">
-                <input
-                    type="checkbox"
-                    {...register("tour_available")}
-                    id="tourAvailable"
-                    className="mr-2"
-                />
-                <label htmlFor="tourAvailable">Tour Available</label>
-            </div>
+      {/* Square Feet / Lot */}
+      <div className="grid grid-cols-2 gap-4">
+        <div>
+          <label className="block mb-1">Square Feet</label>
+          <input
+            step="0.01"
+            type="number"
+            {...register("square_feet", {
+              valueAsNumber: true,
+              setValueAs: (v) => (v === "" ? undefined : v),
+            })}
+            className="w-full border rounded px-3 py-2"
+          />
+        </div>
+        <div>
+          <label className="block mb-1">Lot Size (acre)</label>
+          <input
+            step="0.01"
+            type="number"
+            {...register("acre_lot", {
+              valueAsNumber: true,
+              setValueAs: (v) => (v === "" ? undefined : v),
+            })}
+          />
+        </div>
+      </div>
 
-            {/* Image URL */}
-            <div>
-                <label className="block mb-1">Image URL</label>
-                <input
-                    {...register("image_source")}
-                    className="w-full border rounded px-3 py-2"
-                />
-            </div>
+      {/* Sale Status */}
+      <div>
+        <label className="block mb-1">
+          Sale Status <span className="text-red-500">*</span>
+        </label>
+        <select
+          {...register("sale_status", {
+            required: "Select a status",
+          })}
+          className="w-full border rounded px-3 py-2"
+        >
+          <option value="">— choose —</option>
+          <option value="for_sale">For Sale</option>
+          <option value="sold">Sold</option>
+        </select>
+        {errors.sale_status && (
+          <p className="text-red-500 text-sm">{errors.sale_status.message}</p>
+        )}
+      </div>
 
-            <button
-                type="submit"
-                className="bg-blue-600 text-white rounded px-4 py-2 hover:bg-blue-700"
-                disabled={isSaving}
-            >
-                {isSaving ? "Saving..." : "Save Listing"}
-            </button>
-        </form>
-    );
+      {/* Tour Available */}
+      <div className="flex items-center">
+        <input
+          type="checkbox"
+          {...register("tour_available")}
+          id="tourAvailable"
+          className="mr-2"
+        />
+        <label htmlFor="tourAvailable">Tour Available</label>
+      </div>
+
+      {/* Image URL */}
+      <div>
+        <label className="block mb-1">Image URL</label>
+        <input
+          {...register("image_source")}
+          className="w-full border rounded px-3 py-2"
+        />
+      </div>
+
+      <button
+        type="submit"
+        className="bg-blue-600 text-white rounded px-4 py-2 hover:bg-blue-700"
+        disabled={isSaving}
+      >
+        {isSaving ? "Saving..." : "Save Listing"}
+      </button>
+    </form>
+  );
 }

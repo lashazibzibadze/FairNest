@@ -103,7 +103,7 @@ const ListingsComponent = ({
                   ${formatPrice(listing.price)}
                 </h3>
                 <p className="text-gray-600 text-sm">
-                  {listing.address.street}, {listing.address.locality}
+                  {listing.address.premise} {listing.address.street}, {listing.address.locality}
                 </p>
               </div>
             </div>
