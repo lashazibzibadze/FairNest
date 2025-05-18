@@ -71,3 +71,8 @@ class ListingFairnessResponse(BaseModel):
     similar_listings: list[ListingResponse]
     
     model_config = ConfigDict(from_attributes=True)
+    
+class ZipStatsResponse(BaseModel):
+    postal_code: str
+    average_price: Optional[Decimal]
+    average_square_feet: Optional[Decimal]

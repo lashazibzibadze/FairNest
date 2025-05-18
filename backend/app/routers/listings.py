@@ -1,13 +1,14 @@
 from fastapi import APIRouter, Depends, HTTPException, Security
 from sqlalchemy.orm import Session, joinedload
-from sqlalchemy import func, and_, desc
-from typing import List
+from sqlalchemy import func
+from typing import List, Optional
 from math import radians, cos
 from app import schemas, models
 from app.database import db_dependency
 from app.task_queue.celery_app import app
 import math
 from decimal import Decimal
+from datetime import datetime, timezone
 from app.dependencies import auth
 from app.crud.listings import (
     get_base_listing_query,
@@ -15,9 +16,49 @@ from app.crud.listings import (
     apply_range_filters,
     paginate,
 )
+import numpy as np
+from statsmodels import robust
 
 router = APIRouter(prefix="/listings", tags=["Listings"])
 
+def compute_fairness_rating(db: Session, listing: models.Listing, address: models.Address) -> Optional[schemas.FairnessRating]:
+    if not listing.square_feet or listing.square_feet == 0:
+        return None
+
+    ppsf = listing.price / float(listing.square_feet)
+    postal = address.postal_code
+
+    # pull all ppsf in this ZIP
+    rows = (
+        db.query(models.Listing.price, models.Listing.square_feet)
+          .join(models.Address)
+          .filter(
+                models.Address.postal_code == postal,
+                models.Listing.square_feet > 0,
+                models.Listing.id != listing.id,
+          )
+          .all()
+    )
+    # if no peers, we can’t score
+    if not rows:
+        return None
+
+    ppsf_list = [price / float(sq) for price, sq in rows]
+    median_ppsf = np.median(ppsf_list)
+    mad_ppsf = robust.mad(np.array(ppsf_list))
+
+    # if zero dispersion, can’t score
+    if mad_ppsf == 0:
+        return None
+
+    modified_z = 0.6745 * (ppsf - median_ppsf) / mad_ppsf
+    if modified_z < -0.4:
+        return schemas.FairnessRating.GOOD
+    elif modified_z <= 0.4:
+        return schemas.FairnessRating.FAIR
+    else:
+        return schemas.FairnessRating.BAD
+    
 def get_or_create_address(db: Session, address_data: schemas.AddressCreate):
     existing_address = db.query(models.Address).filter(
         models.Address.street == address_data.street,
@@ -81,6 +122,12 @@ def create_listing(listing_data: schemas.ListingCreate, db: db_dependency, auth_
     db.add(new_listing)
     db.commit()
     db.refresh(new_listing)
+    rating = compute_fairness_rating(db, new_listing, address)
+    if rating is not None:
+        new_listing.fairness_rating = rating
+        new_listing.fairness_rating_updated_at = datetime.now(timezone.utc)
+        db.commit()
+        db.refresh(new_listing)
     return new_listing
 
 @router.put("/{listing_id}", response_model=schemas.ListingResponse)
@@ -89,7 +136,7 @@ def update_listing(listing_id: int, listing_data: schemas.ListingCreate, db: db_
         raise HTTPException(status_code=401, detail="Invalid authentication credentials")
     
     auth_id = auth_result["sub"]
-    listing = db.query(models.Listing).filter(models.Listing.id == listing_id, models.User.user_id == auth_id).first()
+    listing = db.query(models.Listing).filter(models.Listing.id == listing_id, models.Listing.user_id == auth_id).first()
     if not listing:
         raise HTTPException(status_code=404, detail="Listing not found")
     
@@ -105,6 +152,11 @@ def update_listing(listing_id: int, listing_data: schemas.ListingCreate, db: db_
     listing.image_source = listing_data.image_source
     listing.address_id = address.id
     
+    rating = compute_fairness_rating(db, listing, address)
+    if rating is not None and listing.fairness_rating != rating:
+        listing.fairness_rating = rating
+        listing.fairness_rating_updated_at = datetime.now(timezone.utc)
+
     db.commit()
     db.refresh(listing)
     return listing
@@ -115,7 +167,7 @@ def delete_listing(listing_id: int, db: db_dependency, auth_result: str = Securi
         raise HTTPException(status_code=401, detail="Invalid authentication credentials")
     
     auth_id = auth_result["sub"]
-    listing = db.query(models.Listing).filter(models.Listing.id == listing_id, models.User.user_id == auth_id).first()
+    listing = db.query(models.Listing).filter(models.Listing.id == listing_id, models.Listing.user_id == auth_id).first()
     if not listing:
         raise HTTPException(status_code=404, detail="Listing not found")
     db.delete(listing)
@@ -200,6 +252,37 @@ def get_nearby_listings(listing_id: int, unit: str, radius: float, db: db_depend
         .all()
     )
     return listings
+
+@router.get(
+    "/stats/{postal_code}",
+    response_model=schemas.ZipStatsResponse,
+    summary="Get average price and sqft for a ZIP code",
+)
+def get_zip_stats(postal_code: str, db: db_dependency):
+    # join Address → Listing to compute averages
+    avg_price = (
+        db.query(func.avg(models.Listing.price))
+          .join(models.Address)
+          .filter(models.Address.postal_code == postal_code)
+          .scalar()
+    )
+    avg_sqft = (
+        db.query(func.avg(models.Listing.square_feet))
+          .join(models.Address)
+          .filter(
+              models.Address.postal_code == postal_code,
+              models.Listing.square_feet.isnot(None)
+          )
+          .scalar()
+    )
+    if avg_price is None and avg_sqft is None:
+        raise HTTPException(404, f"No listings found for ZIP {postal_code}")
+
+    return schemas.ZipStatsResponse(
+        postal_code=postal_code,
+        average_price=avg_price,
+        average_square_feet=avg_sqft,
+    )
 
 def haversine(lat1, lon1, lat2, lon2, unit="mile"):
     R = 6371 if unit == "km" else 3958.8
