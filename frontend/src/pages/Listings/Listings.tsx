@@ -83,7 +83,7 @@ const ListingsPage = () => {
       </div>
 
       {/*mobile layout */}
-      <div className="md:hidden min-h-screen relative pb-[46vh]">
+      <div className="md:hidden min-h-screen relative pb-[35vh]">
         <div className="overflow-y-auto px-4">
           <ListingsComponent
             listings={listings}
@@ -93,7 +93,7 @@ const ListingsPage = () => {
             isLoading={isLoading}
           />
         </div>
-        <div className="fixed bottom-0 left-0 w-full h-[46vh] z-10 border-t border-gray-300 bg-white">
+        <div className="fixed bottom-0 left-0 w-full h-[35vh] z-10 border-t border-gray-300 bg-white">
           <ListingMap listings={listings} />
         </div>
       </div>

@@ -27,7 +27,7 @@ const faqs = [
   },
   {
     question: "Can I list my property on FairNest?",
-    answer: "No, currently we do not offer a platform for listing properties.",
+    answer: "Yes , you can list your property on FairNest. Visit My Listings page to get started.",
   },
   {
     question: "Does FairNest provide loan services?",

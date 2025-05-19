@@ -26,8 +26,7 @@ type MapProps = {
 
 const ListingMap = ({ listings }: MapProps) => {
   const { isLoaded } = useJsApiLoader({
-    googleMapsApiKey: import.meta.env
-      .VITE_GOOGLE_API_KEY_2_Developement as string,
+    googleMapsApiKey: import.meta.env.VITE_GOOGLE_API_KEY_2 as string,
   });
 
   const navigate = useNavigate();

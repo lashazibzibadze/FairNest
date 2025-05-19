@@ -58,10 +58,8 @@ export const useListings = (currentPage: number, filters: Filters) => {
     const backendURL = import.meta.env.VITE_BACKEND_URL;
     const url = `${backendURL}/listings?${queryString}`;
 
-    // console.log("Fetching listings from:", url);
     const res = await fetch(url);
     const json = await res.json();
-    // console.log("Fetched data:", json);
 
     // check if the response is ok
     // if (res.status === 401) {
