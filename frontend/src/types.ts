@@ -48,6 +48,7 @@ export interface Filters {
   street?: string;
   administrative_area?: string;
   locality?: string;
+  premise?: string;
   minPrice?: string;
   maxPrice?: string;
   bedrooms?: string;

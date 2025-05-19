@@ -7,6 +7,7 @@ import ListingMap from "../../components/Map/MapPins";
 import { useListings } from "../../useListings";
 import { Filters } from "../../types";
 import "./Listings.css";
+import { APIProvider } from "@vis.gl/react-google-maps";
 
 const ListingsPage = () => {
   //get query params from URL
@@ -58,13 +59,16 @@ const ListingsPage = () => {
   return (
     <div className="pt-44 bg-gray-300 min-h-screen relative">
       <Navbar />
-      <SearchHeader
-        filters={filters}
-        setFilters={setFilters}
-        onSearch={() => {
-          setCurrentPage(1);
-        }}
-      />
+      <APIProvider
+        apiKey={import.meta.env.VITE_GOOGLE_API_KEY_2}
+        libraries={["places"]}
+      >
+        <SearchHeader
+          filters={filters}
+          setFilters={setFilters}
+          onSearch={() => setCurrentPage(1)}
+        />
+      </APIProvider>
 
       {/*desktop - large screens layout */}
       <div className="hidden md:flex relative">
@@ -93,11 +97,10 @@ const ListingsPage = () => {
             isLoading={isLoading}
           />
         </div>
-        <div className="fixed bottom-0 left-0 w-full h-[35vh] z-10 border-t border-gray-300 bg-white">
+        <div className="fixed bottom-0 left-0 w-full h-[25vh] z-10 border-t border-gray-300 bg-white">
           <ListingMap listings={listings} />
         </div>
       </div>
-
     </div>
   );
 };

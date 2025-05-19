@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Filters } from "../../types";
 import "./filters.css";
+import AddressSearchAutocomplete from "./AddressSearchAutocomplete";
 
 // prop types for the SearchHeader component
 interface Props {
@@ -9,7 +10,7 @@ interface Props {
   onSearch: () => void;
 }
 
-const SearchHeader = ({ filters, setFilters }: Props) => {
+const SearchHeader = ({ filters, setFilters, onSearch }: Props) => {
   //state to manage the visibility of filters on mobile
   const [showFilters, setShowFilters] = useState(false);
 
@@ -21,6 +22,7 @@ const SearchHeader = ({ filters, setFilters }: Props) => {
       street: "",
       administrative_area: "",
       locality: "",
+      premise: "",
       minPrice: "",
       maxPrice: "",
       bedrooms: "",
@@ -47,16 +49,8 @@ const SearchHeader = ({ filters, setFilters }: Props) => {
           showFilters ? "flex" : "hidden"
         } xl:flex flex-wrap items-center justify-center gap-4 px-6 py-4`}
       >
-        {/*search Bar for listings page */}
-        <input
-          type="text"
-          placeholder="Address, neighborhood, city, ZIP"
-          className="w-96 px-4 py-2 border border-gray-400 rounded-md bg-white placeholder-[#434344] text-black"
-          value={filters.addressQuery}
-          onChange={(e) =>
-            setFilters((prev) => ({ ...prev, addressQuery: e.target.value }))
-          }
-        />
+        {/*search Bar with autocomplete for listings page */}
+        <AddressSearchAutocomplete key={filters.addressQuery} filters={filters} setFilters={setFilters} onSearch={onSearch} />
 
         {/* Min Price for listings page*/}
         <input
