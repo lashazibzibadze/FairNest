@@ -23,7 +23,6 @@ class Listing(Base):
     fairness_rating = Column(
         ENUM("fraud", "bad", "fair", "good", name="fairness_rating_enum"),
         nullable=True,
-        default="fair"
     )
     fairness_rating_updated_at = Column(DateTime, nullable=True, default=func.now(), onupdate=func.now())
     

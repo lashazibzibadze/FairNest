@@ -95,7 +95,8 @@ export default function ListingForm({
           type="number"
           {...register("price", {
             required: "Price is required",
-            valueAsNumber: true,
+            setValueAs: v =>
+              v === "" ? undefined : parseInt(v as string, 10),
           })}
           className="w-full border rounded px-3 py-2"
         />
@@ -111,8 +112,7 @@ export default function ListingForm({
           <input
             type="number"
             {...register("bedrooms", {
-              valueAsNumber: true,
-              setValueAs: (v) => (v === "" ? undefined : v),
+              setValueAs: v => (v === "" ? undefined : parseInt(v as string, 10)),
             })}
             className="w-full border rounded px-3 py-2"
           />
@@ -123,8 +123,7 @@ export default function ListingForm({
             step="0.1"
             type="number"
             {...register("bathrooms", {
-              valueAsNumber: true,
-              setValueAs: (v) => (v === "" ? undefined : v),
+              setValueAs: v => (v === "" ? undefined : parseFloat(v as string)),
             })}
             className="w-full border rounded px-3 py-2"
           />
@@ -139,8 +138,10 @@ export default function ListingForm({
             step="0.01"
             type="number"
             {...register("square_feet", {
-              valueAsNumber: true,
-              setValueAs: (v) => (v === "" ? undefined : v),
+              setValueAs: v =>
+                v === ""
+                  ? undefined
+                  : parseFloat((parseFloat(v as string)).toFixed(2)),
             })}
             className="w-full border rounded px-3 py-2"
           />
@@ -151,9 +152,9 @@ export default function ListingForm({
             step="0.01"
             type="number"
             {...register("acre_lot", {
-              valueAsNumber: true,
-              setValueAs: (v) => (v === "" ? undefined : v),
+              setValueAs: v => (v === "" ? undefined : parseFloat(v as string)),
             })}
+            className="w-full border rounded px-3 py-2"
           />
         </div>
       </div>

@@ -142,8 +142,6 @@ def get_user_listings(
     auth_id = auth_result["sub"]
     current_user = db.query(models.User).filter(models.User.user_id == auth_id).first()
     
-    print(f"Current user ID: {current_user.user_id}")
-    print(f"Requested user ID: {user_id}")
     # if current_user.id != user_id and not current_user.is_admin:
     if current_user.user_id != user_id:
         raise HTTPException(status_code=403, detail="Not authorized to view these listings")
