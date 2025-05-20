@@ -14,6 +14,7 @@ import PrivacyPolicy from "./pages/PrivacyPolicy/PrivacyPolicy";
 import TermsOfService from "./pages/TermsOfService/TermsOfService";
 import { Toaster } from "react-hot-toast";
 import "./App.css";
+import ProtectedAdminRoute from "./components/Authentication/protectedAdminRoute";
 
 const App = () => {
   return (
@@ -34,7 +35,14 @@ const App = () => {
         <Route path="/faq" element={<FAQPage />} />
         <Route path="/contact" element={<ContactPage />} />
         <Route path="/listing/:id" element={<ListingDetails />} />
-        <Route path="/admin" element={<AdminPage />} />
+        <Route
+          path="/admin"
+          element={
+            <ProtectedAdminRoute>
+              <AdminPage />
+            </ProtectedAdminRoute>
+          }
+        />
         <Route path="/create-listing" element={<CreateListingPage />} />
         <Route path="/my-listings" element={<MyListingPage />} />
         <Route path="/update-listing/:id" element={<UpdateListingPage />} />

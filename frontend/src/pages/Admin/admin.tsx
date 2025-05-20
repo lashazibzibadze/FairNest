@@ -57,9 +57,9 @@ const AdminPage = () => {
   }, []);
 
   return (
-    <div className="pt-16">
+    <div className="pt-16 bg-gray-300 min-h-screen relative">
       <Navbar />
-      <div className="min-h-screen px-4 py-10 bg-gray-100">
+      <div className="min-h-screen px-4 py-10 bg-gray-300">
         <h1 className="text-3xl font-bold mb-8 text-center">
           Contact Messages
         </h1>
