@@ -113,41 +113,41 @@ const Navbar = () => {
 
       {/* Mobile Dropdown Menu */}
       <div
-        className={`absolute top-[60px] left-1/2 transform -translate-x-1/2 w-4/5 bg-gray-800 rounded-lg text-center p-5 flex flex-col gap-4 transition-all duration-300 ${
+        className={`absolute top-[60px] left-1/2 transform -translate-x-1/2 w-4/5 bg-gray-400 rounded-lg text-center p-5 flex flex-col gap-4 transition-all duration-300 ${
           isOpen ? "opacity-100 scale-100" : "opacity-0 scale-95 hidden"
         }`}
       >
         <Link
           to="/home"
-          className="text-white hover:text-gray-500"
+          className="text-[#434343] hover:text-gray-500"
           onClick={() => setIsOpen(false)}
         >
           Home
         </Link>
         <Link
           to="/about"
-          className="text-white hover:text-gray-500"
+          className="text-[#434343] hover:text-gray-500"
           onClick={() => setIsOpen(false)}
         >
           About
         </Link>
         <Link
           to="/listings"
-          className="text-white hover:text-gray-500"
+          className="text-[#434343] hover:text-gray-500"
           onClick={() => setIsOpen(false)}
         >
           Listings
         </Link>
         <Link
           to="/faq"
-          className="text-white hover:text-gray-500"
+          className="text-[#434343] hover:text-gray-500"
           onClick={() => setIsOpen(false)}
         >
           FAQ
         </Link>
         <Link
           to="/contact"
-          className="text-white hover:text-gray-500"
+          className="text-[#434343] hover:text-gray-500"
           onClick={() => setIsOpen(false)}
         >
           Contact Us
@@ -156,7 +156,7 @@ const Navbar = () => {
         {isAuthenticated && user ? (
           <Link
             to="/my-listings"
-            className="text-white hover:text-gray-500"
+            className="text-[#434343] hover:text-gray-500"
             onClick={() => setIsOpen(false)}
           >
             My Listings
@@ -164,7 +164,7 @@ const Navbar = () => {
         ) : (
           <button
             onClick={() => loginWithRedirect()}
-            className="text-white hover:text-gray-500"
+            className="text-[#434343] hover:text-gray-500"
           >
             My Listings
           </button>
@@ -173,7 +173,7 @@ const Navbar = () => {
         {isAuthenticated && user ? (
           <Link
             to="/favorites"
-            className="text-white hover:text-gray-500"
+            className="text-[#434343] hover:text-gray-500"
             onClick={() => setIsOpen(false)}
           >
             Favorites
@@ -181,10 +181,18 @@ const Navbar = () => {
         ) : (
           <button
             onClick={() => loginWithRedirect()}
-            className="text-white hover:text-gray-500"
+            className="text-[#434343] hover:text-gray-500"
           >
             Favorites
           </button>
+        )}
+
+        {isAuthenticated && isAdmin && (
+          <li>
+            <Link to="/admin" className="text-red-800 hover:text-red-500">
+              Admin
+            </Link>
+          </li>
         )}
 
         <div className="self-center" onClick={() => setIsOpen(false)}>

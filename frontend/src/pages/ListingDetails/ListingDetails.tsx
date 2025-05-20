@@ -52,7 +52,11 @@ const fetchListing = async (id: string): Promise<Listing> => {
 const ListingDetails = () => {
   const { id } = useParams<{ id: string }>();
   const navigate = useNavigate();
-  const { data: listing, error, isLoading } = useQuery({
+  const {
+    data: listing,
+    error,
+    isLoading,
+  } = useQuery({
     queryKey: ["listing", id],
     queryFn: () => fetchListing(id!),
     enabled: !!id,
@@ -66,7 +70,8 @@ const ListingDetails = () => {
     enabled: !!address?.postal_code,
   });
 
-  const { user, getAccessTokenSilently } = useAuth0();
+  const { user, getAccessTokenSilently, loginWithRedirect, isAuthenticated } =
+    useAuth0();
   const queryClient = useQueryClient();
 
   const favoriteMutation = useMutation({
@@ -203,7 +208,13 @@ const ListingDetails = () => {
               </span>
               <button
                 className="flex items-center gap-2 text-red-600 hover:text-red-800 font-medium transition"
-                onClick={() => favoriteMutation.mutate()}
+                onClick={() => {
+                  if (!isAuthenticated || !user) {
+                    loginWithRedirect();
+                  } else {
+                    favoriteMutation.mutate();
+                  }
+                }}
               >
                 <FaHeart /> Save Listing
               </button>
@@ -247,7 +258,8 @@ const ListingDetails = () => {
                 {listing.address.premise} {listing.address.street}
               </p>
               <p className="text-gray-600">
-                {listing.address.locality}, {listing.address.administrative_area}
+                {listing.address.locality},{" "}
+                {listing.address.administrative_area}
               </p>
               <p className="text-gray-600">{listing.address.postal_code}</p>
               <p className="text-gray-600">{listing.address.country}</p>
@@ -258,7 +270,7 @@ const ListingDetails = () => {
               <h3 className="font-semibold text-lg text-gray-800 mb-2">
                 Statistics
               </h3>
-              {(zipStatsError || pricePercentBelowAvg === 0) ? (
+              {zipStatsError || pricePercentBelowAvg === 0 ? (
                 <ul className="list-disc text-gray-700 text-sm space-y-1">
                   <li className="flex flex-wrap items-center gap-2">
                     <FcSalesPerformance /> No average data available for this
