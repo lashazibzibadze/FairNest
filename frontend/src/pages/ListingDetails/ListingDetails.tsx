@@ -118,9 +118,12 @@ const ListingDetails = () => {
   const neighborhoodAvgPriceApi = zipStats?.average_price ?? 0;
   const neighborhoodAvgSqftApi = zipStats?.average_square_feet ?? 0;
 
-  const daysOnMarket = Math.floor(
-    (new Date().getTime() - new Date(listing.created_at || "").getTime()) /
-      (1000 * 60 * 60 * 24)
+  const daysOnMarket = Math.max(
+    0,
+    Math.round(
+      (new Date().getTime() - new Date(listing.created_at || "").getTime()) /
+        (1000 * 60 * 60 * 24)
+    )
   );
   const pricePercentBelowAvg = Math.round(
     ((neighborhoodAvgPriceApi - listing.price) / neighborhoodAvgPriceApi) * 100
