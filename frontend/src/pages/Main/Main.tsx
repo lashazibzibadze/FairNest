@@ -5,7 +5,6 @@ import Hero from "../../components/hero/Hero";
 // import Recommendation from "../../components/recommendation/Recommendation";
 // import Footer from "../../components/footer/footer";
 import "../../App.css";
-import { useAuth0 } from "@auth0/auth0-react";
 
 const heroData = [
     { text1: "Find Your", text2: "Fair and Square" },
@@ -15,16 +14,6 @@ const heroData = [
 
 const Main = () => {
     const [heroCount, setHeroCount] = useState(0);
-    const { user, isAuthenticated, isLoading, error} = useAuth0();
-    if (error) {
-      console.log("error: ", error);
-    }
-    if (isLoading) {
-        console.log("loading");
-    } else {
-        console.log("authenticated: ", isAuthenticated);
-        console.log(user);
-    }
     useEffect(() => {
         const interval = setInterval(() => {
             setHeroCount((count) => (count + 1) % heroData.length);

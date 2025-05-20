@@ -1,6 +1,7 @@
 from fastapi import APIRouter, Depends, HTTPException, Security
 from sqlalchemy.orm import Session, joinedload
 from sqlalchemy import func
+from sqlalchemy.exc import IntegrityError
 from typing import List, Optional
 from math import radians, cos
 from app import schemas, models
@@ -120,8 +121,18 @@ def create_listing(listing_data: schemas.ListingCreate, db: db_dependency, auth_
         user_id=auth_id
     )
     db.add(new_listing)
-    db.commit()
-    db.refresh(new_listing)
+    try:
+        db.commit()
+        db.refresh(new_listing)
+    except IntegrityError as e:
+        db.rollback()
+        if 'unique_address_id' in str(e.orig):
+            raise HTTPException(
+                status_code=400,
+                detail="A listing with this address already exists."
+            )
+        raise HTTPException(status_code=500, detail="Internal server error")
+    
     rating = compute_fairness_rating(db, new_listing, address)
     if rating is not None:
         new_listing.fairness_rating = rating

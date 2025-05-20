@@ -61,26 +61,31 @@ export const ListingService = {
       throw new Error(`ListingService.fetchListing: ${message}`);
     }
   },
-  createListing: async (
-    data: ListingInput,
-    token: string
-  ): Promise<Listing> => {
+  createListing: async (data: ListingInput, token: string): Promise<Listing> => {
     try {
-      const res = await fetch(
-        `${import.meta.env.VITE_BACKEND_URL}/listings`,
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${token}`,
-          },
-          body: JSON.stringify(data),
-        }
-      );
+      const res = await fetch(`${import.meta.env.VITE_BACKEND_URL}/listings`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify(data),
+      });
+
+      const responseData = await res.json();
+
+
+      // addition for toast
       if (!res.ok) {
-        throw new Error(`Create failed: ${res.status} ${res.statusText}`);
+        const message =
+          responseData?.detail ||
+          `Create failed: ${res.status} ${res.statusText}`;
+        const error: any = new Error(message);
+        error.response = { data: responseData };
+        throw error;
       }
-      return await res.json();
+
+      return responseData;
     } catch (err) {
       const message =
         err instanceof Error

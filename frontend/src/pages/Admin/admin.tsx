@@ -2,6 +2,7 @@ import "./admin.css";
 import { useEffect, useState } from "react";
 import Navbar from "../../components/navbar/Navbar";
 import { FaPhoneAlt } from "react-icons/fa";
+import { toast } from "react-hot-toast";
 
 // type for contact messages
 interface Contact {
@@ -47,7 +48,7 @@ const AdminPage = () => {
       if (!res.ok) throw new Error("Failed to delete contact");
       setContacts((prev) => prev.filter((c) => c.id !== id));
     } catch (err: any) {
-      alert(err.message);
+      toast.error(err.message);
     }
   };
 
@@ -56,9 +57,9 @@ const AdminPage = () => {
   }, []);
 
   return (
-    <div className="pt-16">
+    <div className="pt-16 bg-gray-300 min-h-screen relative">
       <Navbar />
-      <div className="min-h-screen px-4 py-10 bg-gray-100">
+      <div className="min-h-screen px-4 py-10 bg-gray-300">
         <h1 className="text-3xl font-bold mb-8 text-center">
           Contact Messages
         </h1>

@@ -37,3 +37,7 @@ body::-webkit-scrollbar,
   background-repeat: no-repeat;
   background-attachment: fixed;
 }
+
+.pac-container {
+  z-index: 99999 !important;
+}
