@@ -1,3 +1,27 @@
+# FairNest NYC – Housing Fairness Website
+
+**Deployed Site:** [https://fairnest.onrender.com](https://fairnest.onrender.com)
+
+**Project Summary:**  
+FairNest is a housing fairness website designed to rank real estate listings for sale in New York City based on fairness. It uses web scraping to collect housing data from various platforms and applies a fairness algorithm to help users assess if a listing is appropriately priced for its location.
+
+**Tools & Technologies Used:**  
+- **Frontend:** Vite, React, TypeScript, Tailwind CSS v3.4.17 
+- **APIs:** Google Maps Places, Google Geocoding, Google Maps JavaScript  
+- **Authentication:** Auth0  
+- **Backend & Scraping:** Python (FastAPI, Async Web Scraper), Fairness Algorithm
+
+**Why FairNest?**  
+We often struggled to understand whether a listing was fairly priced based on its borough or neighborhood. That frustration inspired us to build FairNest—a platform designed to make this confusing process simpler and more transparent for everyone.
+
+**What We Do**  
+FairNest is built for fairness and accessibility. We prioritize ethical and inclusive listings, and our location insights help you find the right home in the right place.
+
+**Why It Matters**  
+Fair housing is essential for building strong, inclusive communities. By promoting transparency and fairness, we help ensure everyone has access to a safe and affordable home.
+
+---
+
 # FairNest Project Setup
 
 ## Step 1) Clone GitHub repository
