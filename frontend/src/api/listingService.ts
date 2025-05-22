@@ -39,15 +39,70 @@ export const ListingService = {
     }
   },
 
-  createListing: async (
-    data: ListingInput,
+  fetchListing: async (id: string, token: string): Promise<Listing> => {
+    try {
+      const res = await fetch(
+        `${import.meta.env.VITE_BACKEND_URL}/listings/${id}`,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+      if (!res.ok) {
+        throw new Error(`Fetch failed: ${res.status} ${res.statusText}`);
+      }
+      return await res.json();
+    } catch (err) {
+      const message =
+        err instanceof Error
+          ? err.message
+          : "Unknown error fetching listing";
+      throw new Error(`ListingService.fetchListing: ${message}`);
+    }
+  },
+  createListing: async (data: ListingInput, token: string): Promise<Listing> => {
+    try {
+      const res = await fetch(`${import.meta.env.VITE_BACKEND_URL}/listings`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify(data),
+      });
+
+      const responseData = await res.json();
+
+
+      // addition for toast
+      if (!res.ok) {
+        const message =
+          responseData?.detail ||
+          `Create failed: ${res.status} ${res.statusText}`;
+        const error: any = new Error(message);
+        error.response = { data: responseData };
+        throw error;
+      }
+
+      return responseData;
+    } catch (err) {
+      const message =
+        err instanceof Error
+          ? err.message
+          : "Unknown error creating listing";
+      throw new Error(`ListingService.createListing: ${message}`);
+    }
+  },
+  updateListing: async (
+    data: ListingInput & { id: number },
     token: string
   ): Promise<Listing> => {
     try {
       const res = await fetch(
-        `${import.meta.env.VITE_BACKEND_URL}/listings`,
+        `${import.meta.env.VITE_BACKEND_URL}/listings/${data.id}`,
         {
-          method: "POST",
+          method: "PUT",
           headers: {
             "Content-Type": "application/json",
             Authorization: `Bearer ${token}`,
@@ -56,15 +111,41 @@ export const ListingService = {
         }
       );
       if (!res.ok) {
-        throw new Error(`Create failed: ${res.status} ${res.statusText}`);
+        throw new Error(`Update failed: ${res.status} ${res.statusText}`);
       }
       return await res.json();
     } catch (err) {
       const message =
         err instanceof Error
           ? err.message
-          : "Unknown error creating listing";
-      throw new Error(`ListingService.createListing: ${message}`);
+          : "Unknown error updating listing";
+      throw new Error(`ListingService.updateListing: ${message}`);
+    }
+  },
+  deleteListing: async (
+    id: string,
+    token: string
+  ): Promise<void> => {
+    try {
+      const res = await fetch(
+        `${import.meta.env.VITE_BACKEND_URL}/listings/${id}`,
+        {
+          method: "DELETE",
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+      if (!res.ok) {
+        throw new Error(`Delete failed: ${res.status} ${res.statusText}`);
+      }
+      return await res.json();
+    } catch (err) {
+      const message =
+        err instanceof Error
+          ? err.message
+          : "Unknown error deleting listing";
+      throw new Error(`ListingService.deleteListing: ${message}`);
     }
   },
 };

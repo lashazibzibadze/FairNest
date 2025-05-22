@@ -20,6 +20,9 @@ import {
 import "./ListingDetails.css";
 import { useAuth0 } from "@auth0/auth0-react";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { formatString } from "../../utils/formatString";
+import { toast } from "react-hot-toast";
+import { ZipStatsResponse, fetchZipStats } from "../../api/ZipStats";
 
 //backgrounds by locality
 const backgroundMap: Record<string, string> = {
@@ -49,14 +52,26 @@ const fetchListing = async (id: string): Promise<Listing> => {
 const ListingDetails = () => {
   const { id } = useParams<{ id: string }>();
   const navigate = useNavigate();
-  const { data, error, isLoading } = useQuery({
+  const {
+    data: listing,
+    error,
+    isLoading,
+  } = useQuery({
     queryKey: ["listing", id],
     queryFn: () => fetchListing(id!),
     enabled: !!id,
   });
-  // const dealType = getRandomDealType();
 
-  const { getAccessTokenSilently } = useAuth0();
+  const address = listing?.address;
+
+  const { data: zipStats, error: zipStatsError } = useQuery<ZipStatsResponse>({
+    queryKey: ["zipStats", address?.postal_code],
+    queryFn: () => fetchZipStats(address!.postal_code),
+    enabled: !!address?.postal_code,
+  });
+
+  const { user, getAccessTokenSilently, loginWithRedirect, isAuthenticated } =
+    useAuth0();
   const queryClient = useQueryClient();
 
   const favoriteMutation = useMutation({
@@ -78,14 +93,13 @@ const ListingDetails = () => {
     },
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["favorites"] });
-      alert("Listing saved to favorites!");
+      toast.success("Listing saved to favorites!");
     },
     onError: (error) => {
       console.error("Mutation error:", error);
-      alert("Could not save listing to favorites.");
+      toast.error("Listing already saved to favorites (code 400)");
     },
   });
-
 
   if (isLoading) {
     return (
@@ -94,35 +108,37 @@ const ListingDetails = () => {
   }
 
   //error handling
-  if (error || !data) {
+  if (error || !listing) {
     return (
       <div className="text-center pt-20 text-red-500">Listing not found.</div>
     );
   }
 
-  const { address } = data;
+  // fetched avarege price and sqft from the API
+  const neighborhoodAvgPriceApi = zipStats?.average_price ?? 0;
+  const neighborhoodAvgSqftApi = zipStats?.average_square_feet ?? 0;
 
-  // Dummy data (for demonstration purposes)
-  const neighborhoodAvgPrice = 1000000;
-  const neighborhoodAvgSqft = 1000;
-
-  const daysOnMarket = Math.floor(
-    (new Date().getTime() - new Date(data.created_at || "").getTime()) /
-      (1000 * 60 * 60 * 24)
+  const daysOnMarket = Math.max(
+    0,
+    Math.round(
+      (new Date().getTime() - new Date(listing.created_at || "").getTime()) /
+        (1000 * 60 * 60 * 24)
+    )
   );
   const pricePercentBelowAvg = Math.round(
-    ((neighborhoodAvgPrice - data.price) / neighborhoodAvgPrice) * 100
+    ((neighborhoodAvgPriceApi - listing.price) / neighborhoodAvgPriceApi) * 100
   );
-  const sqftDiff = (data.square_feet ?? 0) - neighborhoodAvgSqft;
-  //
 
-  const dealType = data.fairness_rating ?? "No Rating";
+  const sqftDiff =
+    Math.round(((listing.square_feet ?? 0) - neighborhoodAvgSqftApi) * 10) / 10;
+
+  const dealType = listing.fairness_rating ?? "No Rating";
 
   return (
     <div
-      className="min-h-screen bg-cover bg-center"
+      className="min-h-screen bg-cover bg-center bg-gray-300"
       style={{
-        backgroundImage: `url(${getBackground(address.locality)})`,
+        backgroundImage: `url(${getBackground(listing.address.locality)})`,
       }}
     >
       <Navbar />
@@ -137,16 +153,16 @@ const ListingDetails = () => {
 
         <div className="max-w-7xl mx-auto flex flex-col md:flex-row gap-10">
           {/*left side: image & map */}
-          <div className="md:w-1/2 flex flex-col gap-7 h-fit">
+          <div className="md:w-1/2 flex flex-col gap-10 h-fit">
             <div className="rounded-lg border-4 border-white shadow-xl overflow-hidden h-[500px]">
               <img
-                src={data.image_source || "/blankimage1.jpg"}
+                src={listing.image_source || "/house/placeholder.jpeg"}
                 alt="Listing"
                 className="object-cover w-full h-full"
               />
             </div>
 
-            <div className="bg-white p-4 rounded-xl shadow-md w-full">
+            <div className="bg-white p-3 rounded-xl shadow-md w-full">
               <h2 className="text-lg font-semibold mb-2">Location on Map</h2>
               <iframe
                 title="Google Map"
@@ -155,7 +171,7 @@ const ListingDetails = () => {
                 src={`https://www.google.com/maps/embed/v1/place?key=${
                   import.meta.env.VITE_GOOGLE_API_KEY_2
                 }&q=${encodeURIComponent(
-                  `${address.latitude},${address.longitude}`
+                  `${listing.address.latitude},${listing.address.longitude}`
                 )}&zoom=15`}
                 allowFullScreen
               ></iframe>
@@ -166,8 +182,16 @@ const ListingDetails = () => {
           <div className="md:w-1/2 bg-white p-6 rounded-xl shadow-md space-y-6 h-fit">
             <div className="flex justify-between items-start">
               <h1 className="text-4xl font-bold text-blue-600">
-                ${formatPrice(data.price)}
+                ${formatPrice(listing.price)}
               </h1>
+              {user?.sub! === listing.user_id && (
+                <button
+                  onClick={() => navigate(`/update-listing/${listing.id}`)}
+                  className="p-2 rounded-lg bg-gray-200 text-gray-500 hover:text-gray-700"
+                >
+                  Edit listing
+                </button>
+              )}
             </div>
 
             {/*deal type & save listings */}
@@ -187,7 +211,13 @@ const ListingDetails = () => {
               </span>
               <button
                 className="flex items-center gap-2 text-red-600 hover:text-red-800 font-medium transition"
-                onClick={() => favoriteMutation.mutate()}
+                onClick={() => {
+                  if (!isAuthenticated || !user) {
+                    loginWithRedirect();
+                  } else {
+                    favoriteMutation.mutate();
+                  }
+                }}
               >
                 <FaHeart /> Save Listing
               </button>
@@ -197,42 +227,45 @@ const ListingDetails = () => {
             <div className="grid grid-cols-2 gap-4 text-gray-700 text-base">
               <div className="flex items-center gap-2">
                 <FaBed className="text-blue-500" />
-                {data.bedrooms ?? "N/A"} Bedrooms
+                {listing.bedrooms ?? "N/A"} Bedrooms
               </div>
               <div className="flex items-center gap-2">
                 <FaBath className="text-blue-500" />
-                {data.bathrooms ?? "N/A"} Bathrooms
+                {listing.bathrooms ?? "N/A"} Bathrooms
               </div>
               <div className="flex items-center gap-2">
                 <FaRulerCombined className="text-blue-500" />
-                {data.square_feet ?? "N/A"} Sq Ft
+                {listing.square_feet ?? "N/A"} Sq Ft
               </div>
               <div className="flex items-center gap-2">
                 <FaTree className="text-green-600" />
-                {data.acre_lot ?? "N/A"} Acres
+                {listing.acre_lot ?? "N/A"} Acres
               </div>
               <div className="col-span-2">
-                <strong>Status:</strong> {data.sale_status}
+                <strong>Status:</strong> {formatString(listing.sale_status)}
               </div>
               <div className="col-span-2">
                 <strong>Tour Available:</strong>{" "}
-                {data.tour_available ? "Yes" : "No"}
+                {listing.tour_available ? "Yes" : "No"}
               </div>
               <div className="col-span-2">
                 <strong>Date Posted:</strong>{" "}
-                {new Date(data.created_at || "").toLocaleDateString()}
+                {new Date(listing.created_at || "").toLocaleDateString()}
               </div>
             </div>
 
             {/*address*/}
             <div className="pt-4">
               <h2 className="text-lg font-semibold">Address</h2>
-              <p className="text-gray-600">{address.street}</p>
-              <p className="text-gray-600">
-                {address.locality}, {address.administrative_area}
+              <p className="text-gray-600 font-medium">
+                {listing.address.premise} {listing.address.street}
               </p>
-              <p className="text-gray-600">{address.postal_code}</p>
-              <p className="text-gray-600">{address.country}</p>
+              <p className="text-gray-600">
+                {listing.address.locality},{" "}
+                {listing.address.administrative_area}
+              </p>
+              <p className="text-gray-600">{listing.address.postal_code}</p>
+              <p className="text-gray-600">{listing.address.country}</p>
             </div>
 
             {/*STatistics */}
@@ -240,48 +273,65 @@ const ListingDetails = () => {
               <h3 className="font-semibold text-lg text-gray-800 mb-2">
                 Statistics
               </h3>
-              <ul className="list-disc pl-5 text-gray-700 text-sm space-y-1">
-                <li className="flex items-center gap-2">
-                  <FcSalesPerformance />
-                  Listed <strong>{pricePercentBelowAvg}%</strong> below average
-                  price in {address.locality}
-                </li>
-                <li className="flex items-center gap-2">
-                  <FcRuler /> Has <strong>{sqftDiff} sq ft</strong> more than
-                  local average
-                </li>
-                <li className="flex items-center gap-2">
-                  <FcCalendar /> On the market for{" "}
-                  <strong>{daysOnMarket} days</strong>
-                </li>
-              </ul>
+              {zipStatsError || pricePercentBelowAvg === 0 ? (
+                <ul className="list-disc text-gray-700 text-sm space-y-1">
+                  <li className="flex flex-wrap items-center gap-2">
+                    <FcSalesPerformance /> No average data available for this
+                    ZIP code
+                  </li>
+                  <li className="flex flex-wrap items-center gap-2">
+                    <FcRuler /> No average square footage data available for
+                    this ZIP code
+                  </li>
+                  <li className="flex flex-wrap items-center gap-2">
+                    <FcCalendar /> On the market for{" "}
+                    <strong>{daysOnMarket} days</strong>
+                  </li>
+                </ul>
+              ) : (
+                <ul className="list-disc text-gray-700 text-xs space-y-1 md:text-sm">
+                  <li className="flex flex-wrap items-center gap-2">
+                    <FcSalesPerformance />
+                    Listed <strong>{pricePercentBelowAvg}%</strong> below
+                    average price than local average
+                  </li>
+                  <li className="flex flex-wrap items-center gap-2">
+                    <FcRuler /> Has <strong>{sqftDiff} sq ft</strong> more than
+                    local average
+                  </li>
+                  <li className="flex flex-wrap items-center gap-2">
+                    <FcCalendar /> On the market for{" "}
+                    <strong>{daysOnMarket} days</strong>
+                  </li>
+                </ul>
+              )}
             </div>
 
             {/* Listing History */}
-            <div className="bg-white p-4 rounded-lg border shadow-sm">
+            <div className="bg-white p-4 rounded-lg border shadow-sm space-y-2">
               <h3 className="font-semibold text-lg text-gray-800 mb-2">
                 Listing History
               </h3>
               <ul className="text-gray-700 text-sm space-y-1">
                 <li>
                   <strong>Created:</strong>{" "}
-                  {data.address.created_at
-                    ? new Date(data.address.created_at).toLocaleDateString()
+                  {listing.address.created_at
+                    ? new Date(listing.address.created_at).toLocaleDateString()
                     : "N/A"}
                 </li>
                 <li>
                   <strong>Updated:</strong>{" "}
-                  {data.address.updated_at
-                    ? new Date(data.address.updated_at).toLocaleDateString()
+                  {listing.address.updated_at
+                    ? new Date(listing.address.updated_at).toLocaleDateString()
                     : "N/A"}
                 </li>
-                <li>
-                  {data.realtor_link ? (
+                <li className="flex pt-2">
+                  {listing.realtor_link ? (
                     <a
-                      href={data.realtor_link}
+                      href={listing.realtor_link}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="block w-fit text-white bg-blue-700 hover:bg-blue-800 px-4 py-2 rounded-lg font-medium"
+                      className="block w-fit text-white bg-[#434343] hover:bg-gray-500 px-3 py-2 rounded-lg font-medium"
                     >
                       View on Realtor
                     </a>

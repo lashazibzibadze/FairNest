@@ -1,8 +1,10 @@
 import { useNavigate } from "react-router-dom";
 import { Listing } from "../../types";
 import { formatPrice } from "../../utils/formatprice";
+import { useEffect, useRef } from "react";
 // import { getRandomDealType } from "../../utils/random";
 import "./listings.css";
+import BirdFavorite from "../../assets/bird-favorite.webp";
 
 type ListingsComponentProps = {
   listings: Listing[];
@@ -20,11 +22,19 @@ const ListingsComponent = ({
   isLoading,
 }: ListingsComponentProps) => {
   const navigate = useNavigate();
+  const topRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    topRef.current?.scrollIntoView({ behavior: "smooth" });
+  }, [currentPage]);
 
   // if listings are loading show a loading skeleton
   if (isLoading) {
     return (
-      <div className="pb-16 px-4 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+      <div
+        ref={topRef}
+        className="pb-16 px-4 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6"
+      >
         {Array.from({ length: 6 }).map((_, idx) => (
           <div
             key={idx}
@@ -45,14 +55,20 @@ const ListingsComponent = ({
   // if listings are empty show a message
   if (!isLoading && listings.length === 0) {
     return (
-      <div className="pt-40 text-center text-gray-500 text-lg">
-        No listings found.
+      <div ref={topRef} className="pt-40 text-center text-gray-500 text-lg">
+        <p>No listings found or wrong search parameters.</p>
+        <div className="mt-4 flex justify-center">
+          <img
+            src={BirdFavorite}
+            className="w-40 h-40 object-contain"
+          />
+        </div>
       </div>
     );
   }
 
   return (
-    <div className="pb-16 px-4">
+    <div ref={topRef} className="pb-16 px-4">
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
         {listings.map((listing) => {
           // const dealType = getRandomDealType();
@@ -65,7 +81,7 @@ const ListingsComponent = ({
               className="cursor-pointer bg-white shadow-md rounded-xl overflow-hidden hover:shadow-xl transition-all"
             >
               <img
-                src={listing.image_source || "/placeholder.jpg"}
+                src={listing.image_source || "/house/placeholder.jpeg"}
                 className="w-full h-48 object-cover"
                 alt={`Listing ${listing.id}`}
               />
@@ -87,7 +103,7 @@ const ListingsComponent = ({
                   ${formatPrice(listing.price)}
                 </h3>
                 <p className="text-gray-600 text-sm">
-                  {listing.address.street}, {listing.address.locality}
+                  {listing.address.premise} {listing.address.street}, {listing.address.locality}
                 </p>
               </div>
             </div>
@@ -100,7 +116,7 @@ const ListingsComponent = ({
         <button
           disabled={currentPage === 1}
           onClick={() => setCurrentPage((p) => Math.max(p - 1, 1))}
-          className="px-4 py-2 bg-blue-600 text-white rounded disabled:opacity-40"
+          className="px-4 py-2 bg-[#434343] text-white rounded disabled:opacity-40"
         >
           Prev
         </button>
@@ -110,7 +126,7 @@ const ListingsComponent = ({
         <button
           disabled={currentPage >= totalPages}
           onClick={() => setCurrentPage((p) => p + 1)}
-          className="px-4 py-2 bg-blue-600 text-white rounded disabled:opacity-40"
+          className="px-4 py-2 bg-[#434334] text-white rounded disabled:opacity-40 hover:bg-gray-500 transition-all"
         >
           Next
         </button>

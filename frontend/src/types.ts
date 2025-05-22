@@ -48,6 +48,7 @@ export interface Filters {
   street?: string;
   administrative_area?: string;
   locality?: string;
+  premise?: string;
   minPrice?: string;
   maxPrice?: string;
   bedrooms?: string;
@@ -58,24 +59,29 @@ export interface Filters {
 }
 
 export interface AddressInput {
-  street: string
-  locality: string
-  postal_code?: string
-  country: string
-  administrative_area: string
+  country: string;
+  administrative_area: string;
+  sub_administrative_area?: string | null;
+  locality: string;
+  postal_code: string;
+  street: string;
+  premise?: string | null;
+  sub_premise?: string | null;
+  latitude?: number | null;
+  longitude?: number | null;
 }
 
 export interface ListingInput {
-  price: number
-  bedrooms?: number
-  bathrooms?: number
-  square_feet?: number
-  sale_status: string
-  acre_lot?: number
-  tour_available: boolean
-  image_source?: string
-  realtor_link?: string
-  address: AddressInput
+  price: number;
+  bedrooms?: number | null;
+  bathrooms?: number | null;
+  square_feet?: number | null;
+  sale_status: string;
+  acre_lot?: number | null;
+  tour_available: boolean;
+  image_source?: string | null;
+  realtor_link?: string | null;
+  address: AddressInput;
 }
 
 export type FairnessRating = "fraud" | "bad" | "fair" | "good"

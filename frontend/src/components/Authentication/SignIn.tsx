@@ -7,7 +7,7 @@ const SignIn = () => {
   return (
     !isAuthenticated && (
       <button
-        className="bg-blue-500 text-white px-5 py-2.5 rounded-lg text-center hover:bg-blue-700 transition"
+        className="bg-[#434343] text-white px-5 py-2.5 rounded-lg text-center hover:bg-gray-500 transition"
         onClick={() => loginWithRedirect()}
       >
         Sign In

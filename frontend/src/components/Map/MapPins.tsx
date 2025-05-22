@@ -26,8 +26,7 @@ type MapProps = {
 
 const ListingMap = ({ listings }: MapProps) => {
   const { isLoaded } = useJsApiLoader({
-    googleMapsApiKey: import.meta.env
-      .VITE_GOOGLE_API_KEY_2_Developement as string,
+    googleMapsApiKey: import.meta.env.VITE_GOOGLE_API_KEY_2 as string,
   });
 
   const navigate = useNavigate();
@@ -66,7 +65,7 @@ const ListingMap = ({ listings }: MapProps) => {
         >
           <div className="text-sm w-48">
             <img
-              src={selected.image_source || "/placeholder.jpg"}
+              src={selected.image_source || "/house/placeholder.jpeg"}
               onClick={() => navigate(`/listing/${selected.id}`)}
               className="w-full h-24 object-cover mb-2 rounded hover:shadow-xl transition-all cursor-pointer"
               alt="preview"
