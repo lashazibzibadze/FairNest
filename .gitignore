@@ -46,6 +46,3 @@ __pycache__/
 # Database files
 *.sqlite3
 *.log
-
-# Other unecessary files
-test-profile
