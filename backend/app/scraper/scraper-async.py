@@ -11,7 +11,7 @@ import os
 from dotenv import load_dotenv
 from supabase import create_client, Client
 import requests
-import ast
+
 import subprocess
 import sys
 import time
@@ -19,8 +19,7 @@ import signal
 import math
 from collections import Counter
 from postgrest.exceptions import APIError
-from fairness_algo.FairnestScoring import run_fairnest_algo
-import tempfile
+
 
 # Load environment variables
 load_dotenv()
@@ -41,8 +40,6 @@ SUPABASE_URL = os.getenv("SUPABASE_URL")
 SUPABASE_KEY = os.getenv("SUPABASE_KEY")
 SUPABASE_URL = os.getenv("SUPABASE_URL")
 GOOGLE_GEOCODE_KEY = os.getenv('GEOCODE_KEY')
-
-
 
 supabase: Client = create_client(SUPABASE_URL, SUPABASE_KEY)
 print("Supabase client initialized successfully!")
@@ -139,6 +136,8 @@ def getData(filePath):
         data = json.load(f)
         return data
 
+
+
 def insert_data(data, batch_size=50):
     address_rows = []
     property_rows = []
@@ -185,6 +184,7 @@ def insert_data(data, batch_size=50):
 
         if len(address_rows) >= batch_size or i == len(data) - 1:
             try:
+                # Deduplicate address rows based on on_conflict key
                 unique_address_map = {}
                 for addr in address_rows:
                     conflict_key = (
@@ -196,6 +196,15 @@ def insert_data(data, batch_size=50):
 
                 deduped_address_rows = list(unique_address_map.values())
 
+                # Log address duplicates if any
+                keys = list(unique_address_map.keys())
+                counter = Counter(keys)
+                dupes = [k for k, v in counter.items() if v > 1]
+                if dupes:
+                    print("🟠 Duplicate address keys found in batch:")
+                    for k in dupes:
+                        print("→", k)
+
                 try:
                     address_response = supabase.table('address').upsert(
                         deduped_address_rows,
@@ -204,6 +213,7 @@ def insert_data(data, batch_size=50):
                 except Exception as e:
                     print(f"🔥 Error inserting address batch: {e}")
                     sys.exit(1)
+                    raise
 
                 address_map = {
                     (
@@ -223,6 +233,7 @@ def insert_data(data, batch_size=50):
                     )
                     address_id = address_map.get(key)
                     if not address_id:
+                        print("❗ Address ID not found for:", key)
                         continue
 
                     listing = row['property_data']
@@ -237,38 +248,53 @@ def insert_data(data, batch_size=50):
                         seen_keys.add(conflict_key)
                         property_payload.append(listing)
 
-                # Deduplicate payload to avoid ON CONFLICT multiple updates
-                deduped_payload = []
-                final_keys = set()
-                for row in property_payload:
-                    key = (row["address_id"], round(float(row["price"]), 2), row["sale_status"].strip().lower())
-                    if key not in final_keys:
-                        final_keys.add(key)
-                        deduped_payload.append(row)
+                try:
+                    supabase.table('property_listings').upsert(
+                        property_payload,
+                        on_conflict="address_id,price,sale_status"
+                    ).execute()
+                    print(f"✅ Inserted {len(property_payload)} unique property listings.")
+                    batches_inserted += len(property_payload)
+                    print(f"📦 Batch {current_batch} complete — {len(property_payload)} listings inserted, total so far: {batches_inserted} ({len(data):.2f}%)")
+                    current_batch += 1
 
-                if deduped_payload:
-                    try:
-                        supabase.table('property_listings')\
-                            .upsert(deduped_payload, on_conflict='address_id,price,sale_status')\
-                            .execute()
-                        print(f"✅ Upserted {len(deduped_payload)} property listings.")
-                    except Exception as e:
-                        print(f"🔥 Failed to upsert property listings: {e}")
+                except APIError as e:
+                    err_info = e.args[0] if isinstance(e.args[0], dict) else {}
+                    if err_info.get("code") == "21000":
+                        print("⚠️ Batch failed. Falling back to row-by-row insert...")
+                        successful, failed = 0, 0
+                        failed_rows = []
+
+                        for row in property_payload:
+                            try:
+                                supabase.table('property_listings').upsert(
+                                    [row],
+                                    on_conflict="address_id,price,sale_status"
+                                ).execute()
+                                successful += 1
+                            except Exception as single_e:
+                                print(f"🚫 Failed row insert: {row} → {single_e}")
+                                failed_rows.append({**row, "_error": str(single_e)})
+                                failed += 1
+
+                        if failed_rows:
+                            with open("failed_property_rows.json", "w") as f:
+                                json.dump(failed_rows, f, indent=2)
+                            print(f"📁 Logged {failed} failed rows to 'failed_property_rows.json'.")
+
+                        print(f"🧾 Fallback complete: {successful} inserted, {failed} failed.")
                         sys.exit(1)
-                else:
-                    print("⛔ No new or changed listings to upsert.")
-
-                batches_inserted += len(deduped_payload)
-                print(f"📦 Batch {current_batch} complete — {len(deduped_payload)} listings processed")
-                current_batch += 1
+                    else:
+                        sys.exit(1)
+                        raise
 
             except Exception as e:
                 print(f"🔥 Unhandled exception in batch: {e}")
                 sys.exit(1)
+                raise
 
             address_rows = []
             property_rows = []
-
 
 
 async def scroll_until_bottom(page):
@@ -279,7 +305,7 @@ async def scroll_until_bottom(page):
         # Scroll down by a fixed distance
         await page.evaluate("window.scrollBy(0, window.innerHeight);")
         
-        await asyncio.sleep(1)  # Wait for content to load
+        await asyncio.sleep(3)  # Wait for content to load
 
         # Calculate new scroll height and compare with last height
         new_height = await page.evaluate("document.body.scrollHeight")
@@ -302,7 +328,7 @@ async def scroll_until_element_in_view(page, element):
         print(f"Error scrolling element into view: {e}")
         sys.exit(1)
 
-# async def scrape_listing_details(detail_page):
+async def scrape_listing_details(detail_page):
     try:
         # Get listing age
         listing_age = await detail_page.locator("div:has-text('On Realtor.com') + p").inner_text() if await detail_page.locator("div:has-text('On Realtor.com') + p").count() > 0 else "N/A"
@@ -323,47 +349,6 @@ async def scroll_until_element_in_view(page, element):
         sys.exit(1)
         return "N/A"
 
-async def extract_listing(listing, url):
-    try:
-        price = await listing.locator("[data-testid='card-price']").inner_text() if await listing.locator("[data-testid='card-price']").count() > 0 else "N/A"
-        address = await listing.locator("[data-testid='card-address-1']").inner_text() if await listing.locator("[data-testid='card-address-1']").count() > 0 else "N/A"
-        if await listing.locator("[data-testid='card-address-2']").count() > 0:
-            address += ", " + await listing.locator("[data-testid='card-address-2']").inner_text()
-        
-        bedrooms = await listing.locator("[data-testid='property-meta-beds']").inner_text() if await listing.locator("[data-testid='property-meta-beds']").count() > 0 else "N/A"
-        bathrooms = await listing.locator("[data-testid='property-meta-baths']").inner_text() if await listing.locator("[data-testid='property-meta-baths']").count() > 0 else "N/A"
-        sqft = await listing.locator("[data-testid='property-meta-sqft']").locator("[data-testid='screen-reader-value']").inner_text() if await listing.locator("[data-testid='property-meta-sqft']").count() > 0 else "N/A"
-        acre_lot = await listing.locator("[data-testid='property-meta-lot-size']").locator("[data-testid='screen-reader-value']").inner_text() if await listing.locator("[data-testid='property-meta-lot-size']").count() > 0 else "N/A"
-
-        sale_status = await listing.locator("[data-testid='card-description']").inner_text() if await listing.locator("[data-testid='card-description']").count() > 0 else "N/A"
-        tour_available = await listing.locator("[data-testid='bottom-overlay']").inner_text() if await listing.locator("[data-testid='bottom-overlay']").count() > 0 else "N/A"
-        image_element = listing.locator("[data-testid='picture-img']").first
-        image_source = await image_element.get_attribute("src") if await image_element.count() > 0 else "N/A"
-        realtor_link = await listing.locator("a").first.get_attribute("href") if await listing.locator("a").count() > 0 else "N/A"
-
-        # Make bedrooms and bathrooms in one line
-        bedrooms = ' '.join(bedrooms.splitlines()).strip()
-        bathrooms = ' '.join(bathrooms.splitlines()).strip()
-
-        return {
-            "Borough": extract_borough_name(url),
-            "Price": price,
-            "Address": address,
-            "Bedrooms": bedrooms,
-            "Bathrooms": bathrooms,
-            "Square Feet": sqft,
-            "Sale Status": sale_status,
-            "Acre Lot": acre_lot,
-            "Tour Available": tour_available,
-            "Image Source": image_source,
-            "Realtor Link": f"https://www.realtor.com{realtor_link}" if realtor_link != "N/A" else "N/A",
-        }
-
-    except Exception as e:
-        print(f"Error parsing listing: {e}")
-        return None
-
-
 
 async def scrape_realtor(url, browser, start_page=1, end_page=1, timeout=300):
     USER_AGENTS = [
@@ -373,83 +358,85 @@ async def scrape_realtor(url, browser, start_page=1, end_page=1, timeout=300):
     ]
 
     random_user_agent = random.choice(USER_AGENTS)
-   
-    page = await browser.new_page()
-    # await page.goto(f"{url}/type-single-family-home,condo,townhome,multi-family-home/pnd-hide/fc-hide/dom-1/pg-{start_page}", timeout=timeout * 1000)
-    # await page.goto("https://bot.sannysoft.com/")
-    await page.goto(f"{url}/type-single-family-home,condo,townhome,multi-family-home/pnd-hide/fc-hide/pg-{start_page}", timeout=timeout * 1000)
+    
+    
+    async with async_playwright() as p: 
+        page = await browser.new_page()
 
-    data = []
-    current_page = start_page
+        # await page.goto(f"{url}/type-single-family-home,condo,townhome,multi-family-home/pnd-hide/fc-hide/dom-1/pg-{start_page}", timeout=timeout * 1000)
+        await page.goto(f"{url}/type-single-family-home,condo,townhome,multi-family-home/pnd-hide/fc-hide/pg-{start_page}", timeout=timeout * 1000)
 
-    await scroll_until_bottom(page)
-        
-    total_pages = int(await page.locator(".page-container a.pagination-item").last.inner_text())
+        data = []
+        current_page = start_page
 
-    while current_page <= end_page:
-        print(f"Scraping page {current_page} where end page is {end_page}...")
-
-        # Scroll down to load all listings
         await scroll_until_bottom(page)
+        
+        total_pages = int(await page.locator(".page-container a.pagination-item").last.inner_text())
 
-        # Extract listings
-        listings = await page.locator("[data-testid='property-list'] [data-testid='rdc-property-card']").all()
+        while current_page <= end_page:
+            print(f"Scraping page {current_page} where end page is {end_page}...")
 
-        print(f"Begin to extract {len(listings)} from page {current_page}")
+            # Scroll down to load all listings
+            await scroll_until_bottom(page)
 
-        for listing in listings:
-            try:  
-                price = await listing.locator("[data-testid='card-price']").inner_text() if await listing.locator("[data-testid='card-price']").count() > 0 else "N/A"
-                address = await listing.locator("[data-testid='card-address-1']").inner_text() if await listing.locator("[data-testid='card-address-1']").count() > 0 else "N/A"
-                if await listing.locator("[data-testid='card-address-2']").count() > 0:
-                    address += ", " + await listing.locator("[data-testid='card-address-2']").inner_text()
-                    
-                bedrooms = await listing.locator("[data-testid='property-meta-beds']").inner_text() if await listing.locator("[data-testid='property-meta-beds']").count() > 0 else "N/A"
-                bathrooms = await listing.locator("[data-testid='property-meta-baths']").inner_text() if await listing.locator("[data-testid='property-meta-baths']").count() > 0 else "N/A"
-                sqft = await listing.locator("[data-testid='property-meta-sqft']").locator("[data-testid='screen-reader-value']").inner_text() if await listing.locator("[data-testid='property-meta-sqft']").count() > 0 else "N/A"
-                acre_lot = await listing.locator("[data-testid='property-meta-lot-size']").locator("[data-testid='screen-reader-value']").inner_text() if await listing.locator("[data-testid='property-meta-lot-size']").count() > 0 else "N/A"
-                    
-                sale_status = await listing.locator("[data-testid='card-description']").inner_text() if await listing.locator("[data-testid='card-description']").count() > 0 else "N/A"
-                tour_available = await listing.locator("[data-testid='bottom-overlay']").inner_text() if await listing.locator("[data-testid='bottom-overlay']").count() > 0 else "N/A"
-                    
-                image_element = listing.locator("[data-testid='picture-img']").first
-                image_source = await image_element.get_attribute("src") if await image_element.count() > 0 else "N/A"
-                    
-                realtor_link = await listing.locator("a").first.get_attribute("href") if await listing.locator("a").count() > 0 else "N/A"
+            # Extract listings
+            listings = await page.locator("[data-testid='property-list'] [data-testid='rdc-property-card']").all()
 
-                # Make bedrooms and bathrooms in one line
-                bedrooms = ' '.join(bedrooms.splitlines()).strip()
-                bathrooms = ' '.join(bathrooms.splitlines()).strip()
+            print(f"Begin to extract {len(listings)} from page {current_page}")
 
-                data.append({
-                    "Borough": extract_borough_name(url),
-                    "Price": price,
-                    "Address": address,
-                    "Bedrooms": bedrooms,
-                    "Bathrooms": bathrooms,
-                    "Square Feet": sqft,
-                    "Sale Status": sale_status,
-                    "Acre Lot": acre_lot,
-                    "Tour Available": tour_available,
-                    "Image Source": image_source,
-                    "Realtor Link": f"https://www.realtor.com{realtor_link}" if realtor_link != "N/A" else "N/A",
-                })
+            for listing in listings:
+                try:  
+                    price = await listing.locator("[data-testid='card-price']").inner_text() if await listing.locator("[data-testid='card-price']").count() > 0 else "N/A"
+                    address = await listing.locator("[data-testid='card-address-1']").inner_text() if await listing.locator("[data-testid='card-address-1']").count() > 0 else "N/A"
+                    if await listing.locator("[data-testid='card-address-2']").count() > 0:
+                        address += ", " + await listing.locator("[data-testid='card-address-2']").inner_text()
+                        
+                    bedrooms = await listing.locator("[data-testid='property-meta-beds']").inner_text() if await listing.locator("[data-testid='property-meta-beds']").count() > 0 else "N/A"
+                    bathrooms = await listing.locator("[data-testid='property-meta-baths']").inner_text() if await listing.locator("[data-testid='property-meta-baths']").count() > 0 else "N/A"
+                    sqft = await listing.locator("[data-testid='property-meta-sqft']").locator("[data-testid='screen-reader-value']").inner_text() if await listing.locator("[data-testid='property-meta-sqft']").count() > 0 else "N/A"
+                    acre_lot = await listing.locator("[data-testid='property-meta-lot-size']").locator("[data-testid='screen-reader-value']").inner_text() if await listing.locator("[data-testid='property-meta-lot-size']").count() > 0 else "N/A"
                     
-                print("Appended entry:", address)
+                    sale_status = await listing.locator("[data-testid='card-description']").inner_text() if await listing.locator("[data-testid='card-description']").count() > 0 else "N/A"
+                    tour_available = await listing.locator("[data-testid='bottom-overlay']").inner_text() if await listing.locator("[data-testid='bottom-overlay']").count() > 0 else "N/A"
                     
+                    image_element = listing.locator("[data-testid='picture-img']").first
+                    image_source = await image_element.get_attribute("src") if await image_element.count() > 0 else "N/A"
                     
-            except Exception as e:
-                print(f"Error parsing listing: {e}")
-                sys.exit(1)
+                    realtor_link = await listing.locator("a").first.get_attribute("href") if await listing.locator("a").count() > 0 else "N/A"
 
-        # Check for the "Next" button if needed
-        next_button = page.locator("[aria-label='Go to next page']").first
-        if await next_button.is_visible():
-            await next_button.click()
-            await page.wait_for_load_state("load")
-            current_page += 1
-        else:
-            break  # No more pages
+                    # Make bedrooms and bathrooms in one line
+                    bedrooms = ' '.join(bedrooms.splitlines()).strip()
+                    bathrooms = ' '.join(bathrooms.splitlines()).strip()
+
+                    data.append({
+                        "Borough": extract_borough_name(url),
+                        "Price": price,
+                        "Address": address,
+                        "Bedrooms": bedrooms,
+                        "Bathrooms": bathrooms,
+                        "Square Feet": sqft,
+                        "Sale Status": sale_status,
+                        "Acre Lot": acre_lot,
+                        "Tour Available": tour_available,
+                        "Image Source": image_source,
+                        "Realtor Link": f"https://www.realtor.com{realtor_link}" if realtor_link != "N/A" else "N/A",
+                    })
+                    
+                    print("Appended entry:", address)
+                    
+                    
+                except Exception as e:
+                    print(f"Error parsing listing: {e}")
+                    sys.exit(1)
+
+            # Check for the "Next" button if needed
+            next_button = page.locator("[aria-label='Go to next page']").first
+            if await next_button.is_visible():
+                await next_button.click()
+                await page.wait_for_load_state("load")
+                current_page += 1
+            else:
+                break  # No more pages
             
 
         await page.close()
@@ -465,28 +452,14 @@ borough_urls = [
     "https://www.realtor.com/realestateandhomes-search/Staten-Island_NY"
 ]
 
-
 # Scrape data asynchronously
 async def main():    
     async with async_playwright() as p:
-        print("Trying to launch persistent context")
-        
-        browser = await p.chromium.launch_persistent_context(user_data_dir=CHROME_USER_DATA, channel="chrome", headless=False, no_viewport=True,
-            viewport={"width":1080,"height":4320},
-            args=[
-            # '--profile-directory=Profile 13',
-             '--disable-features=DevToolsDebuggingRestrictions'
-        ])
-        
-        print("Browser created successfully")
-        
-
+        browser = await p.chromium.launch_persistent_context(CHROME_USER_DATA, channel="chrome", headless=False, viewport={"width":1080,"height":4320})
         combined_data = []
     
         # QUICK CONFIGURABLES
         # pages_per_task = 1
-        
-        print("Preparing to scrape through borough URLs")
         
         for borough_url in borough_urls:
             print(f"Scraping data for: {borough_url}")
@@ -518,9 +491,6 @@ async def main():
         formatted_data = format_data(combined_data)
         
         insert_data(formatted_data)
-        print("✅ Insert data complete")
-        run_fairnest_algo()
-        print("✅ Fairness rating update complete")
      
 
 
@@ -539,13 +509,13 @@ def refresh_cookies():
         f'--profile-directory={profile_name}',
         url
     ])
-    time.sleep(8)
+    time.sleep(4)
     if sys.platform == "win32":
         process.terminate()
     else:
         os.kill(process.pid, signal.SIGTERM)
 
-# refresh_cookies()
+refresh_cookies()
 
 
 # Run the main function

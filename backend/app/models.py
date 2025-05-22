@@ -39,9 +39,6 @@ class Listing(Base):
         UniqueConstraint(
             'address_id', 'price', 'sale_status', name="unique_property_listing_constraint"
         ),
-        UniqueConstraint(
-            'address_id', name="unique_address_id"
-        )
     )
     
 
